@@ -1,0 +1,1277 @@
+{
+  "name": "llm-skills",
+  "owner": {
+    "name": "Alison Aquinas"
+  },
+  "metadata": {
+    "description": "Cross-compatible LLM skills for Claude Code and Codex: ag, aws, az, bash, changelog, claude-docs, claude-cli-docs, chatgpt-docs, codex-docs, codex-cli-docs, docker, git, glab, markdownlint, powershell, sqlite, zoxide, and skill-creator.",
+    "version": "1.5.1"
+  },
+  "plugins": [
+    {
+      "name": "7z",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/7z",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "ag",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/ag",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "ar",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/ar",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "awk",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/awk",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "aws",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/aws",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "az",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/az",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "bash",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/bash",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "binwalk",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/binwalk",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "changelog",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/changelog",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "chatgpt-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/chatgpt-docs",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "claude-cli-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/claude-cli-docs",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "claude-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/claude-docs",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "cmp",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/cmp",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "codex-cli-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/codex-cli-docs",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "codex-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/codex-docs",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "diff",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/diff",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "docker",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/docker",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "exiftool",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/exiftool",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "file",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/file",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "git",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/git",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "glab",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/glab",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "head",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/head",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "hexdump",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/hexdump",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "jq",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/jq",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "ldd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/ldd",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "less",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/less",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "markdownlint",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/markdownlint",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "mediainfo",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/mediainfo",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "nm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/nm",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "objdump",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/objdump",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "od",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/od",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "openssl",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/openssl",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "pdfinfo",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/pdfinfo",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "pdftotext",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/pdftotext",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "powershell",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/powershell",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "readelf",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/readelf",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "rg",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/rg",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "sed",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/sed",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-creator",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/skill-creator",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-linting",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/skill-linting",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-validation",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/skill-validation",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "sqlite",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/sqlite",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "ssh-client",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/ssh-client",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "ssh-keygen",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/ssh-keygen",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "strings",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/strings",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "tail",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/tail",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "tar",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/tar",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "tree",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/tree",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "unzip",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/unzip",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "xmllint",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/xmllint",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "xxd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/xxd",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "yq",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/yq",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "zoxide",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/zoxide",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "zsh",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "path": "skills/zsh",
+        "ref": "main"
+      },
+      "category": "shared-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "1password-cli",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/1password-cli",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "ansible",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/ansible",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "argocd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/argocd",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "asdf",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/asdf",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "atlassian-cli-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/atlassian-cli-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "aws-secretsmanager",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/aws-secretsmanager",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "aws",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/aws",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "az",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/az",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "bitwarden-cli",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/bitwarden-cli",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "ci-architecture",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/ci-architecture",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "cmake",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/cmake",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "containerd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/containerd",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "cri-o",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/cri-o",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "direnv",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/direnv",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "docker",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/docker",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "flux",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/flux",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "github-cd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/github-cd",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "github-ci",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/github-ci",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "github-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/github-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "github-runner",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/github-runner",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "gitlab-cd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/gitlab-cd",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "gitlab-ci",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/gitlab-ci",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "gitlab-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/gitlab-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "gitlab-runner",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/gitlab-runner",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "glab",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/glab",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "gradle",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/gradle",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "helm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/helm",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "jenkins-agent",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/jenkins-agent",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "jenkins-cd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/jenkins-cd",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "jenkins-ci",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/jenkins-ci",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "jenkins-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/jenkins-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "jira-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/jira-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "jsm-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/jsm-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "kubectl",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/kubectl",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "kustomize",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/kustomize",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "make",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/make",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "maven",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/maven",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "npm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/npm",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "nvm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/nvm",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "open-tofu",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/open-tofu",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "pip",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/pip",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "pipenv",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/pipenv",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "pnpm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/pnpm",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "podman",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/podman",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "poetry",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/poetry",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "pulumi",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/pulumi",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "pyenv",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/pyenv",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "rbenv",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/rbenv",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "rovo-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/rovo-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "rvm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/rvm",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "skaffold",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/skaffold",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "terraform",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/terraform",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "tilt",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/tilt",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "travis-cd",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/travis-cd",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "travis-ci-docs",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/travis-ci-docs",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "travis-ci",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/travis-ci",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "travis-worker",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/travis-worker",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "vault",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/vault",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "yaml-linting",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/yaml-linting",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "yaml-lsp",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/yaml-lsp",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    },
+    {
+      "name": "yarn",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "path": "skills/yarn",
+        "ref": "main"
+      },
+      "category": "ci-cd",
+      "license": "MIT"
+    }
+  ]
+}
