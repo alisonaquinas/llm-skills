@@ -1,25 +1,22 @@
-name: Deploy to GitHub Pages
+name: Validate
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:
-  repository_dispatch:
-    types: [plugin-updated]
+  pull_request:
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  build-and-deploy:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,6 +26,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: TypeScript type-check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx next lint
 
       - name: Build static export
         run: npm run build
@@ -40,15 +43,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Validate marketplace.json
+      - name: Validate marketplace.json schema
         run: node scripts/validate-marketplace-json.mjs
 
-      - name: Add .nojekyll
-        run: touch out/.nojekyll
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload marketplace.json artifact
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          publish_branch: gh-pages
+          name: marketplace-json
+          path: out/marketplace.json

@@ -1,5 +1,6 @@
 import { getAllSkills, getPluginMeta, REPOS } from "@/lib/github";
 import SkillGrid from "@/components/SkillGrid";
+import InstallBanner from "@/components/InstallBanner";
 
 export default async function MarketplacePage() {
   const [allSkills, metas] = await Promise.all([
@@ -9,6 +10,8 @@ export default async function MarketplacePage() {
 
   return (
     <div>
+      <InstallBanner />
+
       {/* Hero */}
       <section className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Claude Plugin Marketplace</h1>
