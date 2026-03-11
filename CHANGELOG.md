@@ -9,6 +9,18 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.0] — 2026-03-11
+
+### Added
+- Tag-driven CI/CD release pipeline across all skill repos
+- `repository_dispatch` trigger so marketplace auto-rebuilds on upstream releases
+- `docs/release-workflow.md` documenting the full release process
+- GitHub Actions `release.yml` added to `llm-shared-skills` and `llm-ci-dev`
+
+### Changed
+- Version bumped to 1.0.0 — first stable public release
+- Published to GitHub Pages at `https://alisonaquinas.github.io/llm-skills/`
+
 ## [0.1.0] — 2026-03-11
 
 ### Added
