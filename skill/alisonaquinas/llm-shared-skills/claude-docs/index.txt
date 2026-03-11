@@ -1,0 +1,141 @@
+1:"$Sreact.fragment"
+2:I[5244,[],""]
+3:I[3866,[],""]
+5:I[6213,[],"OutletBoundary"]
+7:I[6213,[],"MetadataBoundary"]
+9:I[6213,[],"ViewportBoundary"]
+b:I[4835,[],""]
+:HL["/llm-skills/_next/static/css/fbb5d0d63c1b8574.css","style"]
+0:{"P":null,"b":"OfWmF4HEx80pfrsIP0b5t","p":"/llm-skills","c":["","skill","alisonaquinas","llm-shared-skills","claude-docs",""],"i":false,"f":[[["",{"children":["skill",{"children":[["slug","alisonaquinas/llm-shared-skills/claude-docs","c"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/llm-skills/_next/static/css/fbb5d0d63c1b8574.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"min-h-screen bg-gray-50","children":[["$","header",null,{"className":"bg-white border-b border-gray-200 sticky top-0 z-10","children":["$","div",null,{"className":"max-w-6xl mx-auto px-4 py-3 flex items-center gap-3","children":[["$","a",null,{"href":"/","className":"flex items-center gap-2 text-gray-900 no-underline","children":[["$","div",null,{"className":"w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm","children":"C"}],["$","span",null,{"className":"font-semibold text-lg","children":"Claude Plugin Marketplace"}]]}],["$","nav",null,{"className":"ml-auto flex gap-4 text-sm text-gray-500","children":[["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills","target":"_blank","rel":"noopener noreferrer","className":"hover:text-gray-900","children":"llm-shared-skills ↗"}],["$","a",null,{"href":"https://github.com/alisonaquinas/llm-ci-dev","target":"_blank","rel":"noopener noreferrer","className":"hover:text-gray-900","children":"llm-ci-dev ↗"}]]}]]}]}],["$","main",null,{"className":"max-w-6xl mx-auto px-4 py-8","children":["$","$L2",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]]}],{"children":["skill",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","segmentPath":["children","skill","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","alisonaquinas/llm-shared-skills/claude-docs","c"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","segmentPath":["children","skill","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":"$L6"}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","fGqgzDj1NqziKiCJ4_5Ga",{"children":[["$","$L7",null,{"children":"$L8"}],["$","$L9",null,{"children":"$La"}],null]}]]}],false]],"m":"$undefined","G":["$b","$undefined"],"s":false,"S":true}
+a:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"claude-docs — Claude Plugin Marketplace"}],["$","meta","2",{"name":"description","content":"Browse and install LLM skill plugins for Claude Code"}]]
+6:null
+c:I[8173,["173","static/chunks/173-2e1b10b5fe49dfd2.js","610","static/chunks/app/skill/%5B...slug%5D/page-9c567b36e8998861.js"],""]
+d:I[9440,["173","static/chunks/173-2e1b10b5fe49dfd2.js","610","static/chunks/app/skill/%5B...slug%5D/page-9c567b36e8998861.js"],"default"]
+e:Tc77,---
+name: claude-docs
+description: >
+  Use this skill to look up, navigate, or find anything in the official Anthropic
+  Claude API documentation at platform.claude.com/docs. Trigger when the user asks
+  about Claude API endpoints, model IDs, pricing, prompt engineering, tool use,
+  extended thinking, adaptive thinking, context windows, vision, the Agent SDK,
+  rate limits, authentication, error codes, or any Anthropic/Claude developer
+  reference. Also trigger for questions like "where is the Claude doc for X",
+  "what does the Claude API reference say about Y", "find the Anthropic docs on Z",
+  or any request to look something up in Claude/Anthropic documentation.
+---
+
+# Claude API Docs
+
+Reference skill for navigating official Anthropic Claude documentation at
+**<https://platform.claude.com/docs/en/>**
+
+Full page index: <https://platform.claude.com/docs/llms.txt>
+
+---
+
+## Intent Router
+
+| Topic | Reference file | Load when... |
+| --- | --- | --- |
+| Getting started, intro, quickstart | `references/getting-started.md` | user needs first API call, setup, or intro overview |
+| Models, model IDs, pricing | `references/models.md` | user asks about model names, context windows, pricing, or which model to use |
+| Prompt engineering, tool use, vision | `references/build-with-claude.md` | user asks about prompting, function/tool use, image input, streaming, context |
+| Extended thinking, adaptive thinking | `references/extended-thinking.md` | user asks about thinking tokens, budget, extended/adaptive thinking |
+| Agent SDK, sub-agents, orchestration | `references/agent-sdk.md` | user asks about building agents, multi-agent, orchestration, Agent SDK |
+| REST API endpoints, auth, rate limits | `references/api-reference.md` | user asks about HTTP endpoints, authentication, rate limits, errors, SDKs |
+
+---
+
+## Key URLs at a Glance
+
+```text
+Root               https://platform.claude.com/docs/en/
+Intro              https://platform.claude.com/docs/en/intro
+Get started        https://platform.claude.com/docs/en/get-started
+Models             https://platform.claude.com/docs/en/about-claude/models/overview
+Pricing            https://platform.claude.com/docs/en/about-claude/pricing
+Prompt engineering https://platform.claude.com/docs/en/build-with-claude/prompt-engineering
+Tool use           https://platform.claude.com/docs/en/build-with-claude/tool-use
+Extended thinking  https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+Context windows    https://platform.claude.com/docs/en/build-with-claude/context-windows
+Vision             https://platform.claude.com/docs/en/build-with-claude/vision
+Agent SDK          https://platform.claude.com/docs/en/agent-sdk/overview
+API reference      https://platform.claude.com/docs/en/api/
+```
+
+---
+
+## Current Model IDs (quick reference)
+
+| Model | API ID | Notes |
+| --- | --- | --- |
+| Claude Opus 4.6 | `claude-opus-4-6` | Most capable, best for agents & complex coding |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | Best speed/intelligence balance |
+| Claude Haiku 4.5 | `claude-haiku-4-5-20251001` | Fastest, near-frontier |
+
+Full model list with AWS Bedrock / GCP Vertex IDs → `references/models.md`
+f:Tc77,---
+name: claude-docs
+description: >
+  Use this skill to look up, navigate, or find anything in the official Anthropic
+  Claude API documentation at platform.claude.com/docs. Trigger when the user asks
+  about Claude API endpoints, model IDs, pricing, prompt engineering, tool use,
+  extended thinking, adaptive thinking, context windows, vision, the Agent SDK,
+  rate limits, authentication, error codes, or any Anthropic/Claude developer
+  reference. Also trigger for questions like "where is the Claude doc for X",
+  "what does the Claude API reference say about Y", "find the Anthropic docs on Z",
+  or any request to look something up in Claude/Anthropic documentation.
+---
+
+# Claude API Docs
+
+Reference skill for navigating official Anthropic Claude documentation at
+**<https://platform.claude.com/docs/en/>**
+
+Full page index: <https://platform.claude.com/docs/llms.txt>
+
+---
+
+## Intent Router
+
+| Topic | Reference file | Load when... |
+| --- | --- | --- |
+| Getting started, intro, quickstart | `references/getting-started.md` | user needs first API call, setup, or intro overview |
+| Models, model IDs, pricing | `references/models.md` | user asks about model names, context windows, pricing, or which model to use |
+| Prompt engineering, tool use, vision | `references/build-with-claude.md` | user asks about prompting, function/tool use, image input, streaming, context |
+| Extended thinking, adaptive thinking | `references/extended-thinking.md` | user asks about thinking tokens, budget, extended/adaptive thinking |
+| Agent SDK, sub-agents, orchestration | `references/agent-sdk.md` | user asks about building agents, multi-agent, orchestration, Agent SDK |
+| REST API endpoints, auth, rate limits | `references/api-reference.md` | user asks about HTTP endpoints, authentication, rate limits, errors, SDKs |
+
+---
+
+## Key URLs at a Glance
+
+```text
+Root               https://platform.claude.com/docs/en/
+Intro              https://platform.claude.com/docs/en/intro
+Get started        https://platform.claude.com/docs/en/get-started
+Models             https://platform.claude.com/docs/en/about-claude/models/overview
+Pricing            https://platform.claude.com/docs/en/about-claude/pricing
+Prompt engineering https://platform.claude.com/docs/en/build-with-claude/prompt-engineering
+Tool use           https://platform.claude.com/docs/en/build-with-claude/tool-use
+Extended thinking  https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+Context windows    https://platform.claude.com/docs/en/build-with-claude/context-windows
+Vision             https://platform.claude.com/docs/en/build-with-claude/vision
+Agent SDK          https://platform.claude.com/docs/en/agent-sdk/overview
+API reference      https://platform.claude.com/docs/en/api/
+```
+
+---
+
+## Current Model IDs (quick reference)
+
+| Model | API ID | Notes |
+| --- | --- | --- |
+| Claude Opus 4.6 | `claude-opus-4-6` | Most capable, best for agents & complex coding |
+| Claude Sonnet 4.6 | `claude-sonnet-4-6` | Best speed/intelligence balance |
+| Claude Haiku 4.5 | `claude-haiku-4-5-20251001` | Fastest, near-frontier |
+
+Full model list with AWS Bedrock / GCP Vertex IDs → `references/models.md`
+4:["$","div",null,{"className":"max-w-3xl","children":[["$","nav",null,{"className":"text-sm text-gray-400 mb-6 flex items-center gap-2","children":[["$","$Lc",null,{"href":"/","className":"hover:text-gray-700","children":"Marketplace"}],["$","span",null,{"children":"/"}],["$","span",null,{"className":"px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800","children":"Shared Skills"}],["$","span",null,{"children":"/"}],["$","span",null,{"className":"text-gray-700 font-medium","children":"claude-docs"}]]}],["$","div",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900 mb-2","children":"claude-docs"}],["$","div",null,{"className":"flex items-center gap-3 text-sm text-gray-500","children":[["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills/tree/main/skills/claude-docs","target":"_blank","rel":"noopener noreferrer","className":"hover:text-brand-600 flex items-center gap-1","children":"View on GitHub ↗"}],["$","span",null,{"children":"·"}],["$","span",null,{"children":["alisonaquinas","/","llm-shared-skills"]}]]}]]}],["$","section",null,{"className":"mb-8","children":[["$","h2",null,{"className":"text-lg font-semibold text-gray-900 mb-3","children":"Files"}],["$","div",null,{"className":"flex flex-wrap gap-2","children":[["$","span","SKILL.md",{"className":"text-xs px-2 py-1 rounded font-mono bg-brand-100 text-brand-700 font-semibold","children":"SKILL.md"}],["$","span","agents",{"className":"text-xs px-2 py-1 rounded font-mono bg-gray-100 text-gray-600","children":"agents"}],["$","span","references",{"className":"text-xs px-2 py-1 rounded font-mono bg-gray-100 text-gray-600","children":"references"}]]}]]}],["$","section",null,{"className":"mb-8","children":[["$","h2",null,{"className":"text-lg font-semibold text-gray-900 mb-3","children":"Install"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"bg-gray-900 rounded-xl p-4","children":[["$","div",null,{"className":"flex items-center justify-between mb-2","children":[["$","span",null,{"className":"text-xs text-gray-400 font-mono","children":"Via git clone"}],["$","$Ld",null,{"text":"git clone https://github.com/alisonaquinas/llm-shared-skills.git\n# Then copy the skill:\ncp -r llm-shared-skills/skills/claude-docs ~/.claude/skills/"}]]}],["$","pre",null,{"className":"text-sm text-green-400 font-mono overflow-x-auto whitespace-pre-wrap","children":"git clone https://github.com/alisonaquinas/llm-shared-skills.git\n# Then copy the skill:\ncp -r llm-shared-skills/skills/claude-docs ~/.claude/skills/"}]]}],["$","div",null,{"className":"bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600","children":[["$","strong",null,{"className":"text-gray-800","children":"Or"}]," browse the full package:"," ",["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills","target":"_blank","rel":"noopener noreferrer","className":"text-brand-600 hover:underline","children":["github.com/","alisonaquinas","/","llm-shared-skills"]}]," ","and follow the"," ",["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills/blob/main/INSTALL.md","target":"_blank","rel":"noopener noreferrer","className":"text-brand-600 hover:underline","children":"INSTALL.md"}]," ","instructions."]}]]}]]}],["$","section",null,{"className":"mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-3","children":[["$","h2",null,{"className":"text-lg font-semibold text-gray-900","children":"SKILL.md"}],["$","$Ld",null,{"text":"$e","label":"Copy raw"}]]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-xl p-5 overflow-x-auto","children":["$","pre",null,{"className":"text-sm text-gray-700 font-mono whitespace-pre-wrap leading-relaxed","children":"$f"}]}]]}],["$","$Lc",null,{"href":"/","className":"inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900","children":"← Back to marketplace"}]]}]

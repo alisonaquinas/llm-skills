@@ -1,0 +1,277 @@
+1:"$Sreact.fragment"
+2:I[5244,[],""]
+3:I[3866,[],""]
+5:I[6213,[],"OutletBoundary"]
+7:I[6213,[],"MetadataBoundary"]
+9:I[6213,[],"ViewportBoundary"]
+b:I[4835,[],""]
+:HL["/llm-skills/_next/static/css/fbb5d0d63c1b8574.css","style"]
+0:{"P":null,"b":"OfWmF4HEx80pfrsIP0b5t","p":"/llm-skills","c":["","skill","alisonaquinas","llm-shared-skills","powershell",""],"i":false,"f":[[["",{"children":["skill",{"children":[["slug","alisonaquinas/llm-shared-skills/powershell","c"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/llm-skills/_next/static/css/fbb5d0d63c1b8574.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"min-h-screen bg-gray-50","children":[["$","header",null,{"className":"bg-white border-b border-gray-200 sticky top-0 z-10","children":["$","div",null,{"className":"max-w-6xl mx-auto px-4 py-3 flex items-center gap-3","children":[["$","a",null,{"href":"/","className":"flex items-center gap-2 text-gray-900 no-underline","children":[["$","div",null,{"className":"w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm","children":"C"}],["$","span",null,{"className":"font-semibold text-lg","children":"Claude Plugin Marketplace"}]]}],["$","nav",null,{"className":"ml-auto flex gap-4 text-sm text-gray-500","children":[["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills","target":"_blank","rel":"noopener noreferrer","className":"hover:text-gray-900","children":"llm-shared-skills ↗"}],["$","a",null,{"href":"https://github.com/alisonaquinas/llm-ci-dev","target":"_blank","rel":"noopener noreferrer","className":"hover:text-gray-900","children":"llm-ci-dev ↗"}]]}]]}]}],["$","main",null,{"className":"max-w-6xl mx-auto px-4 py-8","children":["$","$L2",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]}]]}],{"children":["skill",["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","segmentPath":["children","skill","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","alisonaquinas/llm-shared-skills/powershell","c"],["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","segmentPath":["children","skill","children","$0:f:0:1:2:children:2:children:0","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L4",null,["$","$L5",null,{"children":"$L6"}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","fHJJxThy50gOzhK0YAuJk",{"children":[["$","$L7",null,{"children":"$L8"}],["$","$L9",null,{"children":"$La"}],null]}]]}],false]],"m":"$undefined","G":["$b","$undefined"],"s":false,"S":true}
+a:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"powershell — Claude Plugin Marketplace"}],["$","meta","2",{"name":"description","content":"Browse and install LLM skill plugins for Claude Code"}]]
+6:null
+c:I[8173,["173","static/chunks/173-2e1b10b5fe49dfd2.js","610","static/chunks/app/skill/%5B...slug%5D/page-9c567b36e8998861.js"],""]
+d:I[9440,["173","static/chunks/173-2e1b10b5fe49dfd2.js","610","static/chunks/app/skill/%5B...slug%5D/page-9c567b36e8998861.js"],"default"]
+e:T159b,---
+name: powershell
+description: Practical PowerShell 7 shell, scripting, remoting, debugging, and troubleshooting guidance. Use when the agent needs to work with `pwsh.exe`, `Get-Help`, profiles, providers, modules, scripts, advanced functions, native command interop, execution policy, jobs, remoting, `ForEach-Object -Parallel`, `Pester`, or `SecretManagement` on Windows, Linux, or macOS.
+---
+
+# PowerShell
+
+Use this skill to keep PowerShell work grounded in the installed runtime first, then fall back to official Microsoft Learn content when local help is missing or partial.
+
+## Quick Start
+
+1. Run `scripts/probe-pwsh.ps1` first for environment truth.
+2. Establish the help surface before guessing:
+
+- `pwsh.exe -?`
+- `Get-Help <name> -Full`
+- `Get-Help about_*`
+- `Get-Command <name> -All`
+- `Get-Member`
+
+1. Load only the reference file that matches the active request.
+2. Treat PowerShell objects, formatting, and native-process interop as separate concerns.
+3. Call out Windows-specific behavior when the request mentions `pwsh.exe`, execution policy, WMI/CIM, WinRM, registry, certificates, or `cmd.exe`.
+
+## Intent Router
+
+Load only the reference file needed for the active request.
+
+- `references/install-and-setup.md`
+  - Installing PowerShell 7 on macOS, Linux, or Windows, and post-install configuration.
+- `references/cli-and-help.md`
+  - `pwsh.exe` invocation, startup flags, profile loading, and help workflow.
+- `references/language-and-pipeline.md`
+  - parsing, quoting, variables, objects, formatting, redirection, and native command boundaries.
+- `references/scripting-and-modules.md`
+  - scripts, functions, advanced functions, modules, manifests, and profiles.
+- `references/providers-and-data.md`
+  - providers, PSDrives, filesystem/registry/env/cert usage, and common data formats.
+- `references/remoting-jobs-debugging.md`
+  - remoting, sessions, jobs, background work, tracing, and debugger workflow.
+- `references/security-and-compat.md`
+  - execution policy, secrets boundaries, code signing, constrained environments, and PowerShell 5.1 vs 7+ compatibility.
+- `references/wsl-interop.md`
+  - calling WSL from `pwsh.exe`, calling `pwsh.exe` from Bash, `wslpath` path translation, and CRLF handling.
+- `references/troubleshooting.md`
+  - error triage, streams, diagnostic commands, and reproducible failure analysis.
+
+## Core Workflow
+
+1. Establish runtime truth
+
+- Run `scripts/probe-pwsh.ps1 -Json` when structured output helps.
+- Capture version, edition, OS, profile paths, module path, and local help coverage.
+
+1. Choose the smallest discovery path
+
+- Command help: `Get-Help <cmdlet> -Detailed`, `-Examples`, `-Full`, `-Online`
+- Command discovery: `Get-Command`, `Get-Module -ListAvailable`, `Find-Module`
+- Object discovery: `... | Get-Member`
+
+1. Separate task classes before changing code
+
+- Shell launch and automation: `pwsh.exe` flags and process behavior
+- Language and script behavior: parsing, quoting, variables, scoping, pipeline
+- Operational surfaces: providers, remoting, jobs, debugging, security
+
+1. Prefer reproducible diagnostics
+
+- Use `scripts/collect-help-index.ps1` when help completeness is relevant.
+- Use `scripts/test-native-boundaries.ps1` when quoting, argument passing, streams, or exit codes are suspect.
+
+## Quick Command Reference
+
+```powershell
+# Launch modes
+pwsh -NoLogo -NoProfile
+pwsh -File .\script.ps1 -Name value
+pwsh -Command '$PSVersionTable'
+pwsh -EncodedCommand <base64>
+
+# Discovery
+Get-Help Get-ChildItem -Examples
+Get-Command *service*
+Get-Module -ListAvailable
+Get-Help about_* | Sort-Object Name
+
+# Objects and pipeline
+Get-Process | Get-Member
+Get-Service | Where-Object Status -eq Running | Select-Object -First 5
+
+# Scripting
+Test-Path $PROFILE
+New-ModuleManifest -Path .\MyModule.psd1
+Import-Module .\MyModule.psd1 -Force
+
+# Troubleshooting
+$Error[0] | Format-List * -Force
+Trace-Command -Name ParameterBinding -Expression { <command> } -PSHost
+```
+
+## Safety Notes
+
+| Area | Guardrail |
+| --- | --- |
+| Execution policy | Explain that process-level `-ExecutionPolicy` does not persist and only applies on Windows. |
+| Remoting | Confirm transport and prerequisites before proposing `Enter-PSSession` or `Invoke-Command`. |
+| Native commands | Be explicit about which shell is parsing the command line first. |
+| Profiles | Prefer `-NoProfile` when isolating startup issues. |
+| Formatting | Avoid building automation on formatted text when objects are available. |
+
+## Source Policy
+
+- Treat installed `pwsh.exe` behavior and local help output as runtime truth.
+- Use Microsoft Learn for missing or partial help topics, especially `about_*` content.
+- Distinguish Windows PowerShell 5.1 guidance from PowerShell 7+ guidance when compatibility matters.
+
+## Resource Index
+
+- `scripts/probe-pwsh.ps1`
+  - Contract: `probe-pwsh.ps1 [-Json]`
+  - Purpose: summarize runtime, profiles, modules, and help coverage.
+- `scripts/collect-help-index.ps1`
+  - Contract: `collect-help-index.ps1 [-Json] [-CommandName <string[]>]`
+  - Purpose: inventory installed `about_*` topics and detect partial command help.
+- `scripts/test-native-boundaries.ps1`
+  - Contract: `test-native-boundaries.ps1 [-Json]`
+  - Purpose: demonstrate native-process argument, stream, and exit-code behavior.
+- `assets/templates/advanced-function.ps1`
+  - Purpose: starter for a comment-based-help advanced function with safe process semantics.
+- `assets/templates/module-skeleton/`
+  - Purpose: minimal module starter with manifest, module file, and public command export.
+f:T159b,---
+name: powershell
+description: Practical PowerShell 7 shell, scripting, remoting, debugging, and troubleshooting guidance. Use when the agent needs to work with `pwsh.exe`, `Get-Help`, profiles, providers, modules, scripts, advanced functions, native command interop, execution policy, jobs, remoting, `ForEach-Object -Parallel`, `Pester`, or `SecretManagement` on Windows, Linux, or macOS.
+---
+
+# PowerShell
+
+Use this skill to keep PowerShell work grounded in the installed runtime first, then fall back to official Microsoft Learn content when local help is missing or partial.
+
+## Quick Start
+
+1. Run `scripts/probe-pwsh.ps1` first for environment truth.
+2. Establish the help surface before guessing:
+
+- `pwsh.exe -?`
+- `Get-Help <name> -Full`
+- `Get-Help about_*`
+- `Get-Command <name> -All`
+- `Get-Member`
+
+1. Load only the reference file that matches the active request.
+2. Treat PowerShell objects, formatting, and native-process interop as separate concerns.
+3. Call out Windows-specific behavior when the request mentions `pwsh.exe`, execution policy, WMI/CIM, WinRM, registry, certificates, or `cmd.exe`.
+
+## Intent Router
+
+Load only the reference file needed for the active request.
+
+- `references/install-and-setup.md`
+  - Installing PowerShell 7 on macOS, Linux, or Windows, and post-install configuration.
+- `references/cli-and-help.md`
+  - `pwsh.exe` invocation, startup flags, profile loading, and help workflow.
+- `references/language-and-pipeline.md`
+  - parsing, quoting, variables, objects, formatting, redirection, and native command boundaries.
+- `references/scripting-and-modules.md`
+  - scripts, functions, advanced functions, modules, manifests, and profiles.
+- `references/providers-and-data.md`
+  - providers, PSDrives, filesystem/registry/env/cert usage, and common data formats.
+- `references/remoting-jobs-debugging.md`
+  - remoting, sessions, jobs, background work, tracing, and debugger workflow.
+- `references/security-and-compat.md`
+  - execution policy, secrets boundaries, code signing, constrained environments, and PowerShell 5.1 vs 7+ compatibility.
+- `references/wsl-interop.md`
+  - calling WSL from `pwsh.exe`, calling `pwsh.exe` from Bash, `wslpath` path translation, and CRLF handling.
+- `references/troubleshooting.md`
+  - error triage, streams, diagnostic commands, and reproducible failure analysis.
+
+## Core Workflow
+
+1. Establish runtime truth
+
+- Run `scripts/probe-pwsh.ps1 -Json` when structured output helps.
+- Capture version, edition, OS, profile paths, module path, and local help coverage.
+
+1. Choose the smallest discovery path
+
+- Command help: `Get-Help <cmdlet> -Detailed`, `-Examples`, `-Full`, `-Online`
+- Command discovery: `Get-Command`, `Get-Module -ListAvailable`, `Find-Module`
+- Object discovery: `... | Get-Member`
+
+1. Separate task classes before changing code
+
+- Shell launch and automation: `pwsh.exe` flags and process behavior
+- Language and script behavior: parsing, quoting, variables, scoping, pipeline
+- Operational surfaces: providers, remoting, jobs, debugging, security
+
+1. Prefer reproducible diagnostics
+
+- Use `scripts/collect-help-index.ps1` when help completeness is relevant.
+- Use `scripts/test-native-boundaries.ps1` when quoting, argument passing, streams, or exit codes are suspect.
+
+## Quick Command Reference
+
+```powershell
+# Launch modes
+pwsh -NoLogo -NoProfile
+pwsh -File .\script.ps1 -Name value
+pwsh -Command '$PSVersionTable'
+pwsh -EncodedCommand <base64>
+
+# Discovery
+Get-Help Get-ChildItem -Examples
+Get-Command *service*
+Get-Module -ListAvailable
+Get-Help about_* | Sort-Object Name
+
+# Objects and pipeline
+Get-Process | Get-Member
+Get-Service | Where-Object Status -eq Running | Select-Object -First 5
+
+# Scripting
+Test-Path $PROFILE
+New-ModuleManifest -Path .\MyModule.psd1
+Import-Module .\MyModule.psd1 -Force
+
+# Troubleshooting
+$Error[0] | Format-List * -Force
+Trace-Command -Name ParameterBinding -Expression { <command> } -PSHost
+```
+
+## Safety Notes
+
+| Area | Guardrail |
+| --- | --- |
+| Execution policy | Explain that process-level `-ExecutionPolicy` does not persist and only applies on Windows. |
+| Remoting | Confirm transport and prerequisites before proposing `Enter-PSSession` or `Invoke-Command`. |
+| Native commands | Be explicit about which shell is parsing the command line first. |
+| Profiles | Prefer `-NoProfile` when isolating startup issues. |
+| Formatting | Avoid building automation on formatted text when objects are available. |
+
+## Source Policy
+
+- Treat installed `pwsh.exe` behavior and local help output as runtime truth.
+- Use Microsoft Learn for missing or partial help topics, especially `about_*` content.
+- Distinguish Windows PowerShell 5.1 guidance from PowerShell 7+ guidance when compatibility matters.
+
+## Resource Index
+
+- `scripts/probe-pwsh.ps1`
+  - Contract: `probe-pwsh.ps1 [-Json]`
+  - Purpose: summarize runtime, profiles, modules, and help coverage.
+- `scripts/collect-help-index.ps1`
+  - Contract: `collect-help-index.ps1 [-Json] [-CommandName <string[]>]`
+  - Purpose: inventory installed `about_*` topics and detect partial command help.
+- `scripts/test-native-boundaries.ps1`
+  - Contract: `test-native-boundaries.ps1 [-Json]`
+  - Purpose: demonstrate native-process argument, stream, and exit-code behavior.
+- `assets/templates/advanced-function.ps1`
+  - Purpose: starter for a comment-based-help advanced function with safe process semantics.
+- `assets/templates/module-skeleton/`
+  - Purpose: minimal module starter with manifest, module file, and public command export.
+4:["$","div",null,{"className":"max-w-3xl","children":[["$","nav",null,{"className":"text-sm text-gray-400 mb-6 flex items-center gap-2","children":[["$","$Lc",null,{"href":"/","className":"hover:text-gray-700","children":"Marketplace"}],["$","span",null,{"children":"/"}],["$","span",null,{"className":"px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800","children":"Shared Skills"}],["$","span",null,{"children":"/"}],["$","span",null,{"className":"text-gray-700 font-medium","children":"powershell"}]]}],["$","div",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900 mb-2","children":"powershell"}],["$","div",null,{"className":"flex items-center gap-3 text-sm text-gray-500","children":[["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills/tree/main/skills/powershell","target":"_blank","rel":"noopener noreferrer","className":"hover:text-brand-600 flex items-center gap-1","children":"View on GitHub ↗"}],["$","span",null,{"children":"·"}],["$","span",null,{"children":["alisonaquinas","/","llm-shared-skills"]}]]}]]}],["$","section",null,{"className":"mb-8","children":[["$","h2",null,{"className":"text-lg font-semibold text-gray-900 mb-3","children":"Files"}],["$","div",null,{"className":"flex flex-wrap gap-2","children":[["$","span","SKILL.md",{"className":"text-xs px-2 py-1 rounded font-mono bg-brand-100 text-brand-700 font-semibold","children":"SKILL.md"}],["$","span","agents",{"className":"text-xs px-2 py-1 rounded font-mono bg-gray-100 text-gray-600","children":"agents"}],["$","span","assets",{"className":"text-xs px-2 py-1 rounded font-mono bg-gray-100 text-gray-600","children":"assets"}],["$","span","references",{"className":"text-xs px-2 py-1 rounded font-mono bg-gray-100 text-gray-600","children":"references"}],["$","span","scripts",{"className":"text-xs px-2 py-1 rounded font-mono bg-gray-100 text-gray-600","children":"scripts"}]]}]]}],["$","section",null,{"className":"mb-8","children":[["$","h2",null,{"className":"text-lg font-semibold text-gray-900 mb-3","children":"Install"}],["$","div",null,{"className":"space-y-3","children":[["$","div",null,{"className":"bg-gray-900 rounded-xl p-4","children":[["$","div",null,{"className":"flex items-center justify-between mb-2","children":[["$","span",null,{"className":"text-xs text-gray-400 font-mono","children":"Via git clone"}],["$","$Ld",null,{"text":"git clone https://github.com/alisonaquinas/llm-shared-skills.git\n# Then copy the skill:\ncp -r llm-shared-skills/skills/powershell ~/.claude/skills/"}]]}],["$","pre",null,{"className":"text-sm text-green-400 font-mono overflow-x-auto whitespace-pre-wrap","children":"git clone https://github.com/alisonaquinas/llm-shared-skills.git\n# Then copy the skill:\ncp -r llm-shared-skills/skills/powershell ~/.claude/skills/"}]]}],["$","div",null,{"className":"bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600","children":[["$","strong",null,{"className":"text-gray-800","children":"Or"}]," browse the full package:"," ",["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills","target":"_blank","rel":"noopener noreferrer","className":"text-brand-600 hover:underline","children":["github.com/","alisonaquinas","/","llm-shared-skills"]}]," ","and follow the"," ",["$","a",null,{"href":"https://github.com/alisonaquinas/llm-shared-skills/blob/main/INSTALL.md","target":"_blank","rel":"noopener noreferrer","className":"text-brand-600 hover:underline","children":"INSTALL.md"}]," ","instructions."]}]]}]]}],["$","section",null,{"className":"mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-3","children":[["$","h2",null,{"className":"text-lg font-semibold text-gray-900","children":"SKILL.md"}],["$","$Ld",null,{"text":"$e","label":"Copy raw"}]]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-xl p-5 overflow-x-auto","children":["$","pre",null,{"className":"text-sm text-gray-700 font-mono whitespace-pre-wrap leading-relaxed","children":"$f"}]}]]}],["$","$Lc",null,{"href":"/","className":"inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900","children":"← Back to marketplace"}]]}]
