@@ -11,7 +11,13 @@
       "Bash(git -C /c/Users/aaqui/llm-skills config user.email \"aaqui@users.noreply.github.com\")",
       "Bash(git -C /c/Users/aaqui/llm-skills config user.name \"aaqui\")",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(gh auth:*)",
+      "Bash(gh secret:*)",
+      "Bash(gh api:*)",
+      "Bash(gh run:*)",
+      "WebSearch"
     ]
   }
 }
