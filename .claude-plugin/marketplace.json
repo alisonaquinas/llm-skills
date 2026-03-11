@@ -1,0 +1,36 @@
+{
+  "name": "llm-skills",
+  "owner": {
+    "name": "Alison Aquinas"
+  },
+  "metadata": {
+    "description": "Browse the shared-skills and ci-cd Claude Code plugins and the skills they include.",
+    "version": "1.1.0"
+  },
+  "plugins": [
+    {
+      "name": "shared-skills",
+      "source": {
+        "source": "github",
+        "repo": "alisonaquinas/llm-shared-skills",
+        "ref": "main"
+      },
+      "description": "Reusable Claude Code skills for common developer workflows and shared utilities.",
+      "repository": "https://github.com/alisonaquinas/llm-shared-skills",
+      "category": "shared-skills",
+      "strict": true
+    },
+    {
+      "name": "ci-cd",
+      "source": {
+        "source": "github",
+        "repo": "alisonaquinas/llm-ci-dev",
+        "ref": "main"
+      },
+      "description": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation.",
+      "repository": "https://github.com/alisonaquinas/llm-ci-dev",
+      "category": "ci-cd",
+      "strict": true
+    }
+  ]
+}

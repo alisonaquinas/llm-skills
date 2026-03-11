@@ -1,49 +1,103 @@
 # Claude Plugin Marketplace
 
-A static Next.js marketplace for browsing and installing LLM skill packages
-for Claude Code and Codex.
+A static Next.js site and marketplace catalog for two installable Claude Code plugins:
+
+- [`shared-skills`](https://github.com/alisonaquinas/llm-shared-skills)
+- [`ci-cd`](https://github.com/alisonaquinas/llm-ci-dev)
+
+The website lets you browse the skills contained inside those plugins. The marketplace catalog at
+`.claude-plugin/marketplace.json` publishes the actual installable plugins.
 
 **Live site:** https://alisonaquinas.github.io/llm-skills/
 
-## Skill sources
+## Install in Claude Code
 
-| Package | Skills | Description |
-|---------|--------|-------------|
-| [llm-shared-skills](https://github.com/alisonaquinas/llm-shared-skills) | 49 | General-purpose tools: bash, git, docker, aws, jq, zoxide, … |
-| [llm-ci-dev](https://github.com/alisonaquinas/llm-ci-dev) | 61 | CI/CD pipelines: GitHub Actions, GitLab CI, Jenkins, Kubernetes, Terraform, … |
+Recommended marketplace source:
+
+```text
+/plugin marketplace add alisonaquinas/llm-skills
+```
+
+Then install one of the published plugins:
+
+```text
+/plugin install shared-skills@llm-skills
+/plugin install ci-cd@llm-skills
+```
+
+The hosted marketplace JSON is also published at:
+
+```text
+https://alisonaquinas.github.io/llm-skills/marketplace.json
+```
+
+## What this repository publishes
+
+| Plugin | Source repository | Purpose |
+|--------|-------------------|---------|
+| `shared-skills` | [llm-shared-skills](https://github.com/alisonaquinas/llm-shared-skills) | Reusable Claude Code skills for common developer workflows and shared utilities |
+| `ci-cd` | [llm-ci-dev](https://github.com/alisonaquinas/llm-ci-dev) | Claude Code skills for CI/CD pipelines, release flows, and delivery automation |
 
 ## Development
 
 ```bash
 npm install
-npm run dev      # → http://localhost:3000/llm-skills
+npm run dev
 ```
 
-## Build & deploy
+Default dev URL:
+
+```text
+http://localhost:3000/llm-skills
+```
+
+## Marketplace generation and validation
+
+Generate the canonical marketplace file:
 
 ```bash
-npm run build    # Static export → out/
+npm run marketplace:generate
 ```
 
-Push to `main` — GitHub Actions builds and publishes to GitHub Pages automatically.
+Validate it:
 
-Set `GITHUB_TOKEN` to avoid API rate limits during the build.
-
-## Adding a new skill repo
-
-Add an entry to the `REPOS` array in `src/lib/github.ts`:
-
-```ts
-{
-  owner: "your-github-username",
-  repo:  "your-repo-name",
-  label: "My Skills",
-  color: "bg-violet-100 text-violet-800",
-}
+```bash
+npm run marketplace:validate
 ```
 
-The repo needs skills in a `skills/` directory and a
-`.claude-plugin/plugin.json` metadata file.
+To produce both the repo-root marketplace file and the GitHub Pages copy:
+
+```bash
+node scripts/generate-marketplace-json.mjs .claude-plugin/marketplace.json out/marketplace.json
+```
+
+Claude Code validation workflow:
+
+```bash
+claude plugin validate .
+/plugin marketplace add ./path/to/llm-skills
+/plugin install shared-skills@llm-skills
+/plugin install ci-cd@llm-skills
+```
+
+## Build and deploy
+
+```bash
+npm run build
+```
+
+Push to `main` and GitHub Actions will:
+
+1. build the static site,
+2. generate `.claude-plugin/marketplace.json`,
+3. copy a hosted `marketplace.json` into `out/`, and
+4. publish the site to GitHub Pages.
+
+Set `GITHUB_TOKEN` during local or CI builds to reduce GitHub API rate-limit issues.
+
+## Configuration
+
+Marketplace and plugin configuration is centralized in `catalog.json`.
 
 ## License
 

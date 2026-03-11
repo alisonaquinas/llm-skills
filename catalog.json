@@ -1,0 +1,37 @@
+{
+  "marketplace": {
+    "name": "llm-skills",
+    "title": "Claude Plugin Marketplace",
+    "description": "Browse the shared-skills and ci-cd Claude Code plugins and the skills they include.",
+    "version": "1.1.0",
+    "owner": {
+      "name": "Alison Aquinas"
+    },
+    "githubRepo": "alisonaquinas/llm-skills",
+    "githubUrl": "https://github.com/alisonaquinas/llm-skills",
+    "siteUrl": "https://alisonaquinas.github.io/llm-skills",
+    "marketplaceJsonUrl": "https://alisonaquinas.github.io/llm-skills/marketplace.json"
+  },
+  "plugins": [
+    {
+      "pluginName": "shared-skills",
+      "owner": "alisonaquinas",
+      "repo": "llm-shared-skills",
+      "label": "Shared Skills",
+      "category": "shared-skills",
+      "color": "bg-blue-100 text-blue-800",
+      "ref": "main",
+      "siteDescription": "Reusable Claude Code skills for common developer workflows and shared utilities."
+    },
+    {
+      "pluginName": "ci-cd",
+      "owner": "alisonaquinas",
+      "repo": "llm-ci-dev",
+      "label": "CI/CD Skills",
+      "category": "ci-cd",
+      "color": "bg-emerald-100 text-emerald-800",
+      "ref": "main",
+      "siteDescription": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation."
+    }
+  ]
+}

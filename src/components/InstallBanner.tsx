@@ -1,48 +1,60 @@
 import CopyButton from "./CopyButton";
+import { MARKETPLACE, PLUGINS, getPluginInstallRef } from "@/lib/github";
+import { getMarketplaceAddCommand, getMarketplaceUrlAddCommand } from "@/lib/catalog";
 
-const MARKETPLACE_URL =
-  "https://alisonaquinas.github.io/llm-skills/marketplace.json";
-const GIT_URL = "https://github.com/alisonaquinas/llm-skills.git";
+const marketplaceAddCommand = getMarketplaceAddCommand();
+const marketplaceUrlAddCommand = getMarketplaceUrlAddCommand();
 
 export default function InstallBanner() {
   return (
-    <section className="mb-8 bg-indigo-50 border border-indigo-200 rounded-xl p-5">
-      <h2 className="text-lg font-semibold text-indigo-900 mb-1">
-        Add to Claude Code
-      </h2>
-      <p className="text-sm text-indigo-700 mb-4">
-        Install the full skill library in three steps:
+    <section className="mb-8 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
+      <h2 className="mb-1 text-lg font-semibold text-indigo-900">Add this marketplace to Claude Code</h2>
+      <p className="mb-4 text-sm text-indigo-700">
+        Use the GitHub repository as the primary marketplace source, then install either of the two
+        published plugins. Individual skills are included within those plugins; they are not listed
+        as standalone plugins.
       </p>
 
-      <ol className="text-sm text-indigo-800 mb-5 space-y-1 list-decimal list-inside">
-        <li>Open Claude Code → Settings → Plugins → Add marketplace by URL</li>
-        <li>Paste the marketplace URL below</li>
-        <li>Browse the registry and install individual skills</li>
-      </ol>
-
       <div className="space-y-3">
-        <div className="flex items-center gap-3 bg-white border border-indigo-200 rounded-lg px-4 py-2.5">
-          <div className="flex-1 min-w-0">
-            <span className="text-xs font-medium text-indigo-500 block mb-0.5">
-              Marketplace URL (recommended)
-            </span>
-            <code className="text-sm text-gray-800 truncate block">
-              {MARKETPLACE_URL}
-            </code>
+        <div className="rounded-lg border border-indigo-200 bg-white px-4 py-3">
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <div>
+              <span className="block text-xs font-medium text-indigo-500">1. Add marketplace (recommended)</span>
+              <code className="block text-sm text-gray-800">{marketplaceAddCommand}</code>
+            </div>
+            <CopyButton text={marketplaceAddCommand} label="Copy" />
           </div>
-          <CopyButton text={MARKETPLACE_URL} label="Copy" />
+          <p className="text-xs text-gray-500">
+            Marketplace repo: <code>{MARKETPLACE.githubRepo}</code>
+          </p>
         </div>
 
-        <div className="flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-4 py-2.5">
-          <div className="flex-1 min-w-0">
-            <span className="text-xs font-medium text-gray-400 block mb-0.5">
-              Git URL (alternative)
-            </span>
-            <code className="text-sm text-gray-600 truncate block">
-              {GIT_URL}
-            </code>
+        <div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+          <span className="mb-2 block text-xs font-medium text-gray-500">2. Install a plugin</span>
+          <div className="space-y-2">
+            {PLUGINS.map((plugin) => {
+              const installCommand = `/plugin install ${getPluginInstallRef(plugin)}`;
+              return (
+                <div key={plugin.pluginName} className="flex items-center justify-between gap-3 rounded-md bg-gray-50 px-3 py-2">
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs font-medium text-gray-500">{plugin.label}</div>
+                    <code className="block truncate text-sm text-gray-800">{installCommand}</code>
+                  </div>
+                  <CopyButton text={installCommand} label="Copy" />
+                </div>
+              );
+            })}
           </div>
-          <CopyButton text={GIT_URL} label="Copy" />
+        </div>
+
+        <div className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-2.5">
+          <div className="min-w-0 flex-1">
+            <span className="mb-0.5 block text-xs font-medium text-gray-400">
+              Marketplace URL (secondary option)
+            </span>
+            <code className="block truncate text-sm text-gray-600">{marketplaceUrlAddCommand}</code>
+          </div>
+          <CopyButton text={marketplaceUrlAddCommand} label="Copy" />
         </div>
       </div>
     </section>

@@ -2,16 +2,41 @@ import Link from "next/link";
 import type { SkillEntry } from "@/lib/github";
 
 const ICON_MAP: Record<string, string> = {
-  git: "🌿", docker: "🐳", kubernetes: "☸️", aws: "☁️", azure: "🔷",
-  bash: "💻", python: "🐍", npm: "📦", pip: "🐍", maven: "☕",
-  terraform: "🏗️", jenkins: "🔧", github: "🐙", gitlab: "🦊",
-  ssh: "🔐", vault: "🔑", helm: "⎈", kubectl: "☸️", jq: "🔍",
-  ag: "🔍", rg: "🔍", tar: "📦", sed: "✂️", awk: "⚙️",
-  zoxide: "⚡", nvm: "🟩", pyenv: "🐍", "1password": "🔑",
+  kubernetes: "☸️",
+  kubectl: "☸️",
+  terraform: "🏗️",
+  github: "🐙",
+  gitlab: "🦊",
+  docker: "🐳",
+  jenkins: "🔧",
+  "1password": "🔑",
+  zoxide: "⚡",
+  pyenv: "🐍",
+  python: "🐍",
+  vault: "🔑",
+  azure: "🔷",
+  maven: "☕",
+  helm: "⎈",
+  bash: "💻",
+  npm: "📦",
+  pip: "🐍",
+  ssh: "🔐",
+  jq: "🔍",
+  rg: "🔍",
+  ag: "🔍",
+  tar: "📦",
+  sed: "✂️",
+  awk: "⚙️",
+  nvm: "🟩",
+  git: "🌿",
+  aws: "☁️"
 };
 
+const ICON_KEYS = Object.keys(ICON_MAP).sort((left, right) => right.length - left.length);
+
 function getIcon(name: string): string {
-  const key = Object.keys(ICON_MAP).find((k) => name.toLowerCase().includes(k));
+  const lowerName = name.toLowerCase();
+  const key = ICON_KEYS.find((item) => lowerName.includes(item));
   return key ? ICON_MAP[key] : "🔌";
 }
 
@@ -19,23 +44,24 @@ export default function SkillCard({ skill }: { skill: SkillEntry }) {
   return (
     <Link
       href={`/skill/${skill.repo.owner}/${skill.repo.repo}/${skill.name}`}
-      className="block bg-white border border-gray-200 rounded-xl p-5 hover:border-brand-500 hover:shadow-md transition-all group"
+      className="group block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-brand-500 hover:shadow-md"
     >
       <div className="flex items-start gap-3">
-        <span className="text-2xl mt-0.5">{getIcon(skill.name)}</span>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 truncate">
+        <span className="mt-0.5 text-2xl">{getIcon(skill.name)}</span>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="truncate font-semibold text-gray-900 group-hover:text-brand-600">
               {skill.name}
             </h3>
-            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${skill.repo.color}`}>
+            <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${skill.repo.color}`}>
               {skill.repo.label}
             </span>
           </div>
-          <p className="text-sm text-gray-500 mt-1 font-mono">{skill.repo.owner}/{skill.repo.repo}</p>
+          <p className="mt-1 font-mono text-sm text-gray-500">/{skill.repo.pluginName}:{skill.name}</p>
+          <p className="mt-1 text-xs text-gray-400">Plugin repo: {skill.repo.owner}/{skill.repo.repo}</p>
         </div>
         <svg
-          className="w-4 h-4 text-gray-300 group-hover:text-brand-500 shrink-0 mt-1"
+          className="mt-1 h-4 w-4 shrink-0 text-gray-300 group-hover:text-brand-500"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

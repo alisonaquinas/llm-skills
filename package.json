@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "marketplace:generate": "node scripts/generate-marketplace-json.mjs",
+    "marketplace:validate": "node scripts/validate-marketplace-json.mjs"
   },
   "dependencies": {
     "autoprefixer": "^10.4.27",

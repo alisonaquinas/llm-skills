@@ -35,13 +35,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate marketplace.json
-        run: node scripts/generate-marketplace-json.mjs
+      - name: Generate marketplace.json files
+        run: npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Validate marketplace.json
-        run: node scripts/validate-marketplace-json.mjs
+        run: npm run marketplace:validate
 
       - name: Add .nojekyll
         run: touch out/.nojekyll

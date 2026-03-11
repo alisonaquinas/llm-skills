@@ -1,104 +1,59 @@
 #!/usr/bin/env node
-// Generates out/marketplace.json from GitHub API skill listings.
-// Usage: node scripts/generate-marketplace-json.mjs [output-path]
+// Generates marketplace.json files from catalog.json.
+// Usage: node scripts/generate-marketplace-json.mjs [output-path ...]
 
-import { mkdir, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 
-const REPOS = [
-  {
-    owner: "alisonaquinas",
-    repo: "llm-shared-skills",
-    label: "Shared Skills",
-    category: "shared-skills",
-  },
-  {
-    owner: "alisonaquinas",
-    repo: "llm-ci-dev",
-    label: "CI/CD Skills",
-    category: "ci-cd",
-  },
-];
+const defaultOutputs = [".claude-plugin/marketplace.json"];
 
-const BASE = "https://api.github.com";
+const catalog = JSON.parse(
+  await readFile(new URL("../catalog.json", import.meta.url), "utf-8")
+);
 
-async function ghFetch(path) {
-  const headers = {
-    Accept: "application/vnd.github+json",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-  if (process.env.GITHUB_TOKEN) {
-    headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
-  }
-  const res = await fetch(`${BASE}${path}`, { headers });
-  if (!res.ok) throw new Error(`GitHub API ${res.status}: ${path}`);
-  return res.json();
-}
+const { marketplace, plugins: configuredPlugins } = catalog;
 
-async function listSkills(r) {
-  const items = await ghFetch(`/repos/${r.owner}/${r.repo}/contents/skills`);
-  return items
-    .filter((i) => i.type === "dir")
-    .map((i) => ({ name: i.name, path: i.path }));
-}
+function buildMarketplaceDocument() {
+  const plugins = configuredPlugins.map((plugin) => {
+    const repoRef = `${plugin.owner}/${plugin.repo}`;
 
-async function getPluginMeta(r) {
-  try {
-    const file = await ghFetch(
-      `/repos/${r.owner}/${r.repo}/contents/.claude-plugin/plugin.json`
-    );
-    const raw = Buffer.from(file.content, "base64").toString("utf-8");
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
-async function main() {
-  const outPath = process.argv[2] ?? "out/marketplace.json";
-
-  console.log("Fetching skill lists and plugin metadata...");
-
-  const [skillsByRepo, metas] = await Promise.all([
-    Promise.all(REPOS.map((r) => listSkills(r).then((s) => ({ r, skills: s })))),
-    Promise.all(REPOS.map(getPluginMeta)),
-  ]);
-
-  const primaryMeta = metas[0];
-
-  const plugins = skillsByRepo.flatMap(({ r, skills }, i) => {
-    const meta = metas[i];
-    return skills.map((skill) => ({
-      name: skill.name,
+    return {
+      name: plugin.pluginName,
       source: {
-        source: "git-subdir",
-        url: `https://github.com/${r.owner}/${r.repo}.git`,
-        path: skill.path,
-        ref: "main",
+        source: "github",
+        repo: repoRef,
+        ...(plugin.ref ? { ref: plugin.ref } : {}),
       },
-      category: r.category,
-      license: meta?.license ?? "MIT",
-    }));
+      description: plugin.siteDescription,
+      repository: `https://github.com/${repoRef}`,
+      category: plugin.category,
+      strict: true,
+    };
   });
 
-  const marketplace = {
-    name: "llm-skills",
-    owner: { name: "Alison Aquinas" },
+  return {
+    name: marketplace.name,
+    owner: marketplace.owner,
     metadata: {
-      description:
-        primaryMeta?.description ??
-        "LLM skill packages for Claude Code and Codex",
-      version: primaryMeta?.version ?? "1.0.0",
+      description: marketplace.description,
+      version: marketplace.version,
     },
     plugins,
   };
+}
 
-  await mkdir(dirname(outPath), { recursive: true });
-  await writeFile(outPath, JSON.stringify(marketplace, null, 2) + "\n");
+async function writeMarketplaceFile(outPath, doc) {
+  const resolved = resolve(outPath);
+  await mkdir(dirname(resolved), { recursive: true });
+  await writeFile(resolved, JSON.stringify(doc, null, 2) + "\n");
+  console.log(`Wrote ${doc.plugins.length} plugins to ${outPath}`);
+}
 
-  console.log(
-    `Wrote ${plugins.length} plugins to ${outPath}`
-  );
+async function main() {
+  const outputs = process.argv.slice(2);
+  const outPaths = outputs.length > 0 ? outputs : defaultOutputs;
+  const marketplaceDoc = buildMarketplaceDocument();
+  await Promise.all(outPaths.map((outPath) => writeMarketplaceFile(outPath, marketplaceDoc)));
 }
 
 main().catch((err) => {

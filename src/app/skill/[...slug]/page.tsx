@@ -1,12 +1,20 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSkills, getSkillDetail, REPOS } from "@/lib/github";
 import CopyButton from "@/components/CopyButton";
+import {
+  PLUGINS,
+  getAllSkills,
+  getPluginInstallCommand,
+  getSkillDetail,
+  getSkillInvocation,
+  type PluginConfig
+} from "@/lib/github";
+import { getPluginRepoUrl } from "@/lib/catalog";
 
 export async function generateStaticParams() {
   const skills = await getAllSkills();
-  return skills.map((s) => ({
-    slug: [s.repo.owner, s.repo.repo, s.name],
+  return skills.map((skill) => ({
+    slug: [skill.repo.owner, skill.repo.repo, skill.name]
   }));
 }
 
@@ -14,133 +22,139 @@ interface PageProps {
   params: Promise<{ slug: string[] }>;
 }
 
+function findPlugin(owner: string, repo: string): PluginConfig | undefined {
+  return PLUGINS.find((plugin) => plugin.owner === owner && plugin.repo === repo);
+}
+
 export default async function SkillPage({ params }: PageProps) {
   const { slug } = await params;
-  if (!slug || slug.length < 3) notFound();
+  if (!slug || slug.length < 3) {
+    notFound();
+  }
 
   const [owner, repo, ...nameParts] = slug;
   const skillName = nameParts.join("/");
 
-  const repoConfig = REPOS.find((r) => r.owner === owner && r.repo === repo);
-  if (!repoConfig) notFound();
+  const plugin = findPlugin(owner, repo);
+  if (!plugin) {
+    notFound();
+  }
 
-  const skill = await getSkillDetail(repoConfig, skillName);
+  const resolvedPlugin = plugin as PluginConfig;
+  const skill = await getSkillDetail(resolvedPlugin, skillName);
+  if (skill.files.length === 0 && !skill.readme) {
+    notFound();
+  }
 
-  const cloneCmd = `git clone https://github.com/${owner}/${repo}.git
-# Then copy the skill:
-cp -r ${repo}/skills/${skillName} ~/.claude/skills/`;
+  const installCommand = getPluginInstallCommand(resolvedPlugin);
+  const invokeCommand = getSkillInvocation(resolvedPlugin, skillName);
+  const pluginRepoUrl = getPluginRepoUrl(resolvedPlugin);
 
   return (
     <div className="max-w-3xl">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-gray-400 mb-6 flex items-center gap-2">
+      <nav className="mb-6 flex items-center gap-2 text-sm text-gray-400">
         <Link href="/" className="hover:text-gray-700">
           Marketplace
         </Link>
         <span>/</span>
-        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${repoConfig.color}`}>
-          {repoConfig.label}
+        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${resolvedPlugin.color}`}>
+          {resolvedPlugin.label}
         </span>
         <span>/</span>
-        <span className="text-gray-700 font-medium">{skillName}</span>
+        <span className="font-medium text-gray-700">{skillName}</span>
       </nav>
 
-      {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">{skillName}</h1>
-        <div className="flex items-center gap-3 text-sm text-gray-500">
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">{skillName}</h1>
+        <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+          <span>Included in plugin</span>
+          <code className="rounded bg-gray-100 px-2 py-0.5 text-gray-700">{resolvedPlugin.pluginName}</code>
+          <span>·</span>
           <a
-            href={`https://github.com/${owner}/${repo}/tree/main/skills/${skillName}`}
+            href={`${pluginRepoUrl}/tree/main/skills/${skillName}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-brand-600 flex items-center gap-1"
+            className="flex items-center gap-1 hover:text-brand-600"
           >
             View on GitHub ↗
           </a>
-          <span>·</span>
-          <span>{owner}/{repo}</span>
         </div>
       </div>
 
-      {/* Files */}
-      {skill.files.length > 0 && (
+      {skill.files.length > 0 ? (
         <section className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">Files</h2>
+          <h2 className="mb-3 text-lg font-semibold text-gray-900">Files</h2>
           <div className="flex flex-wrap gap-2">
-            {skill.files.map((f) => (
+            {skill.files.map((file) => (
               <span
-                key={f}
-                className={`text-xs px-2 py-1 rounded font-mono ${
-                  f === "SKILL.md"
-                    ? "bg-brand-100 text-brand-700 font-semibold"
+                key={file}
+                className={`rounded px-2 py-1 font-mono text-xs ${
+                  file === "SKILL.md"
+                    ? "bg-brand-100 font-semibold text-brand-700"
                     : "bg-gray-100 text-gray-600"
                 }`}
               >
-                {f}
+                {file}
               </span>
             ))}
           </div>
         </section>
-      )}
+      ) : null}
 
-      {/* Install */}
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold text-gray-900 mb-3">Install</h2>
-        <div className="space-y-3">
-          <div className="bg-gray-900 rounded-xl p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs text-gray-400 font-mono">Via git clone</span>
-              <CopyButton text={cloneCmd} />
-            </div>
-            <pre className="text-sm text-green-400 font-mono overflow-x-auto whitespace-pre-wrap">
-              {cloneCmd}
-            </pre>
-          </div>
+      <section className="mb-8 space-y-3">
+        <h2 className="text-lg font-semibold text-gray-900">Install</h2>
 
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-600">
-            <strong className="text-gray-800">Or</strong> browse the full package:{" "}
-            <a
-              href={`https://github.com/${owner}/${repo}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-600 hover:underline"
-            >
-              github.com/{owner}/{repo}
-            </a>{" "}
-            and follow the{" "}
-            <a
-              href={`https://github.com/${owner}/${repo}/blob/main/INSTALL.md`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-600 hover:underline"
-            >
-              INSTALL.md
-            </a>{" "}
-            instructions.
+        <div className="rounded-xl bg-gray-900 p-4">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="font-mono text-xs text-gray-400">Install the containing plugin</span>
+            <CopyButton text={installCommand} />
           </div>
+          <pre className="overflow-x-auto whitespace-pre-wrap font-mono text-sm text-green-400">
+            {installCommand}
+          </pre>
+        </div>
+
+        <div className="rounded-xl bg-gray-900 p-4">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="font-mono text-xs text-gray-400">Invoke this skill after installation</span>
+            <CopyButton text={invokeCommand} label="Copy" />
+          </div>
+          <pre className="overflow-x-auto whitespace-pre-wrap font-mono text-sm text-green-400">
+            {invokeCommand}
+          </pre>
+        </div>
+
+        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
+          This skill is bundled inside <strong className="text-gray-800">{resolvedPlugin.pluginName}</strong>.
+          Install the plugin once, then Claude Code can use any of its included skills. Browse the
+          full plugin repository at{" "}
+          <a
+            href={pluginRepoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-600 hover:underline"
+          >
+            github.com/{resolvedPlugin.owner}/{resolvedPlugin.repo}
+          </a>
+          .
         </div>
       </section>
 
-      {/* SKILL.md content */}
-      {skill.readme && (
+      {skill.readme ? (
         <section className="mb-8">
-          <div className="flex items-center justify-between mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900">SKILL.md</h2>
             <CopyButton text={skill.readme} label="Copy raw" />
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-5 overflow-x-auto">
-            <pre className="text-sm text-gray-700 font-mono whitespace-pre-wrap leading-relaxed">
+          <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white p-5">
+            <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-700">
               {skill.readme}
             </pre>
           </div>
         </section>
-      )}
+      ) : null}
 
-      {/* Back */}
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900"
-      >
+      <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900">
         ← Back to marketplace
       </Link>
     </div>
@@ -149,6 +163,6 @@ cp -r ${repo}/skills/${skillName} ~/.claude/skills/`;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const skillName = slug?.slice(2).join("/") ?? "";
+  const skillName = slug?.slice(2).join("/") ?? "Skill";
   return { title: `${skillName} — Claude Plugin Marketplace` };
 }

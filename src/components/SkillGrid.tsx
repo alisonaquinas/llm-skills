@@ -1,32 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import type { SkillEntry, RepoConfig } from "@/lib/github";
+import type { PluginConfig, SkillEntry } from "@/lib/github";
 import SkillCard from "./SkillCard";
 
 interface Props {
   skills: SkillEntry[];
-  repos: RepoConfig[];
+  repos: PluginConfig[];
 }
 
 export default function SkillGrid({ skills, repos }: Props) {
   const [query, setQuery] = useState("");
   const [repoFilter, setRepoFilter] = useState("all");
 
-  const filtered = skills.filter((s) => {
-    const matchRepo = repoFilter === "all" || s.repo.repo === repoFilter;
-    const matchQ = !query || s.name.toLowerCase().includes(query.toLowerCase());
-    return matchRepo && matchQ;
+  const filtered = skills.filter((skill) => {
+    const matchRepo = repoFilter === "all" || skill.repo.repo === repoFilter;
+    const haystack = [skill.name, skill.repo.label, skill.repo.pluginName, skill.repo.repo].join(" ").toLowerCase();
+    const matchQuery = !query || haystack.includes(query.toLowerCase());
+    return matchRepo && matchQuery;
   });
 
   return (
     <div>
-      {/* Search + Filter */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-6">
-        {/* Search */}
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
           <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -40,59 +39,56 @@ export default function SkillGrid({ skills, repos }: Props) {
           </svg>
           <input
             type="text"
-            placeholder="Search skills…"
+            placeholder="Search included skills or plugins…"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            onChange={(event) => setQuery(event.target.value)}
+            className="w-full rounded-lg border border-gray-300 py-2.5 pl-9 pr-4 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
         </div>
 
-        {/* Filter chips */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setRepoFilter("all")}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+            className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
               repoFilter === "all"
                 ? "bg-gray-900 text-white"
-                : "bg-white border border-gray-300 text-gray-600 hover:border-gray-400"
+                : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400"
             }`}
           >
             All ({skills.length})
           </button>
-          {repos.map((r) => (
+          {repos.map((repo) => (
             <button
-              key={r.repo}
-              onClick={() => setRepoFilter(r.repo)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                repoFilter === r.repo
+              key={repo.repo}
+              onClick={() => setRepoFilter(repo.repo)}
+              className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
+                repoFilter === repo.repo
                   ? "bg-gray-900 text-white"
-                  : "bg-white border border-gray-300 text-gray-600 hover:border-gray-400"
+                  : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400"
               }`}
             >
-              {r.label}
+              {repo.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Results count */}
-      <p className="text-sm text-gray-400 mb-4">
-        {filtered.length} skill{filtered.length !== 1 ? "s" : ""}
+      <p className="mb-4 text-sm text-gray-400">
+        {filtered.length} included skill{filtered.length !== 1 ? "s" : ""}
         {query ? ` matching "${query}"` : ""}
         {repoFilter !== "all"
-          ? ` in ${repos.find((r) => r.repo === repoFilter)?.label ?? repoFilter}`
+          ? ` in ${repos.find((repo) => repo.repo === repoFilter)?.label ?? repoFilter}`
           : ""}
       </p>
 
-      {/* Grid */}
       {filtered.length === 0 ? (
-        <div className="text-center py-20 text-gray-400">
-          <p className="text-5xl mb-4">🔍</p>
+        <div className="py-20 text-center text-gray-400">
+          <p className="mb-4 text-5xl">🔍</p>
           <p className="font-medium">No skills found</p>
-          <p className="text-sm mt-1">Try a different search term or filter</p>
+          <p className="mt-1 text-sm">Try a different search term or plugin filter.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((skill) => (
             <SkillCard key={`${skill.repo.repo}/${skill.name}`} skill={skill} />
           ))}

@@ -31,23 +31,25 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Lint
-        run: npx next lint
+        run: npm run lint
 
       - name: Build static export
         run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate marketplace.json
-        run: node scripts/generate-marketplace-json.mjs
+      - name: Generate marketplace.json files
+        run: npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Validate marketplace.json schema
-        run: node scripts/validate-marketplace-json.mjs
+        run: npm run marketplace:validate
 
-      - name: Upload marketplace.json artifact
+      - name: Upload marketplace.json artifacts
         uses: actions/upload-artifact@v4
         with:
           name: marketplace-json
-          path: out/marketplace.json
+          path: |
+            .claude-plugin/marketplace.json
+            out/marketplace.json
