@@ -80,7 +80,7 @@ npm run rss:generate -- out/rss.xml
 To produce both the repo-root marketplace file and the GitHub Pages copy:
 
 ```bash
-node scripts/generate-marketplace-json.mjs .claude-plugin/marketplace.json out/marketplace.json
+tsx scripts/generate-marketplace-json.ts .claude-plugin/marketplace.json out/marketplace.json
 ```
 
 Claude Code validation workflow:
@@ -132,3 +132,4 @@ the configured skill-source repositories.
 ## License
 
 MIT - © 2026 Alison Aquinas
+

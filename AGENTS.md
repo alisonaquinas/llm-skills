@@ -44,8 +44,8 @@ src/
     catalog.ts          # Typed catalog access for marketplace + feed sources
     github.ts           # GitHub API helpers for skills and plugin metadata
 scripts/
-  generate-marketplace-json.mjs
-  generate-rss-feed.mjs
+  generate-marketplace-json.ts
+  generate-rss-feed.ts
 .github/workflows/
   deploy.yml            # CI: build -> out/ -> gh-pages branch
 ```
@@ -111,3 +111,4 @@ during the build.
 - Feed and marketplace source configuration belongs in `catalog.json`; avoid hard-coding repo lists.
 - The catch-all route `[...slug]` is used for skill detail pages so that `/` separators
   in owner/repo/name are real path segments, not URL-encoded `%2F`.
+

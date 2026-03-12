@@ -45,3 +45,4 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - GitHub Actions workflow deploying `out/` to `gh-pages` branch on push to `main`
 - `AGENTS.md` with architecture notes and contribution guide for AI agents
 - MIT License
+
