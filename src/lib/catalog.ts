@@ -28,14 +28,26 @@ export interface PluginConfig {
   siteDescription: string;
 }
 
+export interface FeedSourceConfig {
+  owner: string;
+  repo: string;
+  label: string;
+  ref?: string;
+  enabled?: boolean;
+}
+
 interface CatalogFile {
   marketplace: MarketplaceConfig;
+  feedSources?: FeedSourceConfig[];
   plugins: PluginConfig[];
 }
 
 const catalog = catalogData as CatalogFile;
 
 export const MARKETPLACE = catalog.marketplace;
+export const FEED_SOURCES = (catalog.feedSources ?? []).filter(
+  (source) => source.enabled !== false
+);
 export const PLUGINS = catalog.plugins;
 
 export function getPluginInstallRef(plugin: PluginConfig): string {

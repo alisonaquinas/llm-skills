@@ -9,7 +9,14 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [1.0.0] — 2026-03-11
+### Added
+- Static RSS feed generation for combined release notes across configured marketplace feed sources
+- `catalog.json` feed-source configuration so new source repos can join the RSS feed without generator code changes
+
+### Changed
+- GitHub Pages deploy workflow now regenerates `rss.xml` on `main`, release tags, and upstream `repository_dispatch` events
+
+## [1.0.0] - 2026-03-11
 
 ### Added
 - Tag-driven CI/CD release pipeline across all skill repos
@@ -18,10 +25,10 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - GitHub Actions `release.yml` added to `llm-shared-skills` and `llm-ci-dev`
 
 ### Changed
-- Version bumped to 1.0.0 — first stable public release
+- Version bumped to 1.0.0 - first stable public release
 - Published to GitHub Pages at `https://alisonaquinas.github.io/llm-skills/`
 
-## [0.1.0] — 2026-03-11
+## [0.1.0] - 2026-03-11
 
 ### Added
 - Initial marketplace built with Next.js 15 App Router and Tailwind CSS

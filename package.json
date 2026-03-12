@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "rss:generate": "node scripts/generate-rss-feed.mjs",
     "marketplace:generate": "node scripts/generate-marketplace-json.mjs",
     "marketplace:validate": "node scripts/validate-marketplace-json.mjs"
   },

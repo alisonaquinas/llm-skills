@@ -5,13 +5,15 @@ This file describes how AI coding agents should work with this repository.
 ## What this repo is
 
 A static Next.js 15 marketplace that lists and documents LLM skill packages
-sourced from two upstream GitHub repositories:
+sourced from upstream GitHub repositories and publishes static ecosystem artifacts,
+including a combined release RSS feed.
 
-- [`alisonaquinas/llm-shared-skills`](https://github.com/alisonaquinas/llm-shared-skills) — general-purpose skills (bash, git, docker, aws, …)
-- [`alisonaquinas/llm-ci-dev`](https://github.com/alisonaquinas/llm-ci-dev) — CI/CD skills (GitHub Actions, GitLab CI, Jenkins, Kubernetes, …)
+- [`alisonaquinas/llm-shared-skills`](https://github.com/alisonaquinas/llm-shared-skills) - general-purpose skills (bash, git, docker, aws, ...)
+- [`alisonaquinas/llm-ci-dev`](https://github.com/alisonaquinas/llm-ci-dev) - CI/CD skills (GitHub Actions, GitLab CI, Jenkins, Kubernetes, ...)
+- [`alisonaquinas/llm-skills`](https://github.com/alisonaquinas/llm-skills) - marketplace app and published static artifacts
 
-Skill data is fetched from the GitHub API at **build time** and exported as
-static HTML. The site is published to GitHub Pages at
+Skill and release data is fetched from the GitHub API at build time and exported as
+static files. The site is published to GitHub Pages at
 `https://alisonaquinas.github.io/llm-skills/`.
 
 ## Tech stack
@@ -26,7 +28,7 @@ static HTML. The site is published to GitHub Pages at
 
 ## Project layout
 
-```
+```text
 src/
   app/
     layout.tsx          # Root shell: sticky header, nav links
@@ -39,26 +41,49 @@ src/
     SkillGrid.tsx       # Client component: search + filter + grid
     CopyButton.tsx      # Clipboard copy with confirmation
   lib/
-    github.ts           # GitHub API helpers + REPOS config
+    catalog.ts          # Typed catalog access for marketplace + feed sources
+    github.ts           # GitHub API helpers for skills and plugin metadata
+scripts/
+  generate-marketplace-json.mjs
+  generate-rss-feed.mjs
 .github/workflows/
-  deploy.yml            # CI: build → out/ → gh-pages branch
+  deploy.yml            # CI: build -> out/ -> gh-pages branch
 ```
 
 ## Adding a new skill source repo
 
-Edit `src/lib/github.ts` and add an entry to the `REPOS` array:
+Update `catalog.json`, not hard-coded arrays in application code.
 
-```ts
+For marketplace listing:
+
+```json
 {
-  owner: "your-github-username",
-  repo: "your-repo-name",
-  label: "My Skills",
-  color: "bg-violet-100 text-violet-800",
+  "pluginName": "my-plugin",
+  "owner": "your-github-username",
+  "repo": "your-repo-name",
+  "label": "My Skills",
+  "category": "my-skills",
+  "color": "bg-violet-100 text-violet-800",
+  "ref": "main",
+  "siteDescription": "Description for the marketplace UI."
 }
 ```
 
-The repo must have skills in a `skills/` directory and a
-`.claude-plugin/plugin.json` metadata file.
+For RSS feed inclusion:
+
+```json
+{
+  "owner": "your-github-username",
+  "repo": "your-repo-name",
+  "label": "My Skills",
+  "ref": "main",
+  "enabled": true
+}
+```
+
+The upstream repo must have a `skills/` directory if it is a marketplace plugin, a
+Keep a Changelog style `CHANGELOG.md` if it should appear in RSS, and a release workflow
+that dispatches `plugin-updated` to `alisonaquinas/llm-skills`.
 
 ## Development
 
@@ -71,6 +96,7 @@ npm run dev          # http://localhost:3000/llm-skills
 
 ```bash
 npm run build        # Outputs static files to out/
+npm run rss:generate -- out/rss.xml
 ```
 
 The `out/` directory is what gets deployed to GitHub Pages.
@@ -79,8 +105,9 @@ during the build.
 
 ## Conventions
 
-- All data fetching is server-side and happens at build time — no client-side API calls.
+- All data fetching is server-side and happens at build time; no client-side API calls.
 - Search and filtering are client-side (`useState` in `SkillGrid`).
-- Use `cache: "force-cache"` on all `fetch()` calls (ISR is not compatible with static export).
+- Use `cache: "force-cache"` on all `fetch()` calls in build-time data paths.
+- Feed and marketplace source configuration belongs in `catalog.json`; avoid hard-coding repo lists.
 - The catch-all route `[...slug]` is used for skill detail pages so that `/` separators
   in owner/repo/name are real path segments, not URL-encoded `%2F`.

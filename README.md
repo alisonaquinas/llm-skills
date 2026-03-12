@@ -31,6 +31,12 @@ The hosted marketplace JSON is also published at:
 https://alisonaquinas.github.io/llm-skills/marketplace.json
 ```
 
+The combined release feed is published at:
+
+```text
+https://alisonaquinas.github.io/llm-skills/rss.xml
+```
+
 ## What this repository publishes
 
 | Plugin | Source repository | Purpose |
@@ -65,6 +71,12 @@ Validate it:
 npm run marketplace:validate
 ```
 
+Generate the combined RSS feed:
+
+```bash
+npm run rss:generate -- out/rss.xml
+```
+
 To produce both the repo-root marketplace file and the GitHub Pages copy:
 
 ```bash
@@ -86,19 +98,37 @@ claude plugin validate .
 npm run build
 ```
 
-Push to `main` and GitHub Actions will:
+Push to `main` or publish a release tag and GitHub Actions will:
 
 1. build the static site,
 2. generate `.claude-plugin/marketplace.json`,
-3. copy a hosted `marketplace.json` into `out/`, and
-4. publish the site to GitHub Pages.
+3. generate `out/rss.xml`,
+4. copy hosted artifacts into `out/`, and
+5. publish the site to GitHub Pages.
 
 Set `GITHUB_TOKEN` during local or CI builds to reduce GitHub API rate-limit issues.
 
 ## Configuration
 
-Marketplace and plugin configuration is centralized in `catalog.json`.
+Marketplace, plugin, and RSS feed source configuration is centralized in `catalog.json`.
+
+## Release feed
+
+The site publishes a static RSS 2.0 feed that aggregates released changelog entries from
+the configured skill-source repositories.
+
+- Output URL: `https://alisonaquinas.github.io/llm-skills/rss.xml`
+- Build command: `npm run rss:generate -- out/rss.xml`
+- Feed content is sourced from the repositories listed in `catalog.json`
+
+## Adding a new skill source repo
+
+1. Add the plugin entry in `catalog.json` if it should appear in the marketplace listing.
+2. Add or enable the matching feed source entry in `catalog.json` if it should appear in the combined RSS feed.
+3. Ensure the upstream repo has a Keep a Changelog style `CHANGELOG.md`.
+4. Ensure the upstream repo dispatches `plugin-updated` to `alisonaquinas/llm-skills` on release/tag publish.
+5. Push a release and confirm the deployed site includes the new source in `rss.xml`.
 
 ## License
 
-MIT — © 2026 Alison Aquinas
+MIT - © 2026 Alison Aquinas

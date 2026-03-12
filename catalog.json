@@ -12,6 +12,29 @@
     "siteUrl": "https://alisonaquinas.github.io/llm-skills",
     "marketplaceJsonUrl": "https://alisonaquinas.github.io/llm-skills/marketplace.json"
   },
+  "feedSources": [
+    {
+      "owner": "alisonaquinas",
+      "repo": "llm-skills",
+      "label": "Marketplace",
+      "ref": "main",
+      "enabled": true
+    },
+    {
+      "owner": "alisonaquinas",
+      "repo": "llm-ci-dev",
+      "label": "CI/CD Skills",
+      "ref": "main",
+      "enabled": true
+    },
+    {
+      "owner": "alisonaquinas",
+      "repo": "llm-shared-skills",
+      "label": "Shared Skills",
+      "ref": "main",
+      "enabled": true
+    }
+  ],
   "plugins": [
     {
       "pluginName": "shared-skills",

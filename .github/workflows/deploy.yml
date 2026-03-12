@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
   repository_dispatch:
     types: [plugin-updated]
@@ -37,6 +39,11 @@ jobs:
 
       - name: Generate marketplace.json files
         run: npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate RSS feed
+        run: npm run rss:generate -- out/rss.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
