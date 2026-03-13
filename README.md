@@ -10,14 +10,13 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** https://alisonaquinas.github.io/llm-skills/
 
-## Latest release: v1.0.2
+## Latest release: v1.0.3
 
-The current marketplace release adds the repo-wide quality and discovery baseline that now ships with the static site.
+The current marketplace release hardens GitHub Pages publishing so the release pipeline stays stable when multiple deploy triggers land close together.
 
-- Business logic is reorganized into cohesive TypeScript modules under `src/lib`.
-- Unit tests now live in a dedicated top-level `tests/` tree.
-- The site publishes `robots.txt`, `sitemap.xml`, richer canonical metadata, Open Graph/Twitter cards, and JSON-LD structured data.
-- Git tags now produce GitHub Releases directly from `CHANGELOG.md` entries.
+- GitHub Pages deploy runs are now serialized to prevent `gh-pages` ref-lock races between `main`, tag, and dispatch-triggered publishes.
+- `catalog.json` version metadata is aligned to `1.0.3` so the release tag, generated marketplace metadata, and GitHub Release workflow stay in sync.
+- Git tags continue to produce GitHub Releases directly from `CHANGELOG.md` entries.
 
 ## Install in Claude Code
 

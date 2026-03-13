@@ -9,6 +9,10 @@ on:
   repository_dispatch:
     types: [plugin-updated]
 
+concurrency:
+  group: llm-skills-gh-pages
+  cancel-in-progress: false
+
 permissions:
   contents: write
 

@@ -13,6 +13,15 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+### Fixed
+
+## [1.0.3] - 2026-03-13
+
+### Fixed
+- Serialized GitHub Pages deploy runs with a workflow concurrency group so overlapping `main`, tag, and `repository_dispatch` publishes do not race when pushing the `gh-pages` branch
+- Updated `catalog.json` marketplace version to `1.0.3` so release metadata remains aligned with the published git tag and GitHub Release workflow
+- Refreshed the front-page `README.md` release summary to describe the `v1.0.3` deployment-stability fix
+
 ## [1.0.2] - 2026-03-13
 
 ### Added
@@ -34,5 +43,6 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
