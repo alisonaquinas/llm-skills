@@ -42,7 +42,7 @@ export default function SkillGrid({ skills, repos }: Props) {
 
   return (
     <div>
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row">
+      <div className="mb-6 flex flex-col gap-3">
         <div className="relative flex-1">
           <svg
             className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500"
@@ -59,48 +59,52 @@ export default function SkillGrid({ skills, repos }: Props) {
           </svg>
           <input
             type="text"
-            placeholder="Search included skills or plugins…"
+            placeholder="Search included skills or plugins..."
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-9 pr-4 text-sm text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500"
+            className="min-h-11 w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-9 pr-4 text-sm text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500"
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => setRepoFilter("all")}
-            className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-              repoFilter === "all"
-                ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
-                : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
-            }`}
-          >
-            All ({skills.length})
-          </button>
-          {repos.map((repo) => (
+        <div className="-mx-1 overflow-x-auto pb-1">
+          <div className="flex min-w-max items-center gap-2 px-1">
             <button
-              key={repo.repo}
-              onClick={() => setRepoFilter(repo.repo)}
-              className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-                repoFilter === repo.repo
+              type="button"
+              onClick={() => setRepoFilter("all")}
+              className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                repoFilter === "all"
                   ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
                   : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
               }`}
             >
-              {repo.label}
+              All ({skills.length})
             </button>
-          ))}
+            {repos.map((repo) => (
+              <button
+                key={repo.repo}
+                type="button"
+                onClick={() => setRepoFilter(repo.repo)}
+                className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  repoFilter === repo.repo
+                    ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                    : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
+                }`}
+              >
+                {repo.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <p className="mb-4 text-sm text-gray-400 dark:text-gray-500">
+      <p className="mb-4 text-sm leading-6 text-gray-500 dark:text-gray-400">
         {filtered.length} included skill{filtered.length !== 1 ? "s" : ""}
         {query ? ` matching "${query}"` : ""}
         {repoLabel ? ` in ${repoLabel}` : ""}
       </p>
 
       {filtered.length === 0 ? (
-        <div className="py-20 text-center text-gray-400 dark:text-gray-500">
+        <div className="py-16 text-center text-gray-400 dark:text-gray-500 sm:py-20">
           <p className="mb-4 text-5xl">🔍</p>
           <p className="font-medium text-gray-700 dark:text-gray-200">No skills found</p>
           <p className="mt-1 text-sm">Try a different search term or plugin filter.</p>

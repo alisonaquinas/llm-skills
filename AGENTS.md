@@ -45,6 +45,7 @@ tests/                 # Unit tests organized separately from runtime modules
 - Favor SOLID-aligned structure without forcing class-heavy code where functions and typed modules are clearer.
 - Enforce DRY by centralizing shared fetch logic, route parsing, command building, filtering, and generation helpers.
 - Prefer cohesive module boundaries over broad utility dumping; new logic should usually live in the narrowest sensible module.
+- Build UI changes mobile-first so the base layout works cleanly at phone widths before layering larger breakpoint refinements.
 - Minimize coupling by keeping `src/app` and `src/components` dependent on typed contracts and services from `src/lib`.
 - Keep business logic deterministic and testable outside Next.js runtime and browser-only APIs.
 - Keep module-local `README.md` and `AGENTS.md` files current when public structure or dependency direction changes.
@@ -71,6 +72,7 @@ tests/                 # Unit tests organized separately from runtime modules
 - When presenting UI or site changes, prefer starting a fresh local preview from a clean state rather than relying on an older long-running dev server.
 - If a preview starts behaving inconsistently, clear stale Next.js build artifacts such as `.next/` and republish the preview before concluding the app is broken.
 - Before presenting preview work to the user, validate the served site with read-only HTTP probes such as `curl --head --fail --location` and `wget --spider` against the actual preview URLs.
+- For responsive UI changes, include manual review at representative phone, tablet, and desktop widths before calling the work ready.
 - Use those probes to confirm the primary page responds successfully and that critical linked assets, especially branding files and generated artifacts, resolve from the correct base path.
 - Treat browser inspection as helpful but not sufficient on its own; pair visual review with command-line verification so stale caches, broken asset paths, and publish mismatches are caught early.
 ## Adding a new skill source repo
@@ -135,5 +137,6 @@ during the build.
 - Feed and marketplace source configuration belongs in `catalog.json`; avoid hard-coding repo lists.
 - The catch-all route `[...slug]` is used for skill detail pages so that `/` separators in owner/repo/name are real path segments.
 - Keep page files thin and prefer moving non-trivial logic into `src/lib` before adding more JSX complexity.
+
 
 

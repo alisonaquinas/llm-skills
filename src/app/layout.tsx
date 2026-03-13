@@ -13,6 +13,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import MobileHeaderMenu, { MOBILE_HEADER_MENU_ICONS, type MobileHeaderMenuItem } from "@/components/MobileHeaderMenu";
 import { BrandBug, GitHubIcon, RssIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -85,6 +86,24 @@ export const metadata: Metadata = {
 };
 
 /**
+ * Precomputed mobile-only navigation entries that move out of the header row on phones.
+ */
+const MOBILE_MENU_ITEMS: MobileHeaderMenuItem[] = [
+  ...PLUGINS.map((plugin) => ({
+    key: plugin.repo,
+    href: getPluginRepoUrl(plugin),
+    label: plugin.repo,
+    Icon: MOBILE_HEADER_MENU_ICONS.github,
+  })),
+  {
+    key: "rss",
+    href: getRssUrl(),
+    label: "RSS",
+    Icon: MOBILE_HEADER_MENU_ICONS.rss,
+  },
+] as const;
+
+/**
  * Wraps all routed pages in the shared marketplace chrome.
  *
  * @param children Rendered page content for the active route.
@@ -93,45 +112,52 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className="min-h-screen bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-100">
+      <body suppressHydrationWarning className="min-h-screen overflow-x-hidden bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-100">
         <script dangerouslySetInnerHTML={{ __html: getThemeBootstrapScript() }} />
         <StructuredData data={[buildOrganizationStructuredData(), buildWebsiteStructuredData()]} />
         <header className="sticky top-0 z-10 border-b border-stone-200 bg-white/95 backdrop-blur dark:border-stone-800 dark:bg-stone-950/95">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-3">
-            <Link href="/" className="flex items-center gap-3 text-gray-900 no-underline dark:text-white">
-              <BrandBug className="h-9 w-9 shrink-0" />
-              <span className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{MARKETPLACE.title}</span>
+          <div className="mx-auto flex max-w-6xl items-start gap-3 px-4 py-3 sm:px-5 md:items-center md:px-6">
+            <Link href="/" className="min-w-0 flex-1 text-gray-900 no-underline dark:text-white md:flex-none">
+              <span className="flex items-center gap-3">
+                <BrandBug className="h-9 w-9 shrink-0" />
+                <span className="min-w-0 text-base font-semibold leading-tight tracking-tight text-gray-900 dark:text-white sm:text-lg">
+                  {MARKETPLACE.title}
+                </span>
+              </span>
             </Link>
-            <nav className="ml-auto flex flex-wrap items-center justify-end gap-2 text-sm text-gray-500 dark:text-gray-400">
-              {PLUGINS.map((plugin) => (
+
+            <div className="ml-auto flex shrink-0 items-center gap-2">
+              <nav className="hidden items-center justify-end gap-2 text-sm text-gray-500 dark:text-gray-400 md:flex">
+                {PLUGINS.map((plugin) => (
+                  <a
+                    key={plugin.repo}
+                    href={getPluginRepoUrl(plugin)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 transition hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                  >
+                    <GitHubIcon className="h-4 w-4" />
+                    <span>{plugin.repo}</span>
+                  </a>
+                ))}
                 <a
-                  key={plugin.repo}
-                  href={getPluginRepoUrl(plugin)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                  href={getRssUrl()}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-brand-700 transition hover:bg-brand-50 hover:text-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                  aria-label="Open the combined RSS feed"
                 >
-                  <GitHubIcon className="h-4 w-4" />
-                  <span>{plugin.repo}</span>
+                  <RssIcon className="h-4 w-4" />
+                  <span>RSS</span>
                 </a>
-              ))}
-              <a
-                href={getRssUrl()}
-                className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-brand-700 transition hover:bg-brand-50 hover:text-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
-                aria-label="Open the combined RSS feed"
-              >
-                <RssIcon className="h-4 w-4" />
-                <span>RSS</span>
-              </a>
+              </nav>
               <ThemeToggle />
-            </nav>
+              <MobileHeaderMenu items={MOBILE_MENU_ITEMS} />
+            </div>
           </div>
         </header>
-        <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+        <main className="mx-auto max-w-6xl px-4 py-6 sm:px-5 sm:py-8 md:px-6">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
-
 

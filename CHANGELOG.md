@@ -17,15 +17,18 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Renamed the published marketplace title across the UI, metadata, structured data, generated artifacts, and tests to `Alison' LLM Plugins`.
 - Moved the home page introduction above the install instructions banner and refreshed the header links with GitHub and RSS icons.
+- Refined the shared shell, install banner, plugin cards, skill grid, and skill detail route into a mobile-first responsive layout from phone widths through desktop.
 - Updated the shared accent palette and install surfaces to use Alison Aquinas-inspired coral and ink brand tones while preserving light and dark mode behavior.
 - Documented that branding assets and marketplace identity remain sourced from `catalog.json` plus vendored files in `public/`.
 - Added agent guidance for republishing fresh local previews and validating them with `curl` and `wget --spider` before presenting UI work.
+- Added a compact mobile overflow menu in the header so repository and RSS links remain reachable without crowding the phone layout.
 
 ### Fixed
 
 - Vendored the real Alison Aquinas favicon and logo bug assets from the local design source files so the site header and metadata use the intended branding.
 - Corrected the branded bug image path to respect the `/llm-skills` base path in local previews and static export builds.
 - Recovered from stale Next.js dev-server state by documenting the expectation to republish previews from a clean build cache when runtime chunks become inconsistent.
+- Removed mobile-hostile truncation from install commands and kept code-heavy surfaces scrollable inside their own containers instead of forcing page-level overflow.
 
 ## [1.0.6] - 2026-03-13
 
@@ -98,3 +101,4 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
+

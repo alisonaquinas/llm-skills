@@ -101,3 +101,34 @@ export function RssIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+/**
+ * Presents a hamburger menu icon for compact navigation affordances.
+ *
+ * @param props Shared SVG presentation properties.
+ * @returns Menu icon sized by the caller.
+ */
+export function MenuIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" {...props}>
+      <path strokeLinecap="round" d="M4 7h16" />
+      <path strokeLinecap="round" d="M4 12h16" />
+      <path strokeLinecap="round" d="M4 17h16" />
+    </svg>
+  );
+}
+
+/**
+ * Presents a close icon for dismissible overlays and popovers.
+ *
+ * @param props Shared SVG presentation properties.
+ * @returns Close icon sized by the caller.
+ */
+export function CloseIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" {...props}>
+      <path strokeLinecap="round" d="M6 6l12 12" />
+      <path strokeLinecap="round" d="M18 6 6 18" />
+    </svg>
+  );
+}

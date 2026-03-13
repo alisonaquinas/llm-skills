@@ -142,7 +142,7 @@ export default function ThemeToggle() {
         aria-controls={`${buttonId}-menu`}
         aria-label={`Theme preference: ${activeOption.label}`}
         onClick={() => setIsOpen((value) => !value)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition hover:border-gray-400 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition hover:border-gray-400 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white"
       >
         <activeOption.Icon className="h-5 w-5" />
       </button>
@@ -152,7 +152,7 @@ export default function ThemeToggle() {
           id={`${buttonId}-menu`}
           role="menu"
           aria-labelledby={buttonId}
-          className="absolute right-0 top-12 z-20 min-w-40 rounded-xl border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-900"
+          className="absolute right-0 top-12 z-20 min-w-44 max-w-[calc(100vw-2rem)] rounded-xl border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-900"
         >
           {THEME_OPTIONS.map(({ value, label, Icon }) => {
             const isActive = value === preference;
@@ -164,7 +164,7 @@ export default function ThemeToggle() {
                 role="menuitemradio"
                 aria-checked={isActive}
                 onClick={() => selectPreference(value)}
-                className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition ${
+                className={`flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition ${
                   isActive
                     ? "bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-100"
                     : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
