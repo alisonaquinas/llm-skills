@@ -1,10 +1,25 @@
+/**
+ * Installation banner shown at the top of the marketplace landing page.
+ *
+ * Responsibilities:
+ * - explain the recommended marketplace installation flow
+ * - provide copyable commands for marketplace and plugin installation
+ * - keep install command formatting centralized in the command helpers
+ */
 import CopyButton from "./CopyButton";
-import { MARKETPLACE, PLUGINS, getPluginInstallRef } from "@/lib/github";
-import { getMarketplaceAddCommand, getMarketplaceUrlAddCommand } from "@/lib/catalog";
+import { MARKETPLACE, PLUGINS } from "@/lib/catalog";
+import { getMarketplaceAddCommand, getMarketplaceUrlAddCommand, getPluginInstallRef } from "@/lib/commands";
 
+/** Recommended command for registering the marketplace repository. */
 const marketplaceAddCommand = getMarketplaceAddCommand();
+/** Secondary command for registering the published marketplace JSON URL. */
 const marketplaceUrlAddCommand = getMarketplaceUrlAddCommand();
 
+/**
+ * Renders the marketplace installation guidance banner.
+ *
+ * @returns A documentation-oriented installation panel.
+ */
 export default function InstallBanner() {
   return (
     <section className="mb-8 rounded-xl border border-indigo-200 bg-indigo-50 p-5">

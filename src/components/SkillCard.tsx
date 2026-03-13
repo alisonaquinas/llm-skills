@@ -1,53 +1,38 @@
+/**
+ * Presentational card for a single skill entry in the marketplace grid.
+ *
+ * Responsibilities:
+ * - render skill metadata with consistent visual affordances
+ * - construct the skill detail route link
+ * - surface the canonical invocation command for the selected skill
+ */
 import Link from "next/link";
 import type { SkillEntry } from "@/lib/github";
+import { getSkillInvocation } from "@/lib/commands";
+import { getSkillIcon } from "@/lib/skills";
 
-const ICON_MAP: Record<string, string> = {
-  kubernetes: "☸️",
-  kubectl: "☸️",
-  terraform: "🏗️",
-  github: "🐙",
-  gitlab: "🦊",
-  docker: "🐳",
-  jenkins: "🔧",
-  "1password": "🔑",
-  zoxide: "⚡",
-  pyenv: "🐍",
-  python: "🐍",
-  vault: "🔑",
-  azure: "🔷",
-  maven: "☕",
-  helm: "⎈",
-  bash: "💻",
-  npm: "📦",
-  pip: "🐍",
-  ssh: "🔐",
-  jq: "🔍",
-  rg: "🔍",
-  ag: "🔍",
-  tar: "📦",
-  sed: "✂️",
-  awk: "⚙️",
-  nvm: "🟩",
-  git: "🌿",
-  aws: "☁️"
-};
-
-const ICON_KEYS = Object.keys(ICON_MAP).sort((left, right) => right.length - left.length);
-
-function getIcon(name: string): string {
-  const lowerName = name.toLowerCase();
-  const key = ICON_KEYS.find((item) => lowerName.includes(item));
-  return key ? ICON_MAP[key] : "🔌";
+/**
+ * Props accepted by the skill card component.
+ */
+interface SkillCardProps {
+  /** Skill metadata rendered by the card. */
+  skill: SkillEntry;
 }
 
-export default function SkillCard({ skill }: { skill: SkillEntry }) {
+/**
+ * Renders a navigable skill card.
+ *
+ * @param skill Skill metadata and owning plugin information.
+ * @returns A link-wrapped card for the skill grid.
+ */
+export default function SkillCard({ skill }: SkillCardProps) {
   return (
     <Link
       href={`/skill/${skill.repo.owner}/${skill.repo.repo}/${skill.name}`}
       className="group block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:border-brand-500 hover:shadow-md"
     >
       <div className="flex items-start gap-3">
-        <span className="mt-0.5 text-2xl">{getIcon(skill.name)}</span>
+        <span className="mt-0.5 text-2xl">{getSkillIcon(skill.name)}</span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="truncate font-semibold text-gray-900 group-hover:text-brand-600">
@@ -57,7 +42,7 @@ export default function SkillCard({ skill }: { skill: SkillEntry }) {
               {skill.repo.label}
             </span>
           </div>
-          <p className="mt-1 font-mono text-sm text-gray-500">/{skill.repo.pluginName}:{skill.name}</p>
+          <p className="mt-1 font-mono text-sm text-gray-500">{getSkillInvocation(skill.repo, skill.name)}</p>
           <p className="mt-1 text-xs text-gray-400">Plugin repo: {skill.repo.owner}/{skill.repo.repo}</p>
         </div>
         <svg

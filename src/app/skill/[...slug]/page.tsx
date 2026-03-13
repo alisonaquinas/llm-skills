@@ -1,54 +1,79 @@
+/**
+ * Skill detail route for statically exported skill pages.
+ *
+ * Responsibilities:
+ * - derive owner, repo, and skill name from the catch-all route segments
+ * - resolve the owning plugin and the corresponding skill content
+ * - render install guidance and raw SKILL.md contents for the selected skill
+ *
+ * Dependency rules:
+ * - route parsing and plugin lookup live in src/lib
+ * - page composition remains thin and delegates business rules outward
+ */
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
-import {
-  PLUGINS,
-  getAllSkills,
-  getPluginInstallCommand,
-  getSkillDetail,
-  getSkillInvocation,
-  type PluginConfig
-} from "@/lib/github";
-import { getPluginRepoUrl } from "@/lib/catalog";
+import { findPluginByRepo, getPluginRepoUrl, type PluginConfig } from "@/lib/catalog";
+import { getPluginInstallCommand, getSkillInvocation } from "@/lib/commands";
+import { getAllSkills, getSkillDetail } from "@/lib/github";
+import { createSkillRouteParams, parseSkillRoute } from "@/lib/routes";
 
+/**
+ * Generates all static route parameters for published skill pages.
+ *
+ * @returns A list of catch-all slug objects for Next.js static generation.
+ */
 export async function generateStaticParams() {
   const skills = await getAllSkills();
-  return skills.map((skill) => ({
-    slug: [skill.repo.owner, skill.repo.repo, skill.name]
-  }));
+  return skills.map(createSkillRouteParams);
 }
 
+/**
+ * Next.js page props for the catch-all skill route.
+ */
 interface PageProps {
+  /** Deferred route parameters provided by the App Router. */
   params: Promise<{ slug: string[] }>;
 }
 
-function findPlugin(owner: string, repo: string): PluginConfig | undefined {
-  return PLUGINS.find((plugin) => plugin.owner === owner && plugin.repo === repo);
-}
-
-export default async function SkillPage({ params }: PageProps) {
-  const { slug } = await params;
-  if (!slug || slug.length < 3) {
-    notFound();
-  }
-
-  const [owner, repo, ...nameParts] = slug;
-  const skillName = nameParts.join("/");
-
-  const plugin = findPlugin(owner, repo);
+/**
+ * Resolves a configured plugin or terminates the request with a 404.
+ *
+ * @param owner GitHub owner segment from the route.
+ * @param repo GitHub repository segment from the route.
+ * @returns The matching plugin configuration.
+ */
+function requirePlugin(owner: string, repo: string): PluginConfig {
+  const plugin = findPluginByRepo(owner, repo);
   if (!plugin) {
     notFound();
   }
 
-  const resolvedPlugin = plugin as PluginConfig;
-  const skill = await getSkillDetail(resolvedPlugin, skillName);
+  return plugin;
+}
+
+/**
+ * Renders the statically generated skill detail page.
+ *
+ * @param params Deferred route parameters for the selected skill.
+ * @returns The skill detail experience or a 404 when the route is invalid.
+ */
+export default async function SkillPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const route = parseSkillRoute(resolvedParams.slug);
+  if (!route) {
+    notFound();
+  }
+
+  const plugin = requirePlugin(route.owner, route.repo);
+  const skill = await getSkillDetail(plugin, route.skillName);
   if (skill.files.length === 0 && !skill.readme) {
     notFound();
   }
 
-  const installCommand = getPluginInstallCommand(resolvedPlugin);
-  const invokeCommand = getSkillInvocation(resolvedPlugin, skillName);
-  const pluginRepoUrl = getPluginRepoUrl(resolvedPlugin);
+  const installCommand = getPluginInstallCommand(plugin);
+  const invokeCommand = getSkillInvocation(plugin, route.skillName);
+  const pluginRepoUrl = getPluginRepoUrl(plugin);
 
   return (
     <div className="max-w-3xl">
@@ -57,21 +82,21 @@ export default async function SkillPage({ params }: PageProps) {
           Marketplace
         </Link>
         <span>/</span>
-        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${resolvedPlugin.color}`}>
-          {resolvedPlugin.label}
+        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${plugin.color}`}>
+          {plugin.label}
         </span>
         <span>/</span>
-        <span className="font-medium text-gray-700">{skillName}</span>
+        <span className="font-medium text-gray-700">{route.skillName}</span>
       </nav>
 
       <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">{skillName}</h1>
+        <h1 className="mb-2 text-3xl font-bold text-gray-900">{route.skillName}</h1>
         <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
           <span>Included in plugin</span>
-          <code className="rounded bg-gray-100 px-2 py-0.5 text-gray-700">{resolvedPlugin.pluginName}</code>
+          <code className="rounded bg-gray-100 px-2 py-0.5 text-gray-700">{plugin.pluginName}</code>
           <span>·</span>
           <a
-            href={`${pluginRepoUrl}/tree/main/skills/${skillName}`}
+            href={`${pluginRepoUrl}/tree/main/skills/${route.skillName}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:text-brand-600"
@@ -125,7 +150,7 @@ export default async function SkillPage({ params }: PageProps) {
         </div>
 
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-          This skill is bundled inside <strong className="text-gray-800">{resolvedPlugin.pluginName}</strong>.
+          This skill is bundled inside <strong className="text-gray-800">{plugin.pluginName}</strong>.
           Install the plugin once, then Claude Code can use any of its included skills. Browse the
           full plugin repository at{" "}
           <a
@@ -134,7 +159,7 @@ export default async function SkillPage({ params }: PageProps) {
             rel="noopener noreferrer"
             className="text-brand-600 hover:underline"
           >
-            github.com/{resolvedPlugin.owner}/{resolvedPlugin.repo}
+            github.com/{plugin.owner}/{plugin.repo}
           </a>
           .
         </div>
@@ -161,8 +186,15 @@ export default async function SkillPage({ params }: PageProps) {
   );
 }
 
+/**
+ * Generates page metadata for the selected skill route.
+ *
+ * @param params Deferred route parameters for the active skill page.
+ * @returns A route-specific page title for static metadata generation.
+ */
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  const skillName = slug?.slice(2).join("/") ?? "Skill";
+  const resolvedParams = await params;
+  const route = parseSkillRoute(resolvedParams.slug);
+  const skillName = route?.skillName ?? "Skill";
   return { title: `${skillName} — Claude Plugin Marketplace` };
 }

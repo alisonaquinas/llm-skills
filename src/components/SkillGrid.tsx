@@ -1,24 +1,44 @@
 "use client";
 
+/**
+ * Interactive skill grid for client-side search and repo filtering.
+ *
+ * Responsibilities:
+ * - own local UI state for search and repo filter controls
+ * - delegate filtering rules to src/lib/skills helpers
+ * - render either the filtered skill list or an empty-state message
+ */
 import { useState } from "react";
-import type { PluginConfig, SkillEntry } from "@/lib/github";
+import type { PluginConfig } from "@/lib/catalog";
+import type { SkillEntry } from "@/lib/github";
+import { filterSkills, getRepoFilterLabel } from "@/lib/skills";
 import SkillCard from "./SkillCard";
 
+/**
+ * Props accepted by the interactive skill grid.
+ */
 interface Props {
+  /** Full list of skills available for filtering. */
   skills: SkillEntry[];
+  /** Repository filter options derived from configured plugins. */
   repos: PluginConfig[];
 }
 
+/**
+ * Renders the searchable and filterable skill grid.
+ *
+ * @param skills Complete set of skills for the marketplace page.
+ * @param repos Plugin configuration used to render repo filters.
+ * @returns A client-side filtering UI for skill discovery.
+ */
 export default function SkillGrid({ skills, repos }: Props) {
+  /** Active free-text search query. */
   const [query, setQuery] = useState("");
+  /** Active repository filter value, or "all" for no restriction. */
   const [repoFilter, setRepoFilter] = useState("all");
 
-  const filtered = skills.filter((skill) => {
-    const matchRepo = repoFilter === "all" || skill.repo.repo === repoFilter;
-    const haystack = [skill.name, skill.repo.label, skill.repo.pluginName, skill.repo.repo].join(" ").toLowerCase();
-    const matchQuery = !query || haystack.includes(query.toLowerCase());
-    return matchRepo && matchQuery;
-  });
+  const filtered = filterSkills(skills, { query, repoFilter });
+  const repoLabel = getRepoFilterLabel(repos, repoFilter);
 
   return (
     <div>
@@ -76,9 +96,7 @@ export default function SkillGrid({ skills, repos }: Props) {
       <p className="mb-4 text-sm text-gray-400">
         {filtered.length} included skill{filtered.length !== 1 ? "s" : ""}
         {query ? ` matching "${query}"` : ""}
-        {repoFilter !== "all"
-          ? ` in ${repos.find((repo) => repo.repo === repoFilter)?.label ?? repoFilter}`
-          : ""}
+        {repoLabel ? ` in ${repoLabel}` : ""}
       </p>
 
       {filtered.length === 0 ? (

@@ -25,30 +25,37 @@ static files. The site is published to GitHub Pages at
 | Styling | Tailwind CSS v3 |
 | Data | GitHub REST API v3 (build-time fetch) |
 | Deployment | GitHub Pages via `peaceiris/actions-gh-pages` |
+| Tests | Vitest for business-logic unit tests |
 
 ## Project layout
 
 ```text
 src/
-  app/
-    layout.tsx          # Root shell: sticky header, nav links
-    page.tsx            # Home: registry cards + SkillGrid
-    globals.css
-    skill/[...slug]/
-      page.tsx          # Detail: files, install cmd, SKILL.md viewer
-  components/
-    SkillCard.tsx       # Single skill card (icon, badge, link)
-    SkillGrid.tsx       # Client component: search + filter + grid
-    CopyButton.tsx      # Clipboard copy with confirmation
-  lib/
-    catalog.ts          # Typed catalog access for marketplace + feed sources
-    github.ts           # GitHub API helpers for skills and plugin metadata
-scripts/
-  generate-marketplace-json.ts
-  generate-rss-feed.ts
+  app/                 # Thin page composition and routing
+  components/          # Presentation components only
+  lib/                 # Business/domain logic and shared contracts
+scripts/               # Tooling entrypoints + tooling business logic
+tests/                 # Unit tests organized separately from runtime modules
 .github/workflows/
-  deploy.yml            # CI: build -> out/ -> gh-pages branch
+  deploy.yml           # CI: build -> out/ -> gh-pages branch
 ```
+
+## Design principles
+
+- Favor SOLID-aligned structure without forcing class-heavy code where functions and typed modules are clearer.
+- Enforce DRY by centralizing shared fetch logic, route parsing, command building, filtering, and generation helpers.
+- Prefer cohesive module boundaries over broad utility dumping; new logic should usually live in the narrowest sensible module.
+- Minimize coupling by keeping `src/app` and `src/components` dependent on typed contracts and services from `src/lib`.
+- Keep business logic deterministic and testable outside Next.js runtime and browser-only APIs.
+- Keep module-local `README.md` and `AGENTS.md` files current when public structure or dependency direction changes.
+
+## Documentation expectations
+
+- Every TypeScript source file and test file should begin with a detailed file header that explains the module's purpose, responsibilities, and boundary rules.
+- Add doc comments to exported and non-trivial internal functions, scripts, interfaces, type members, props, constants, and stateful values when they carry business intent.
+- Prefer comments that explain role, contract, and collaboration boundaries instead of narrating obvious syntax.
+- Update documentation comments whenever behavior, public contracts, or module responsibilities change.
+- Treat documentation depth as part of the repo's maintainability standard, not as optional polish.
 
 ## Adding a new skill source repo
 
@@ -90,6 +97,7 @@ that dispatches `plugin-updated` to `alisonaquinas/llm-skills`.
 ```bash
 npm install
 npm run dev          # http://localhost:3000/llm-skills
+npm run test         # Vitest business-logic tests
 ```
 
 ## Building for production
@@ -106,9 +114,8 @@ during the build.
 ## Conventions
 
 - All data fetching is server-side and happens at build time; no client-side API calls.
-- Search and filtering are client-side (`useState` in `SkillGrid`).
+- Search and filtering are client-side in the UI, but their business logic belongs in `src/lib/skills`.
 - Use `cache: "force-cache"` on all `fetch()` calls in build-time data paths.
 - Feed and marketplace source configuration belongs in `catalog.json`; avoid hard-coding repo lists.
-- The catch-all route `[...slug]` is used for skill detail pages so that `/` separators
-  in owner/repo/name are real path segments, not URL-encoded `%2F`.
-
+- The catch-all route `[...slug]` is used for skill detail pages so that `/` separators in owner/repo/name are real path segments.
+- Keep page files thin and prefer moving non-trivial logic into `src/lib` before adding more JSX complexity.

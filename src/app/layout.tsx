@@ -1,13 +1,34 @@
+/**
+ * Root application layout for the statically exported marketplace site.
+ *
+ * Responsibilities:
+ * - publish stable metadata for the marketplace shell
+ * - render the persistent header and plugin navigation used across pages
+ * - host the routed page content within the shared page frame
+ *
+ * Dependency rules:
+ * - imports configuration from the catalog module
+ * - does not perform GitHub or marketplace business logic directly
+ */
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { MARKETPLACE, PLUGINS, getPluginRepoUrl } from "@/lib/catalog";
 
+/**
+ * Static metadata used by Next.js during build and export.
+ */
 export const metadata: Metadata = {
   title: MARKETPLACE.title,
   description: MARKETPLACE.description,
 };
 
+/**
+ * Wraps all routed pages in the shared marketplace chrome.
+ *
+ * @param children Rendered page content for the active route.
+ * @returns The full application shell for the marketplace site.
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

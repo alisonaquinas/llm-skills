@@ -1,10 +1,39 @@
 "use client";
 
+/**
+ * Client-side clipboard helper used by installation and detail views.
+ *
+ * Responsibilities:
+ * - copy supplied text to the browser clipboard
+ * - surface transient copied and failure UI states
+ * - keep the clipboard interaction details out of presentation callers
+ */
 import { useState } from "react";
 
-export default function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
+/**
+ * Props accepted by the copy button component.
+ */
+interface CopyButtonProps {
+  /** Text to place on the clipboard when the button is activated. */
+  text: string;
+  /** Optional button label to use while idle. */
+  label?: string;
+}
+
+/**
+ * Renders a button that copies text to the clipboard and reports status inline.
+ *
+ * @param text Clipboard payload.
+ * @param label Idle button label.
+ * @returns A client component for clipboard interactions.
+ */
+export default function CopyButton({ text, label = "Copy" }: CopyButtonProps) {
+  /** Current feedback state rendered by the button. */
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
 
+  /**
+   * Attempts to copy the configured text and resets the status after a short delay.
+   */
   async function copy() {
     try {
       await navigator.clipboard.writeText(text);
