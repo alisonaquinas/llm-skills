@@ -9,6 +9,15 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-03-13
+
+### Added
+
+- Added `llm-doc-skills` plugin to the marketplace: new 📄 Doc Skills card covering Word, PowerPoint, Excel, and PDF document workflows (`docx-custom`, `pptx-custom`, `xlsx-custom`, `pdf-custom`, `office-custom`).
+- Added `llm-doc-skills` feed source to `catalog.json` so its releases appear in the combined RSS feed.
+- Updated marketplace description to reference all four plugin families.
+- Updated `catalog.json` marketplace version to `1.3.0`.
+
 ## [1.2.0] - 2026-03-13
 
 ### Added
