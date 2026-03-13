@@ -1,9 +1,9 @@
 /**
- * Root barrel for the application business-logic layer.
+ * Barrel exports for the shared lib namespace.
  *
  * Responsibilities:
- * - provide a small import surface for callers that need multiple domain modules
- * - re-export module boundaries without introducing new behavior
+ * - centralize the public lib surface used by app and component layers
+ * - keep import paths short for common library entrypoints
  */
 export * from "./catalog";
 export * from "./commands";
@@ -12,3 +12,4 @@ export * from "./marketplace";
 export * from "./routes";
 export * from "./seo";
 export * from "./skills";
+export * from "./theme";

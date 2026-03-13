@@ -45,7 +45,7 @@ export default function SkillGrid({ skills, repos }: Props) {
       <div className="mb-6 flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
           <svg
-            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ export default function SkillGrid({ skills, repos }: Props) {
             placeholder="Search included skills or plugins…"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="w-full rounded-lg border border-gray-300 py-2.5 pl-9 pr-4 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500"
+            className="w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-9 pr-4 text-sm text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500"
           />
         </div>
 
@@ -71,8 +71,8 @@ export default function SkillGrid({ skills, repos }: Props) {
             onClick={() => setRepoFilter("all")}
             className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
               repoFilter === "all"
-                ? "bg-gray-900 text-white"
-                : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400"
+                ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
             }`}
           >
             All ({skills.length})
@@ -83,8 +83,8 @@ export default function SkillGrid({ skills, repos }: Props) {
               onClick={() => setRepoFilter(repo.repo)}
               className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
                 repoFilter === repo.repo
-                  ? "bg-gray-900 text-white"
-                  : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400"
+                  ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                  : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
               }`}
             >
               {repo.label}
@@ -93,16 +93,16 @@ export default function SkillGrid({ skills, repos }: Props) {
         </div>
       </div>
 
-      <p className="mb-4 text-sm text-gray-400">
+      <p className="mb-4 text-sm text-gray-400 dark:text-gray-500">
         {filtered.length} included skill{filtered.length !== 1 ? "s" : ""}
         {query ? ` matching "${query}"` : ""}
         {repoLabel ? ` in ${repoLabel}` : ""}
       </p>
 
       {filtered.length === 0 ? (
-        <div className="py-20 text-center text-gray-400">
+        <div className="py-20 text-center text-gray-400 dark:text-gray-500">
           <p className="mb-4 text-5xl">🔍</p>
-          <p className="font-medium">No skills found</p>
+          <p className="font-medium text-gray-700 dark:text-gray-200">No skills found</p>
           <p className="mt-1 text-sm">Try a different search term or plugin filter.</p>
         </div>
       ) : (

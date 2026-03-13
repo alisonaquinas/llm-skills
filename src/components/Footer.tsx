@@ -38,14 +38,14 @@ const CREATOR_LINKS = [
  */
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-sm text-gray-600 dark:text-gray-400 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1">
-          <p className="font-medium text-gray-900">{MARKETPLACE.title}</p>
+          <p className="font-medium text-gray-900 dark:text-white">{MARKETPLACE.title}</p>
           <p>Current version: v{MARKETPLACE.version}</p>
         </div>
         <div className="flex flex-col gap-2 md:items-end">
-          <p className="text-gray-900">
+          <p className="text-gray-900 dark:text-white">
             Vibe-coded by: <span className="font-semibold">Alison Aquinas</span>
           </p>
           <div className="flex flex-wrap gap-4">
@@ -56,7 +56,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer me"
                 aria-label={`Visit Alison Aquinas on ${label}`}
-                className="inline-flex items-center gap-2 text-gray-600 transition hover:text-brand-700"
+                className="inline-flex items-center gap-2 text-gray-600 transition hover:text-brand-700 dark:text-gray-400 dark:hover:text-brand-200"
               >
                 <Icon className="h-4 w-4" />
                 <span>{label}</span>

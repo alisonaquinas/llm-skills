@@ -11,10 +11,13 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Added a persisted theme preference toggle with Light, Dark, and System modes in the site header.
+
 ### Changed
 
 - Added a repository-local `.markdownlint-cli2.jsonc` configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
 - Autoformatted first-party markdown files to satisfy the repository markdownlint policy for spacing, list separation, and heading structure.
+- Switched the marketplace UI to class-based theming so shared surfaces and skill detail pages respect the user's saved dark mode preference without a hydration flash.
 
 ### Fixed
 
@@ -74,3 +77,6 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
+
+
+

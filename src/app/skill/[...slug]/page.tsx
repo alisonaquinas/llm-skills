@@ -87,8 +87,8 @@ export default async function SkillPage({ params }: PageProps) {
   return (
     <div className="max-w-3xl">
       <StructuredData data={buildSkillStructuredData(skill)} />
-      <nav className="mb-6 flex items-center gap-2 text-sm text-gray-400">
-        <Link href="/" className="hover:text-gray-700">
+      <nav className="mb-6 flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500">
+        <Link href="/" className="hover:text-gray-700 dark:hover:text-gray-200">
           Marketplace
         </Link>
         <span>/</span>
@@ -96,20 +96,20 @@ export default async function SkillPage({ params }: PageProps) {
           {plugin.label}
         </span>
         <span>/</span>
-        <span className="font-medium text-gray-700">{route.skillName}</span>
+        <span className="font-medium text-gray-700 dark:text-gray-200">{route.skillName}</span>
       </nav>
 
       <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold text-gray-900">{route.skillName}</h1>
-        <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+        <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">{route.skillName}</h1>
+        <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
           <span>Included in plugin</span>
-          <code className="rounded bg-gray-100 px-2 py-0.5 text-gray-700">{plugin.pluginName}</code>
+          <code className="rounded bg-gray-100 px-2 py-0.5 text-gray-700 dark:bg-gray-800 dark:text-gray-200">{plugin.pluginName}</code>
           <span>·</span>
           <a
             href={`${pluginRepoUrl}/tree/main/skills/${route.skillName}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-brand-600"
+            className="flex items-center gap-1 hover:text-brand-600 dark:hover:text-brand-300"
           >
             View on GitHub ↗
           </a>
@@ -118,15 +118,15 @@ export default async function SkillPage({ params }: PageProps) {
 
       {skill.files.length > 0 ? (
         <section className="mb-8">
-          <h2 className="mb-3 text-lg font-semibold text-gray-900">Files</h2>
+          <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Files</h2>
           <div className="flex flex-wrap gap-2">
             {skill.files.map((file) => (
               <span
                 key={file}
                 className={`rounded px-2 py-1 font-mono text-xs ${
                   file === "SKILL.md"
-                    ? "bg-brand-100 font-semibold text-brand-700"
-                    : "bg-gray-100 text-gray-600"
+                    ? "bg-brand-100 font-semibold text-brand-700 dark:bg-brand-900/40 dark:text-brand-100"
+                    : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 }`}
               >
                 {file}
@@ -137,9 +137,9 @@ export default async function SkillPage({ params }: PageProps) {
       ) : null}
 
       <section className="mb-8 space-y-3">
-        <h2 className="text-lg font-semibold text-gray-900">Install</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Install</h2>
 
-        <div className="rounded-xl bg-gray-900 p-4">
+        <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
           <div className="mb-2 flex items-center justify-between">
             <span className="font-mono text-xs text-gray-400">Install the containing plugin</span>
             <CopyButton text={installCommand} />
@@ -149,7 +149,7 @@ export default async function SkillPage({ params }: PageProps) {
           </pre>
         </div>
 
-        <div className="rounded-xl bg-gray-900 p-4">
+        <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
           <div className="mb-2 flex items-center justify-between">
             <span className="font-mono text-xs text-gray-400">Invoke this skill after installation</span>
             <CopyButton text={invokeCommand} label="Copy" />
@@ -159,15 +159,15 @@ export default async function SkillPage({ params }: PageProps) {
           </pre>
         </div>
 
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
-          This skill is bundled inside <strong className="text-gray-800">{plugin.pluginName}</strong>.
+        <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+          This skill is bundled inside <strong className="text-gray-800 dark:text-white">{plugin.pluginName}</strong>.
           Install the plugin once, then Claude Code can use any of its included skills. Browse the
           full plugin repository at{" "}
           <a
             href={pluginRepoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-brand-600 hover:underline"
+            className="text-brand-600 hover:underline dark:text-brand-300"
           >
             github.com/{plugin.owner}/{plugin.repo}
           </a>
@@ -178,18 +178,18 @@ export default async function SkillPage({ params }: PageProps) {
       {skill.readme ? (
         <section className="mb-8">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">SKILL.md</h2>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">SKILL.md</h2>
             <CopyButton text={skill.readme} label="Copy raw" />
           </div>
-          <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white p-5">
-            <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-700">
+          <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900">
+            <pre className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-700 dark:text-gray-200">
               {skill.readme}
             </pre>
           </div>
         </section>
       ) : null}
 
-      <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900">
+      <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
         ← Back to marketplace
       </Link>
     </div>
