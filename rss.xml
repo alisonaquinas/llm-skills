@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Alison&apos; LLM Plugins Releases</title>
+    <title>Alison&apos;s LLM Plugins Releases</title>
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
@@ -37,6 +37,16 @@
 - `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.1.1</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...v1.1.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.1.1</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.1.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Corrected the published marketplace name from `Alison&apos; LLM Plugins` to `Alison&apos;s LLM Plugins` across catalog metadata, README copy, preview artwork, and test fixtures.
+- Updated `catalog.json` marketplace version to `1.1.1` so the hotfix tag, release workflow, and published site chrome remain aligned.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.1.0</title>
       <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.1.0</guid>
@@ -46,7 +56,7 @@
 <pre>- Added vendored Alison Aquinas brand assets for the site favicon, header logo bug, and social preview artwork.
 - Added a compact mobile overflow menu in the header so repository and RSS links remain reachable without crowding the phone layout.</pre>
 <h3>Changed</h3>
-<pre>- Renamed the published marketplace title across the UI, metadata, structured data, generated artifacts, and tests to `Alison&apos; LLM Plugins`.
+<pre>- Renamed the published marketplace title across the UI, metadata, structured data, generated artifacts, and tests to `Alison&apos;s LLM Plugins`.
 - Moved the home page introduction above the install instructions banner and refreshed the header links with GitHub and RSS icons.
 - Refined the shared shell, install banner, plugin cards, skill grid, and skill detail route into a mobile-first responsive layout from phone widths through desktop.
 - Updated the shared accent palette and install surfaces to use Alison Aquinas-inspired coral and ink brand tones while preserving light and dark mode behavior.
@@ -130,7 +140,8 @@
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0
 [1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
