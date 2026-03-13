@@ -4,38 +4,197 @@
  * Responsibilities:
  * - provide a lightweight visual hint for common skill names
  * - centralize icon keyword matching in one extension-friendly table
+ *
+ * Matching strategy: `lowerName.includes(key)`, longest key wins.
+ * More specific (longer) keys are listed first within each category
+ * so they win over shorter overlapping keys after sort.
  */
 
 /** Mapping from recognizable skill-name fragments to display icons. */
 const ICON_MAP: Record<string, string> = {
-  kubernetes: "☸️",
-  kubectl: "☸️",
-  terraform: "🏗️",
-  github: "🐙",
-  gitlab: "🦊",
-  docker: "🐳",
-  jenkins: "🔧",
+  // ── CI/CD platforms — specific variants before brand root ─────────────────
+  "travis-ci-docs": "📘",
+  "travis-worker": "🏃",
+  "travis-cd": "🚀",
+  "travis-ci": "🔄",
+  "travis": "🔄",
+  "github-runner": "🏃",
+  "github-docs": "📘",
+  "github-cd": "🚀",
+  "github-ci": "🔄",
+  "gitlab-runner": "🏃",
+  "gitlab-docs": "📘",
+  "gitlab-cd": "🚀",
+  "gitlab-ci": "🔄",
+  "jenkins-agent": "🤖",
+  "jenkins-docs": "📘",
+  "jenkins-cd": "🚀",
+  "jenkins-ci": "🔄",
+
+  // ── Brand roots ───────────────────────────────────────────────────────────
+  "kubernetes": "☸️",
+  "kubectl": "☸️",
+  "terraform": "🏗️",
+  "open-tofu": "🏗️",
+  "github": "🐙",
+  "gitlab": "🦊",
+  "glab": "🦊",
+  "docker": "🐳",
+  "podman": "🐋",
+  "containerd": "📦",
+  "cri-o": "🐳",
+  "jenkins": "🔧",
+  "ansible": "🔧",
+  "argocd": "🚀",
+  "skaffold": "🚀",
+  "tilt": "🔥",
+  "flux": "🔄",
+  "helm": "⎈",
+  "kustomize": "🔧",
+
+  // ── Cloud providers ───────────────────────────────────────────────────────
+  "secretsmanager": "🔐",
+  "pulumi": "☁️",
+  "aws": "☁️",
+  "azure": "🔷",
+  "az": "🔷",
+
+  // ── Secret / credential management ───────────────────────────────────────
   "1password": "🔑",
-  zoxide: "⚡",
-  pyenv: "🐍",
-  python: "🐍",
-  vault: "🔑",
-  azure: "🔷",
-  maven: "☕",
-  helm: "⎈",
-  bash: "💻",
-  npm: "📦",
-  pip: "🐍",
-  ssh: "🔐",
-  jq: "🔍",
-  rg: "🔍",
-  ag: "🔍",
-  tar: "📦",
-  sed: "✂️",
-  awk: "⚙️",
-  nvm: "🟩",
-  git: "🌿",
-  aws: "☁️",
+  "bitwarden": "🔒",
+  "openssl": "🔒",
+  "vault": "🔑",
+
+  // ── SSH ───────────────────────────────────────────────────────────────────
+  "ssh-keygen": "🔑",
+  "ssh-client": "🔐",
+  "ssh": "🔐",
+
+  // ── Shells & scripting ────────────────────────────────────────────────────
+  "powershell": "🖥️",
+  "bash": "💻",
+  "zsh": "🐚",
+
+  // ── Version managers ─────────────────────────────────────────────────────
+  "pyenv": "🐍",
+  "rbenv": "💎",
+  "asdf": "🔧",
+  "nvm": "🟩",
+  "rvm": "💎",
+
+  // ── Package & build managers ──────────────────────────────────────────────
+  "pipenv": "🐍",
+  "poetry": "🐍",
+  "pnpm": "📦",
+  "yarn": "🧶",
+  "gradle": "🐘",
+  "maven": "☕",
+  "cmake": "⚙️",
+  "make": "⚙️",
+  "npm": "📦",
+  "pip": "🐍",
+
+  // ── AI / LLM docs & tools ─────────────────────────────────────────────────
+  "atlassian-cli-docs": "📘",
+  "codex-cli-docs": "🤖",
+  "claude-cli-docs": "🤖",
+  "chatgpt-docs": "🤖",
+  "codex-cli": "🤖",
+  "claude-cli": "🤖",
+  "codex-docs": "🤖",
+  "claude-docs": "🤖",
+  "rovo-docs": "🤖",
+  "jira-docs": "📋",
+  "jsm-docs": "🎫",
+  "atlassian": "📘",
+  "codex": "🤖",
+  "claude": "🤖",
+
+  // ── Source control ────────────────────────────────────────────────────────
+  "changelog": "📋",
+  "git": "🌿",
+
+  // ── CI architecture ───────────────────────────────────────────────────────
+  "ci-architecture": "🏗️",
+
+  // ── Databases ─────────────────────────────────────────────────────────────
+  "sqlite": "🗄️",
+
+  // ── XML / structured data formats ────────────────────────────────────────
+  "xmllint": "🏷️",
+  "xml2": "📑",
+  "xq": "🔍",
+  "yq": "📊",
+  "jq": "🔍",
+
+  // ── Search ────────────────────────────────────────────────────────────────
+  "rg": "🔍",
+  "ag": "🔍",
+
+  // ── Text processing ───────────────────────────────────────────────────────
+  "markdownlint": "📝",
+  "yaml-linting": "📝",
+  "yaml-lsp": "📝",
+  "edit-files": "✏️",
+  "diff": "↔️",
+  "sed": "✂️",
+  "awk": "⚙️",
+  "cmp": "⚖️",
+
+  // ── File & archive tools ──────────────────────────────────────────────────
+  "unzip": "📦",
+  "tree": "🌲",
+  "head": "📄",
+  "tail": "📄",
+  "less": "📖",
+  "tar": "📦",
+  "7z": "🗜️",
+
+  // ── Binary / reverse engineering ─────────────────────────────────────────
+  "objdump": "🔩",
+  "readelf": "🧬",
+  "hexdump": "🔢",
+  "binwalk": "🔬",
+  "strings": "🔤",
+  "xxd": "🔢",
+  "ldd": "🔗",
+  "nm": "🔣",
+  "od": "🗂️",
+  "ar": "📚",
+
+  // ── Media & document tools ────────────────────────────────────────────────
+  "mediainfo": "🎬",
+  "exiftool": "🖼️",
+  "pdftotext": "📄",
+  "pdfinfo": "📄",
+
+  // ── Network tools ─────────────────────────────────────────────────────────
+  "curl": "🌐",
+  "wget": "⬇️",
+
+  // ── File inspection ───────────────────────────────────────────────────────
+  "file": "🔎",
+
+  // ── Skill meta-tools ─────────────────────────────────────────────────────
+  "skill-validation": "✅",
+  "skill-linting": "🧹",
+  "skill-creator": "🛠️",
+
+  // ── Software design ───────────────────────────────────────────────────────
+  "software-architecture": "🏛️",
+  "design-pattern": "🧩",
+  "code-smells": "🤢",
+  "solid": "🧱",
+  "oop": "🔷",
+
+  // ── Navigation ────────────────────────────────────────────────────────────
+  "zoxide": "⚡",
+
+  // ── Environment management ────────────────────────────────────────────────
+  "direnv": "📁",
+
+  // ── Python (catch-all, after more specific python keys) ──────────────────
+  "python": "🐍",
 };
 
 /** Keyword list sorted longest-first so specific matches win over broad ones. */
