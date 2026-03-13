@@ -37,6 +37,28 @@
 - `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.1.0</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- Added vendored Alison Aquinas brand assets for the site favicon, header logo bug, and social preview artwork.
+- Added a compact mobile overflow menu in the header so repository and RSS links remain reachable without crowding the phone layout.</pre>
+<h3>Changed</h3>
+<pre>- Renamed the published marketplace title across the UI, metadata, structured data, generated artifacts, and tests to `Alison&apos; LLM Plugins`.
+- Moved the home page introduction above the install instructions banner and refreshed the header links with GitHub and RSS icons.
+- Refined the shared shell, install banner, plugin cards, skill grid, and skill detail route into a mobile-first responsive layout from phone widths through desktop.
+- Updated the shared accent palette and install surfaces to use Alison Aquinas-inspired coral and ink brand tones while preserving light and dark mode behavior.
+- Documented that branding assets and marketplace identity remain sourced from `catalog.json` plus vendored files in `public/`.
+- Added agent guidance for republishing fresh local previews and validating them with `curl` and `wget --spider` before presenting UI work.</pre>
+<h3>Fixed</h3>
+<pre>- Vendored the real Alison Aquinas favicon and logo bug assets from the local design source files so the site header and metadata use the intended branding.
+- Corrected the branded bug image path to respect the `/llm-skills` base path in local previews and static export builds.
+- Recovered from stale Next.js dev-server state by documenting the expectation to republish previews from a clean build cache when runtime chunks become inconsistent.
+- Removed mobile-hostile truncation from install commands and kept code-heavy surfaces scrollable inside their own containers instead of forcing page-level overflow.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.0.6</title>
       <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.6</guid>
@@ -45,11 +67,11 @@
 <h3>Added</h3>
 <pre>- Added a persisted theme preference toggle with Light, Dark, and System modes in the site header.</pre>
 <h3>Changed</h3>
-<pre>- Added a repository-local .markdownlint-cli2.jsonc configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
+<pre>- Added a repository-local `.markdownlint-cli2.jsonc` configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
 - Autoformatted first-party markdown files to satisfy the repository markdownlint policy for spacing, list separation, and heading structure.
 - Switched the marketplace UI to class-based theming so shared surfaces and skill detail pages respect the user&apos;s saved dark mode preference without a hydration flash.</pre>
 <h3>Fixed</h3>
-<pre>- Excluded the plain MIT LICENSE.md text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.</pre>]]></description>
+<pre>- Excluded the plain `MIT LICENSE.md` text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.</pre>]]></description>
     </item>
     <item>
       <title>Marketplace v1.0.5</title>
@@ -58,9 +80,9 @@
       <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Marketplace v1.0.5 release notes.</p>
 <h3>Fixed</h3>
-<pre>- Added an explicit `text` language tag to the release-dispatch example in `docs/release-workflow.md` so markdownlint no longer fails the documentation workflow on MD040
-- Updated `catalog.json` marketplace version to `1.0.5` so the release tag, published metadata, and site chrome remain aligned
-- Refreshed the front-page `README.md` release summary to describe the `v1.0.5` documentation fix</pre>]]></description>
+<pre>- Added an explicit `text` language tag to the release-dispatch example in `docs/release-workflow.md` so markdownlint no longer fails the documentation workflow on `MD040`.
+- Updated `catalog.json` marketplace version to `1.0.5` so the release tag, published metadata, and site chrome remain aligned.
+- Refreshed the front-page `README.md` release summary to describe the `v1.0.5` documentation fix.</pre>]]></description>
     </item>
     <item>
       <title>Marketplace v1.0.4</title>
@@ -69,9 +91,9 @@
       <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Marketplace v1.0.4 release notes.</p>
 <h3>Added</h3>
-<pre>- Added a shared site footer that shows the current marketplace version and credits Alison Aquinas with official website, GitHub, and LinkedIn profile links</pre>
+<pre>- Added a shared site footer that shows the current marketplace version and credits Alison Aquinas with official website, GitHub, and LinkedIn profile links.</pre>
 <h3>Changed</h3>
-<pre>- Sourced the footer version display from `catalog.json` so the published UI always reflects the same release metadata used for tags and generated artifacts</pre>]]></description>
+<pre>- Sourced the footer version display from `catalog.json` so the published UI always reflects the same release metadata used for tags and generated artifacts.</pre>]]></description>
     </item>
     <item>
       <title>Marketplace v1.0.3</title>
@@ -80,9 +102,9 @@
       <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Marketplace v1.0.3 release notes.</p>
 <h3>Fixed</h3>
-<pre>- Serialized GitHub Pages deploy runs with a workflow concurrency group so overlapping `main`, tag, and `repository_dispatch` publishes do not race when pushing the `gh-pages` branch
-- Updated `catalog.json` marketplace version to `1.0.3` so release metadata remains aligned with the published git tag and GitHub Release workflow
-- Refreshed the front-page `README.md` release summary to describe the `v1.0.3` deployment-stability fix</pre>]]></description>
+<pre>- Serialized GitHub Pages deploy runs with a workflow concurrency group so overlapping `main`, tag, and `repository_dispatch` publishes do not race when pushing the `gh-pages` branch.
+- Updated `catalog.json` marketplace version to `1.0.3` so release metadata remains aligned with the published git tag and GitHub Release workflow.
+- Refreshed the front-page `README.md` release summary to describe the `v1.0.3` deployment-stability fix.</pre>]]></description>
     </item>
     <item>
       <title>Marketplace v1.0.2</title>
@@ -91,31 +113,25 @@
       <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Marketplace v1.0.2 release notes.</p>
 <h3>Added</h3>
-<pre>- Module-local `README.md` and `AGENTS.md` files for `src/app`, `src/components`, `src/lib`, and `scripts`
-- PlantUML module diagrams describing page composers, services, parsers, and tooling collaborators
-- Vitest unit tests for marketplace aggregation, skill filtering, route parsing, marketplace document generation, and RSS generation helpers
-- A dedicated top-level `tests/` tree that keeps unit tests separate from runtime modules while mirroring the source structure
-- Static SEO artifacts for GitHub Pages export, including `robots.txt`, `sitemap.xml`, JSON-LD structured data, and a social preview image
-- A tag-driven GitHub Release workflow that publishes release notes directly from `CHANGELOG.md`</pre>
+<pre>- Module-local `README.md` and `AGENTS.md` files for `src/app`, `src/components`, `src/lib`, and `scripts`.
+- PlantUML module diagrams describing page composers, services, parsers, and tooling collaborators.
+- Vitest unit tests for marketplace aggregation, skill filtering, route parsing, marketplace document generation, and RSS generation helpers.
+- A dedicated top-level `tests/` tree that keeps unit tests separate from runtime modules while mirroring the source structure.
+- Static SEO artifacts for GitHub Pages export, including `robots.txt`, `sitemap.xml`, JSON-LD structured data, and a social preview image.
+- A tag-driven GitHub Release workflow that publishes release notes directly from `CHANGELOG.md`.</pre>
 <h3>Changed</h3>
-<pre>- GitHub Pages deploy workflow now regenerates `rss.xml` on `main`, release tags, and upstream `repository_dispatch` events
-- Migrated first-party build and validation scripts from `.mjs` to TypeScript and run them via `tsx`
-- Tightened `tsconfig.json` by disabling `allowJs` now that the repository tooling is TypeScript-based
-- Refactored business logic into cohesive `src/lib` namespaces for catalog, commands, GitHub access, marketplace services, routes, and skills
-- Thinned page and component files so they compose services instead of owning filtering, command building, and route parsing logic
-- Added detailed file headers and API-level doc comments across source files, scripts, and tests, and documented that standard in the repo `AGENTS.md`
-- Expanded route metadata with canonical URLs, Open Graph/Twitter cards, crawl directives, and shared SEO helpers backed by `catalog.json`
-- Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned
-- Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities
+<pre>- GitHub Pages deploy workflow now regenerates `rss.xml` on `main`, release tags, and upstream `repository_dispatch` events.
+- Migrated first-party build and validation scripts from `.mjs` to TypeScript and run them via `tsx`.
+- Tightened `tsconfig.json` by disabling `allowJs` now that the repository tooling is TypeScript-based.
+- Refactored business logic into cohesive `src/lib` namespaces for catalog, commands, GitHub access, marketplace services, routes, and skills.
+- Thinned page and component files so they compose services instead of owning filtering, command building, and route parsing logic.
+- Added detailed file headers and API-level doc comments across source files, scripts, and tests, and documented that standard in the repo `AGENTS.md`.
+- Expanded route metadata with canonical URLs, Open Graph/Twitter cards, crawl directives, and shared SEO helpers backed by `catalog.json`.
+- Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
+- Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
-[1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
-[1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
-[1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
-[1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
-[1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
-
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0
 [1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
