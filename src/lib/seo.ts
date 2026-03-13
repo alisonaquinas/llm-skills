@@ -44,6 +44,23 @@ export function getHomeUrl(): string {
 }
 
 /**
+ * Builds a base-path-aware public asset path for rendered markup and image tags.
+ *
+ * @param path Path relative to the published site root.
+ * @returns Root-relative path that includes the configured GitHub Pages project path.
+ */
+export function buildPublicAssetPath(path = ""): string {
+  const sitePath = new URL(MARKETPLACE.siteUrl).pathname.replace(/\/$/, "");
+  const normalizedPath = path.replace(/^\/+/, "");
+
+  if (!sitePath || sitePath === "/") {
+    return normalizedPath ? `/${normalizedPath}` : "/";
+  }
+
+  return normalizedPath ? `${sitePath}/${normalizedPath}` : `${sitePath}/`;
+}
+
+/**
  * Returns the published RSS feed URL.
  *
  * @returns Absolute RSS feed URL.
@@ -137,7 +154,8 @@ export function buildOrganizationStructuredData(): Record<string, unknown> {
     "@id": `${getHomeUrl()}#organization`,
     name: MARKETPLACE.owner.name,
     url: getHomeUrl(),
-    sameAs: [MARKETPLACE.githubUrl],
+    logo: buildSiteUrl("branding/logo-color-no-background.png"),
+    sameAs: [MARKETPLACE.githubUrl, "https://www.alisonquinas.com/", "https://www.linkedin.com/in/alisonaquinas/"],
   };
 }
 

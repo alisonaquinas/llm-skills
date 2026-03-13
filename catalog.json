@@ -1,8 +1,8 @@
 {
   "marketplace": {
     "name": "llm-skills",
-    "title": "Claude Plugin Marketplace",
-    "description": "Browse the shared-skills and ci-cd Claude Code plugins and the skills they include.",
+    "title": "Alison' LLM Plugins",
+    "description": "Browse Alison Aquinas' shared-skills and ci-cd Claude Code plugins and the skills they include.",
     "version": "1.0.6",
     "owner": {
       "name": "Alison Aquinas"
@@ -58,3 +58,4 @@
     }
   ]
 }
+

@@ -1,4 +1,4 @@
-# Claude Plugin Marketplace
+# Alison' LLM Plugins
 
 A static Next.js site and marketplace catalog for two installable Claude Code plugins:
 
@@ -84,13 +84,25 @@ npm test
 npm run build
 ```
 
+## Preview validation
+
+When UI work is being reviewed locally, prefer a fresh preview over a long-running stale dev server.
+
+Validate the published preview URL and key assets before handing it off:
+
+```bash
+curl --head --fail --location http://localhost:3000/llm-skills/
+wget --spider http://localhost:3000/llm-skills/alison-bug.svg
+```
+
 ## Marketplace source of truth
 
-Marketplace, plugin, and RSS feed source configuration is centralized in `catalog.json`.
+Marketplace, plugin, RSS feed, and branding configuration is centralized in `catalog.json`.
 
 - The website reads the marketplace title, description, version, and owner information from `catalog.json`.
 - Marketplace JSON generation uses `catalog.json` plus upstream plugin metadata.
 - Feed content is sourced from the repositories listed in `catalog.json`.
+- UI branding should keep the site title aligned with `catalog.json` and local vendored assets in `public/`.
 
 ## Adding a new plugin or feed source
 

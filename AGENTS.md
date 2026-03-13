@@ -59,12 +59,20 @@ tests/                 # Unit tests organized separately from runtime modules
 
 ## SEO expectations
 
-- `catalog.json` owns canonical site identity, base URLs, and publisher metadata for SEO helpers.
+- catalog.json owns canonical site identity, marketplace title, base URLs, and publisher metadata for SEO helpers.
+- Brand assets and favicon files should be vendored locally in public/ and kept aligned with the title and accent palette used by the site chrome.
 - Every public route must define canonical metadata and should reuse shared SEO helpers rather than hard-coding URLs.
 - New public pages must be evaluated for sitemap coverage, robots behavior, Open Graph/Twitter metadata, and structured data.
 - Structured data should be server-rendered, deterministic at build time, and derived from existing catalog or fetched skill data.
 - Public SEO assets such as preview images, `robots.txt`, `sitemap.xml`, and feed discovery links must stay aligned with the GitHub Pages base path.
 
+## Preview and validation expectations
+
+- When presenting UI or site changes, prefer starting a fresh local preview from a clean state rather than relying on an older long-running dev server.
+- If a preview starts behaving inconsistently, clear stale Next.js build artifacts such as `.next/` and republish the preview before concluding the app is broken.
+- Before presenting preview work to the user, validate the served site with read-only HTTP probes such as `curl --head --fail --location` and `wget --spider` against the actual preview URLs.
+- Use those probes to confirm the primary page responds successfully and that critical linked assets, especially branding files and generated artifacts, resolve from the correct base path.
+- Treat browser inspection as helpful but not sufficient on its own; pair visual review with command-line verification so stale caches, broken asset paths, and publish mismatches are caught early.
 ## Adding a new skill source repo
 
 Update `catalog.json`, not hard-coded arrays in application code.
@@ -127,3 +135,5 @@ during the build.
 - Feed and marketplace source configuration belongs in `catalog.json`; avoid hard-coding repo lists.
 - The catch-all route `[...slug]` is used for skill detail pages so that `/` separators in owner/repo/name are real path segments.
 - Keep page files thin and prefer moving non-trivial logic into `src/lib` before adding more JSX complexity.
+
+

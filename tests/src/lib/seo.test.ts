@@ -9,6 +9,7 @@
 import { describe, expect, it } from "vitest";
 import {
   buildOrganizationStructuredData,
+  buildPublicAssetPath,
   buildSkillDescription,
   buildSkillTitle,
   buildSkillUrl,
@@ -31,11 +32,12 @@ const plugin = {
 
 describe("SEO URL helpers", () => {
   /** Ensures the public site root stays anchored under the GitHub Pages project path. */
-  it("builds the home, RSS, and sitemap URLs from the configured site root", () => {
+  it("builds the home, RSS, sitemap, and asset URLs from the configured site root", () => {
     expect(getHomeUrl()).toBe("https://alisonaquinas.github.io/llm-skills/");
     expect(getRssUrl()).toBe("https://alisonaquinas.github.io/llm-skills/rss.xml");
     expect(getSitemapUrl()).toBe("https://alisonaquinas.github.io/llm-skills/sitemap.xml");
     expect(getSocialPreviewImageUrl()).toBe("https://alisonaquinas.github.io/llm-skills/marketplace-preview.svg");
+    expect(buildPublicAssetPath("alison-bug.svg")).toBe("/llm-skills/alison-bug.svg");
   });
 
   /** Ensures nested skill names preserve their path shape in canonical URLs. */
@@ -49,7 +51,7 @@ describe("SEO URL helpers", () => {
 describe("SEO copy helpers", () => {
   /** Ensures skill titles follow the shared page-title convention. */
   it("builds deterministic skill titles", () => {
-    expect(buildSkillTitle("git")).toBe("git | Claude Plugin Marketplace");
+    expect(buildSkillTitle("git")).toBe("git | Alison' LLM Plugins");
   });
 
   /** Ensures skill descriptions include both the skill and its parent plugin label. */

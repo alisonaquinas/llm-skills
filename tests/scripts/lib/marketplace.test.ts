@@ -12,7 +12,7 @@ import { buildMarketplaceDocument } from "../../../scripts/lib/marketplace";
 const catalog: CatalogFile = {
   marketplace: {
     name: "llm-skills",
-    title: "Claude Plugin Marketplace",
+    title: "Alison' LLM Plugins",
     description: "Browse plugins",
     version: "1.0.0",
     owner: { name: "Alison Aquinas" },
@@ -44,3 +44,4 @@ describe("buildMarketplaceDocument", () => {
     expect(document.plugins[0]?.strict).toBe(true);
   });
 });
+
