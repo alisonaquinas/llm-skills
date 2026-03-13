@@ -10,13 +10,13 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** <https://alisonaquinas.github.io/llm-skills/>
 
-## Latest release: v1.0.5
+## Latest release: v1.0.6
 
-The current marketplace release fixes a documentation lint failure so the release workflow notes stay CI-friendly.
+The current marketplace release adds persistent dark mode controls while keeping the marketplace shell and skill detail pages aligned with the browser's saved theme preference.
 
-- The release workflow guide now marks the repository dispatch example as `text`, resolving the markdownlint MD040 failure.
-- `catalog.json` version metadata is aligned to `1.0.5` so the site footer, generated artifacts, and git tag stay synchronized.
-- The shared footer introduced in `v1.0.4` continues to expose the current published version and Alison Aquinas profile links.
+- The shared header now includes a compact theme toggle for System, Light, and Dark modes.
+- The selected theme preference is stored in the browser and applied before hydration to avoid a flash of the wrong theme.
+- Shared marketplace surfaces and skill detail pages now support dark mode without changing the site's overall visual identity.
 
 ## Install in Claude Code
 

@@ -11,17 +11,25 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [1.0.6] - 2026-03-13
+
+### Added
+
 - Added a persisted theme preference toggle with Light, Dark, and System modes in the site header.
 
 ### Changed
 
-- Added a repository-local `.markdownlint-cli2.jsonc` configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
+- Added a repository-local .markdownlint-cli2.jsonc configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
 - Autoformatted first-party markdown files to satisfy the repository markdownlint policy for spacing, list separation, and heading structure.
 - Switched the marketplace UI to class-based theming so shared surfaces and skill detail pages respect the user's saved dark mode preference without a hydration flash.
 
 ### Fixed
 
-- Excluded the plain MIT `LICENSE.md` text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.
+- Excluded the plain MIT LICENSE.md text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.
 
 ## [1.0.5] - 2026-03-13
 
@@ -72,11 +80,18 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
+[1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
 
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
+[1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
+[1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
+[1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
+[1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
 
 
