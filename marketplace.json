@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Browse Alison Aquinas' shared-skills, ci-cd, and software-design Claude Code plugins and the skills they include.",
-    "version": "1.1.1"
+    "version": "1.2.0"
   },
   "plugins": [
     {

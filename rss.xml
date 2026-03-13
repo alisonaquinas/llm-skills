@@ -63,6 +63,19 @@
 - `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.2.0</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.2.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.2.0</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.2.0 release notes.</p>
+<h3>Added</h3>
+<pre>- Expanded skill icon map in `src/lib/skills/icons.ts` to cover all 127 skills across all three plugins — 123 keyword-to-emoji mappings organized by category (CI/CD platforms, cloud, secrets, shells, package managers, AI tools, source control, databases, XML, search, text processing, binary tools, network, and more).
+- Added optional `icon` field to the `PluginConfig` interface in `src/lib/catalog/types.ts` for per-plugin emoji display.
+- Added emoji icons to all three plugin cards in `catalog.json`: 🧰 shared-skills, 🚀 ci-cd, 🏛️ software-design.
+- Rendered plugin icons in the marketplace home page plugin card headers (`src/app/page.tsx`).
+- Updated `catalog.json` marketplace version to `1.2.0`.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.1.1</title>
       <link>https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...v1.1.1</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.1.1</guid>
