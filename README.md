@@ -10,15 +10,13 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** <https://alisonaquinas.github.io/llm-skills/>
 
-## Latest release: v1.0.6
+## Latest release: v1.1.0
 
-The current marketplace release adds persistent dark mode controls while keeping the marketplace shell and skill detail pages aligned with the browser's saved theme preference.
+The current marketplace release refreshes the public Alison Aquinas branding and makes the site mobile-first and responsive from phone widths through desktop.
 
-The current development branch also includes a mobile-first responsive layout pass that keeps the header, install commands, skill grid, and skill detail pages usable from phone widths through desktop.
-
-- The shared header now includes a compact theme toggle for System, Light, and Dark modes.
-- The selected theme preference is stored in the browser and applied before hydration to avoid a flash of the wrong theme.
-- Shared marketplace surfaces and skill detail pages now support dark mode without changing the site's overall visual identity.
+- The shared header now uses the Alison Aquinas brand bug, keeps theme controls visible, and moves repo and RSS links into a compact mobile overflow menu on smaller screens.
+- Install commands, filter controls, plugin cards, and skill detail pages now adapt cleanly to narrow widths without truncating important command text.
+- Preview and agent guidance now explicitly require fresh local previews plus `curl` and `wget --spider` checks before presenting UI changes.
 
 ## Install in Claude Code
 
@@ -112,4 +110,3 @@ Marketplace, plugin, RSS feed, and branding configuration is centralized in `cat
 2. Add or enable the matching feed source entry in `catalog.json` if it should appear in the combined RSS feed.
 3. Ensure the source repository publishes a Keep a Changelog compatible `CHANGELOG.md`.
 4. Ensure the source repository dispatches `plugin-updated` to `llm-skills` on release publication.
-

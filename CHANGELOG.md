@@ -9,9 +9,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-03-13
+
 ### Added
 
 - Added vendored Alison Aquinas brand assets for the site favicon, header logo bug, and social preview artwork.
+- Added a compact mobile overflow menu in the header so repository and RSS links remain reachable without crowding the phone layout.
 
 ### Changed
 
@@ -21,7 +24,6 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated the shared accent palette and install surfaces to use Alison Aquinas-inspired coral and ink brand tones while preserving light and dark mode behavior.
 - Documented that branding assets and marketplace identity remain sourced from `catalog.json` plus vendored files in `public/`.
 - Added agent guidance for republishing fresh local previews and validating them with `curl` and `wget --spider` before presenting UI work.
-- Added a compact mobile overflow menu in the header so repository and RSS links remain reachable without crowding the phone layout.
 
 ### Fixed
 
@@ -95,10 +97,10 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0
 [1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
-
