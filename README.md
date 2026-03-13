@@ -10,6 +10,15 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** https://alisonaquinas.github.io/llm-skills/
 
+## Latest release: v1.0.2
+
+The current marketplace release adds the repo-wide quality and discovery baseline that now ships with the static site.
+
+- Business logic is reorganized into cohesive TypeScript modules under `src/lib`.
+- Unit tests now live in a dedicated top-level `tests/` tree.
+- The site publishes `robots.txt`, `sitemap.xml`, richer canonical metadata, Open Graph/Twitter cards, and JSON-LD structured data.
+- Git tags now produce GitHub Releases directly from `CHANGELOG.md` entries.
+
 ## Install in Claude Code
 
 Recommended marketplace source:
@@ -106,6 +115,8 @@ Push to `main` or publish a release tag and GitHub Actions will:
 4. copy hosted artifacts into `out/`, and
 5. publish the site to GitHub Pages.
 
+Publishing a release tag also creates a GitHub Release whose notes are extracted from the matching `CHANGELOG.md` section.
+
 Set `GITHUB_TOKEN` during local or CI builds to reduce GitHub API rate-limit issues.
 
 ## Configuration
@@ -132,4 +143,3 @@ the configured skill-source repositories.
 ## License
 
 MIT - © 2026 Alison Aquinas
-

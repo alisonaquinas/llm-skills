@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read marketplace version
+        id: market
+        shell: bash
+        run: |
+          VERSION=$(jq -r '.marketplace.version' catalog.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Validate tag matches catalog.json
+        shell: bash
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          EXPECTED="v${{ steps.market.outputs.version }}"
+          if [ "$TAG" != "$EXPECTED" ]; then
+            echo "ERROR: tag $TAG does not match catalog.json version $EXPECTED"
+            exit 1
+          fi
+
+      - name: Extract changelog notes
+        id: notes
+        shell: bash
+        run: |
+          VERSION="${{ steps.market.outputs.version }}"
+          NOTES=$(awk "/^## \[$VERSION\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md)
+          echo "notes<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$NOTES" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.notes.outputs.notes }}
