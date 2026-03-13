@@ -51,7 +51,7 @@ describe("SEO URL helpers", () => {
 describe("SEO copy helpers", () => {
   /** Ensures skill titles follow the shared page-title convention. */
   it("builds deterministic skill titles", () => {
-    expect(buildSkillTitle("git")).toBe("git | Alison' LLM Plugins");
+    expect(buildSkillTitle("git")).toBe("git | Alison's LLM Plugins");
   });
 
   /** Ensures skill descriptions include both the skill and its parent plugin label. */
@@ -69,3 +69,4 @@ describe("structured data helpers", () => {
     expect(organization.name).toBe("Alison Aquinas");
   });
 });
+

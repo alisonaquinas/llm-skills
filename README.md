@@ -1,4 +1,4 @@
-# Alison' LLM Plugins
+# Alison's LLM Plugins
 
 A static Next.js site and marketplace catalog for two installable Claude Code plugins:
 
@@ -10,9 +10,9 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** <https://alisonaquinas.github.io/llm-skills/>
 
-## Latest release: v1.1.0
+## Latest release: v1.1.1
 
-The current marketplace release refreshes the public Alison Aquinas branding and makes the site mobile-first and responsive from phone widths through desktop.
+The current marketplace release corrects the published marketplace name to `Alison's LLM Plugins` and keeps the recent branding and responsive UI work aligned with the public release metadata.
 
 - The shared header now uses the Alison Aquinas brand bug, keeps theme controls visible, and moves repo and RSS links into a compact mobile overflow menu on smaller screens.
 - Install commands, filter controls, plugin cards, and skill detail pages now adapt cleanly to narrow widths without truncating important command text.
@@ -110,3 +110,5 @@ Marketplace, plugin, RSS feed, and branding configuration is centralized in `cat
 2. Add or enable the matching feed source entry in `catalog.json` if it should appear in the combined RSS feed.
 3. Ensure the source repository publishes a Keep a Changelog compatible `CHANGELOG.md`.
 4. Ensure the source repository dispatches `plugin-updated` to `llm-skills` on release publication.
+
+
