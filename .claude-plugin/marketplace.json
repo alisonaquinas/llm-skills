@@ -4,8 +4,8 @@
     "name": "Alison Aquinas"
   },
   "metadata": {
-    "description": "Browse the shared-skills and ci-cd Claude Code plugins and the skills they include.",
-    "version": "1.1.0"
+    "description": "Browse Alison Aquinas' shared-skills, ci-cd, and software-design Claude Code plugins and the skills they include.",
+    "version": "1.1.1"
   },
   "plugins": [
     {
@@ -30,6 +30,18 @@
       "description": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation.",
       "repository": "https://github.com/alisonaquinas/llm-ci-dev",
       "category": "ci-cd",
+      "strict": true
+    },
+    {
+      "name": "software-design",
+      "source": {
+        "source": "github",
+        "repo": "alisonaquinas/llm-software-design",
+        "ref": "main"
+      },
+      "description": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance.",
+      "repository": "https://github.com/alisonaquinas/llm-software-design",
+      "category": "software-design",
       "strict": true
     }
   ]

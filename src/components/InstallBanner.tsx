@@ -25,7 +25,7 @@ export default function InstallBanner() {
     <section className="mb-8 rounded-2xl border border-brand-200 bg-brand-50/80 p-4 shadow-sm dark:border-brand-900/70 dark:bg-brand-950/30 sm:p-5">
       <h2 className="mb-1 text-lg font-semibold text-brand-900 dark:text-brand-100">Add this marketplace to Claude Code</h2>
       <p className="mb-4 max-w-3xl text-sm leading-6 text-brand-800 dark:text-brand-200">
-        Use the GitHub repository as the primary marketplace source, then install either of the two
+        Use the GitHub repository as the primary marketplace source, then install one of the
         published plugins. Individual skills are included within those plugins; they are not listed
         as standalone plugins.
       </p>
@@ -85,3 +85,4 @@ export default function InstallBanner() {
     </section>
   );
 }
+

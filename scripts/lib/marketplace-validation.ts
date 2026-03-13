@@ -67,7 +67,7 @@ export function validateMarketplaceDocument(doc: MarketplaceDocument, filePath: 
     filePath
   );
   assert(Array.isArray(doc.plugins), "'plugins' must be an array", filePath);
-  assert(doc.plugins.length === 2, "expected exactly 2 plugins", filePath);
+  assert(doc.plugins.length >= 1, "expected at least 1 plugin", filePath);
 
   const names = new Set<string>();
 

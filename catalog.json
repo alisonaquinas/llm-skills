@@ -2,7 +2,7 @@
   "marketplace": {
     "name": "llm-skills",
     "title": "Alison's LLM Plugins",
-    "description": "Browse Alison Aquinas' shared-skills and ci-cd Claude Code plugins and the skills they include.",
+    "description": "Browse Alison Aquinas' shared-skills, ci-cd, and software-design Claude Code plugins and the skills they include.",
     "version": "1.1.1",
     "owner": {
       "name": "Alison Aquinas"
@@ -33,6 +33,13 @@
       "label": "Shared Skills",
       "ref": "main",
       "enabled": true
+    },
+    {
+      "owner": "alisonaquinas",
+      "repo": "llm-software-design",
+      "label": "Software Design Skills",
+      "ref": "main",
+      "enabled": true
     }
   ],
   "plugins": [
@@ -55,6 +62,16 @@
       "color": "bg-emerald-100 text-emerald-800",
       "ref": "main",
       "siteDescription": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation."
+    },
+    {
+      "pluginName": "software-design",
+      "owner": "alisonaquinas",
+      "repo": "llm-software-design",
+      "label": "Software Design Skills",
+      "category": "software-design",
+      "color": "bg-amber-100 text-amber-800",
+      "ref": "main",
+      "siteDescription": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance."
     }
   ]
 }

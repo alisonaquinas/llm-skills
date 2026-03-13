@@ -29,7 +29,7 @@ Typical end-to-end time from trigger to live site: **~2 minutes**.
 
 ## How upstream repos trigger a rebuild
 
-Each skill repo (e.g. `llm-shared-skills`, `llm-ci-dev`) has a
+Each skill repo (for example `llm-shared-skills`, `llm-ci-dev`, and `llm-software-design`) has a
 `release.yml` workflow that fires when a `vX.Y.Z` tag is pushed. The final
 step of that workflow calls:
 
@@ -62,19 +62,22 @@ gh workflow run deploy.yml
 
 ## Adding a new skill repo to the marketplace
 
-### 1. Add the repo to `src/lib/github.ts`
+### 1. Add the repo to `catalog.json`
 
-```ts
-// src/lib/github.ts
-export const REPOS: RepoConfig[] = [
-  // existing repos...
-  {
-    owner: "alisonaquinas",
-    repo:  "my-new-skills",
-    label: "My New Skills",
-    color: "bg-violet-100 text-violet-800",
-  },
-];
+Add a `plugins` entry if it should be installable from the marketplace and add a matching
+`feedSources` entry if it should participate in the combined RSS feed.
+
+```json
+{
+  "pluginName": "software-design",
+  "owner": "alisonaquinas",
+  "repo": "llm-software-design",
+  "label": "Software Design Skills",
+  "category": "software-design",
+  "color": "bg-amber-100 text-amber-800",
+  "ref": "main",
+  "siteDescription": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance."
+}
 ```
 
 The new repo must have:
@@ -85,8 +88,7 @@ The new repo must have:
 
 ### 2. Set up the `release.yml` workflow in the new repo
 
-Copy `.github/workflows/release.yml` from any existing skill repo verbatim —
-no edits required.
+Copy `.github/workflows/release.yml` from any existing skill repo and keep the dispatch target set to `alisonaquinas/llm-skills`.
 
 ### 3. Add the `MARKETPLACE_DISPATCH_TOKEN` secret to the new repo
 
@@ -99,7 +101,7 @@ In the new repo: **Settings → Secrets and variables → Actions → New reposi
 ### 4. Commit and push
 
 ```bash
-git add src/lib/github.ts
+git add catalog.json
 git commit -m "feat: add my-new-skills to marketplace"
 git push
 ```

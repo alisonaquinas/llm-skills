@@ -77,7 +77,7 @@ export default async function MarketplacePage() {
           {MARKETPLACE.title}
         </h1>
         <p className="text-base leading-7 text-gray-600 dark:text-gray-300 sm:text-lg">
-          This marketplace publishes two installable Claude Code plugins, exposes their bundled
+          This marketplace publishes installable Claude Code plugins, exposes their bundled
           skills as static searchable pages, and ships machine-readable artifacts like
           marketplace.json, rss.xml, and sitemap.xml for discovery.
         </p>
@@ -85,7 +85,7 @@ export default async function MarketplacePage() {
 
       <InstallBanner />
 
-      <section className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <section className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {pluginSummaries.map(({ plugin, installCommand, meta, repoUrl, skillCount }) => (
           <div
             key={plugin.repo}
@@ -134,3 +134,4 @@ export default async function MarketplacePage() {
     </div>
   );
 }
+

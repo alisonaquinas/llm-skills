@@ -32,6 +32,16 @@ const catalog: CatalogFile = {
       ref: "main",
       siteDescription: "Shared skills",
     },
+    {
+      pluginName: "software-design",
+      owner: "alisonaquinas",
+      repo: "llm-software-design",
+      label: "Software Design Skills",
+      category: "software-design",
+      color: "bg-amber-100 text-amber-800",
+      ref: "main",
+      siteDescription: "Software design skills",
+    },
   ],
 };
 
@@ -41,8 +51,8 @@ describe("buildMarketplaceDocument", () => {
     const document = buildMarketplaceDocument(catalog);
     expect(document.name).toBe("llm-skills");
     expect(document.plugins[0]?.source.repo).toBe("alisonaquinas/llm-shared-skills");
+    expect(document.plugins[1]?.source.repo).toBe("alisonaquinas/llm-software-design");
     expect(document.plugins[0]?.strict).toBe(true);
+    expect(document.plugins[1]?.strict).toBe(true);
   });
 });
-
-
