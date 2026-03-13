@@ -8,6 +8,32 @@
     <lastBuildDate>Fri, 13 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CI/CD Skills v1.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.0</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.1.0 release notes.</p>
+<h3>Fixed</h3>
+<pre>- `skills/1password-cli`: corrected the Windows winget package ID from `AgileBits.1PasswordCLI` to `AgileBits.1Password.CLI` in the install reference.
+- Added an explicit `text` language tag to the failure example in `docs/release-workflow.md` so repository markdownlint checks pass cleanly.
+- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.1.0`</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.6.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.0</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.6.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `skills/claude-cli`: new shared skill for installing, configuring, managing, and troubleshooting the Claude Code CLI binary — covers install, update, auth, CLAUDE.md, permissions, MCP servers, scripting, and troubleshooting; defers to `claude-cli-docs` for deep documentation lookups
+- `skills/codex-cli`: new shared skill for installing, configuring, managing, and troubleshooting the OpenAI Codex CLI binary — covers install, update, auth (browser and API key), AGENTS.md, approval modes, scripting, and troubleshooting; defers to `codex-cli-docs` for deep documentation lookups
+- `skills/xml2`: new shared skill covering `xml2` (XML→flat line format) and `2xml` (flat→XML) for Unix pipeline processing — includes cheatsheet with flat format anatomy and common pipeline patterns, and examples-and-recipes with 8 practical recipes
+- `skills/xq`: new shared skill for jq-syntax XML querying via the `xq` binary (from `pip install yq`) — includes cheatsheet with full flag table and XML-to-JSON mapping, and advanced-usage covering streaming large files, roundtrip XML, and format conversion</pre>
+<h3>Changed</h3>
+<pre>- `skills/xmllint`: major overhaul — rewrote SKILL.md with accurate description, table-format Intent Router, and inline Quick Reference covering `--noout`, `--format`, `--xpath`, `--schema`, `--valid`, and `--nonet`; added dedicated XXE security section; rewrote all four reference files with correct install package names (`libxml2-utils` / `libxml2`), full flag table with `XMLLINT_INDENT` env var, comprehensive XPath and schema validation examples, and full exit code table with common error explanations
+- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.6.0`</pre>]]></description>
+    </item>
+    <item>
       <title>Shared Skills v1.5.3</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.2...v1.5.3</link>
       <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.5.3</guid>
