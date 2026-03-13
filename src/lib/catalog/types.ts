@@ -51,6 +51,8 @@ export interface PluginConfig {
   category: string;
   /** Tailwind class list used for plugin badge styling. */
   color: string;
+  /** Optional emoji icon displayed on the plugin card. */
+  icon?: string;
   /** Optional git ref to use when generating artifacts from source. */
   ref?: string;
   /** Marketplace-facing description used when richer metadata is unavailable. */

@@ -50,6 +50,7 @@
       "label": "Shared Skills",
       "category": "shared-skills",
       "color": "bg-blue-100 text-blue-800",
+      "icon": "🧰",
       "ref": "main",
       "siteDescription": "Reusable Claude Code skills for common developer workflows and shared utilities."
     },
@@ -60,6 +61,7 @@
       "label": "CI/CD Skills",
       "category": "ci-cd",
       "color": "bg-emerald-100 text-emerald-800",
+      "icon": "🚀",
       "ref": "main",
       "siteDescription": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation."
     },
@@ -70,6 +72,7 @@
       "label": "Software Design Skills",
       "category": "software-design",
       "color": "bg-amber-100 text-amber-800",
+      "icon": "🏛️",
       "ref": "main",
       "siteDescription": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance."
     }

@@ -92,6 +92,9 @@ export default async function MarketplacePage() {
             className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-5"
           >
             <div className="mb-3 flex flex-wrap items-center gap-2 sm:gap-3">
+              {plugin.icon ? (
+                <span className="text-2xl leading-none" aria-hidden="true">{plugin.icon}</span>
+              ) : null}
               <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${plugin.color}`}>
                 {plugin.label}
               </span>
