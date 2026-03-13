@@ -20,6 +20,28 @@
 - `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.0.5</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.5</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.0.5 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Added an explicit `text` language tag to the release-dispatch example in `docs/release-workflow.md` so markdownlint no longer fails the documentation workflow on MD040
+- Updated `catalog.json` marketplace version to `1.0.5` so the release tag, published metadata, and site chrome remain aligned
+- Refreshed the front-page `README.md` release summary to describe the `v1.0.5` documentation fix</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.0.4</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.4</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.0.4 release notes.</p>
+<h3>Added</h3>
+<pre>- Added a shared site footer that shows the current marketplace version and credits Alison Aquinas with official website, GitHub, and LinkedIn profile links</pre>
+<h3>Changed</h3>
+<pre>- Sourced the footer version display from `catalog.json` so the published UI always reflects the same release metadata used for tags and generated artifacts</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.0.3</title>
       <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.3</guid>
@@ -54,7 +76,9 @@
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
+[1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2</pre>]]></description>
     </item>
