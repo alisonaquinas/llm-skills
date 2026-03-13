@@ -10,13 +10,13 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** https://alisonaquinas.github.io/llm-skills/
 
-## Latest release: v1.0.4
+## Latest release: v1.0.5
 
-The current marketplace release adds a persistent footer so visitors can see the published version and jump directly to Alison Aquinas's public profiles.
+The current marketplace release fixes a documentation lint failure so the release workflow notes stay CI-friendly.
 
-- The shared site footer now displays the current marketplace version from `catalog.json`.
-- The footer credits Alison Aquinas with official website, GitHub, and LinkedIn links using branded SVG icons.
-- Release metadata remains aligned to `1.0.4` so the site footer, generated artifacts, and git tag all point to the same version.
+- The release workflow guide now marks the repository dispatch example as `text`, resolving the markdownlint MD040 failure.
+- `catalog.json` version metadata is aligned to `1.0.5` so the site footer, generated artifacts, and git tag stay synchronized.
+- The shared footer introduced in `v1.0.4` continues to expose the current published version and Alison Aquinas profile links.
 
 ## Install in Claude Code
 

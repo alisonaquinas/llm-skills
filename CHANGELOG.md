@@ -15,6 +15,13 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+## [1.0.5] - 2026-03-13
+
+### Fixed
+- Added an explicit `text` language tag to the release-dispatch example in `docs/release-workflow.md` so markdownlint no longer fails the documentation workflow on MD040
+- Updated `catalog.json` marketplace version to `1.0.5` so the release tag, published metadata, and site chrome remain aligned
+- Refreshed the front-page `README.md` release summary to describe the `v1.0.5` documentation fix
+
 ## [1.0.4] - 2026-03-13
 
 ### Added
@@ -51,7 +58,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2

@@ -32,7 +32,7 @@ Each skill repo (e.g. `llm-shared-skills`, `llm-ci-dev`) has a
 `release.yml` workflow that fires when a `vX.Y.Z` tag is pushed. The final
 step of that workflow calls:
 
-```
+```text
 POST /repos/alisonaquinas/llm-skills/dispatches
   event_type: plugin-updated
   client_payload: { repo, version }
@@ -111,3 +111,5 @@ The marketplace will rebuild automatically and show the new repo.
 |--------|---------|---------|
 | `GITHUB_TOKEN` | `deploy.yml` (auto-provided) | Read GitHub API during build; write to `gh-pages` branch |
 | `MARKETPLACE_DISPATCH_TOKEN` | Upstream repos' `release.yml` | Write `repository_dispatch` events to this repo |
+
+
