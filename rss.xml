@@ -20,6 +20,21 @@
 - `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.0.6</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.6</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.0.6 release notes.</p>
+<h3>Added</h3>
+<pre>- Added a persisted theme preference toggle with Light, Dark, and System modes in the site header.</pre>
+<h3>Changed</h3>
+<pre>- Added a repository-local .markdownlint-cli2.jsonc configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
+- Autoformatted first-party markdown files to satisfy the repository markdownlint policy for spacing, list separation, and heading structure.
+- Switched the marketplace UI to class-based theming so shared surfaces and skill detail pages respect the user&apos;s saved dark mode preference without a hydration flash.</pre>
+<h3>Fixed</h3>
+<pre>- Excluded the plain MIT LICENSE.md text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.0.5</title>
       <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.5</guid>
@@ -76,7 +91,15 @@
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
+[1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
+[1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
+[1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
+[1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2
+
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...HEAD
+[1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
