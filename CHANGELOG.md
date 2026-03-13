@@ -13,11 +13,17 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Added a repository-local `.markdownlint-cli2.jsonc` configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
+- Autoformatted first-party markdown files to satisfy the repository markdownlint policy for spacing, list separation, and heading structure.
+
 ### Fixed
+
+- Excluded the plain MIT `LICENSE.md` text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.
 
 ## [1.0.5] - 2026-03-13
 
 ### Fixed
+
 - Added an explicit `text` language tag to the release-dispatch example in `docs/release-workflow.md` so markdownlint no longer fails the documentation workflow on MD040
 - Updated `catalog.json` marketplace version to `1.0.5` so the release tag, published metadata, and site chrome remain aligned
 - Refreshed the front-page `README.md` release summary to describe the `v1.0.5` documentation fix
@@ -25,14 +31,17 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.0.4] - 2026-03-13
 
 ### Added
+
 - Added a shared site footer that shows the current marketplace version and credits Alison Aquinas with official website, GitHub, and LinkedIn profile links
 
 ### Changed
+
 - Sourced the footer version display from `catalog.json` so the published UI always reflects the same release metadata used for tags and generated artifacts
 
 ## [1.0.3] - 2026-03-13
 
 ### Fixed
+
 - Serialized GitHub Pages deploy runs with a workflow concurrency group so overlapping `main`, tag, and `repository_dispatch` publishes do not race when pushing the `gh-pages` branch
 - Updated `catalog.json` marketplace version to `1.0.3` so release metadata remains aligned with the published git tag and GitHub Release workflow
 - Refreshed the front-page `README.md` release summary to describe the `v1.0.3` deployment-stability fix
@@ -40,6 +49,7 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.0.2] - 2026-03-13
 
 ### Added
+
 - Module-local `README.md` and `AGENTS.md` files for `src/app`, `src/components`, `src/lib`, and `scripts`
 - PlantUML module diagrams describing page composers, services, parsers, and tooling collaborators
 - Vitest unit tests for marketplace aggregation, skill filtering, route parsing, marketplace document generation, and RSS generation helpers
@@ -48,6 +58,7 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - A tag-driven GitHub Release workflow that publishes release notes directly from `CHANGELOG.md`
 
 ### Changed
+
 - GitHub Pages deploy workflow now regenerates `rss.xml` on `main`, release tags, and upstream `repository_dispatch` events
 - Migrated first-party build and validation scripts from `.mjs` to TypeScript and run them via `tsx`
 - Tightened `tsconfig.json` by disabling `allowJs` now that the repository tooling is TypeScript-based

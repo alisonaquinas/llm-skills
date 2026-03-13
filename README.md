@@ -8,7 +8,7 @@ A static Next.js site and marketplace catalog for two installable Claude Code pl
 The website lets you browse the skills contained inside those plugins. The marketplace catalog at
 `.claude-plugin/marketplace.json` publishes the actual installable plugins.
 
-**Live site:** https://alisonaquinas.github.io/llm-skills/
+**Live site:** <https://alisonaquinas.github.io/llm-skills/>
 
 ## Latest release: v1.0.5
 

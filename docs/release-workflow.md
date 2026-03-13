@@ -16,6 +16,7 @@ The [`deploy.yml`](../.github/workflows/deploy.yml) workflow triggers on:
 | `repository_dispatch` (type: `plugin-updated`) | Upstream skill repo published a new release |
 
 On each trigger the workflow:
+
 1. Installs Node.js 20 and runs `npm ci`
 2. Runs `npm run build` — fetches live skill data from the GitHub API and
    generates a fully static export in `out/`
@@ -52,6 +53,7 @@ To force a rebuild without pushing to `main`:
 2. Click **Run workflow** → **Run workflow**
 
 Or via the CLI:
+
 ```bash
 gh workflow run deploy.yml
 ```
@@ -76,6 +78,7 @@ export const REPOS: RepoConfig[] = [
 ```
 
 The new repo must have:
+
 - A `skills/` directory with one subdirectory per skill
 - A `.claude-plugin/plugin.json` with `name`, `version`, `description`, `author`
 - A `CHANGELOG.md` following [Keep a Changelog](https://keepachangelog.com/) format
@@ -111,5 +114,3 @@ The marketplace will rebuild automatically and show the new repo.
 |--------|---------|---------|
 | `GITHUB_TOKEN` | `deploy.yml` (auto-provided) | Read GitHub API during build; write to `gh-pages` branch |
 | `MARKETPLACE_DISPATCH_TOKEN` | Upstream repos' `release.yml` | Write `repository_dispatch` events to this repo |
-
-

@@ -1,0 +1,36 @@
+{
+  "ignores": [
+    "node_modules",
+    ".next",
+    ".git",
+    "out",
+    "LICENSE.md"
+  ],
+  "config": {
+    "default": true,
+    "line-length": false,
+    "table-column-style": false,
+    "no-duplicate-heading": {
+      "siblings_only": true
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "CHANGELOG.md"
+      ],
+      "config": {
+        "MD024": false
+      }
+    },
+    {
+      "files": [
+        "LICENSE.md",
+        "**/LICENSE.md"
+      ],
+      "config": {
+        "MD041": false
+      }
+    }
+  ]
+}
