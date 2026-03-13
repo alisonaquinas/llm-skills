@@ -9,6 +9,16 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-03-13
+
+### Added
+
+- Expanded skill icon map in `src/lib/skills/icons.ts` to cover all 127 skills across all three plugins — 123 keyword-to-emoji mappings organized by category (CI/CD platforms, cloud, secrets, shells, package managers, AI tools, source control, databases, XML, search, text processing, binary tools, network, and more).
+- Added optional `icon` field to the `PluginConfig` interface in `src/lib/catalog/types.ts` for per-plugin emoji display.
+- Added emoji icons to all three plugin cards in `catalog.json`: 🧰 shared-skills, 🚀 ci-cd, 🏛️ software-design.
+- Rendered plugin icons in the marketplace home page plugin card headers (`src/app/page.tsx`).
+- Updated `catalog.json` marketplace version to `1.2.0`.
+
 ## [1.1.1] - 2026-03-13
 
 ### Fixed
