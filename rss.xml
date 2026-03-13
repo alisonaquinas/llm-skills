@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Claude Plugin Marketplace Releases</title>
+    <link>https://alisonaquinas.github.io/llm-skills</link>
+    <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shared Skills v1.5.2</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.1...v1.5.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.5.2</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.5.2 release notes.</p>
+<h3>Added</h3>
+<pre>- GitHub Actions release workflow that creates GitHub releases from changelog entries and triggers `alisonaquinas/llm-skills` to rebuild static marketplace artifacts, including the combined RSS feed</pre>
+<h3>Changed</h3>
+<pre>- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.5.2` so the release tag, plugin metadata, and GitHub release workflow stay in sync
+- `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
+    </item>
+    <item>
+      <title>CI/CD Skills v1.0.1</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.0.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.0.1</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.0.1 release notes.</p>
+<h3>Added</h3>
+<pre>- **AGENTS.md**: Release Process section documenting steps to sync `plugin.json` version with git tag and update `CHANGELOG.md` before every release</pre>]]></description>
+    </item>
+    <item>
+      <title>CI/CD Skills v1.0.0</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.0.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.0.0</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.0.0 release notes.</p>
+<h3>Added</h3>
+<h4>Kubernetes Tooling Skills (7 new skills)</h4>
+<pre>- **kubectl** skill: Manage Kubernetes resources, contexts, and workloads with kubectl
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, resource-management.md, troubleshooting.md
+  - Content: install by platform (curl, Homebrew, apt/yum, asdf), kubeconfig and KUBECONFIG env var, multi-context management; get/describe/apply/delete/edit, logs with --previous/-f/--since, exec -it, port-forward, rollout status/history/undo, scale, patch, cp, top, --dry-run=client -o yaml, -o jsonpath, kubectl diff; declarative vs imperative, labels and selectors, namespaces, kubectl explain, resource types cheat-sheet, kustomize integration; CrashLoopBackOff/OOMKilled/ImagePullBackOff diagnosis, kubectl describe pod events, kubectl debug ephemeral containers, node pressure, events sorting, resource quota inspection, taints and tolerations
+
+- **helm** skill: Package and deploy Kubernetes applications with Helm charts and releases
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, chart-authoring.md, release-management.md
+  - Content: install by platform (binary, Homebrew, apt, asdf), HELM_DATA_HOME/CACHE_HOME/CONFIG_HOME, repo add/update/list/remove, OCI registry auth; helm install/upgrade --install, --dry-run --debug, list/status/uninstall/rollback/history, get values/manifest/notes, --set/-f, helm template, show values, search repo/hub, pull, OCI commands; Chart.yaml required fields, templates/ structure, values.yaml hierarchy, _helpers.tpl, built-in objects (.Release/.Values/.Chart/.Capabilities), NOTES.txt, helm create/lint/package; release lifecycle, --atomic, --wait, upgrade strategies, helm diff plugin, --namespace/--create-namespace, secrets plugin, multi-env values pattern
+
+- **kustomize** skill: Customize Kubernetes manifests with overlay and base patterns using Kustomize
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, kustomization-structure.md, overlays-and-bases.md
+  - Content: standalone binary install, kubectl built-in apply -k, version mismatch note, KUSTOMIZE_PLUGIN_HOME; kustomize build, pipe to kubectl apply, kubectl diff -k, kustomize edit set image/namespace/nameprefix; kustomization.yaml anatomy, resources/images/configMapGenerator/secretGenerator/namePrefix/patches/replacements; base/overlay layout, environment overlays, strategic merge patches, JSON patches, components:, multi-base overlays, GitOps integration
+
+- **skaffold** skill: Build, push, and deploy to Kubernetes iteratively with Skaffold
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, skaffold-yaml.md, profiles-and-ci.md
+  - Content: install by platform, SKAFFOLD_DEFAULT_REPO, ~/.skaffold/ config; skaffold dev/run/build/deploy/delete/debug/render, --profile, --tail, diagnose, init; skaffold.yaml top-level structure, build.artifacts[], Docker/Buildpacks/Jib/Kaniko builders, kubectl/helm/kustomize deployers, sync.infer; profiles for dev/staging/prod, activation methods, artifact caching, CI integration patterns, --status-check, multi-module repos
+
+- **tilt** skill: Develop Kubernetes services locally with Tilt and Tiltfiles
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, tiltfile-patterns.md, extensions-and-teams.md
+  - Content: install by platform, prerequisites (kind/k3d/minikube), TILT_HOST/TILT_PORT, tilt doctor; tilt up/down/ci/trigger/get/describe/logs, TUI keyboard shortcuts; Starlark Tiltfile, docker_build with live_update, k8s_yaml, k8s_resource, local_resource, helm_resource, include/load, allow_k8s_contexts; Tilt extensions, mono-repo patterns, tilt args, Tilt Cloud, CI mode patterns
+
+- **flux** skill: Manage GitOps Kubernetes deployments with FluxCD sources and Kustomizations
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, gitops-sources.md, kustomizations-and-helmreleases.md
+  - Content: install flux CLI, flux check --pre, bootstrap github/gitlab, GITHUB_TOKEN/GITLAB_TOKEN, flux check; flux get all/sources/kustomizations/helmreleases, reconcile source/kustomization/helmrelease, suspend/resume, diff, events, logs, create secret, export; GitRepository/HelmRepository/OCIRepository/Bucket CRDs, ImageRepository and ImagePolicy, ImageUpdateAutomation, secret types; Kustomization CRD fields (sourceRef/path/prune/interval/dependsOn/healthChecks/postBuild), HelmRelease CRD fields (chart spec/values/valuesFrom/remediation), dependsOn ordering, multi-tenancy
+
+- **argocd** skill: Deploy Kubernetes apps declaratively with Argo CD applications and projects
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, application-management.md, rbac-and-projects.md
+  - Content: install CLI, argocd login, ARGOCD_SERVER/ARGOCD_AUTH_TOKEN/ARGOCD_OPTS, initial admin secret, argocd context; argocd app list/get/create/sync/diff/history/rollback/delete/set, cluster/repo/proj/account commands; Application CRD (source/destination/project/syncPolicy), sync waves and hooks, health status states; AppProject CRD, multi-tenancy, RBAC policy syntax, built-in roles, SSO integration, repository credentials</pre>
+<h4>Container Runtime Skills (3 new skills)</h4>
+<pre>- **containerd** skill: Manage containers and images with containerd using ctr and nerdctl
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, containerd-config.md, kubernetes-integration.md
+  - Content: install containerd/nerdctl/CNI plugins/BuildKit, CONTAINERD_ADDRESS/CONTAINERD_NAMESPACE, rootless setup; nerdctl Docker-compatible commands, nerdctl compose, ctr images/containers/tasks/snapshots/content, namespace flag; /etc/containerd/config.toml, CRI plugin section, registry mirrors, snapshotters, SystemdCgroup, containerd config default; containerd as Kubernetes CRI, crictl for pod/container debugging, crictl config, ctr --namespace k8s.io, image GC settings, private registry pull
+
+- **podman** skill: Build and run containers with Podman without a daemon
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, rootless-and-pods.md, podman-compose-and-systemd.md
+  - Content: install by platform, podman machine init/start/stop/ssh, rootless requirements (subuid/subgid), containers.conf/storage.conf/registries.conf, CONTAINER_HOST; podman run/exec/build/push/pull/pod/network/volume commands, generate kube, play kube, machine commands, system prune; rootless architecture, user namespace mapping, slirp4netns/pasta networking, pod infra container, port publishing, podman-remote, SELinux/AppArmor labels; podman-compose, podman generate systemd, Quadlets (.container/.pod/.network/.volume units), podman auto-update
+
+- **cri-o** skill: Configure and debug CRI-O as a Kubernetes container runtime with crictl
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, crio-configuration.md, kubernetes-integration.md
+  - Content: install cri-o by platform (OBS apt, dnf/yum), crictl from cri-tools, /etc/crictl.yaml, CONTAINER_RUNTIME_ENDPOINT, crun/runc, CNI plugins, systemctl enable crio; crictl pods/ps/images/pull/exec/logs/inspect/inspecti/inspectp/runp/stopp/rmp/stats/info; /etc/crio/crio.conf and drop-ins, [crio.runtime]/[crio.image]/[crio.network] sections, OCI hooks, seccomp/AppArmor, crio config --default, systemctl reload crio; kubelet CRI socket config, cgroup-driver alignment, Kubernetes version compatibility, CNI plugin config, OCI runtime selection (runc/crun/kata-containers), image storage, GC tuning</pre>
+<h4>Secret Management Skills (4 new skills)</h4>
+<pre>- **vault** skill: Manage secrets, tokens, and policies with HashiCorp Vault
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, auth-methods.md, policies-and-leases.md
+  - Content: Homebrew/APT/binary install, dev server, VAULT_ADDR/VAULT_TOKEN/VAULT_NAMESPACE env vars, .vault-token file, HCL server config; vault login/kv get/put/list/delete/patch, vault read/write, token lookup/renew/revoke, auth list, secrets list, lease renew/revoke, -format=json; AppRole workflow (role_id/secret_id for CI), AWS IAM auth, Kubernetes auth, orphan tokens, env vs file token; HCL policy syntax (path/capabilities), vault policy write/read/list, lease TTL, dynamic secrets concept, KV v1 vs v2 differences, namespace isolation
+
+- **bitwarden-cli** skill: Access and manage Bitwarden vault items via the bw CLI
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, auth-and-session.md, item-operations-and-filtering.md
+  - Content: NPM/Homebrew/binary install, bw config server for self-hosted, BW_SESSION/BW_CLIENTID/BW_CLIENTSECRET env vars; bw login/logout/unlock/sync/get/list/create/edit/delete commands, --session flag; API key auth, session lifecycle, device trust, scripted CI/CD auth patterns, bw lock; item types (login/securenote/card/identity), bw list filters (folderid/organizationid/collectionid/search/url), JSON templates for create, bulk export, trash/restore, bw encode
+
+- **1password-cli** skill: Access 1Password secrets and run commands via op CLI
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, secret-references-and-op-run.md, service-accounts-and-connect.md
+  - Content: Homebrew/binary/winget install, op signin, OP_SERVICE_ACCOUNT_TOKEN/OP_CONNECT_HOST/OP_CONNECT_TOKEN env vars, ~/.config/op/config; op signin/item get/list/create/edit/delete/read/run/inject/document get, --format json, --fields flag; op:// secret reference syntax, op run with inline env vars and --env-file, op inject for file templating, GitHub Actions and GitLab CI integration; service account creation/scoping/rotation, 1Password Connect server setup, machine-to-machine auth patterns
+
+- **aws-secretsmanager** skill: Store, retrieve, and rotate secrets with AWS Secrets Manager
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, rotation-and-versions.md, access-control-and-iam.md
+  - Content: AWS CLI install reference (defer to aws skill), IAM permissions for Secrets Manager, KMS CMK setup, VPC endpoint overview, AWS_REGION/AWS_PROFILE env vars; create-secret/get-secret-value/put-secret-value/update-secret/describe-secret/list-secrets/delete-secret/rotate-secret/tag-resource, --query SecretString jq patterns, multi-region replication; automatic rotation with Lambda, rotation schedules, AWSCURRENT/AWSPENDING/AWSPREVIOUS staging labels, list-secret-version-ids, update-secret-version-stage, built-in rotation functions (RDS/Redshift/DocumentDB), custom Lambda structure, CloudTrail monitoring; least-privilege IAM templates (read-only/manage/rotation Lambda), resource-based policies for cross-account access, KMS key policies, tag-based access control, CloudTrail audit, VPC endpoint</pre>
+<h4>Package &amp; Build Manager Skills (10 new skills)</h4>
+<pre>##### Node.js
+
+- **npm** skill: Manage Node.js packages and run scripts with npm
+  - 4 reference docs: install-and-setup.md, package-json.md, command-cookbook.md, workspaces.md
+  - Content: nvm/fnm/corepack install, .npmrc config, package.json fields (dependencies/devDependencies/peerDependencies/exports/engines/scripts), init/install/ci/run/publish/update/outdated/audit/exec/link/pack commands, --dry-run for publish, workspaces field, --workspace flag, hoisting
+
+- **yarn** skill: Manage JavaScript packages with Yarn Berry (v3/v4) and Classic (v1)
+  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, workspaces.md
+  - Content: corepack enable, Classic vs Berry comparison, .yarnrc.yml (Berry) and .yarnrc (Classic), nodeLinker/PnP/node-modules, add/remove/install(--immutable)/run/dlx/up/audit/pack/publish/why/dedupe, workspaces foreach, workspace: protocol, constraints
+
+- **pnpm** skill: Manage Node.js packages efficiently with pnpm&apos;s content-addressable store
+  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, workspaces.md
+  - Content: corepack/standalone install, pnpm env for Node.js versions, .npmrc (shamefully-hoist/store-dir), pnpm-workspace.yaml, add/remove/install(--frozen-lockfile)/run/dlx/update/outdated/audit/publish/store prune, recursive (-r), --filter, workspace:/catalog: protocols
+
+##### Python
+
+- **pip** skill: Install and manage Python packages with pip inside virtual environments
+  - 4 reference docs: install-and-setup.md, requirements-and-indexes.md, command-cookbook.md, virtual-environments.md
+  - Content: ensurepip, pip upgrade, pip.conf/pip.ini, requirements.txt format, version specifiers, constraints files, --index-url/--extra-index-url, private PyPI, --require-hashes, install/download/uninstall/freeze/list/show/check/wheel/hash/cache purge, venv creation/activation (bash/fish/PowerShell), pipx for tools
+
+- **poetry** skill: Manage Python dependencies, virtual environments, and package builds with Poetry
+  - 4 reference docs: install-and-setup.md, pyproject-toml.md, command-cookbook.md, dependency-groups.md
+  - Content: pipx install, POETRY_HOME, [tool.poetry] metadata, version constraints (^/~/*/&gt;=), new/init/add/remove/install/update/show/build/publish/run/shell/env use/export/version commands, dependency groups (--with/--without/--only), group export to requirements.txt
+
+- **pipenv** skill: Manage Python virtual environments and dependencies with Pipenv and Pipfile
+  - 4 reference docs: install-and-setup.md, pipfile-and-lockfile.md, command-cookbook.md, environment-management.md
+  - Content: pip user/brew install, PIPENV_VENV_IN_PROJECT, Pipfile [[source]]/[packages]/[dev-packages]/[requires], Pipfile.lock, install/uninstall/sync/lock/run/shell/graph/check/clean/update commands, .env auto-loading, PIPENV_PYTHON
+
+##### Java/JVM
+
+- **maven** skill: Build and manage Java projects with Apache Maven lifecycle phases
+  - 4 reference docs: install-and-setup.md, pom-xml.md, command-cookbook.md, lifecycle-and-plugins.md
+  - Content: brew/apt/sdkman install, Maven wrapper (mvnw), JAVA_HOME, settings.xml, GAV coordinates, dependency scopes, dependencyManagement, profiles, validate/compile/test/package/verify/install/deploy/clean/site phases, dependency:tree, versions plugin, -DskipTests/-B/-T/-pl/-am flags, surefire/failsafe/shade/compiler/resources plugins
+
+- **gradle** skill: Build Java and Android projects with Gradle using the Gradle wrapper
+  - 4 reference docs: install-and-setup.md, build-scripts.md, command-cookbook.md, tasks-and-plugins.md
+  - Content: sdkman/brew install, Gradle wrapper (./gradlew), gradle init, Groovy vs Kotlin DSL, repositories/dependencies/configurations, settings.gradle, build/test/clean/assemble/check/run/dependencies/tasks commands, -m/--dry-run/--no-daemon/--parallel/--configuration-cache, java/application/spring-boot/maven-publish plugins
+
+##### C/C++
+
+- **make** skill: Automate builds and tasks with GNU Make and Makefiles
+  - 4 reference docs: install-and-setup.md, makefile-syntax.md, command-cookbook.md, patterns-and-functions.md
+  - Content: brew/apt/xcode-tools install, target/prerequisite/recipe structure (tab indentation), variable flavors (=/:=/?=/+=), automatic variables ($@/$&lt;/$^/$*), .PHONY/.DEFAULT_GOAL, make/-n/-j/-f/-C/-B/-k/V=1 flags, static pattern rules, wildcard/patsubst/shell/filter/foreach functions, ifeq/ifdef conditionals
+
+- **cmake** skill: Configure and build C/C++ projects with CMake using out-of-source builds
+  - 4 reference docs: install-and-setup.md, cmakelists.md, command-cookbook.md, build-types-and-generators.md
+  - Content: brew/apt/pip/winget install, cmake_minimum_required/project()/add_executable/add_library/target_link_libraries/find_package/install(), cmake -S . -B build/-DCMAKE_BUILD_TYPE/--build/--install/ctest/--preset/-G flags, Debug/Release/RelWithDebInfo/MinSizeRel build types, single-config vs multi-config generators, toolchain files, CMakePresets.json</pre>
+<h4>Version Manager Skills (6 new skills)</h4>
+<pre>- **nvm** skill: Manage multiple Node.js versions with nvm
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, nvmrc-and-defaults.md, shell-integration.md
+  - Content: curl/wget installer, shell profile integration, install/use/alias/ls/ls-remote/uninstall/exec commands, .nvmrc project file, default alias, auto-use on cd, lazy-loading pattern, fish shell, Windows alternatives (fnm, nvm-windows)
+
+- **rvm** skill: Manage Ruby versions and gemsets with rvm
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, gemsets.md, project-files.md
+  - Content: GPG key import, curl installer, rvm requirements, install/use/list/gemset/current/uninstall/remove commands, gemset create/use/delete/@global, .ruby-version, .ruby-gemset, .rvmrc (legacy), autoswitch on cd
+
+- **rbenv** skill: Manage Ruby versions with rbenv and ruby-build
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, ruby-build.md, project-files.md
+  - Content: Homebrew/rbenv-installer install, shell integration, install/global/local/shell/versions/rehash/uninstall commands, ruby-build plugin, RUBY_CONFIGURE_OPTS, MAKE_OPTS, .ruby-version, shell &gt; local &gt; global precedence, RBENV_VERSION
+
+- **pyenv** skill: Manage multiple Python versions with pyenv
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, virtualenvs.md, project-files.md
+  - Content: pyenv-installer/Homebrew install, OS build dependencies, install/global/local/shell/versions/which commands, pyenv-virtualenv plugin, virtualenv create/activate/auto-activate, .python-version, PYENV_VERSION, multi-version tox support
+
+- **asdf** skill: Manage multiple language runtime versions with asdf
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, plugins-and-tools.md, tool-versions.md
+  - Content: git clone/Homebrew install, shell integration for bash/zsh/fish, plugin add/update/remove, install/global/local/shell/current/list/reshim commands, popular plugins (nodejs/python/ruby/golang/java/terraform), .tool-versions format, CI usage (GitHub Actions, generic)
+
+- **direnv** skill: Manage per-directory environment variables with direnv
+  - 4 reference docs: install-and-setup.md, command-cookbook.md, envrc-patterns.md, integrations.md
+  - Content: apt/brew/nix/binary install, shell hook for bash/zsh/fish, .envrc security model, allow/deny/reload/edit/status/prune/exec commands, export/PATH_add/source_env/layout/use/dotenv patterns, pyenv/nvm/rbenv/asdf integrations, editor integration</pre>
+<h4>Infrastructure as Code Skills (4 new skills)</h4>
+<pre>- **terraform** skill: Plan and apply HashiCorp Terraform infrastructure
+  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, state-and-backends.md
+  - Content: macOS/Linux/Windows install, tfenv, provider blocks, variables, outputs, backends (S3/GCS/HCP), init/validate/fmt/plan/apply/destroy, state commands (list/show/mv/rm), import, workspaces, state locking, sensitive values
+
+- **open-tofu** skill: Plan and apply OpenTofu (open-source Terraform fork) infrastructure
+  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, migrating-from-terraform.md
+  - Content: installer script/apt/rpm/brew/winget install, tofuenv, HCL configuration (identical to Terraform), state encryption (OpenTofu-specific), `tofu test` native testing, provider lock, migration guide from Terraform (state compatibility, license comparison, CI/CD updates, rollback)
+
+- **pulumi** skill: Deploy cloud infrastructure using TypeScript, Python, Go, C#, or YAML
+  - 4 reference docs: install-and-setup.md, language-and-project.md, stacks-and-config.md, command-cookbook.md
+  - Content: curl/brew/winget install, Pulumi Cloud and self-managed backends, language-specific code examples (TS/Python/Go/C#/YAML), Pulumi.yaml project file, stack operations, config/secrets management, cross-stack references, `pulumi new/preview/up/destroy/refresh/import/convert`
+
+- **ansible** skill: Automate configuration management with agentless SSH automation
+  - 4 reference docs: install-and-setup.md, inventory-and-variables.md, playbook-patterns.md, command-cookbook.md
+  - Content: pip/apt/dnf/brew install, SSH key setup, ansible.cfg, INI/YAML inventory, group_vars/host_vars, dynamic inventory (AWS EC2/GCP), variable precedence, play structure, common modules table, conditionals/loops/register/tags/roles, ad-hoc commands, `ansible-playbook --check --diff`, ansible-galaxy, ansible-vault, ansible-inventory</pre>
+<h4>Atlassian Documentation Lookup Skills (1 new skill)</h4>
+<pre>- **jsm-docs** skill: Navigate Jira Service Management Cloud documentation at support.atlassian.com/jira-service-management and REST API
+  - 4 reference docs: navigation.md, quick-reference.md, jsm-cloud-reference.md, api-reference.md
+  - Content: JSM Cloud product overview, doc site structure, queue/SLA/portal/request type configuration, ITSM processes (incident/change/problem management), Assets (IT asset management), Knowledge Base integration, JSM REST API endpoints, authentication, pagination, asset management operations</pre>
+<h3>Improved</h3>
+<h4>Skill Inline Examples (42 skills)</h4>
+<pre>- Added a second inline code block to every SKILL.md that previously had only 1 (or 0) code
+  examples, satisfying validation rubric criterion V05 (Example Quality)
+- Examples cover troubleshooting, error recovery, and secondary workflow scenarios for:
+  1password-cli, ansible, asdf, atlassian-cli-docs, aws, aws-secretsmanager, az,
+  bitwarden-cli, ci-architecture, cmake, direnv, flux, github-docs, gitlab-docs, glab,
+  gradle, helm, jenkins-agent, jenkins-docs, jira-docs, jsm-docs, kubectl, kustomize,
+  make, maven, npm, nvm, open-tofu, pip, pipenv, pnpm, poetry, pyenv, rbenv, rovo-docs,
+  rvm, skaffold, terraform, tilt, travis-ci-docs, vault, yaml-linting</pre>
+<h4>Validation System (merged from llm-shared-skills)</h4>
+<pre>- Replaced stub `validation/rubric.md` with full 8-criterion V01–V08 rubric including
+  detailed PASS/WARN/FAIL conditions, &quot;How to Fix&quot; examples, and a report template
+- Replaced stub `validation/public-references.md` with 8 prompt engineering standards
+  (Specificity, Diverse Examples, Numbered Workflows, Verification, Failure Modes,
+  Single Responsibility, Output Format, Context Efficiency) with academic references
+- Added `validation/validate-skill.sh` — automated pre-flight emitting structured metrics
+  (line count, section count, code block count, Intent Router detection, safety section)
+- Updated `AGENTS.md` with full V01–V08 rubric table, scoring thresholds, and V08 checklist
+- Fixed `## Reference Files` → `## Intent Router` heading in argocd, containerd, cri-o,
+  and podman SKILL.md files to satisfy V02 (Intent Router Completeness)
+- All 61 skills validated: 0 lint FAILs, 0 validate-skill.sh WARNs (IR/length)</pre>
+<h3>Fixed</h3>
+<h4>Markdown Lint (2,758 violations resolved)</h4>
+<pre>- Auto-fixed MD031/MD022/MD032/MD010/MD012/MD026/MD047 across all files (blanks around fences/headings/lists, hard tabs, multiple blanks, trailing punctuation, trailing newline)
+- Added language specifiers to 11 bare fenced code blocks in 9 files (`text`, `go`)
+- Fixed compact table separator rows (`|---|` → `| --- |`) in 11 files
+- Fixed `CLAUDE.md` missing top-level H1 heading (MD041)
+- Escaped inline HTML in `skills/az/references/install-and-setup.md` (MD033)
+- Added `.markdownlint.json` for local linting (`MD013` disabled, `MD024` siblings-only, `MD060` disabled)
+- Updated `.markdownlint-cli2.jsonc` (CI): enabled previously-suppressed rules now clean, changed `no-duplicate-heading` from `false` to `{ siblings_only: true }`</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.5.1</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.4...v1.5.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.5.1</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.5.1 release notes.</p>
+<h3>Added</h3>
+<pre>- `skills/claude-docs`: documentation-lookup skill for Anthropic Claude API (platform.claude.com/docs) - covers models, prompt engineering, tool use, extended thinking, Agent SDK, and REST API reference
+- `skills/chatgpt-docs`: documentation-lookup skill for OpenAI platform API (platform.openai.com/docs) - covers models, API reference, function calling, Assistants, and guides
+- `skills/codex-docs`: documentation-lookup skill for OpenAI Codex agent (developers.openai.com/codex) - covers concepts, AGENTS.md, MCP, interfaces, and automation/SDK
+- `skills/claude-cli-docs`: documentation-lookup skill for Claude Code CLI (code.claude.com/docs) - covers installation, CLI reference, CLAUDE.md, MCP, hooks, skills, workflows, and integrations
+- `skills/codex-cli-docs`: documentation-lookup skill for OpenAI Codex CLI (developers.openai.com/codex/cli) - covers installation, features, CLI flags, and slash commands</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.4.4</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.3...v1.4.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.4</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.4.4 release notes.</p>
+<h3>Changed</h3>
+<pre>- `LICENSE.md`: added author name (Alison Aquinas) to copyright line
+- `.claude-plugin/plugin.json`: set `author.name` to Alison Aquinas; corrected `version` to match git tag
+- `AGENTS.md`: added Versioning and Releases section — documents that `plugin.json` version must match the git tag and that `CHANGELOG.md` must be updated before every release</pre>]]></description>
+    </item>
+    <item>
+      <title>CI/CD Skills v0.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v0.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@0.1.0</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v0.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- Initial repository setup with plugin scaffolding
+- Configuration files for Claude Code and Codex integration
+- Documentation framework for skills</pre>]]></description>
+    </item>
+    <item>
+      <title>CI/CD Skills v0.0.1</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v0.0.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@0.0.1</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v0.0.1 release notes.</p>
+<h3>Added</h3>
+<h4>Platform CI/CD Workflow Skills (8 new skills)</h4>
+<pre>- **gitlab-ci** skill: Write and maintain GitLab CI pipelines
+  - 4 reference docs: pipeline-basics.md, runners-and-caching.md, testing-and-quality.md, variables-and-secrets.md
+  - Content: `.gitlab-ci.yml` structure, job anatomy, stages, runners, caching, artifacts, testing, quality gates, variables, secrets, CI variables, OIDC tokens
+
+- **gitlab-cd** skill: Deploy with GitLab CD environments and pipelines
+  - 4 reference docs: environments-and-deployments.md, deployment-targets.md, review-apps.md, release-and-versioning.md
+  - Content: Environment keyword, deployment tiers, protection rules, Kubernetes/AWS/GCP/Heroku deployments, review apps, releases, package registries
+
+- **github-ci** skill: Write and maintain GitHub Actions CI workflows
+  - 4 reference docs: workflow-basics.md, runners-and-caching.md, testing-patterns.md, security-and-secrets.md
+  - Content: Workflow YAML, event triggers, job anatomy, GitHub-hosted/self-hosted runners, matrix testing, caching, testing, code coverage, secrets, permissions
+
+- **github-cd** skill: Deploy with GitHub Actions CD workflows and OIDC
+  - 4 reference docs: environments-and-protection.md, cloud-deployments.md, oidc-and-auth.md, releases-and-packages.md
+  - Content: Environment protection, deployment approval, OIDC authentication, AWS/GCP/Azure/Kubernetes deployments, releases, container registries, artifact signing
+
+- **jenkins-ci** skill: Write Jenkins Declarative Pipeline CI stages
+  - 4 reference docs: declarative-pipeline.md, agents-and-workspaces.md, testing-and-reporting.md, shared-libraries.md
+  - Content: Declarative Pipeline structure, agent types, stages, steps, post conditions, parameters, tools, when conditions, testing, reporting, shared libraries
+
+- **jenkins-cd** skill: Deploy applications with Jenkins Pipeline stages
+  - 4 reference docs: deployment-stages.md, credentials-and-secrets.md, deployment-targets.md, strategies-and-rollback.md
+  - Content: Deployment stages, input approval, locking, credentials management, Kubernetes/AWS/Docker deployments, blue-green/canary strategies, rollback patterns
+
+- **travis-ci** skill: Write and maintain Travis CI build configuration
+  - 4 reference docs: build-lifecycle.md, matrix-and-environments.md, testing-patterns.md, caching-strategies.md
+  - Content: Build phases, language matrix, OS variants, environment variables, conditional builds, testing, caching, Docker layer caching
+
+- **travis-cd** skill: Deploy from Travis CI to cloud and registries
+  - 4 reference docs: deployment-providers.md, deployment-conditions.md, credential-management.md, release-automation.md
+  - Content: Deployment providers (Heroku, AWS S3, npm, PyPI, Docker, GitHub), conditional deployment, encrypted credentials, semantic versioning, releases</pre>
+<h4>Platform Runner/Agent Management Skills (4 new skills)</h4>
+<pre>- **gitlab-runner** skill: Install and manage GitLab Runner daemons
+  - 4 reference docs: installation.md, registration-and-config.md, executors.md, operations.md
+  - Content: Installation on Linux/Docker/Kubernetes/macOS/Windows, runner registration, auth tokens, config.toml anatomy, executor types (Shell, Docker, Kubernetes, SSH), health monitoring, log management, troubleshooting
+
+- **github-runner** skill: Install and manage GitHub Actions self-hosted runners
+  - 4 reference docs: installation.md, registration-and-config.md, arc-and-scaling.md, operations.md
+  - Content: Runner installation on Linux/macOS/Windows/Docker, JNLP launch, registration tokens, runner labels/groups, Actions Runner Controller (ARC) on Kubernetes, ephemeral runners, auto-scaling, operations
+
+- **jenkins-agent** skill: Install and manage Jenkins agents and nodes
+  - 4 reference docs: agent-types.md, installation-and-connection.md, cloud-and-dynamic-agents.md, operations.md
+  - Content: Agent types (SSH, JNLP, WebSocket JNLP, Docker Cloud, Kubernetes, built-in), agent.jar installation, SSH key setup, JNLP launch, Docker Cloud plugin, Kubernetes plugin with pod templates, CASC, operations
+
+- **travis-worker** skill: Configure Travis CI SaaS environments and manage travis-worker daemon
+  - 4 reference docs: saas-build-environments.md, enterprise-installation.md, enterprise-configuration.md, operations.md
+  - Content: SaaS environment selection (OS, dist, arch), package/container installation, custom build images, RabbitMQ connection, pool sizing, resource limits, worker groups, enterprise configuration, monitoring</pre>
+<h4>Platform Documentation Lookup Skills</h4>
+<pre>- **gitlab-docs** skill: Navigate docs.gitlab.com for CI/CD, runners, API, administration docs via WebFetch
+- **github-docs** skill: Navigate docs.github.com/en for Actions, REST API, Packages, Security docs via WebFetch
+- **jenkins-docs** skill: Navigate jenkins.io/doc for Declarative Pipeline, Shared Libraries, plugins, steps via WebFetch
+- **travis-ci-docs** skill: Navigate docs.travis-ci.com for .travis.yml reference, build stages, deployment via WebFetch</pre>
+<h4>Atlassian Documentation Lookup Skills (3 new skills)</h4>
+<pre>- **jira-docs** skill: Navigate Jira Cloud documentation at support.atlassian.com/jira-software-cloud and REST API v3
+  - 4 reference docs: navigation.md, quick-reference.md, jira-cloud-reference.md, api-reference.md
+  - Content: Jira Cloud product family overview, doc site structure, board/sprint/workflow/issue configuration, JQL syntax, REST API v3 endpoints, authentication, pagination, rate limiting
+
+- **atlassian-cli-docs** skill: Navigate Atlassian CLI (ACLI) documentation at developer.atlassian.com/cloud/acli
+  - 4 reference docs: navigation.md, quick-reference.md, command-reference.md, ci-integration.md
+  - Content: ACLI guides, installation, command tree (admin, jira, rovodev subcommands), CI pipeline integration patterns, output formatting, command chaining
+
+- **rovo-docs** skill: Navigate Atlassian Rovo documentation at support.atlassian.com/rovo
+  - 4 reference docs: navigation.md, quick-reference.md, rovo-dev-reference.md, agents-and-governance.md
+  - Content: Rovo Search/Chat/Agents features, Rovo Dev CLI commands, MCP server integration, IDE support (VS Code, Cursor), agent creation and governance, org administration</pre>
+<h4>Architecture &amp; Best Practices</h4>
+<pre>- **ci-architecture** skill: Design CI/CD pipelines using proven best practices (DORA metrics, DevSecOps, SLSA framework, platform engineering patterns)
+  - 4 reference docs: pipeline-design.md, security-practices.md, deployment-patterns.md, measurement.md
+  - Content: Canonical pipeline stages, test pyramid, branching strategies, artifact management, deployment patterns (blue-green, canary, rolling, GitOps, IaC), security practices, DORA metrics, observability, incident recovery</pre>
+<h4>Cloud &amp; General CLI Tools (4 skills migrated from llm-shared-skills)</h4>
+<pre>- **docker** skill: Build, run, and manage Docker containers and images
+  - 10 reference files + scripts and assets
+  - Content: Dockerfile authoring, image building, container lifecycle, networking, volumes, Docker Compose, registry operations, multi-stage builds, security best practices
+  - Cross-platform coverage: Linux, macOS, Windows, WSL2
+
+- **aws** skill: AWS CLI for cloud infrastructure operations
+  - 5 reference files + scripts
+  - Content: EC2, S3, CloudFormation, IAM, ECS, deployment patterns, credential management
+  - Cross-platform coverage: Linux, macOS, Windows, WSL2
+
+- **az** skill: Azure CLI for Azure resource management
+  - 5 reference files + scripts
+  - Content: Resource groups, VMs, container registries, AKS, app service deployments
+  - Cross-platform coverage: Linux, macOS, Windows, WSL2
+
+- **glab** skill: GitLab CLI for repository and pipeline operations
+  - 5 reference files + scripts
+  - Content: Issues, merge requests, pipelines, variables, CI/CD operations, authentication</pre>
+<h3>Previously Added</h3>
+<pre>- yaml-linting skill: Docker-based YAML linting with yamllint (pipelinecomponents/yamllint)
+- yaml-lsp skill: YAML Language Server in Docker for editor integration (node:lts-alpine + npm)
+- Initial plugin scaffold for CI/CD skills collection
+- Repository structure and documentation templates
+- Installation guides for Claude Code and Codex
+- AGENTS.md guidance for skill development
+- Linting system imported from llm-shared-skills with 12 validation rules (L01-L12)
+- Markdownlint configuration aligned with skill standards
+
+---</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.4.3</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.2...v1.4.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.3</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.4.3 release notes.</p>
+<h3>Added</h3>
+<pre>- GitHub Actions `Lint` workflow (`.github/workflows/lint.yml`) — three parallel jobs:
+  - **Markdown**: `DavidAnson/markdownlint-cli2-action` with inline PR annotations
+  - **YAML**: `ibiqlik/action-yamllint` with inline PR annotations; new `.yamllint.yml` config
+  - **Skills**: per-skill `linting/lint-skill.sh` run with `::error::`/`::warning::` annotations,
+    job summary pass/fail table, and 14-day log artifact upload</pre>
+<h3>Fixed</h3>
+<pre>- `linting/lib/checks.sh`: replaced `eval`-based variable assignment in `_emit()` with
+  `printf -v` — prevents crash when L09 failure message contains single quotes
+- `skills/skill-creator/SKILL.md`: removed prose mentions of platform names that triggered L09;
+  replaced with generic terms throughout frontmatter description, Platform Compatibility section,
+  headings, checklist, and anti-pattern example
+- `skills/skill-linting/SKILL.md`: rephrased L09 rule description to avoid self-referential trigger
+- `skills/skill-validation/SKILL.md`: renamed example `references/` paths in code fences to avoid
+  false L07 dangling-reference failures
+- `CHANGELOG.md`: resolved orphaned merge conflict markers (`&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD` / `=======`)
+- `README.md`: added blank lines before bullet lists (MD032)</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.4.2</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.1...v1.4.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.2</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.4.2 release notes.</p>
+<h3>Added</h3>
+<pre>- **yq skill** — Process YAML, XML, and TOML with jq-like filtering
+  - 4 reference docs: install-and-setup.md, quick-reference.md, usage-patterns.md, examples-and-recipes.md
+  - Content: Installation on multiple platforms, common command flags and options, format conversion (YAML/JSON/TOML/XML), filtering and selection patterns, in-place file editing, string and array operations, multi-file processing, roundtrip mode for tag preservation, Kubernetes manifest processing, configuration management workflows, practical examples and recipes
+  - ~900 lines of comprehensive documentation</pre>
+<h3>Removed</h3>
+<pre>- **4 skills moved to llm-ci-dev** — Consolidated CI/CD-specific skills into dedicated repo
+  - `docker` — Container and Docker tooling (now in llm-ci-dev/skills/)
+  - `aws` — AWS CLI operations (now in llm-ci-dev/skills/)
+  - `az` — Azure CLI operations (now in llm-ci-dev/skills/)
+  - `glab` — GitLab CLI workflows (now in llm-ci-dev/skills/)
+
+  **Rationale**: These 4 skills are primarily CI/CD-focused and now reside in the specialized llm-ci-dev
+  collection alongside platform-specific CI/CD workflow and runner/agent management skills. This improves
+  skill discoverability and maintains thematic coherence. llm-shared-skills now focuses on general-purpose
+  system utilities and development tools (45 skills with yq).</pre>
+<h3>Updated</h3>
+<pre>- Updated README to reflect new skill count (45 with yq, previously 44)
+- Integrated with v1.4.1 linting and validation system
+- All 45 skills pass structural linting with zero violations
+- All 269 markdown files pass linting with zero errors</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.4.1</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.0...v1.4.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.1</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.4.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- **All 264 markdown files now pass linting** — Resolved all 131 markdownlint errors
+  - Auto-fixed 117 errors: blank lines around lists/code fences, multiple consecutive blank lines
+  - Manual fixes: Added language specifications to 5 code blocks
+  - Config update: Disabled MD024 (no-duplicate-heading) for CHANGELOG.md — expected per-version duplication
+  - Configuration: Updated `.markdownlint-cli2.jsonc` to reflect best practices</pre>
+<h3>Technical Details</h3>
+<pre>- Installed `markdownlint-cli2 v0.21.0` for comprehensive markdown validation
+- Total files linted: 264 with 0 errors
+- All fixes maintain semantic correctness and improve code block readability</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.4.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.2.0...v1.4.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.0</guid>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.4.0 release notes.</p>
+<h3>Added</h3>
+<pre>- **Comprehensive skill linting and validation system** — Automated quality gates for all skills
+  - **Linting system** (`linting/`) with 12 automated checks (L01–L12):
+    - Frontmatter validation, file structure, YAML field requirements, name format validation
+    - Required file presence (SKILL.md, agents/openai.yaml, agents/claude.yaml)
+    - Character limits, syntax validation, dangling reference detection
+    - Platform language detection, forbidden file detection, markdown linting
+  - **Validation system** (`validation/`) with 8-criterion LLM scoring rubric (V01–V08):
+    - Description effectiveness, intent router completeness, quick reference coverage
+    - Safety documentation, example quality, reference depth, LLM usability
+    - Alignment with Anthropic/OpenAI/academic prompt engineering standards
+  - **Two new agent-facing skills**:
+    - `skill-linting` — Lint skills for structural correctness
+    - `skill-validation` — Validate skill quality and effectiveness
+  - **Enhanced skill-creator** — Integrated Step 7 (Lint and Validate) workflow
+  - **Prompt Engineering Standards** — 7 principles added to skill-creator reference
+
+- **Documentation updates**:
+  - AGENTS.md: Added &quot;Linting and Validation&quot; section with command references
+  - README.md: Updated &quot;What&apos;s New&quot; for v1.3.0 features
+  - INSTALL.md: Added Quality Assurance section with linting and validation instructions
+  - New files: `linting/rules.md`, `validation/rubric.md`, `validation/public-references.md`</pre>
+<h3>Fixed</h3>
+<pre>- **6 known violations resolved**:
+  - `sqlite`: short_description reduced from 86 to 54 characters (both openai.yaml and claude.yaml)
+  - `7z`: short_description reduced from 75 to 43 characters
+  - `unzip`: short_description reduced from 71 to 38 characters
+  - `tar`: short_description reduced from 69 to 34 characters
+  - `openssl`: short_description reduced from 65 to 54 characters
+  - `git`: Removed second-person language (&quot;You are a Git expert&quot; → imperative form)
+
+- **All 48 skills now pass linting** with zero FAIL conditions (L01–L12 checks)</pre>
+<h3>Technical Details</h3>
+<pre>- Linting system: 4 files, 12 portable shell check functions
+- Validation system: 3 files, 8-criterion rubric with LLM guidance
+- Cross-platform compatibility: All scripts tested on macOS and Linux
+- Integration ready: Pre-commit hook instructions in AGENTS.md
+- 24 files modified/created for this release</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.2.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.1...v1.2.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.2.0</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.2.0 release notes.</p>
+<h3>Added</h3>
+<pre>- **New `changelog` skill** — Maintain CHANGELOG.md files following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format with structured entries, release workflows, and semantic versioning
+  - 4 comprehensive reference files: cheatsheet (format spec), install-and-setup (optional git-cliff), advanced-usage (CI/CD automation), troubleshooting (anti-patterns)
+  - Cross-platform install scripts for optional git-cliff integration (Bash and PowerShell)
+  - Safety guardrails: prevent vague entries, enforce entry types, maintain [Unreleased] section, validate dates and links
+  - Supports both manual curation and automated generation workflows</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.1.1</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.0...v1.1.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.1.1</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.1.1 release notes.</p>
+<h3>Added</h3>
+<pre>- **Complete agent file coverage** — Added `claude.yaml` to all 13 core and CLI skills that were missing them
+  - Ensures cross-platform compatibility for Claude Code, Codex, and other Claude-based systems
+  - Skills: ag, aws, az, bash, docker, git, glab, markdownlint, powershell, skill-creator, sqlite, zoxide, zsh</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.1...v1.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.1.0</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- **32 command-line utility skills upgraded to mature quality standard**:
+  - Restructured SKILL.md with 7-section format: Intent Router, Safety Notes table, Quick Command Reference
+  - Added 3 new reference files per skill: install-and-setup, advanced-usage, troubleshooting
+  - Added cross-platform install scripts for all 32 skills (install.sh for Bash, install.ps1 for PowerShell)
+  - Enhanced openai.yaml with tool-specific metadata and descriptions
+  - Tools upgraded: awk, diff, head, sed, tail, 7z, ar, tar, unzip, binwalk, cmp, file, hexdump, nm, objdump, od, readelf, strings, xxd, exiftool, mediainfo, pdfinfo, pdftotext, xmllint, openssl, ssh-client, ssh-keygen, rg, less, ldd, jq, tree</pre>
+<h3>Changed</h3>
+<pre>- **Skill naming standardization** — Removed unnecessary postfixes for cleaner names:
+  - ag-search → ag
+  - aws-cli → aws
+  - az-cli → az
+  - glab-cli → glab
+  - markdownlint-cli2-enforcer → markdownlint
+  - zoxide-navigation → zoxide
+
+- **SQLite skills consolidation** — Merged two complementary skills into single unified interface:
+  - sqlite-file-workbench + sqlite-file-workbench-advanced → sqlite
+  - Combined 8 reference files covering core workflows through advanced operations (diffing, sync, migrations, integration)
+  - Expanded Intent Router to guide users to appropriate references for their task level</pre>
+<h3>Fixed</h3>
+<pre>- **Frontmatter violations** — ssh-client and ssh-keygen: removed 6 extra prohibited fields (category, version, requires_git, safety_tier, execution_mode, labels)
+- **Markdown linting** — All 32 upgraded skills pass 100% linting validation (0 errors)</pre>
+<h3>Technical Details</h3>
+<pre>- All 32 command skills now follow the same architecture as mature skills (bash, powershell, zsh, git, docker)
+- Install scripts validated with bash -n syntax checking
+- 288 total files created/modified for skill upgrades
+- 84 files changed for naming standardization and consolidation
+- Documentation synchronized across README, CHANGELOG, INSTALL, and plugin.json</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.0.1</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.0...v1.0.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.0.1</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.0.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- **Markdown linting compliance**: Added `.markdownlint-cli2.jsonc` configuration with sensible defaults
+- **44 markdown formatting issues**: Auto-fixed blank lines around code fences, headings, and lists across 88 files
+- **Code block language specification**: Added language identifiers to all 40 bare code blocks (using `text`, `output`, `bicep`)
+- **Emphasis-as-heading errors**: Converted 4 instances of bold text used as headings to proper markdown headings
+- **Duplicate heading**: Renamed duplicate &quot;Examples&quot; heading to &quot;Performance Examples&quot; in ag-patterns.md</pre>
+<h3>Technical Details</h3>
+<pre>- Markdownlint configuration disables overly strict rules: `line-length`, `no-trailing-punctuation`, `no-inline-html`, `table-column-style`
+- All markdown files now pass linting validation (0 errors)</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.0.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.0.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.0.0</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.0.0 release notes.</p>
+<h3>Added</h3>
+<pre>- **11 cross-compatible tool skills**: ag, aws, az, bash, docker, git, glab, markdownlint, powershell, sqlite, zoxide
+- **Install scripts** for all 12 skills:
+  - `scripts/install.sh` (bash) with platform detection, distro-specific package managers (apt, dnf, pacman, zypper), and installation verification
+  - `scripts/install.ps1` (PowerShell) with Windows/macOS/Linux support and winget/scoop/package manager integration
+- **Install &amp; setup references** for all 12 skills:
+  - `references/install-and-setup.md` with platform-specific install commands, post-install configuration steps, verification commands, and troubleshooting
+- **Intent Router entries** in each skill&apos;s SKILL.md to guide users to install-and-setup references
+- **Cross-platform support**: macOS (Homebrew), Linux (Debian/Ubuntu, Fedora/RHEL, Arch, Alpine), Windows (WSL2, Git Bash, native)
+- **Skill-creator tool**: Framework for creating new cross-compatible skills with consistent structure
+- **Comprehensive reference documentation**: Each skill includes detailed guides for common workflows, troubleshooting, and platform-specific behavior
+- **Claude Code plugin registration**: `.claude-plugin/plugin.json` for Claude Code plugin discovery
+- **Codex compatibility**: `agents/openai.yaml` in each skill for Codex UI and cross-platform execution
+- **Installation guide** (INSTALL.md): Instructions for installing as Claude Code plugin or Codex skill source</pre>
+<h3>Technical Details</h3>
+<pre>- All `install.sh` scripts use `set -euo pipefail` for safety and error handling
+- Platform detection via `uname -s` and `/etc/os-release` for robust OS/distro identification
+- Tagged output format (`[INFO]`, `[OK]`, `[WARN]`, `[ERROR]`, `[HINT]`) for consistent, parseable script output
+- PowerShell scripts use `Set-StrictMode -Version Latest` and `$ErrorActionPreference = &apos;Stop&apos;` for safety
+- Pre-install checks: scripts verify if tools are already installed and skip installation if current version meets requirements
+- Post-install verification: all scripts confirm successful installation and print setup hints
+
+[Unreleased]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.2...HEAD
+[1.5.2]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.1...v1.5.2
+[1.5.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.4...v1.5.1
+[1.4.4]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.3...v1.4.4
+[1.4.3]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.2...v1.4.3
+[1.4.2]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.2.0...v1.4.0
+[1.2.0]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.1...v1.2.0
+[1.1.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.0.0</pre>]]></description>
+    </item>
+  </channel>
+</rss>
