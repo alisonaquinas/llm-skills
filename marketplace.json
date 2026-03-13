@@ -4,8 +4,8 @@
     "name": "Alison Aquinas"
   },
   "metadata": {
-    "description": "Browse the shared-skills and ci-cd Claude Code plugins and the skills they include.",
-    "version": "1.0.6"
+    "description": "Browse Alison Aquinas' shared-skills and ci-cd Claude Code plugins and the skills they include.",
+    "version": "1.1.0"
   },
   "plugins": [
     {
