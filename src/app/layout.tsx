@@ -12,6 +12,7 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 import { MARKETPLACE, PLUGINS, getPluginRepoUrl } from "@/lib/catalog";
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
         <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
+        <Footer />
       </body>
     </html>
   );

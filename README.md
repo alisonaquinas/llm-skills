@@ -10,13 +10,13 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** https://alisonaquinas.github.io/llm-skills/
 
-## Latest release: v1.0.3
+## Latest release: v1.0.4
 
-The current marketplace release hardens GitHub Pages publishing so the release pipeline stays stable when multiple deploy triggers land close together.
+The current marketplace release adds a persistent footer so visitors can see the published version and jump directly to Alison Aquinas's public profiles.
 
-- GitHub Pages deploy runs are now serialized to prevent `gh-pages` ref-lock races between `main`, tag, and dispatch-triggered publishes.
-- `catalog.json` version metadata is aligned to `1.0.3` so the release tag, generated marketplace metadata, and GitHub Release workflow stay in sync.
-- Git tags continue to produce GitHub Releases directly from `CHANGELOG.md` entries.
+- The shared site footer now displays the current marketplace version from `catalog.json`.
+- The footer credits Alison Aquinas with official website, GitHub, and LinkedIn links using branded SVG icons.
+- Release metadata remains aligned to `1.0.4` so the site footer, generated artifacts, and git tag all point to the same version.
 
 ## Install in Claude Code
 
@@ -59,86 +59,42 @@ npm install
 npm run dev
 ```
 
-Default dev URL:
-
-```text
-http://localhost:3000/llm-skills
-```
-
-## Marketplace generation and validation
-
-Generate the canonical marketplace file:
+## Generate Marketplace JSON
 
 ```bash
-npm run marketplace:generate
+npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json
 ```
 
-Validate it:
+## Validate Marketplace JSON
 
 ```bash
 npm run marketplace:validate
 ```
 
-Generate the combined RSS feed:
+## Generate Combined RSS Feed
 
 ```bash
 npm run rss:generate -- out/rss.xml
 ```
 
-To produce both the repo-root marketplace file and the GitHub Pages copy:
+## Test and build
 
 ```bash
-tsx scripts/generate-marketplace-json.ts .claude-plugin/marketplace.json out/marketplace.json
-```
-
-Claude Code validation workflow:
-
-```bash
-claude plugin validate .
-/plugin marketplace add ./path/to/llm-skills
-/plugin install shared-skills@llm-skills
-/plugin install ci-cd@llm-skills
-```
-
-## Build and deploy
-
-```bash
+npm test
 npm run build
 ```
 
-Push to `main` or publish a release tag and GitHub Actions will:
-
-1. build the static site,
-2. generate `.claude-plugin/marketplace.json`,
-3. generate `out/rss.xml`,
-4. copy hosted artifacts into `out/`, and
-5. publish the site to GitHub Pages.
-
-Publishing a release tag also creates a GitHub Release whose notes are extracted from the matching `CHANGELOG.md` section.
-
-Set `GITHUB_TOKEN` during local or CI builds to reduce GitHub API rate-limit issues.
-
-## Configuration
+## Marketplace source of truth
 
 Marketplace, plugin, and RSS feed source configuration is centralized in `catalog.json`.
 
-## Release feed
+- The website reads the marketplace title, description, version, and owner information from `catalog.json`.
+- Marketplace JSON generation uses `catalog.json` plus upstream plugin metadata.
+- Feed content is sourced from the repositories listed in `catalog.json`.
 
-The site publishes a static RSS 2.0 feed that aggregates released changelog entries from
-the configured skill-source repositories.
-
-- Output URL: `https://alisonaquinas.github.io/llm-skills/rss.xml`
-- Build command: `npm run rss:generate -- out/rss.xml`
-- Feed content is sourced from the repositories listed in `catalog.json`
-
-## Adding a new skill source repo
+## Adding a new plugin or feed source
 
 1. Add the plugin entry in `catalog.json` if it should appear in the marketplace listing.
 2. Add or enable the matching feed source entry in `catalog.json` if it should appear in the combined RSS feed.
-3. Ensure the upstream repo has a Keep a Changelog style `CHANGELOG.md`.
-4. Ensure the upstream repo dispatches `plugin-updated` to `alisonaquinas/llm-skills` on release/tag publish.
-5. Push a release and confirm the deployed site includes the new source in `rss.xml`.
-
-## License
-
-MIT - © 2026 Alison Aquinas
+3. Ensure the source repository publishes a Keep a Changelog compatible `CHANGELOG.md`.
+4. Ensure the source repository dispatches `plugin-updated` to `llm-skills` on release publication.
