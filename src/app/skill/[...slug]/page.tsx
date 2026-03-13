@@ -10,13 +10,22 @@
  * - route parsing and plugin lookup live in src/lib
  * - page composition remains thin and delegates business rules outward
  */
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
+import StructuredData from "@/components/StructuredData";
 import { findPluginByRepo, getPluginRepoUrl, type PluginConfig } from "@/lib/catalog";
 import { getPluginInstallCommand, getSkillInvocation } from "@/lib/commands";
 import { getAllSkills, getSkillDetail } from "@/lib/github";
 import { createSkillRouteParams, parseSkillRoute } from "@/lib/routes";
+import {
+  buildSkillDescription,
+  buildSkillStructuredData,
+  buildSkillTitle,
+  buildSkillUrl,
+  getSocialPreviewImageUrl,
+} from "@/lib/seo";
 
 /**
  * Generates all static route parameters for published skill pages.
@@ -77,6 +86,7 @@ export default async function SkillPage({ params }: PageProps) {
 
   return (
     <div className="max-w-3xl">
+      <StructuredData data={buildSkillStructuredData(skill)} />
       <nav className="mb-6 flex items-center gap-2 text-sm text-gray-400">
         <Link href="/" className="hover:text-gray-700">
           Marketplace
@@ -190,11 +200,59 @@ export default async function SkillPage({ params }: PageProps) {
  * Generates page metadata for the selected skill route.
  *
  * @param params Deferred route parameters for the active skill page.
- * @returns A route-specific page title for static metadata generation.
+ * @returns Route-specific metadata for the selected skill page.
  */
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const route = parseSkillRoute(resolvedParams.slug);
-  const skillName = route?.skillName ?? "Skill";
-  return { title: `${skillName} — Claude Plugin Marketplace` };
+  if (!route) {
+    return {
+      title: buildSkillTitle("Skill"),
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const plugin = findPluginByRepo(route.owner, route.repo);
+  if (!plugin) {
+    return {
+      title: buildSkillTitle(route.skillName),
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const skill = await getSkillDetail(plugin, route.skillName);
+  const description = buildSkillDescription(plugin, route.skillName);
+  const canonicalUrl = buildSkillUrl(route.owner, route.repo, route.skillName);
+  const isIndexable = skill.files.length > 0 || Boolean(skill.readme);
+
+  return {
+    title: buildSkillTitle(route.skillName),
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: isIndexable,
+      follow: isIndexable,
+    },
+    openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title: buildSkillTitle(route.skillName),
+      description,
+      images: [getSocialPreviewImageUrl()],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: buildSkillTitle(route.skillName),
+      description,
+      images: [getSocialPreviewImageUrl()],
+    },
+  };
 }

@@ -57,6 +57,14 @@ tests/                 # Unit tests organized separately from runtime modules
 - Update documentation comments whenever behavior, public contracts, or module responsibilities change.
 - Treat documentation depth as part of the repo's maintainability standard, not as optional polish.
 
+## SEO expectations
+
+- `catalog.json` owns canonical site identity, base URLs, and publisher metadata for SEO helpers.
+- Every public route must define canonical metadata and should reuse shared SEO helpers rather than hard-coding URLs.
+- New public pages must be evaluated for sitemap coverage, robots behavior, Open Graph/Twitter metadata, and structured data.
+- Structured data should be server-rendered, deterministic at build time, and derived from existing catalog or fetched skill data.
+- Public SEO assets such as preview images, `robots.txt`, `sitemap.xml`, and feed discovery links must stay aligned with the GitHub Pages base path.
+
 ## Adding a new skill source repo
 
 Update `catalog.json`, not hard-coded arrays in application code.

@@ -10,10 +10,43 @@
  * - delegates aggregation logic to src/lib/marketplace
  * - keeps JSX composition local and avoids inline business transformations
  */
+import type { Metadata } from "next";
 import InstallBanner from "@/components/InstallBanner";
+import StructuredData from "@/components/StructuredData";
 import SkillGrid from "@/components/SkillGrid";
 import { MARKETPLACE } from "@/lib/catalog";
 import { getMarketplacePageData } from "@/lib/marketplace";
+import {
+  buildCollectionPageStructuredData,
+  buildPluginItemListStructuredData,
+  getHomeDescription,
+  getHomeUrl,
+  getSocialPreviewImageUrl,
+} from "@/lib/seo";
+
+/**
+ * Route metadata for the marketplace landing page.
+ */
+export const metadata: Metadata = {
+  title: MARKETPLACE.title,
+  description: getHomeDescription(),
+  alternates: {
+    canonical: getHomeUrl(),
+  },
+  openGraph: {
+    type: "website",
+    url: getHomeUrl(),
+    title: MARKETPLACE.title,
+    description: getHomeDescription(),
+    images: [getSocialPreviewImageUrl()],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: MARKETPLACE.title,
+    description: getHomeDescription(),
+    images: [getSocialPreviewImageUrl()],
+  },
+};
 
 /**
  * Renders the statically generated marketplace home page.
@@ -25,13 +58,26 @@ export default async function MarketplacePage() {
 
   return (
     <div>
+      <StructuredData
+        data={[
+          buildCollectionPageStructuredData(),
+          buildPluginItemListStructuredData(
+            pluginSummaries.map(({ plugin, meta, skillCount }) => ({
+              plugin,
+              description: meta?.description ?? plugin.siteDescription,
+              skillCount,
+            }))
+          ),
+        ]}
+      />
       <InstallBanner />
 
       <section className="mb-8">
         <h1 className="mb-2 text-3xl font-bold text-gray-900">{MARKETPLACE.title}</h1>
         <p className="text-lg text-gray-500">
-          This marketplace publishes two installable Claude Code plugins and lets you browse the
-          skills bundled inside each one.
+          This marketplace publishes two installable Claude Code plugins, exposes their bundled
+          skills as static searchable pages, and ships machine-readable artifacts like
+          marketplace.json, rss.xml, and sitemap.xml for discovery.
         </p>
       </section>
 

@@ -10,4 +10,5 @@ export * from "./commands";
 export * from "./github";
 export * from "./marketplace";
 export * from "./routes";
+export * from "./seo";
 export * from "./skills";

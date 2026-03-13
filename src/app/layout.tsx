@@ -12,15 +12,67 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
+import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 import { MARKETPLACE, PLUGINS, getPluginRepoUrl } from "@/lib/catalog";
+import {
+  SEO_KEYWORDS,
+  buildOrganizationStructuredData,
+  buildWebsiteStructuredData,
+  getHomeUrl,
+  getRssUrl,
+  getSocialPreviewImageUrl,
+} from "@/lib/seo";
 
 /**
  * Static metadata used by Next.js during build and export.
  */
 export const metadata: Metadata = {
+  metadataBase: new URL(MARKETPLACE.siteUrl),
   title: MARKETPLACE.title,
   description: MARKETPLACE.description,
+  applicationName: MARKETPLACE.title,
+  creator: MARKETPLACE.owner.name,
+  publisher: MARKETPLACE.owner.name,
+  keywords: SEO_KEYWORDS,
+  alternates: {
+    canonical: getHomeUrl(),
+    types: {
+      "application/rss+xml": getRssUrl(),
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    siteName: MARKETPLACE.title,
+    url: getHomeUrl(),
+    title: MARKETPLACE.title,
+    description: MARKETPLACE.description,
+    images: [
+      {
+        url: getSocialPreviewImageUrl(),
+        width: 1200,
+        height: 630,
+        alt: `${MARKETPLACE.title} social preview`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: MARKETPLACE.title,
+    description: MARKETPLACE.description,
+    images: [getSocialPreviewImageUrl()],
+  },
 };
 
 /**
@@ -33,6 +85,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen bg-gray-50">
+        <StructuredData
+          data={[buildOrganizationStructuredData(), buildWebsiteStructuredData()]}
+        />
         <header className="sticky top-0 z-10 border-b border-gray-200 bg-white">
           <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
             <Link href="/" className="flex items-center gap-2 text-gray-900 no-underline">
@@ -53,6 +108,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   {plugin.repo} ↗
                 </a>
               ))}
+              <a href={getRssUrl()} className="hover:text-gray-900">
+                rss.xml ↗
+              </a>
             </nav>
           </div>
         </header>
