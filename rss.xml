@@ -101,6 +101,15 @@
 - fully self-contained the release workflow by provisioning `jq` explicitly and aligned the repo-local release guide with the actual automated release behavior, including optional marketplace dispatch</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.3.3</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.3.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.3</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.3.3 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Expanded the marketplace skill icon matcher so doc-skills entries pick up the intended icons more reliably, including Markdown-related skills that previously fell through to a false match.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.3.2</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.3.2</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.2</guid>
