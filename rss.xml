@@ -156,6 +156,18 @@
 - Marketplace skill cards now collapse duplicate skill names to one preferred entry, favoring more specific plugin repos over `shared-skills` when the same skill exists in multiple sources.</pre>]]></description>
     </item>
     <item>
+      <title>Software Design Skills v1.1.3</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.1.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.1.3</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.1.3 release notes.</p>
+<h3>Fixed</h3>
+<pre>- corrected README skill count from 107 to 114 and added Design Methodology skills section
+  documenting the seven skills added in v1.1.0 (bdd, tdd, ddd, dependency-injection,
+  event-sourcing, idd, pdd) that were missing from the skill families table
+- escaped C# heading in `design-patterns/references/language-examples.md` to pass markdown linting</pre>]]></description>
+    </item>
+    <item>
       <title>Software Design Skills v1.1.0</title>
       <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.1.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-software-design@1.1.0</guid>
@@ -876,17 +888,6 @@
 <pre>- `LICENSE.md`: added author name (Alison Aquinas) to copyright line
 - `.claude-plugin/plugin.json`: set `author.name` to Alison Aquinas; corrected `version` to match git tag
 - `AGENTS.md`: added Versioning and Releases section — documents that `plugin.json` version must match the git tag and that `CHANGELOG.md` must be updated before every release</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v0.1.0</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v0.1.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@0.1.0</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v0.1.0 release notes.</p>
-<h3>Added</h3>
-<pre>- Initial repository setup with plugin scaffolding
-- Configuration files for Claude Code and Codex integration
-- Documentation framework for skills</pre>]]></description>
     </item>
   </channel>
 </rss>
