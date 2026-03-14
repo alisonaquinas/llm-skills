@@ -161,6 +161,9 @@ const ICON_MAP: Record<string, string> = {
   "od": "🗂️",
   "ar": "📚",
 
+  // ── Raw document structure (last-resort skill) ───────────────────────────
+  "raw-document": "🗜️",
+
   // ── Document formats & markup ────────────────────────────────────────────
   // Flavored-markdown variants must come before both "markdown" and brand roots
   // so the longer key wins (e.g. "github-flavored-markdown" > "markdown" > "github").
