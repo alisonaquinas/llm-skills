@@ -8,6 +8,15 @@
     <lastBuildDate>Sat, 14 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CI/CD Skills v1.1.2</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.2</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.1.2 release notes.</p>
+<h3>Fixed</h3>
+<pre>- inserted the required blank line in `AGENTS.md` and removed the unused import from `scripts/verify_built_zips.py` so the normalized CI and release gates pass their markdown and Python lint steps on GitHub</pre>]]></description>
+    </item>
+    <item>
       <title>CI/CD Skills v1.1.1</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.1</link>
       <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.1</guid>
@@ -20,6 +29,16 @@
 - kept `linting/` and `validation/` shell entrypoints as compatibility wrappers around the new Python baseline for one release cycle
 - aligned the public repo and plugin identity on `llm-ci-dev` so plugin metadata, install examples, and human-facing docs now match the actual repo name and ZIP archive root
 - fully self-contained the release workflow by provisioning `jq` explicitly and updated the release guide to match the automated `make test` + `make all` release path and optional marketplace dispatch behavior</pre>]]></description>
+    </item>
+    <item>
+      <title>Doc Skills v0.1.1</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.1.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.1.1</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v0.1.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- added release-time Node and lint/tool provisioning to `.github/workflows/release.yml` so tag releases run the same `make test` gate successfully on GitHub-hosted runners
+- restored trailing newlines in the newly added skill agent manifests and wrapper scripts, and removed the unused import from `scripts/verify_built_zips.py`, so the CI YAML and Python lint jobs pass for the text-first publishing and diagram skills</pre>]]></description>
     </item>
     <item>
       <title>Doc Skills v0.1.0</title>
@@ -42,6 +61,15 @@
 - `.gitignore`: ignore repo-local scratch directories and transient `tmp*/` artifacts so failed local temp cleanup does not pollute git status.</pre>]]></description>
     </item>
     <item>
+      <title>Shared Skills v1.6.3</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.3</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.6.3 release notes.</p>
+<h3>Fixed</h3>
+<pre>- restored trailing newlines in the `curl` agent manifests and removed an unused import from `scripts/verify_built_zips.py` so both the CI YAML job and the Python lint job pass on GitHub</pre>]]></description>
+    </item>
+    <item>
       <title>Shared Skills v1.6.2</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.2</link>
       <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.2</guid>
@@ -53,6 +81,15 @@
 - renamed the primary GitHub Actions quality workflow to `CI` in `.github/workflows/ci.yml` and aligned release automation to run `make test`, build `built/*.zip`, attach artifacts, and skip marketplace dispatch cleanly when the token is missing
 - kept `linting/` and `validation/` shell entrypoints as compatibility wrappers around the new Python baseline for one release cycle
 - fully self-contained the release workflow by provisioning `jq` explicitly and aligned the repo-local release guide with the actual automated release behavior, including optional marketplace dispatch</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.1.3</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.3</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.1.3 release notes.</p>
+<h3>Fixed</h3>
+<pre>- corrected the AGENTS release-note spacing, promoted the reference docs to top-level headings for markdownlint, and removed the unused import from `scripts/verify_built_zips.py` so the repo passes the new CI and release lint gates on GitHub</pre>]]></description>
     </item>
     <item>
       <title>Software Design Skills v0.1.2</title>
