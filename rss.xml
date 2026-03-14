@@ -123,6 +123,179 @@
 - Marketplace skill cards now collapse duplicate skill names to one preferred entry, favoring more specific plugin repos over `shared-skills` when the same skill exists in multiple sources.</pre>]]></description>
     </item>
     <item>
+      <title>Software Design Skills v1.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.1.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- seven new design methodology skills:
+  - `bdd` — Behavior-driven development practices and workflows
+  - `tdd` — Test-driven development methodology and patterns
+  - `ddd` — Domain-driven design and strategic modeling
+  - `dependency-injection` — Dependency injection patterns and practices
+  - `event-sourcing` — Event sourcing architecture and event stores
+  - `idd` — Interface-driven development principles
+  - `pdd` — Property-driven development and generative testing</pre>
+<h3>Fixed</h3>
+<pre>- resolved all markdown linting violations (48 errors across code-smells, semantic-versioning, solid, well-documented skills)
+- converted bold section headers to proper markdown headings in `code-smells/smell-catalog.md`
+- added blank lines around headings and lists per MD022/MD032 standards
+- configured markdownlint to allow intentional blank-line spacing in reference documentation</pre>
+<h3>Changed</h3>
+<pre>- updated AGENTS.md with explicit release process gates: lint → test → validate → build
+- all 257 markdown files now pass linting (0 errors)
+- repository now contains 114 skills (up from 107)</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.0.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.0.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.0.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.0.0 release notes.</p>
+<h3>Added</h3>
+<pre>- expanded `design-patterns` skill with richer SKILL.md, updated `pattern-guide.md`,
+  and new `references/language-examples.md` (Python, TypeScript, JavaScript, C, C++, C#, Rust)
+- expanded `oop` skill with richer SKILL.md, updated `modeling.md`,
+  and new `references/language-examples.md` covering the same 7 language family
+- expanded `solid` skill with richer SKILL.md, updated `principles.md`,
+  and new `references/language-examples.md`
+- expanded `code-smells` skill with richer SKILL.md, updated `smell-catalog.md`,
+  and new `references/language-examples.md`
+- moved `well-documented` bash test suites to `tests/bash/well-documented/`
+  so they run alongside existing Python tests under the repo test gate</pre>
+<h3>Changed</h3>
+<pre>- bumped major version to 1.0.0 — public API (skill names, front matter, agents YAML
+  structure) is now considered stable; future breaking changes will increment MAJOR</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.5.1</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.5.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.5.1</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.5.1 release notes.</p>
+<h3>Added</h3>
+<pre>- added five helper scripts to `well-documented`:
+  - `scripts/audit-docs.sh` — PASS/WARN/FAIL/SKIP scan with percentage score;
+    includes M01/M02 markdownlint checks
+  - `scripts/init-docs.sh` — bootstrap README, AGENTS.md, CLAUDE.md, CONCEPTS.md,
+    CHANGELOG.md, and `.markdownlint.yaml` from templates; never overwrites existing files
+  - `scripts/normalize-docs.sh` — non-destructive gap-filling driven by audit output
+  - `scripts/add-file-headers.sh` — prepend language-appropriate headers to undocumented
+    code files across 18+ languages; detects existing headers and skips them
+  - `scripts/check-markdownlint.sh` — runs markdownlint-cli2 with auto-resolved project
+    config; falls back to bundled base config
+- added `scripts/lib-common.sh` — shared utilities (colour output, counters, exclusion
+  detection, template rendering, header detection)
+- added four test suites in `tests/`:
+  - `tests/test-init-docs.sh` — 9 tests covering creation, idempotency, force-template,
+    per-directory bootstrapping, and excluded-directory skipping
+  - `tests/test-audit-docs.sh` — 12 tests covering FAIL/WARN detection, SCORE line,
+    excluded-directory handling, and markdownlint config check
+  - `tests/test-add-file-headers.sh` — 8 tests covering header generation per language,
+    idempotency for existing headers, and dry-run mode
+  - `tests/test-check-markdownlint.sh` — 6 tests (auto-skipped when tool absent)
+    covering pass/fail detection, auto-fix, bundled config fallback
+- added `tests/lib-test.sh` — minimal test framework with `assert_eq`, `assert_contains`,
+  `assert_file_exists`, `assert_exit_code`, and `test_summary`
+- added `tests/run-all-tests.sh` — runs all four suites and reports a pass/fail summary
+- added three document templates in `assets/templates/`:
+  `README.md.tmpl`, `AGENTS.md.tmpl`, `CONCEPTS.md.tmpl`
+- added `assets/config/.markdownlint.yaml` — commented base markdownlint config with
+  sensible defaults (MD013 line-length disabled, MD026/MD033 disabled, MD040 enabled)</pre>
+<h3>Changed</h3>
+<pre>- updated `SKILL.md` with Scripts table, Assets table, Markdownlint Requirement section
+  (all Markdown must pass; project root must have a config), and Existing File Formatting
+  Takes Precedence section (heading style, table style, list style, fence style)
+- updated `references/audit-checklist.md` with M-series markdownlint checklist (M01–M04)</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.5.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.5.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.5.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.5.0 release notes.</p>
+<h3>Added</h3>
+<pre>- added `well-documented` skill with six commands (`init-docs`, `audit-docs`, `normalize-docs`,
+  `add-file-headers`, `add-docstrings`, `check-concepts`) that audit, initialize, and normalize
+  repository documentation to a consistent standard
+- added `references/structure-standard.md` defining required files at every level (README.md,
+  AGENTS.md, CLAUDE.md, CONCEPTS.md, docs/), PlantUML as the preferred diagramming tool for
+  human-centered documents, and the full AGENTS.md and CONCEPTS.md structural standards
+- added `references/file-headers.md` with file-level header templates for 12 languages
+  (Python, TypeScript/JavaScript, Java, C/C++, C#, Go, Ruby, Rust, Kotlin, Swift, Bash, SQL)
+  and docstring depth guidance by symbol type
+- added `references/agents-md-guide.md` with authoring rules for AI-navigable AGENTS.md files
+  including required sections, anti-patterns, formatting rules, and sync obligations
+- added `references/audit-checklist.md` with a scored rubric (PASS/WARN/FAIL/SKIP) across
+  root-level, per-directory, code-file, and docs-folder criteria</pre>
+<h3>Changed</h3>
+<pre>- updated `README.md` to list `semantic-versioning` and `well-documented` in the design and
+  review skills table; updated total skill count from 105 to 107</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.4.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.4.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.4.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.4.0 release notes.</p>
+<h3>Added</h3>
+<pre>- added `semantic-versioning` skill with `set-version` and `bump-version` commands
+  that validate SemVer 2.0.0 strings, update all version files, promote the
+  CHANGELOG Unreleased block, commit, and create an annotated git tag
+- added `references/spec.md` with the complete SemVer 2.0.0 specification
+  (all 12 clauses, BNF grammar, precedence rules, and FAQ)
+- added `references/git-tagging.md` covering annotated vs lightweight tags,
+  push strategy, retag policy, release CI hooks, and a consistency checklist
+- added `references/version-files.md` with version file discovery and update
+  patterns for Node.js, Python, Rust, Java, .NET, Go, Ruby, PHP, and
+  plain-text VERSION files</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.3.1</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.3.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.3.1</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.3.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- renamed three docstring skill directories to match their best-practice counterparts:
+  `c-plus-plus-docstrings` → `cpp-docstrings`,
+  `pl-sql-docstrings` → `plsql-docstrings`,
+  `x-plus-plus-docstrings` → `xpp-docstrings`
+- updated `SKILL.md` name fields, agent YAML `default_prompt` references, and catalog
+  docs (`docs/docstring-skills.md`, `docs/language-skill-matrix.md`) to reflect the new names</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.3.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.3.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.3.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.3.0 release notes.</p>
+<h3>Added</h3>
+<pre>- merged the language-specific `[language]-best-practice` and `[language]-docstrings` branches into one combined repository
+- added `docs/language-skill-matrix.md` to align each ranked language across the two generated skill families</pre>
+<h3>Changed</h3>
+<pre>- normalized the generated language skills to a common structure and higher-detail reference depth across best-practice and docstring families
+- expanded the five core design-review skills so they match the richer structure used by the generated language skills
+- updated `README.md`, `INSTALL.md`, and `AGENTS.md` to describe the combined 105-skill catalog and maintenance expectations
+- updated `.claude-plugin/plugin.json` for the merged catalog release</pre>
+<h3>Removed</h3>
+<pre>- removed cached and built artifacts from the tracked source tree so packaging starts from clean source content</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.2.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.2.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.2.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.2.0 release notes.</p>
+<h3>Added</h3>
+<pre>- added 50 language-specific `[language]-docstrings` skills covering the supplied top-50 programming-language list, with references to the dominant machine-readable source documentation convention for each language
+- added `docs/docstring-skills.md` as a catalog of the new language skills</pre>
+<h3>Changed</h3>
+<pre>- updated `README.md` to summarize the expanded catalog and point at the docstring-skill index
+- updated `INSTALL.md` to keep the installation steps aligned with the larger generated catalog</pre>]]></description>
+    </item>
+    <item>
       <title>Software Design Skills v0.1.3</title>
       <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.3</link>
       <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.3</guid>
@@ -138,11 +311,7 @@
       <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Software Design Skills v0.1.2 release notes.</p>
 <h3>Changed</h3>
-<pre>- standardized the repo on a Make-first build and validation workflow: `make lint`, `make test`, `make build`, `make verify`, and `make all`
-- added repo-owned Python packaging helpers and stdlib-only tests so ZIP verification and skill checks behave consistently across Windows-backed WSL and GitHub Actions
-- renamed the primary GitHub Actions quality workflow to `CI` in `.github/workflows/ci.yml` and aligned release automation to run `make test`, build `built/*.zip`, attach artifacts, and skip marketplace dispatch cleanly when the token is missing
-- kept `linting/` and `validation/` shell entrypoints as compatibility wrappers around the new Python baseline for one release cycle
-- fully self-contained the release workflow by provisioning `jq` explicitly and updated the repo-local release guide to match the actual release automation and optional marketplace dispatch behavior</pre>]]></description>
+<pre>- standardized the repo on a Make-first build and validation workflow: `make lint`, `make test`, `make build`, `make verify`, and `make all`</pre>]]></description>
     </item>
     <item>
       <title>Software Design Skills v0.1.1</title>
@@ -150,11 +319,17 @@
       <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.1</guid>
       <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Software Design Skills v0.1.1 release notes.</p>
-<h3>Added</h3>
-<pre>- Initial repository scaffold for software design skills.
-- Seed skills for SOLID, object-oriented design, design patterns, software architecture, and code smells.</pre>
 <h3>Fixed</h3>
-<pre>- `.github/workflows/release.yml`: move marketplace token handling into job env and skip the dispatch step cleanly when `MARKETPLACE_DISPATCH_TOKEN` is not configured.</pre>]]></description>
+<pre>- aligned build artifacts with the repository root so packaged ZIPs preserve `llm-software-design/skills/&lt;skill&gt;/...`</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v0.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.0</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v0.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- initial cross-compatible software design skill repository with core design-review skills and packaging automation</pre>]]></description>
     </item>
     <item>
       <title>CI/CD Skills v1.1.0</title>
@@ -833,188 +1008,6 @@
 - Integrated with v1.4.1 linting and validation system
 - All 45 skills pass structural linting with zero violations
 - All 269 markdown files pass linting with zero errors</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.4.1</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.0...v1.4.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.1</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.4.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- **All 264 markdown files now pass linting** — Resolved all 131 markdownlint errors
-  - Auto-fixed 117 errors: blank lines around lists/code fences, multiple consecutive blank lines
-  - Manual fixes: Added language specifications to 5 code blocks
-  - Config update: Disabled MD024 (no-duplicate-heading) for CHANGELOG.md — expected per-version duplication
-  - Configuration: Updated `.markdownlint-cli2.jsonc` to reflect best practices</pre>
-<h3>Technical Details</h3>
-<pre>- Installed `markdownlint-cli2 v0.21.0` for comprehensive markdown validation
-- Total files linted: 264 with 0 errors
-- All fixes maintain semantic correctness and improve code block readability</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.4.0</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.2.0...v1.4.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.0</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.4.0 release notes.</p>
-<h3>Added</h3>
-<pre>- **Comprehensive skill linting and validation system** — Automated quality gates for all skills
-  - **Linting system** (`linting/`) with 12 automated checks (L01–L12):
-    - Frontmatter validation, file structure, YAML field requirements, name format validation
-    - Required file presence (SKILL.md, agents/openai.yaml, agents/claude.yaml)
-    - Character limits, syntax validation, dangling reference detection
-    - Platform language detection, forbidden file detection, markdown linting
-  - **Validation system** (`validation/`) with 8-criterion LLM scoring rubric (V01–V08):
-    - Description effectiveness, intent router completeness, quick reference coverage
-    - Safety documentation, example quality, reference depth, LLM usability
-    - Alignment with Anthropic/OpenAI/academic prompt engineering standards
-  - **Two new agent-facing skills**:
-    - `skill-linting` — Lint skills for structural correctness
-    - `skill-validation` — Validate skill quality and effectiveness
-  - **Enhanced skill-creator** — Integrated Step 7 (Lint and Validate) workflow
-  - **Prompt Engineering Standards** — 7 principles added to skill-creator reference
-
-- **Documentation updates**:
-  - AGENTS.md: Added &quot;Linting and Validation&quot; section with command references
-  - README.md: Updated &quot;What&apos;s New&quot; for v1.3.0 features
-  - INSTALL.md: Added Quality Assurance section with linting and validation instructions
-  - New files: `linting/rules.md`, `validation/rubric.md`, `validation/public-references.md`</pre>
-<h3>Fixed</h3>
-<pre>- **6 known violations resolved**:
-  - `sqlite`: short_description reduced from 86 to 54 characters (both openai.yaml and claude.yaml)
-  - `7z`: short_description reduced from 75 to 43 characters
-  - `unzip`: short_description reduced from 71 to 38 characters
-  - `tar`: short_description reduced from 69 to 34 characters
-  - `openssl`: short_description reduced from 65 to 54 characters
-  - `git`: Removed second-person language (&quot;You are a Git expert&quot; → imperative form)
-
-- **All 48 skills now pass linting** with zero FAIL conditions (L01–L12 checks)</pre>
-<h3>Technical Details</h3>
-<pre>- Linting system: 4 files, 12 portable shell check functions
-- Validation system: 3 files, 8-criterion rubric with LLM guidance
-- Cross-platform compatibility: All scripts tested on macOS and Linux
-- Integration ready: Pre-commit hook instructions in AGENTS.md
-- 24 files modified/created for this release</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.2.0</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.1...v1.2.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.2.0</guid>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.2.0 release notes.</p>
-<h3>Added</h3>
-<pre>- **New `changelog` skill** — Maintain CHANGELOG.md files following [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format with structured entries, release workflows, and semantic versioning
-  - 4 comprehensive reference files: cheatsheet (format spec), install-and-setup (optional git-cliff), advanced-usage (CI/CD automation), troubleshooting (anti-patterns)
-  - Cross-platform install scripts for optional git-cliff integration (Bash and PowerShell)
-  - Safety guardrails: prevent vague entries, enforce entry types, maintain [Unreleased] section, validate dates and links
-  - Supports both manual curation and automated generation workflows</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.1.1</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.0...v1.1.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.1.1</guid>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.1.1 release notes.</p>
-<h3>Added</h3>
-<pre>- **Complete agent file coverage** — Added `claude.yaml` to all 13 core and CLI skills that were missing them
-  - Ensures cross-platform compatibility for Claude Code, Codex, and other Claude-based systems
-  - Skills: ag, aws, az, bash, docker, git, glab, markdownlint, powershell, skill-creator, sqlite, zoxide, zsh</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.1.0</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.1...v1.1.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.1.0</guid>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.1.0 release notes.</p>
-<h3>Added</h3>
-<pre>- **32 command-line utility skills upgraded to mature quality standard**:
-  - Restructured SKILL.md with 7-section format: Intent Router, Safety Notes table, Quick Command Reference
-  - Added 3 new reference files per skill: install-and-setup, advanced-usage, troubleshooting
-  - Added cross-platform install scripts for all 32 skills (install.sh for Bash, install.ps1 for PowerShell)
-  - Enhanced openai.yaml with tool-specific metadata and descriptions
-  - Tools upgraded: awk, diff, head, sed, tail, 7z, ar, tar, unzip, binwalk, cmp, file, hexdump, nm, objdump, od, readelf, strings, xxd, exiftool, mediainfo, pdfinfo, pdftotext, xmllint, openssl, ssh-client, ssh-keygen, rg, less, ldd, jq, tree</pre>
-<h3>Changed</h3>
-<pre>- **Skill naming standardization** — Removed unnecessary postfixes for cleaner names:
-  - ag-search → ag
-  - aws-cli → aws
-  - az-cli → az
-  - glab-cli → glab
-  - markdownlint-cli2-enforcer → markdownlint
-  - zoxide-navigation → zoxide
-
-- **SQLite skills consolidation** — Merged two complementary skills into single unified interface:
-  - sqlite-file-workbench + sqlite-file-workbench-advanced → sqlite
-  - Combined 8 reference files covering core workflows through advanced operations (diffing, sync, migrations, integration)
-  - Expanded Intent Router to guide users to appropriate references for their task level</pre>
-<h3>Fixed</h3>
-<pre>- **Frontmatter violations** — ssh-client and ssh-keygen: removed 6 extra prohibited fields (category, version, requires_git, safety_tier, execution_mode, labels)
-- **Markdown linting** — All 32 upgraded skills pass 100% linting validation (0 errors)</pre>
-<h3>Technical Details</h3>
-<pre>- All 32 command skills now follow the same architecture as mature skills (bash, powershell, zsh, git, docker)
-- Install scripts validated with bash -n syntax checking
-- 288 total files created/modified for skill upgrades
-- 84 files changed for naming standardization and consolidation
-- Documentation synchronized across README, CHANGELOG, INSTALL, and plugin.json</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.0.1</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.0...v1.0.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.0.1</guid>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.0.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- **Markdown linting compliance**: Added `.markdownlint-cli2.jsonc` configuration with sensible defaults
-- **44 markdown formatting issues**: Auto-fixed blank lines around code fences, headings, and lists across 88 files
-- **Code block language specification**: Added language identifiers to all 40 bare code blocks (using `text`, `output`, `bicep`)
-- **Emphasis-as-heading errors**: Converted 4 instances of bold text used as headings to proper markdown headings
-- **Duplicate heading**: Renamed duplicate &quot;Examples&quot; heading to &quot;Performance Examples&quot; in ag-patterns.md</pre>
-<h3>Technical Details</h3>
-<pre>- Markdownlint configuration disables overly strict rules: `line-length`, `no-trailing-punctuation`, `no-inline-html`, `table-column-style`
-- All markdown files now pass linting validation (0 errors)</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.0.0</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.0.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.0.0</guid>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.0.0 release notes.</p>
-<h3>Added</h3>
-<pre>- **11 cross-compatible tool skills**: ag, aws, az, bash, docker, git, glab, markdownlint, powershell, sqlite, zoxide
-- **Install scripts** for all 12 skills:
-  - `scripts/install.sh` (bash) with platform detection, distro-specific package managers (apt, dnf, pacman, zypper), and installation verification
-  - `scripts/install.ps1` (PowerShell) with Windows/macOS/Linux support and winget/scoop/package manager integration
-- **Install &amp; setup references** for all 12 skills:
-  - `references/install-and-setup.md` with platform-specific install commands, post-install configuration steps, verification commands, and troubleshooting
-- **Intent Router entries** in each skill&apos;s SKILL.md to guide users to install-and-setup references
-- **Cross-platform support**: macOS (Homebrew), Linux (Debian/Ubuntu, Fedora/RHEL, Arch, Alpine), Windows (WSL2, Git Bash, native)
-- **Skill-creator tool**: Framework for creating new cross-compatible skills with consistent structure
-- **Comprehensive reference documentation**: Each skill includes detailed guides for common workflows, troubleshooting, and platform-specific behavior
-- **Claude Code plugin registration**: `.claude-plugin/plugin.json` for Claude Code plugin discovery
-- **Codex compatibility**: `agents/openai.yaml` in each skill for Codex UI and cross-platform execution
-- **Installation guide** (INSTALL.md): Instructions for installing as Claude Code plugin or Codex skill source</pre>
-<h3>Technical Details</h3>
-<pre>- All `install.sh` scripts use `set -euo pipefail` for safety and error handling
-- Platform detection via `uname -s` and `/etc/os-release` for robust OS/distro identification
-- Tagged output format (`[INFO]`, `[OK]`, `[WARN]`, `[ERROR]`, `[HINT]`) for consistent, parseable script output
-- PowerShell scripts use `Set-StrictMode -Version Latest` and `$ErrorActionPreference = &apos;Stop&apos;` for safety
-- Pre-install checks: scripts verify if tools are already installed and skip installation if current version meets requirements
-- Post-install verification: all scripts confirm successful installation and print setup hints
-
-[Unreleased]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.6.1...HEAD
-[1.6.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.6.0...v1.6.1
-[1.5.3]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.2...v1.5.3
-[1.5.2]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.1...v1.5.2
-[1.5.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.4...v1.5.1
-[1.4.4]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.3...v1.4.4
-[1.4.3]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.2...v1.4.3
-[1.4.2]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.1...v1.4.2
-[1.4.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.0...v1.4.1
-[1.4.0]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.2.0...v1.4.0
-[1.2.0]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.1...v1.2.0
-[1.1.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.1...v1.1.0
-[1.0.1]: https://github.com/alisonaquinas/llm-shared-skills/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.0.0</pre>]]></description>
     </item>
   </channel>
 </rss>
