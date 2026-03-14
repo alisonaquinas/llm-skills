@@ -11,6 +11,7 @@ import Link from "next/link";
 import type { SkillEntry } from "@/lib/github";
 import { getSkillInvocation } from "@/lib/commands";
 import { getSkillIcon } from "@/lib/skills";
+import CopyButton from "./CopyButton";
 import { DownloadIcon } from "./SiteIcons";
 
 /**
@@ -28,6 +29,8 @@ interface SkillCardProps {
  * @returns A card with separate detail-navigation and download actions.
  */
 export default function SkillCard({ skill }: SkillCardProps) {
+  const invocation = getSkillInvocation(skill.repo, skill.name);
+
   return (
     <article className="group relative rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-brand-500 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-brand-400 sm:p-5">
       <Link
@@ -46,10 +49,23 @@ export default function SkillCard({ skill }: SkillCardProps) {
               {skill.repo.label}
             </span>
           </div>
-          <div className="mt-2 overflow-x-auto pb-1">
-            <p className="min-w-max whitespace-nowrap font-mono text-sm text-gray-500 dark:text-gray-300">
-              {getSkillInvocation(skill.repo, skill.name)}
-            </p>
+          <div className="mt-2 flex items-center gap-2">
+            <div className="min-w-0 flex-1 rounded-lg bg-gray-50 px-2.5 py-2 dark:bg-gray-800/80">
+              <p
+                className="truncate font-mono text-sm text-gray-500 dark:text-gray-300"
+                title={invocation}
+              >
+                {invocation}
+              </p>
+            </div>
+            <div className="relative z-10 shrink-0">
+              <CopyButton
+                text={invocation}
+                label="Copy command"
+                ariaLabel={`Copy install command for ${skill.name}`}
+                variant="icon"
+              />
+            </div>
           </div>
           <p className="mt-1 break-all text-xs text-gray-400 dark:text-gray-500">
             Plugin repo: {skill.repo.owner}/{skill.repo.repo}

@@ -128,6 +128,30 @@ export function DownloadIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 /**
+ * Presents a clipboard-style copy glyph for copy-to-clipboard actions.
+ *
+ * @param props Shared SVG presentation properties.
+ * @returns Copy icon sized by the caller.
+ */
+export function CopyIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+    </svg>
+  );
+}
+
+/**
  * Presents a hamburger menu icon for compact navigation affordances.
  *
  * @param props Shared SVG presentation properties.

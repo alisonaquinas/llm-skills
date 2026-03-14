@@ -35,11 +35,13 @@ export default function InstallBanner() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0 flex-1">
               <span className="block text-xs font-medium text-brand-600 dark:text-brand-300">1. Add marketplace (recommended)</span>
-              <div className="mt-2 overflow-x-auto rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
-                <code className="block min-w-max whitespace-nowrap text-sm text-gray-800 dark:text-gray-100">{marketplaceAddCommand}</code>
+              <div className="mt-2 flex items-center gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
+                <code className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100" title={marketplaceAddCommand}>
+                  {marketplaceAddCommand}
+                </code>
+                <CopyButton text={marketplaceAddCommand} label="Copy marketplace command" variant="icon" />
               </div>
             </div>
-            <CopyButton text={marketplaceAddCommand} label="Copy" />
           </div>
           <p className="mt-3 break-all text-xs text-gray-500 dark:text-gray-400">
             Marketplace repo: <code>{MARKETPLACE.githubRepo}</code>
@@ -56,11 +58,13 @@ export default function InstallBanner() {
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0 flex-1">
                       <div className="text-xs font-medium text-gray-500 dark:text-gray-400">{plugin.label}</div>
-                      <div className="mt-2 overflow-x-auto rounded-lg bg-white px-3 py-2 dark:bg-stone-950">
-                        <code className="block min-w-max whitespace-nowrap text-sm text-gray-800 dark:text-gray-100">{installCommand}</code>
+                      <div className="mt-2 flex items-center gap-2 rounded-lg bg-white px-3 py-2 dark:bg-stone-950">
+                        <code className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100" title={installCommand}>
+                          {installCommand}
+                        </code>
+                        <CopyButton text={installCommand} label={`Copy ${plugin.label} install command`} variant="icon" />
                       </div>
                     </div>
-                    <CopyButton text={installCommand} label="Copy" />
                   </div>
                 </div>
               );
@@ -74,11 +78,13 @@ export default function InstallBanner() {
               <span className="mb-0.5 block text-xs font-medium text-gray-400 dark:text-gray-500">
                 Marketplace URL (secondary option)
               </span>
-              <div className="mt-2 overflow-x-auto rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
-                <code className="block min-w-max whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">{marketplaceUrlAddCommand}</code>
+              <div className="mt-2 flex items-center gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
+                <code className="min-w-0 flex-1 truncate text-sm text-gray-600 dark:text-gray-300" title={marketplaceUrlAddCommand}>
+                  {marketplaceUrlAddCommand}
+                </code>
+                <CopyButton text={marketplaceUrlAddCommand} label="Copy marketplace URL command" variant="icon" />
               </div>
             </div>
-            <CopyButton text={marketplaceUrlAddCommand} label="Copy" />
           </div>
         </div>
       </div>
