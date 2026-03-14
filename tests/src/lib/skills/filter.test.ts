@@ -35,8 +35,8 @@ const ciRepo: PluginConfig = {
 
 /** Stable skill fixtures used by the filter helper tests. */
 const skills: SkillEntry[] = [
-  { name: "bash", path: "skills/bash", repo: sharedRepo },
-  { name: "github-ci", path: "skills/github-ci", repo: ciRepo },
+  { name: "bash", path: "skills/bash", repo: sharedRepo, downloadUrl: null },
+  { name: "github-ci", path: "skills/github-ci", repo: ciRepo, downloadUrl: null },
 ];
 
 describe("buildSkillSearchHaystack", () => {

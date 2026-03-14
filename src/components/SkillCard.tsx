@@ -5,11 +5,13 @@
  * - render skill metadata with consistent visual affordances
  * - construct the skill detail route link
  * - surface the canonical invocation command for the selected skill
+ * - expose a direct release-asset download action without nesting anchors
  */
 import Link from "next/link";
 import type { SkillEntry } from "@/lib/github";
 import { getSkillInvocation } from "@/lib/commands";
 import { getSkillIcon } from "@/lib/skills";
+import { DownloadIcon } from "./SiteIcons";
 
 /**
  * Props accepted by the skill card component.
@@ -23,15 +25,17 @@ interface SkillCardProps {
  * Renders a navigable skill card.
  *
  * @param skill Skill metadata and owning plugin information.
- * @returns A link-wrapped card for the skill grid.
+ * @returns A card with separate detail-navigation and download actions.
  */
 export default function SkillCard({ skill }: SkillCardProps) {
   return (
-    <Link
-      href={`/skill/${skill.repo.owner}/${skill.repo.repo}/${skill.name}`}
-      className="group block rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-brand-500 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-brand-400 sm:p-5"
-    >
-      <div className="flex items-start gap-3">
+    <article className="group relative rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-brand-500 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-brand-400 sm:p-5">
+      <Link
+        href={`/skill/${skill.repo.owner}/${skill.repo.repo}/${skill.name}`}
+        aria-label={`View details for ${skill.name}`}
+        className="absolute inset-0 rounded-xl"
+      />
+      <div className="relative flex items-start gap-3">
         <span className="mt-0.5 shrink-0 text-2xl">{getSkillIcon(skill.name)}</span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
@@ -51,15 +55,27 @@ export default function SkillCard({ skill }: SkillCardProps) {
             Plugin repo: {skill.repo.owner}/{skill.repo.repo}
           </p>
         </div>
-        <svg
-          className="mt-1 hidden h-4 w-4 shrink-0 text-gray-300 group-hover:text-brand-500 dark:text-gray-600 dark:group-hover:text-brand-300 sm:block"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+        <div className="relative z-10 mt-1 flex shrink-0 items-center gap-2">
+          {skill.downloadUrl ? (
+            <a
+              href={skill.downloadUrl}
+              aria-label={`Download ${skill.name}-skill.zip`}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition hover:border-brand-500 hover:text-brand-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-brand-400 dark:hover:text-brand-300"
+            >
+              <DownloadIcon className="h-4 w-4" />
+            </a>
+          ) : null}
+          <svg
+            className="hidden h-4 w-4 text-gray-300 group-hover:text-brand-500 dark:text-gray-600 dark:group-hover:text-brand-300 sm:block"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }

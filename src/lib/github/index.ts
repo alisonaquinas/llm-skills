@@ -8,10 +8,17 @@
 export type {
   GitHubContentFile,
   GitHubDirectoryItem,
+  GitHubRelease,
   PluginMeta,
   SkillDetail,
   SkillEntry,
 } from "./types";
 export { ghFetchJson, ghFetchText, decodeBase64Json } from "./client";
 export { getPluginMeta } from "./plugin-service";
-export { getAllSkills, getSkillDetail, listSkills } from "./skill-service";
+export {
+  buildSkillDownloadUrl,
+  getAllSkills,
+  getSkillDetail,
+  listSkills,
+  resolvePluginSkillsRoot,
+} from "./skill-service";

@@ -7,7 +7,17 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-## [Unreleased]
+## [1.3.2] - 2026-03-14
+
+### Added
+
+- Added direct GitHub release asset download links for individual skill ZIP bundles on marketplace cards and skill detail pages.
+
+### Changed
+
+- Extended marketplace skill discovery so plugins can publish skills from either `skills/` or the repository root, allowing `llm-doc-skills` to resolve cleanly alongside the other plugin repos.
+- Marketplace download links and plugin version badges now prefer the latest published GitHub release tag so direct asset links stay aligned with real release assets.
+- Marketplace skill cards now collapse duplicate skill names to one preferred entry, favoring more specific plugin repos over `shared-skills` when the same skill exists in multiple sources.
 
 ## [1.3.1] - 2026-03-13
 

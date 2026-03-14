@@ -33,6 +33,8 @@ export interface SkillEntry {
   path: string;
   /** Owning plugin configuration. */
   repo: import("@/lib/catalog").PluginConfig;
+  /** Direct GitHub release asset URL for the per-skill ZIP bundle when available. */
+  downloadUrl: string | null;
 }
 
 /** Full skill payload used by the skill detail page. */
@@ -47,6 +49,12 @@ export interface SkillDetail extends SkillEntry {
 export interface GitHubContentFile {
   /** Base64-encoded file contents returned by the contents API. */
   content: string;
+}
+
+/** Minimal GitHub release API shape for the latest published release. */
+export interface GitHubRelease {
+  /** Tag name for the published release, typically prefixed with v. */
+  tag_name: string;
 }
 
 /** Minimal GitHub contents API shape for directory listing entries. */

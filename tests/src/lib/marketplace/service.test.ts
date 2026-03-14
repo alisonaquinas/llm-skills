@@ -7,13 +7,18 @@
  */
 import { describe, expect, it } from "vitest";
 import type { PluginMeta, SkillEntry } from "@/lib/github";
-import { buildMarketplacePluginSummaries, countSkillsByPlugin } from "@/lib/marketplace";
+import {
+  buildMarketplacePluginSummaries,
+  countSkillsByPlugin,
+  preferDistinctSkills,
+} from "@/lib/marketplace";
 
 /** Stable skill fixtures for marketplace summary tests. */
 const skills: SkillEntry[] = [
   {
     name: "bash",
     path: "skills/bash",
+    downloadUrl: "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v1.0.0/bash-skill.zip",
     repo: {
       pluginName: "shared-skills",
       owner: "alisonaquinas",
@@ -27,6 +32,7 @@ const skills: SkillEntry[] = [
   {
     name: "git",
     path: "skills/git",
+    downloadUrl: "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v1.0.0/git-skill.zip",
     repo: {
       pluginName: "shared-skills",
       owner: "alisonaquinas",
@@ -59,5 +65,45 @@ describe("buildMarketplacePluginSummaries", () => {
     expect(summaries[0]?.skillCount).toBe(2);
     expect(summaries[0]?.meta?.version).toBe("1.0.0");
     expect(summaries[0]?.installCommand).toContain("/plugin install");
+  });
+});
+
+describe("preferDistinctSkills", () => {
+  /** Ensures duplicate skill names prefer the more specific plugin later in catalog order. */
+  it("keeps one preferred entry per skill name", () => {
+    const distinct = preferDistinctSkills([
+      ...skills,
+      {
+        name: "aws",
+        path: "skills/aws",
+        downloadUrl: "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v1.6.3/aws-skill.zip",
+        repo: {
+          pluginName: "shared-skills",
+          owner: "alisonaquinas",
+          repo: "llm-shared-skills",
+          label: "Shared Skills",
+          category: "shared-skills",
+          color: "bg-blue-100 text-blue-800",
+          siteDescription: "Shared",
+        },
+      },
+      {
+        name: "aws",
+        path: "skills/aws",
+        downloadUrl: "https://github.com/alisonaquinas/llm-ci-dev/releases/download/v1.1.2/aws-skill.zip",
+        repo: {
+          pluginName: "ci-cd",
+          owner: "alisonaquinas",
+          repo: "llm-ci-dev",
+          label: "CI/CD Skills",
+          category: "ci-cd",
+          color: "bg-emerald-100 text-emerald-800",
+          siteDescription: "CI",
+        },
+      },
+    ]);
+
+    expect(distinct.find((skill) => skill.name === "aws")?.repo.repo).toBe("llm-ci-dev");
+    expect(distinct.find((skill) => skill.name === "aws")?.downloadUrl).toContain("llm-ci-dev");
   });
 });

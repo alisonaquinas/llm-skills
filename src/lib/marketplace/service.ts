@@ -48,6 +48,37 @@ export function countSkillsByPlugin(skills: SkillEntry[]): Map<string, number> {
 }
 
 /**
+ * Collapses duplicate skill names so the marketplace card grid shows one preferred entry.
+ *
+ * Preference follows plugin catalog order from most specific to most general, which means
+ * later plugin entries win over earlier ones when they publish the same skill name.
+ *
+ * @param skills Flattened skill entries from all configured plugins.
+ * @returns Unique skill entries keyed by skill name.
+ */
+export function preferDistinctSkills(skills: SkillEntry[]): SkillEntry[] {
+  const pluginPriority = new Map(PLUGINS.map((plugin, index) => [plugin.repo, index]));
+  const preferredByName = new Map<string, SkillEntry>();
+
+  for (const skill of skills) {
+    const current = preferredByName.get(skill.name);
+    if (!current) {
+      preferredByName.set(skill.name, skill);
+      continue;
+    }
+
+    const currentPriority = pluginPriority.get(current.repo.repo) ?? -1;
+    const nextPriority = pluginPriority.get(skill.repo.repo) ?? -1;
+
+    if (nextPriority >= currentPriority) {
+      preferredByName.set(skill.name, skill);
+    }
+  }
+
+  return [...preferredByName.values()].sort((left, right) => left.name.localeCompare(right.name));
+}
+
+/**
  * Creates the summary models rendered by the marketplace landing page.
  *
  * @param skills Flattened skill entries from all plugins.
@@ -75,13 +106,14 @@ export function buildMarketplacePluginSummaries(
  * @returns Aggregated page data for the home route.
  */
 export async function getMarketplacePageData(): Promise<MarketplacePageData> {
-  const [allSkills, metas] = await Promise.all([
-    getAllSkills(),
-    Promise.all(PLUGINS.map(getPluginMeta)),
-  ]);
+  const metas = await Promise.all(PLUGINS.map(getPluginMeta));
+  const pluginMetaMap = new Map(
+    PLUGINS.map((plugin, index) => [`${plugin.owner}/${plugin.repo}`, metas[index] ?? null])
+  );
+  const allSkills = await getAllSkills(pluginMetaMap);
 
   return {
-    allSkills,
+    allSkills: preferDistinctSkills(allSkills),
     pluginSummaries: buildMarketplacePluginSummaries(allSkills, metas),
   };
 }

@@ -35,6 +35,7 @@ describe("createSkillRouteParams", () => {
     const skill = {
       name: "docs/codex",
       path: "skills/docs/codex",
+      downloadUrl: null,
       repo: {
         pluginName: "shared-skills",
         owner: "alisonaquinas",

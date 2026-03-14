@@ -86,6 +86,7 @@ For marketplace listing:
   "pluginName": "my-plugin",
   "owner": "your-github-username",
   "repo": "your-repo-name",
+  "skillsRoot": "skills",
   "label": "My Skills",
   "category": "my-skills",
   "color": "bg-violet-100 text-violet-800",
@@ -106,9 +107,11 @@ For RSS feed inclusion:
 }
 ```
 
-The upstream repo must have a `skills/` directory if it is a marketplace plugin, a
-Keep a Changelog style `CHANGELOG.md` if it should appear in RSS, and a release workflow
-that dispatches `plugin-updated` to `alisonaquinas/llm-skills`.
+The upstream repo must expose skill directories either under `skills/` or at the repository
+root via `"skillsRoot": "."`, ship a Keep a Changelog style `CHANGELOG.md` if it should appear
+in RSS, and publish per-skill ZIP assets named `{skillName}-skill.zip` from releases so direct
+download links resolve correctly. Release workflows should still dispatch `plugin-updated` to
+`alisonaquinas/llm-skills`.
 
 ## Development
 

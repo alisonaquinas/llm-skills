@@ -5,6 +5,7 @@ A static Next.js site and marketplace catalog for installable Claude Code plugin
 - [`shared-skills`](https://github.com/alisonaquinas/llm-shared-skills)
 - [`ci-cd`](https://github.com/alisonaquinas/llm-ci-dev)
 - [`software-design`](https://github.com/alisonaquinas/llm-software-design)
+- [`doc-skills`](https://github.com/alisonaquinas/llm-doc-skills)
 
 The website lets you browse the skills contained inside those plugins. The marketplace catalog at
 `.claude-plugin/marketplace.json` publishes the actual installable plugins.
@@ -54,6 +55,7 @@ https://alisonaquinas.github.io/llm-skills/rss.xml
 | `shared-skills` | [llm-shared-skills](https://github.com/alisonaquinas/llm-shared-skills) | Reusable Claude Code skills for common developer workflows and shared utilities |
 | `ci-cd` | [llm-ci-dev](https://github.com/alisonaquinas/llm-ci-dev) | Claude Code skills for CI/CD pipelines, release flows, and delivery automation |
 | `software-design` | [llm-software-design](https://github.com/alisonaquinas/llm-software-design) | Claude Code skills for software design, OOP, architecture, and maintainability guidance |
+| `doc-skills` | [llm-doc-skills](https://github.com/alisonaquinas/llm-doc-skills) | Claude Code skills for document authoring, publishing formats, Markdown hosts, and diagram workflows |
 
 ## Development
 
@@ -113,3 +115,4 @@ Marketplace, plugin, RSS feed, and branding configuration is centralized in `cat
 2. Add or enable the matching feed source entry in `catalog.json` if it should appear in the combined RSS feed.
 3. Ensure the source repository publishes a Keep a Changelog compatible `CHANGELOG.md`.
 4. Ensure the source repository dispatches `plugin-updated` to `llm-skills` on release publication.
+5. If the source repo publishes skills from the repository root instead of `skills/`, set `"skillsRoot": "."` in `catalog.json`.

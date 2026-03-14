@@ -5,5 +5,6 @@ export {
   buildMarketplacePluginSummaries,
   countSkillsByPlugin,
   getMarketplacePageData,
+  preferDistinctSkills,
 } from "./service";
 export type { MarketplacePageData, MarketplacePluginSummary } from "./service";

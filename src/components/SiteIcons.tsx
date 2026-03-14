@@ -103,6 +103,31 @@ export function RssIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 /**
+ * Presents a downward download glyph for release-asset actions.
+ *
+ * @param props Shared SVG presentation properties.
+ * @returns Download icon sized by the caller.
+ */
+export function DownloadIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M12 4v10" />
+      <path d="m8 10 4 4 4-4" />
+      <path d="M5 19h14" />
+    </svg>
+  );
+}
+
+/**
  * Presents a hamburger menu icon for compact navigation affordances.
  *
  * @param props Shared SVG presentation properties.

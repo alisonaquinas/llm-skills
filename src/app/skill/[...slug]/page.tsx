@@ -14,6 +14,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
+import { DownloadIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import { findPluginByRepo, getPluginRepoUrl, type PluginConfig } from "@/lib/catalog";
 import { getPluginInstallCommand, getSkillInvocation } from "@/lib/commands";
@@ -83,6 +84,7 @@ export default async function SkillPage({ params }: PageProps) {
   const installCommand = getPluginInstallCommand(plugin);
   const invokeCommand = getSkillInvocation(plugin, route.skillName);
   const pluginRepoUrl = getPluginRepoUrl(plugin);
+  const pluginRef = plugin.ref ?? "main";
 
   return (
     <div className="max-w-3xl">
@@ -110,7 +112,7 @@ export default async function SkillPage({ params }: PageProps) {
           </code>
           <span className="hidden sm:inline">·</span>
           <a
-            href={`${pluginRepoUrl}/tree/main/skills/${route.skillName}`}
+            href={`${pluginRepoUrl}/tree/${pluginRef}/${skill.path}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center gap-1 hover:text-brand-600 dark:hover:text-brand-300"
@@ -162,6 +164,16 @@ export default async function SkillPage({ params }: PageProps) {
             <pre className="min-w-max whitespace-nowrap font-mono text-sm text-green-400">{invokeCommand}</pre>
           </div>
         </div>
+
+        {skill.downloadUrl ? (
+          <a
+            href={skill.downloadUrl}
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700 transition hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70 sm:w-auto"
+          >
+            <DownloadIcon className="h-4 w-4" />
+            <span>Download {route.skillName}-skill.zip</span>
+          </a>
+        ) : null}
 
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm leading-6 text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
           This skill is bundled inside <strong className="text-gray-800 dark:text-white">{plugin.pluginName}</strong>.
