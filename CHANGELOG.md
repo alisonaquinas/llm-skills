@@ -7,6 +7,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.3.3] - 2026-03-14
+
+### Fixed
+
+- Expanded the marketplace skill icon matcher so doc-skills entries pick up the intended icons more reliably, including Markdown-related skills that previously fell through to a false match.
+
 ## [1.3.2] - 2026-03-14
 
 ### Added
