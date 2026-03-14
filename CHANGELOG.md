@@ -7,6 +7,32 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.3.6] - 2026-03-14
+
+### Fixed
+
+- Skill cards now respond to clicks anywhere on the card body (icon, name, badge, command area, padding) instead of only the border region. The absolute overlay link was previously rendered below the content div in stacking order and absorbed no clicks; adding `z-[1]` raises it above the content layer while keeping copy and download buttons accessible above it at `z-10`.
+
+## [1.3.5] - 2026-03-14
+
+### Added
+
+- Added a `raw-document` icon entry (🗜️) to the skill icon map, used by skills that work directly with OOXML and ODF ZIP packages at the schema level.
+
+## [1.3.4] - 2026-03-14
+
+### Added
+
+- Added an icon-only variant to `CopyButton` so copy affordances can be embedded inline without taking up extra vertical space.
+- Added a `CopyIcon` SVG component to `SiteIcons` for use by the icon-only copy button variant.
+- Added inline copy buttons to all install command surfaces in the `InstallBanner` (marketplace add, per-plugin install, and marketplace URL commands).
+- Added an inline copy button to each skill card's invocation command.
+
+### Changed
+
+- Install banner command rows now truncate long commands inside their container and show the full command as a tooltip, replacing the previous horizontally-scrollable overflow layout.
+- Skill card invocation commands now truncate with an ellipsis and surface the full command as a tooltip instead of scrolling horizontally.
+
 ## [1.3.3] - 2026-03-14
 
 ### Fixed
@@ -146,7 +172,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.6...HEAD
+[1.3.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.5...v1.3.6
+[1.3.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.4...v1.3.5
+[1.3.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.3...v1.3.4
+[1.3.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...v1.2.0
