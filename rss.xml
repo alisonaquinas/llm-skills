@@ -101,8 +101,41 @@
 - fully self-contained the release workflow by provisioning `jq` explicitly and aligned the repo-local release guide with the actual automated release behavior, including optional marketplace dispatch</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.3.6</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.5...v1.3.6</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.6</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.3.6 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Skill cards now respond to clicks anywhere on the card body (icon, name, badge, command area, padding) instead of only the border region. The absolute overlay link was previously rendered below the content div in stacking order and absorbed no clicks; adding `z-[1]` raises it above the content layer while keeping copy and download buttons accessible above it at `z-10`.</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.3.5</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.4...v1.3.5</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.5</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.3.5 release notes.</p>
+<h3>Added</h3>
+<pre>- Added a `raw-document` icon entry (🗜️) to the skill icon map, used by skills that work directly with OOXML and ODF ZIP packages at the schema level.</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.3.4</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.3...v1.3.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.4</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.3.4 release notes.</p>
+<h3>Added</h3>
+<pre>- Added an icon-only variant to `CopyButton` so copy affordances can be embedded inline without taking up extra vertical space.
+- Added a `CopyIcon` SVG component to `SiteIcons` for use by the icon-only copy button variant.
+- Added inline copy buttons to all install command surfaces in the `InstallBanner` (marketplace add, per-plugin install, and marketplace URL commands).
+- Added an inline copy button to each skill card&apos;s invocation command.</pre>
+<h3>Changed</h3>
+<pre>- Install banner command rows now truncate long commands inside their container and show the full command as a tooltip, replacing the previous horizontally-scrollable overflow layout.
+- Skill card invocation commands now truncate with an ellipsis and surface the full command as a tooltip instead of scrolling horizontally.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.3.3</title>
-      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.3.3</link>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.2...v1.3.3</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.3</guid>
       <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Marketplace v1.3.3 release notes.</p>
@@ -111,7 +144,7 @@
     </item>
     <item>
       <title>Marketplace v1.3.2</title>
-      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.3.2</link>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...v1.3.2</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.2</guid>
       <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Marketplace v1.3.2 release notes.</p>
@@ -607,7 +640,12 @@
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.6...HEAD
+[1.3.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.5...v1.3.6
+[1.3.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.4...v1.3.5
+[1.3.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.3...v1.3.4
+[1.3.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...v1.2.0
@@ -849,165 +887,6 @@
 <pre>- Initial repository setup with plugin scaffolding
 - Configuration files for Claude Code and Codex integration
 - Documentation framework for skills</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v0.0.1</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v0.0.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@0.0.1</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v0.0.1 release notes.</p>
-<h3>Added</h3>
-<h4>Platform CI/CD Workflow Skills (8 new skills)</h4>
-<pre>- **gitlab-ci** skill: Write and maintain GitLab CI pipelines
-  - 4 reference docs: pipeline-basics.md, runners-and-caching.md, testing-and-quality.md, variables-and-secrets.md
-  - Content: `.gitlab-ci.yml` structure, job anatomy, stages, runners, caching, artifacts, testing, quality gates, variables, secrets, CI variables, OIDC tokens
-
-- **gitlab-cd** skill: Deploy with GitLab CD environments and pipelines
-  - 4 reference docs: environments-and-deployments.md, deployment-targets.md, review-apps.md, release-and-versioning.md
-  - Content: Environment keyword, deployment tiers, protection rules, Kubernetes/AWS/GCP/Heroku deployments, review apps, releases, package registries
-
-- **github-ci** skill: Write and maintain GitHub Actions CI workflows
-  - 4 reference docs: workflow-basics.md, runners-and-caching.md, testing-patterns.md, security-and-secrets.md
-  - Content: Workflow YAML, event triggers, job anatomy, GitHub-hosted/self-hosted runners, matrix testing, caching, testing, code coverage, secrets, permissions
-
-- **github-cd** skill: Deploy with GitHub Actions CD workflows and OIDC
-  - 4 reference docs: environments-and-protection.md, cloud-deployments.md, oidc-and-auth.md, releases-and-packages.md
-  - Content: Environment protection, deployment approval, OIDC authentication, AWS/GCP/Azure/Kubernetes deployments, releases, container registries, artifact signing
-
-- **jenkins-ci** skill: Write Jenkins Declarative Pipeline CI stages
-  - 4 reference docs: declarative-pipeline.md, agents-and-workspaces.md, testing-and-reporting.md, shared-libraries.md
-  - Content: Declarative Pipeline structure, agent types, stages, steps, post conditions, parameters, tools, when conditions, testing, reporting, shared libraries
-
-- **jenkins-cd** skill: Deploy applications with Jenkins Pipeline stages
-  - 4 reference docs: deployment-stages.md, credentials-and-secrets.md, deployment-targets.md, strategies-and-rollback.md
-  - Content: Deployment stages, input approval, locking, credentials management, Kubernetes/AWS/Docker deployments, blue-green/canary strategies, rollback patterns
-
-- **travis-ci** skill: Write and maintain Travis CI build configuration
-  - 4 reference docs: build-lifecycle.md, matrix-and-environments.md, testing-patterns.md, caching-strategies.md
-  - Content: Build phases, language matrix, OS variants, environment variables, conditional builds, testing, caching, Docker layer caching
-
-- **travis-cd** skill: Deploy from Travis CI to cloud and registries
-  - 4 reference docs: deployment-providers.md, deployment-conditions.md, credential-management.md, release-automation.md
-  - Content: Deployment providers (Heroku, AWS S3, npm, PyPI, Docker, GitHub), conditional deployment, encrypted credentials, semantic versioning, releases</pre>
-<h4>Platform Runner/Agent Management Skills (4 new skills)</h4>
-<pre>- **gitlab-runner** skill: Install and manage GitLab Runner daemons
-  - 4 reference docs: installation.md, registration-and-config.md, executors.md, operations.md
-  - Content: Installation on Linux/Docker/Kubernetes/macOS/Windows, runner registration, auth tokens, config.toml anatomy, executor types (Shell, Docker, Kubernetes, SSH), health monitoring, log management, troubleshooting
-
-- **github-runner** skill: Install and manage GitHub Actions self-hosted runners
-  - 4 reference docs: installation.md, registration-and-config.md, arc-and-scaling.md, operations.md
-  - Content: Runner installation on Linux/macOS/Windows/Docker, JNLP launch, registration tokens, runner labels/groups, Actions Runner Controller (ARC) on Kubernetes, ephemeral runners, auto-scaling, operations
-
-- **jenkins-agent** skill: Install and manage Jenkins agents and nodes
-  - 4 reference docs: agent-types.md, installation-and-connection.md, cloud-and-dynamic-agents.md, operations.md
-  - Content: Agent types (SSH, JNLP, WebSocket JNLP, Docker Cloud, Kubernetes, built-in), agent.jar installation, SSH key setup, JNLP launch, Docker Cloud plugin, Kubernetes plugin with pod templates, CASC, operations
-
-- **travis-worker** skill: Configure Travis CI SaaS environments and manage travis-worker daemon
-  - 4 reference docs: saas-build-environments.md, enterprise-installation.md, enterprise-configuration.md, operations.md
-  - Content: SaaS environment selection (OS, dist, arch), package/container installation, custom build images, RabbitMQ connection, pool sizing, resource limits, worker groups, enterprise configuration, monitoring</pre>
-<h4>Platform Documentation Lookup Skills</h4>
-<pre>- **gitlab-docs** skill: Navigate docs.gitlab.com for CI/CD, runners, API, administration docs via WebFetch
-- **github-docs** skill: Navigate docs.github.com/en for Actions, REST API, Packages, Security docs via WebFetch
-- **jenkins-docs** skill: Navigate jenkins.io/doc for Declarative Pipeline, Shared Libraries, plugins, steps via WebFetch
-- **travis-ci-docs** skill: Navigate docs.travis-ci.com for .travis.yml reference, build stages, deployment via WebFetch</pre>
-<h4>Atlassian Documentation Lookup Skills (3 new skills)</h4>
-<pre>- **jira-docs** skill: Navigate Jira Cloud documentation at support.atlassian.com/jira-software-cloud and REST API v3
-  - 4 reference docs: navigation.md, quick-reference.md, jira-cloud-reference.md, api-reference.md
-  - Content: Jira Cloud product family overview, doc site structure, board/sprint/workflow/issue configuration, JQL syntax, REST API v3 endpoints, authentication, pagination, rate limiting
-
-- **atlassian-cli-docs** skill: Navigate Atlassian CLI (ACLI) documentation at developer.atlassian.com/cloud/acli
-  - 4 reference docs: navigation.md, quick-reference.md, command-reference.md, ci-integration.md
-  - Content: ACLI guides, installation, command tree (admin, jira, rovodev subcommands), CI pipeline integration patterns, output formatting, command chaining
-
-- **rovo-docs** skill: Navigate Atlassian Rovo documentation at support.atlassian.com/rovo
-  - 4 reference docs: navigation.md, quick-reference.md, rovo-dev-reference.md, agents-and-governance.md
-  - Content: Rovo Search/Chat/Agents features, Rovo Dev CLI commands, MCP server integration, IDE support (VS Code, Cursor), agent creation and governance, org administration</pre>
-<h4>Architecture &amp; Best Practices</h4>
-<pre>- **ci-architecture** skill: Design CI/CD pipelines using proven best practices (DORA metrics, DevSecOps, SLSA framework, platform engineering patterns)
-  - 4 reference docs: pipeline-design.md, security-practices.md, deployment-patterns.md, measurement.md
-  - Content: Canonical pipeline stages, test pyramid, branching strategies, artifact management, deployment patterns (blue-green, canary, rolling, GitOps, IaC), security practices, DORA metrics, observability, incident recovery</pre>
-<h4>Cloud &amp; General CLI Tools (4 skills migrated from llm-shared-skills)</h4>
-<pre>- **docker** skill: Build, run, and manage Docker containers and images
-  - 10 reference files + scripts and assets
-  - Content: Dockerfile authoring, image building, container lifecycle, networking, volumes, Docker Compose, registry operations, multi-stage builds, security best practices
-  - Cross-platform coverage: Linux, macOS, Windows, WSL2
-
-- **aws** skill: AWS CLI for cloud infrastructure operations
-  - 5 reference files + scripts
-  - Content: EC2, S3, CloudFormation, IAM, ECS, deployment patterns, credential management
-  - Cross-platform coverage: Linux, macOS, Windows, WSL2
-
-- **az** skill: Azure CLI for Azure resource management
-  - 5 reference files + scripts
-  - Content: Resource groups, VMs, container registries, AKS, app service deployments
-  - Cross-platform coverage: Linux, macOS, Windows, WSL2
-
-- **glab** skill: GitLab CLI for repository and pipeline operations
-  - 5 reference files + scripts
-  - Content: Issues, merge requests, pipelines, variables, CI/CD operations, authentication</pre>
-<h3>Previously Added</h3>
-<pre>- yaml-linting skill: Docker-based YAML linting with yamllint (pipelinecomponents/yamllint)
-- yaml-lsp skill: YAML Language Server in Docker for editor integration (node:lts-alpine + npm)
-- Initial plugin scaffold for CI/CD skills collection
-- Repository structure and documentation templates
-- Installation guides for Claude Code and Codex
-- AGENTS.md guidance for skill development
-- Linting system imported from llm-shared-skills with 12 validation rules (L01-L12)
-- Markdownlint configuration aligned with skill standards
-
----</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.4.3</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.2...v1.4.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.3</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.4.3 release notes.</p>
-<h3>Added</h3>
-<pre>- GitHub Actions `Lint` workflow (`.github/workflows/lint.yml`) — three parallel jobs:
-  - **Markdown**: `DavidAnson/markdownlint-cli2-action` with inline PR annotations
-  - **YAML**: `ibiqlik/action-yamllint` with inline PR annotations; new `.yamllint.yml` config
-  - **Skills**: per-skill `linting/lint-skill.sh` run with `::error::`/`::warning::` annotations,
-    job summary pass/fail table, and 14-day log artifact upload</pre>
-<h3>Fixed</h3>
-<pre>- `linting/lib/checks.sh`: replaced `eval`-based variable assignment in `_emit()` with
-  `printf -v` — prevents crash when L09 failure message contains single quotes
-- `skills/skill-creator/SKILL.md`: removed prose mentions of platform names that triggered L09;
-  replaced with generic terms throughout frontmatter description, Platform Compatibility section,
-  headings, checklist, and anti-pattern example
-- `skills/skill-linting/SKILL.md`: rephrased L09 rule description to avoid self-referential trigger
-- `skills/skill-validation/SKILL.md`: renamed example `references/` paths in code fences to avoid
-  false L07 dangling-reference failures
-- `CHANGELOG.md`: resolved orphaned merge conflict markers (`&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD` / `=======`)
-- `README.md`: added blank lines before bullet lists (MD032)</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.4.2</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.1...v1.4.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.2</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.4.2 release notes.</p>
-<h3>Added</h3>
-<pre>- **yq skill** — Process YAML, XML, and TOML with jq-like filtering
-  - 4 reference docs: install-and-setup.md, quick-reference.md, usage-patterns.md, examples-and-recipes.md
-  - Content: Installation on multiple platforms, common command flags and options, format conversion (YAML/JSON/TOML/XML), filtering and selection patterns, in-place file editing, string and array operations, multi-file processing, roundtrip mode for tag preservation, Kubernetes manifest processing, configuration management workflows, practical examples and recipes
-  - ~900 lines of comprehensive documentation</pre>
-<h3>Removed</h3>
-<pre>- **4 skills moved to llm-ci-dev** — Consolidated CI/CD-specific skills into dedicated repo
-  - `docker` — Container and Docker tooling (now in llm-ci-dev/skills/)
-  - `aws` — AWS CLI operations (now in llm-ci-dev/skills/)
-  - `az` — Azure CLI operations (now in llm-ci-dev/skills/)
-  - `glab` — GitLab CLI workflows (now in llm-ci-dev/skills/)
-
-  **Rationale**: These 4 skills are primarily CI/CD-focused and now reside in the specialized llm-ci-dev
-  collection alongside platform-specific CI/CD workflow and runner/agent management skills. This improves
-  skill discoverability and maintains thematic coherence. llm-shared-skills now focuses on general-purpose
-  system utilities and development tools (45 skills with yq).</pre>
-<h3>Updated</h3>
-<pre>- Updated README to reflect new skill count (45 with yq, previously 44)
-- Integrated with v1.4.1 linting and validation system
-- All 45 skills pass structural linting with zero violations
-- All 269 markdown files pass linting with zero errors</pre>]]></description>
     </item>
   </channel>
 </rss>
