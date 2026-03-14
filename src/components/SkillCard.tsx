@@ -36,7 +36,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
       <Link
         href={`/skill/${skill.repo.owner}/${skill.repo.repo}/${skill.name}`}
         aria-label={`View details for ${skill.name}`}
-        className="absolute inset-0 rounded-xl"
+        className="absolute inset-0 z-[1] rounded-xl"
       />
       <div className="relative flex items-start gap-3">
         <span className="mt-0.5 shrink-0 text-2xl">{getSkillIcon(skill.name)}</span>
