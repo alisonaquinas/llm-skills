@@ -4,8 +4,8 @@
     "name": "Alison Aquinas"
   },
   "metadata": {
-    "description": "Browse Alison Aquinas' shared-skills, ci-cd, and software-design Claude Code plugins and the skills they include.",
-    "version": "1.2.0"
+    "description": "Browse Alison Aquinas' shared-skills, ci-cd, software-design, and doc-skills Claude Code plugins and the skills they include.",
+    "version": "1.3.1"
   },
   "plugins": [
     {
@@ -42,6 +42,18 @@
       "description": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance.",
       "repository": "https://github.com/alisonaquinas/llm-software-design",
       "category": "software-design",
+      "strict": true
+    },
+    {
+      "name": "doc-skills",
+      "source": {
+        "source": "github",
+        "repo": "alisonaquinas/llm-doc-skills",
+        "ref": "main"
+      },
+      "description": "Claude Code skills for creating and editing Word, PowerPoint, Excel, and PDF documents.",
+      "repository": "https://github.com/alisonaquinas/llm-doc-skills",
+      "category": "doc-skills",
       "strict": true
     }
   ]
