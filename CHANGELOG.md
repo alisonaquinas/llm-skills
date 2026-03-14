@@ -9,6 +9,13 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-03-13
+
+### Fixed
+
+- RSS generation now skips feed sources whose upstream `CHANGELOG.md` cannot be fetched, logging a warning instead of failing the entire GitHub Pages deploy.
+- Updated `catalog.json` marketplace version to `1.3.1` so the release tag, published metadata, and site chrome remain aligned.
+
 ## [1.3.0] - 2026-03-13
 
 ### Added
@@ -123,7 +130,10 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0
 [1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6

@@ -6,10 +6,11 @@
  * - verify description rendering and release-link fallback behavior
  * - verify deterministic sorting and final RSS document generation
  */
-import { describe, expect, it } from "vitest";
-import type { FeedSourceConfig, MarketplaceConfig } from "@/lib/catalog";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import type { CatalogFile, FeedSourceConfig, MarketplaceConfig } from "@/lib/catalog";
 import {
   buildRssDocument,
+  collectReleaseItems,
   compareReleases,
   parseChangelogReleases,
   parseReferenceLinks,
@@ -84,6 +85,53 @@ describe("compareReleases", () => {
   });
 });
 
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
+});
+
+describe("collectReleaseItems", () => {
+  /** Ensures a missing upstream changelog is logged and skipped instead of failing the whole feed build. */
+  it("skips feed sources whose changelog fetch fails", async () => {
+    const catalog: CatalogFile = {
+      marketplace: market,
+      feedSources: [
+        source,
+        {
+          owner: "alisonaquinas",
+          repo: "llm-doc-skills",
+          label: "Doc Skills",
+          ref: "main",
+          enabled: true,
+        },
+      ],
+      plugins: [],
+    };
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: string | URL | Request) => {
+        const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+
+        if (url.includes("/llm-skills/")) {
+          return new Response(markdown, { status: 200 });
+        }
+
+        return new Response("missing", { status: 404 });
+      })
+    );
+
+    const items = await collectReleaseItems(catalog);
+
+    expect(items).toHaveLength(1);
+    expect(items[0]?.source.repo).toBe("llm-skills");
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining("Skipping RSS source alisonaquinas/llm-doc-skills")
+    );
+  });
+});
+
 describe("buildRssDocument", () => {
   /** Ensures the final XML document includes the expected RSS shell and item title. */
   it("emits a valid RSS shell", () => {
@@ -103,5 +151,4 @@ describe("buildRssDocument", () => {
     expect(rss).toContain("Marketplace v1.0.0");
   });
 });
-
 

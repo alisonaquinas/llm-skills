@@ -252,12 +252,22 @@ export function compareReleases(a: ReleaseItem, b: ReleaseItem): number {
  */
 export async function collectReleaseItems(catalog: CatalogFile): Promise<ReleaseItem[]> {
   const feedSources = getEnabledFeedSources(catalog);
-  const changelogs = await Promise.all(
-    feedSources.map(async (source) => ({
-      source,
-      markdown: await fetchChangelog(source),
-    }))
-  );
+  const changelogs = (
+    await Promise.all(
+      feedSources.map(async (source) => {
+        try {
+          return {
+            source,
+            markdown: await fetchChangelog(source),
+          };
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          console.warn(`Skipping RSS source ${source.owner}/${source.repo}: ${message}`);
+          return null;
+        }
+      })
+    )
+  ).filter((entry): entry is { source: FeedSourceConfig; markdown: string } => entry !== null);
 
   return changelogs
     .flatMap(({ source, markdown }) => {
@@ -333,3 +343,4 @@ export async function writeTextOutput(outPath: string, contents: string): Promis
   await writeFile(resolved, contents);
   console.log(`Wrote RSS feed to ${outPath}`);
 }
+
