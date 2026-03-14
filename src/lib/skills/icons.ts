@@ -132,7 +132,6 @@ const ICON_MAP: Record<string, string> = {
   "ag": "🔍",
 
   // ── Text processing ───────────────────────────────────────────────────────
-  "markdownlint": "📝",
   "yaml-linting": "📝",
   "yaml-lsp": "📝",
   "edit-files": "✏️",
@@ -161,6 +160,30 @@ const ICON_MAP: Record<string, string> = {
   "nm": "🔣",
   "od": "🗂️",
   "ar": "📚",
+
+  // ── Document formats & markup ────────────────────────────────────────────
+  // Flavored-markdown variants must come before both "markdown" and brand roots
+  // so the longer key wins (e.g. "github-flavored-markdown" > "markdown" > "github").
+  "github-flavored-markdown": "🐙",
+  "gitlab-flavored-markdown": "🦊",
+  "markdownlint": "📝",  // longer than "markdown", so it still wins
+  "asciidoc": "📝",
+  "markdown": "📝",
+  "typst": "📝",
+  "latex": "📐",
+  "pandoc": "🔄",
+
+  // ── Office & PDF formats ─────────────────────────────────────────────────
+  "docx": "📝",
+  "pptx": "📊",
+  "xlsx": "📊",
+  "office": "💼",
+  "pdf": "📄",
+
+  // ── Diagram & visualization ───────────────────────────────────────────────
+  "plantuml": "🌱",
+  "graphviz": "🕸️",
+  "mermaid": "🧜",
 
   // ── Media & document tools ────────────────────────────────────────────────
   "mediainfo": "🎬",
