@@ -43,6 +43,18 @@
       "repository": "https://github.com/alisonaquinas/llm-software-design",
       "category": "software-design",
       "strict": true
+    },
+    {
+      "name": "doc-skills",
+      "source": {
+        "source": "github",
+        "repo": "alisonaquinas/llm-doc-skills",
+        "ref": "main"
+      },
+      "description": "Claude Code skills for creating and editing Word, PowerPoint, Excel, and PDF documents.",
+      "repository": "https://github.com/alisonaquinas/llm-doc-skills",
+      "category": "doc-skills",
+      "strict": true
     }
   ]
 }
