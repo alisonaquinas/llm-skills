@@ -67,7 +67,7 @@ export default async function MarketplacePage() {
               plugin,
               description: meta?.description ?? plugin.siteDescription,
               skillCount,
-            }))
+            })),
           ),
         ]}
       />
@@ -77,64 +77,83 @@ export default async function MarketplacePage() {
           {MARKETPLACE.title}
         </h1>
         <p className="text-base leading-7 text-gray-600 dark:text-gray-300 sm:text-lg">
-          This marketplace publishes installable Claude Code plugins, exposes their bundled
-          skills as static searchable pages, and ships machine-readable artifacts like
-          marketplace.json, rss.xml, and sitemap.xml for discovery.
+          This is a personal project of mine focused on helping LLMs become
+          better partners in coding and software engineering. I’m building
+          practical skills, tools, and guidance that make models more useful for
+          real development work, not just demos. The goal is to help them
+          produce better code, make better engineering decisions, and fit more
+          naturally into modern software workflows. It’s designed to be useful
+          across both Claude and Codex, with an emphasis on capabilities that
+          actually matter to developers.
         </p>
       </section>
 
       <InstallBanner />
 
       <section className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {pluginSummaries.map(({ plugin, installCommand, meta, repoUrl, skillCount }) => (
-          <div
-            key={plugin.repo}
-            className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-5"
-          >
-            <div className="mb-3 flex flex-wrap items-center gap-2 sm:gap-3">
-              {plugin.icon ? (
-                <span className="text-2xl leading-none" aria-hidden="true">{plugin.icon}</span>
-              ) : null}
-              <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${plugin.color}`}>
-                {plugin.label}
-              </span>
-              {meta?.version ? (
-                <span className="text-xs text-gray-400 dark:text-gray-500">v{meta.version}</span>
-              ) : null}
-            </div>
+        {pluginSummaries.map(
+          ({ plugin, installCommand, meta, repoUrl, skillCount }) => (
+            <div
+              key={plugin.repo}
+              className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-5"
+            >
+              <div className="mb-3 flex flex-wrap items-center gap-2 sm:gap-3">
+                {plugin.icon ? (
+                  <span className="text-2xl leading-none" aria-hidden="true">
+                    {plugin.icon}
+                  </span>
+                ) : null}
+                <span
+                  className={`rounded-full px-2 py-0.5 text-xs font-medium ${plugin.color}`}
+                >
+                  {plugin.label}
+                </span>
+                {meta?.version ? (
+                  <span className="text-xs text-gray-400 dark:text-gray-500">
+                    v{meta.version}
+                  </span>
+                ) : null}
+              </div>
 
-            <h2 className="mb-1 font-semibold text-gray-900 dark:text-white">{plugin.pluginName}</h2>
-            <p className="mb-3 line-clamp-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
-              {meta?.description ?? plugin.siteDescription}
-            </p>
+              <h2 className="mb-1 font-semibold text-gray-900 dark:text-white">
+                {plugin.pluginName}
+              </h2>
+              <p className="mb-3 line-clamp-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                {meta?.description ?? plugin.siteDescription}
+              </p>
 
-            <div className="mb-3 rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
-              <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">Install</div>
-              <div className="overflow-x-auto">
-                <code className="block min-w-max whitespace-nowrap text-sm text-gray-800 dark:text-gray-100">
-                  {installCommand}
-                </code>
+              <div className="mb-3 rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
+                <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+                  Install
+                </div>
+                <div className="overflow-x-auto">
+                  <code className="block min-w-max whitespace-nowrap text-sm text-gray-800 dark:text-gray-100">
+                    {installCommand}
+                  </code>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+                <span>{skillCount} included skills</span>
+                <a
+                  href={repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-1.5 hover:text-brand-700 dark:hover:text-brand-200"
+                >
+                  <GitHubIcon className="h-4 w-4" />
+                  <span>GitHub</span>
+                </a>
               </div>
             </div>
-
-            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
-              <span>{skillCount} included skills</span>
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-1.5 hover:text-brand-700 dark:hover:text-brand-200"
-              >
-                <GitHubIcon className="h-4 w-4" />
-                <span>GitHub</span>
-              </a>
-            </div>
-          </div>
-        ))}
+          ),
+        )}
       </section>
 
-      <SkillGrid skills={allSkills} repos={pluginSummaries.map(({ plugin }) => plugin)} />
+      <SkillGrid
+        skills={allSkills}
+        repos={pluginSummaries.map(({ plugin }) => plugin)}
+      />
     </div>
   );
 }
-
