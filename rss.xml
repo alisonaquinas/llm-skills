@@ -70,6 +70,15 @@
 - `.gitignore`: ignore repo-local scratch directories and transient `tmp*/` artifacts so failed local temp cleanup does not pollute git status.</pre>]]></description>
     </item>
     <item>
+      <title>Shared Skills v1.6.5</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.5</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.5</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.6.5 release notes.</p>
+<h3>Added</h3>
+<pre>- `skills/skill-test-drive`: new meta-skill for test-driving other skills by designing live scenarios, executing them with the target skill&apos;s guidance, and reporting usability gaps and missing examples before release</pre>]]></description>
+    </item>
+    <item>
       <title>Shared Skills v1.6.4</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.4</link>
       <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.4</guid>
@@ -877,17 +886,6 @@
 - `skills/codex-docs`: documentation-lookup skill for OpenAI Codex agent (developers.openai.com/codex) - covers concepts, AGENTS.md, MCP, interfaces, and automation/SDK
 - `skills/claude-cli-docs`: documentation-lookup skill for Claude Code CLI (code.claude.com/docs) - covers installation, CLI reference, CLAUDE.md, MCP, hooks, skills, workflows, and integrations
 - `skills/codex-cli-docs`: documentation-lookup skill for OpenAI Codex CLI (developers.openai.com/codex/cli) - covers installation, features, CLI flags, and slash commands</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.4.4</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.3...v1.4.4</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.4.4</guid>
-      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.4.4 release notes.</p>
-<h3>Changed</h3>
-<pre>- `LICENSE.md`: added author name (Alison Aquinas) to copyright line
-- `.claude-plugin/plugin.json`: set `author.name` to Alison Aquinas; corrected `version` to match git tag
-- `AGENTS.md`: added Versioning and Releases section — documents that `plugin.json` version must match the git tag and that `CHANGELOG.md` must be updated before every release</pre>]]></description>
     </item>
   </channel>
 </rss>
