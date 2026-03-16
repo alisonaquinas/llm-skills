@@ -61,10 +61,18 @@ jobs:
       - name: Build all-plugins bundle
         shell: bash
         run: |
-          if ls bundles/*.zip 1>/dev/null 2>&1; then
-            zip all-plugins.zip bundles/*.zip
+          mkdir -p skill_zips
+          for plugin_zip in bundles/*.zip; do
+            [ -f "$plugin_zip" ] || continue
+            echo "Extracting $(basename $plugin_zip)..."
+            unzip -q "$plugin_zip" -d skill_zips/ \
+              || echo "WARNING: could not extract $plugin_zip (skipped)"
+          done
+          if ls skill_zips/*.zip 1>/dev/null 2>&1; then
+            zip -j all-plugins.zip skill_zips/*.zip
+            echo "all-plugins.zip contains $(unzip -l all-plugins.zip | grep -c '\.zip') skill ZIPs"
           else
-            echo "WARNING: no plugin bundles found; creating empty all-plugins.zip"
+            echo "WARNING: no skill ZIPs found after extraction; creating empty all-plugins.zip"
             zip all-plugins.zip -n .zip
           fi
 

@@ -3,7 +3,7 @@
     "name": "llm-skills",
     "title": "Alison's LLM Plugins",
     "description": "Browse Alison Aquinas' shared-skills, ci-cd, software-design, doc-skills, and web-design-skills Claude Code plugins and the skills they include.",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "owner": {
       "name": "Alison Aquinas"
     },
