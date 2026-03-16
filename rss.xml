@@ -8,6 +8,20 @@
     <lastBuildDate>Mon, 16 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CI/CD Skills v1.2.0</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.2.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.2.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `ci-cd-plugin.zip` for one-click offline installation; `PLUGIN_NAME := ci-cd` variable drives the output filename</pre>
+<h3>Fixed</h3>
+<pre>- `Makefile`: restored full Makefile content that was accidentally truncated to zero lines by a patching script; all original targets (`all`, `build`, `clean`, `verify`, `lint`, `test`, `test-unit`, `list`) are preserved</pre>
+<h3>Changed</h3>
+<pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
+- `.github/workflows/release.yml`: added &quot;Build plugin bundle ZIP&quot; step (`make bundle`) so `ci-cd-plugin.zip` is uploaded alongside the individual skill ZIPs on every tag release; converted CRLF line endings to LF for yamllint compliance</pre>]]></description>
+    </item>
+    <item>
       <title>CI/CD Skills v1.1.4</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.4</link>
       <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.4</guid>
@@ -693,28 +707,6 @@
 <h3>Fixed</h3>
 <pre>- Corrected the published marketplace name from `Alison&apos; LLM Plugins` to `Alison&apos;s LLM Plugins` across catalog metadata, README copy, preview artwork, and test fixtures.
 - Updated `catalog.json` marketplace version to `1.1.1` so the hotfix tag, release workflow, and published site chrome remain aligned.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.1.0</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.1.0</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.1.0 release notes.</p>
-<h3>Added</h3>
-<pre>- Added vendored Alison Aquinas brand assets for the site favicon, header logo bug, and social preview artwork.
-- Added a compact mobile overflow menu in the header so repository and RSS links remain reachable without crowding the phone layout.</pre>
-<h3>Changed</h3>
-<pre>- Renamed the published marketplace title across the UI, metadata, structured data, generated artifacts, and tests to `Alison&apos;s LLM Plugins`.
-- Moved the home page introduction above the install instructions banner and refreshed the header links with GitHub and RSS icons.
-- Refined the shared shell, install banner, plugin cards, skill grid, and skill detail route into a mobile-first responsive layout from phone widths through desktop.
-- Updated the shared accent palette and install surfaces to use Alison Aquinas-inspired coral and ink brand tones while preserving light and dark mode behavior.
-- Documented that branding assets and marketplace identity remain sourced from `catalog.json` plus vendored files in `public/`.
-- Added agent guidance for republishing fresh local previews and validating them with `curl` and `wget --spider` before presenting UI work.</pre>
-<h3>Fixed</h3>
-<pre>- Vendored the real Alison Aquinas favicon and logo bug assets from the local design source files so the site header and metadata use the intended branding.
-- Corrected the branded bug image path to respect the `/llm-skills` base path in local previews and static export builds.
-- Recovered from stale Next.js dev-server state by documenting the expectation to republish previews from a clean build cache when runtime chunks become inconsistent.
-- Removed mobile-hostile truncation from install commands and kept code-heavy surfaces scrollable inside their own containers instead of forcing page-level overflow.</pre>]]></description>
     </item>
   </channel>
 </rss>
