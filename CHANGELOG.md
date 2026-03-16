@@ -7,6 +7,29 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.4.0] - 2026-03-16
+
+### Added
+
+- `MarkdownRenderer` component (`src/components/MarkdownRenderer.tsx`): server component using `react-markdown` + `remark-gfm` with `@tailwindcss/typography` prose styling; replaces raw `<pre>` blocks on skill detail pages so all skill documentation is rendered as HTML
+- `buildPluginBundleUrl()` in `src/lib/github/skill-service.ts`: builds the `{pluginName}-plugin.zip` download URL from a plugin config and version
+- `buildAllPluginsBundleUrl()` in `src/lib/catalog/service.ts`: builds the `all-plugins.zip` download URL from `catalog.json` marketplace version and GitHub repo
+- `MarketplacePluginSummary.bundleUrl` field: per-plugin all-in-one bundle download URL, or `null` when the plugin version is unavailable
+- Landing page: per-plugin "Bundle" download link on each plugin card and a "Download all plugins" banner at the top of the marketplace that links to `all-plugins.zip`
+- `release.yml`: two new steps — "Download plugin bundle ZIPs" (fetches each `{pluginName}-plugin.zip` from the latest plugin release) and "Build all-plugins bundle" (assembles `all-plugins.zip` from the downloaded bundles); `all-plugins.zip` is uploaded as a GitHub Release asset
+- Unit tests for `buildPluginBundleUrl` and `bundleUrl` population in `buildMarketplacePluginSummaries`
+
+### Changed
+
+- Skill detail page (`src/app/skill/[...slug]/page.tsx`): replaced `<pre>` raw markdown display with `<MarkdownRenderer>` for rendered HTML output
+- `src/lib/github/index.ts` and `src/lib/catalog/index.ts`: barrel exports updated for new URL builder functions
+- `package.json`: added `react-markdown`, `remark-gfm` as runtime dependencies; `@tailwindcss/typography` as dev dependency
+- `tailwind.config.ts`: registered `@tailwindcss/typography` plugin
+
+### Fixed
+
+- `catalog.json` and `package.json` version corrected to `1.4.0`; the v1.3.9 tag was pushed without bumping these files, causing the release workflow to fail the version-gate check
+
 ## [1.3.9] - 2026-03-16
 
 ### Added
