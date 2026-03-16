@@ -132,6 +132,14 @@ The `out/` directory is what gets deployed to GitHub Pages.
 Set a `GITHUB_TOKEN` environment variable to avoid GitHub API rate limits
 during the build.
 
+## Git Workflow
+
+This repo uses **trunk-based development**. The developer works alone.
+
+- Commit directly to `main`. Do not create feature branches or open pull requests.
+- Push directly: `git push origin main`.
+- For releases, tag the commit on `main` and push the tag.
+
 ## Conventions
 
 - All data fetching is server-side and happens at build time; no client-side API calls.
