@@ -11,6 +11,7 @@
  * - keeps JSX composition local and avoids inline business transformations
  */
 import type { Metadata } from "next";
+import CopyButton from "@/components/CopyButton";
 import InstallBanner from "@/components/InstallBanner";
 import { DownloadIcon, GitHubIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
@@ -140,10 +141,21 @@ export default async function MarketplacePage() {
                 <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
                   Install
                 </div>
-                <div className="overflow-x-auto">
-                  <code className="block min-w-max whitespace-nowrap text-sm text-gray-800 dark:text-gray-100">
+                <div className="flex items-center gap-2">
+                  <code
+                    className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                    title={installCommand}
+                  >
                     {installCommand}
                   </code>
+                  <div className="shrink-0">
+                    <CopyButton
+                      text={installCommand}
+                      label="Copy install command"
+                      ariaLabel={`Copy install command for ${plugin.label}`}
+                      variant="icon"
+                    />
+                  </div>
                 </div>
               </div>
 

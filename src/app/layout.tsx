@@ -14,11 +14,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import MobileHeaderMenu, { MOBILE_HEADER_MENU_ICONS, type MobileHeaderMenuItem } from "@/components/MobileHeaderMenu";
-import { BrandBug, GitHubIcon, RssIcon } from "@/components/SiteIcons";
+import { BrandBug, RssIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
-import { MARKETPLACE, PLUGINS, getPluginRepoUrl } from "@/lib/catalog";
+import { MARKETPLACE } from "@/lib/catalog";
 import {
   SEO_KEYWORDS,
   buildOrganizationStructuredData,
@@ -89,12 +89,6 @@ export const metadata: Metadata = {
  * Precomputed mobile-only navigation entries that move out of the header row on phones.
  */
 const MOBILE_MENU_ITEMS: MobileHeaderMenuItem[] = [
-  ...PLUGINS.map((plugin) => ({
-    key: plugin.repo,
-    href: getPluginRepoUrl(plugin),
-    label: plugin.repo,
-    Icon: MOBILE_HEADER_MENU_ICONS.github,
-  })),
   {
     key: "rss",
     href: getRssUrl(),
@@ -128,18 +122,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             <div className="ml-auto flex shrink-0 items-center gap-2">
               <nav className="hidden items-center justify-end gap-2 text-sm text-gray-500 dark:text-gray-400 md:flex">
-                {PLUGINS.map((plugin) => (
-                  <a
-                    key={plugin.repo}
-                    href={getPluginRepoUrl(plugin)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 transition hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
-                  >
-                    <GitHubIcon className="h-4 w-4" />
-                    <span>{plugin.repo}</span>
-                  </a>
-                ))}
                 <a
                   href={getRssUrl()}
                   className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-brand-700 transition hover:bg-brand-50 hover:text-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
