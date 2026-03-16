@@ -71,6 +71,27 @@ function buildContentsApiPath(plugin: PluginConfig, relativePath = ""): string {
 }
 
 /**
+ * Builds the direct GitHub release asset URL for the all-in-one plugin ZIP bundle.
+ *
+ * The bundle ZIP is named `{pluginName}-plugin.zip` and contains every individual
+ * skill ZIP for the plugin release, allowing a single download to install any skill offline.
+ *
+ * @param plugin Plugin repository that publishes the release asset.
+ * @param version Upstream plugin version from plugin.json.
+ * @returns Direct asset URL or null when the version is not available.
+ */
+export function buildPluginBundleUrl(
+  plugin: PluginConfig,
+  version: string | null | undefined
+): string | null {
+  if (!version) {
+    return null;
+  }
+
+  return `https://github.com/${plugin.owner}/${plugin.repo}/releases/download/v${version}/${plugin.pluginName}-plugin.zip`;
+}
+
+/**
  * Builds the direct GitHub release asset URL for a per-skill ZIP bundle.
  *
  * @param plugin Plugin repository that publishes the release asset.

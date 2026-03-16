@@ -4,7 +4,7 @@
  * Responsibilities:
  * - derive owner, repo, and skill name from the catch-all route segments
  * - resolve the owning plugin and the corresponding skill content
- * - render install guidance and raw SKILL.md contents for the selected skill
+ * - render install guidance and rendered SKILL.md contents for the selected skill
  *
  * Dependency rules:
  * - route parsing and plugin lookup live in src/lib
@@ -14,6 +14,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CopyButton from "@/components/CopyButton";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { DownloadIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import { findPluginByRepo, getPluginRepoUrl, type PluginConfig } from "@/lib/catalog";
@@ -197,10 +198,8 @@ export default async function SkillPage({ params }: PageProps) {
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">SKILL.md</h2>
             <CopyButton text={skill.readme} label="Copy raw" />
           </div>
-          <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900 sm:p-5">
-            <pre className="whitespace-pre-wrap break-words font-mono text-sm leading-relaxed text-gray-700 dark:text-gray-200">
-              {skill.readme}
-            </pre>
+          <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900 sm:p-6">
+            <MarkdownRenderer content={skill.readme} />
           </div>
         </section>
       ) : null}

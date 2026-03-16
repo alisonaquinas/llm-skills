@@ -65,6 +65,14 @@ describe("buildMarketplacePluginSummaries", () => {
     expect(summaries[0]?.skillCount).toBe(2);
     expect(summaries[0]?.meta?.version).toBe("1.0.0");
     expect(summaries[0]?.installCommand).toContain("/plugin install");
+    expect(summaries[0]?.bundleUrl).toBe(
+      "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v1.0.0/shared-skills-plugin.zip"
+    );
+  });
+
+  it("sets bundleUrl to null when plugin metadata is unavailable", () => {
+    const summaries = buildMarketplacePluginSummaries(skills, [null, null]);
+    expect(summaries[0]?.bundleUrl).toBeNull();
   });
 });
 

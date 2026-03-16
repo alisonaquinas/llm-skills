@@ -45,9 +45,33 @@ jobs:
           echo "$NOTES" >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
 
+      - name: Download plugin bundle ZIPs
+        shell: bash
+        run: |
+          mkdir -p bundles
+          jq -r '.plugins[] | "\(.owner)/\(.repo) \(.pluginName)"' catalog.json | \
+          while IFS=" " read -r repo pluginName; do
+            echo "Downloading ${pluginName}-plugin.zip from ${repo}..."
+            curl --silent --location --fail \
+              "https://github.com/${repo}/releases/latest/download/${pluginName}-plugin.zip" \
+              -o "bundles/${pluginName}-plugin.zip" \
+              || echo "WARNING: could not download ${pluginName}-plugin.zip (skipped)"
+          done
+
+      - name: Build all-plugins bundle
+        shell: bash
+        run: |
+          if ls bundles/*.zip 1>/dev/null 2>&1; then
+            zip all-plugins.zip bundles/*.zip
+          else
+            echo "WARNING: no plugin bundles found; creating empty all-plugins.zip"
+            zip all-plugins.zip -n .zip
+          fi
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
           body: ${{ steps.notes.outputs.notes }}
+          files: all-plugins.zip

@@ -50,3 +50,15 @@ export function findPluginByRepo(
 export function getPluginRepoUrl(plugin: PluginConfig): string {
   return `https://github.com/${plugin.owner}/${plugin.repo}`;
 }
+
+/**
+ * Builds the GitHub release asset URL for the all-plugins aggregate ZIP bundle.
+ *
+ * The bundle is published as a release asset on the marketplace repository itself and
+ * contains every plugin's `{pluginName}-plugin.zip` in a single flat ZIP file.
+ *
+ * @returns Direct download URL for the current marketplace version's all-plugins bundle.
+ */
+export function buildAllPluginsBundleUrl(): string {
+  return `https://github.com/${MARKETPLACE.githubRepo}/releases/download/v${MARKETPLACE.version}/all-plugins.zip`;
+}

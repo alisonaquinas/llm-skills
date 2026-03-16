@@ -10,7 +10,7 @@ import type { PluginConfig } from "@/lib/catalog";
 import type { PluginMeta, SkillEntry } from "@/lib/github";
 import { PLUGINS, getPluginRepoUrl } from "@/lib/catalog";
 import { getPluginInstallCommand } from "@/lib/commands";
-import { getAllSkills, getPluginMeta } from "@/lib/github";
+import { buildPluginBundleUrl, getAllSkills, getPluginMeta } from "@/lib/github";
 
 /** Combined view model for a plugin card on the marketplace landing page. */
 export interface MarketplacePluginSummary {
@@ -24,6 +24,8 @@ export interface MarketplacePluginSummary {
   meta: PluginMeta | null;
   /** Number of skills published by the plugin. */
   skillCount: number;
+  /** Direct download URL for the all-in-one plugin ZIP bundle, or null when unavailable. */
+  bundleUrl: string | null;
 }
 
 /** Aggregated data required by the marketplace landing page. */
@@ -91,13 +93,18 @@ export function buildMarketplacePluginSummaries(
 ): MarketplacePluginSummary[] {
   const skillCounts = countSkillsByPlugin(skills);
 
-  return PLUGINS.map((plugin, index) => ({
-    plugin,
-    installCommand: getPluginInstallCommand(plugin),
-    repoUrl: getPluginRepoUrl(plugin),
-    meta: metas[index] ?? null,
-    skillCount: skillCounts.get(plugin.repo) ?? 0,
-  }));
+  return PLUGINS.map((plugin, index) => {
+    const meta = metas[index] ?? null;
+
+    return {
+      plugin,
+      installCommand: getPluginInstallCommand(plugin),
+      repoUrl: getPluginRepoUrl(plugin),
+      meta,
+      skillCount: skillCounts.get(plugin.repo) ?? 0,
+      bundleUrl: buildPluginBundleUrl(plugin, meta?.version),
+    };
+  });
 }
 
 /**

@@ -8,6 +8,7 @@ Contains presentation-focused React components that render data supplied by `src
 
 - `CopyButton`
 - `InstallBanner`
+- `MarkdownRenderer`
 - `SkillCard`
 - `SkillGrid`
 
@@ -27,6 +28,7 @@ Contains presentation-focused React components that render data supplied by `src
 @startuml
 class CopyButton
 class InstallBanner
+class MarkdownRenderer
 class SkillCard
 class SkillGrid
 class CommandService
@@ -34,6 +36,7 @@ class SkillFilterService
 class SkillIconService
 
 InstallBanner --> CommandService
+MarkdownRenderer ..> ReactMarkdown : uses
 SkillCard --> CommandService
 SkillCard --> SkillIconService
 SkillGrid --> SkillFilterService

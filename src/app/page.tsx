@@ -12,10 +12,10 @@
  */
 import type { Metadata } from "next";
 import InstallBanner from "@/components/InstallBanner";
-import { GitHubIcon } from "@/components/SiteIcons";
+import { DownloadIcon, GitHubIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import SkillGrid from "@/components/SkillGrid";
-import { MARKETPLACE } from "@/lib/catalog";
+import { MARKETPLACE, buildAllPluginsBundleUrl } from "@/lib/catalog";
 import { getMarketplacePageData } from "@/lib/marketplace";
 import {
   buildCollectionPageStructuredData,
@@ -88,11 +88,25 @@ export default async function MarketplacePage() {
         </p>
       </section>
 
+      <div className="mb-6 flex flex-wrap items-center gap-3">
+        <a
+          href={buildAllPluginsBundleUrl()}
+          className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-medium text-brand-700 transition hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70"
+          aria-label="Download all plugin bundles as a single ZIP"
+        >
+          <DownloadIcon className="h-4 w-4 shrink-0" />
+          <span>Download all plugins</span>
+        </a>
+        <span className="text-xs text-gray-400 dark:text-gray-500">
+          One ZIP containing every plugin bundle — install offline at any time
+        </span>
+      </div>
+
       <InstallBanner />
 
       <section className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {pluginSummaries.map(
-          ({ plugin, installCommand, meta, repoUrl, skillCount }) => (
+          ({ plugin, installCommand, meta, repoUrl, skillCount, bundleUrl }) => (
             <div
               key={plugin.repo}
               className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-5"
@@ -144,6 +158,16 @@ export default async function MarketplacePage() {
                   <GitHubIcon className="h-4 w-4" />
                   <span>GitHub</span>
                 </a>
+                {bundleUrl ? (
+                  <a
+                    href={bundleUrl}
+                    aria-label={`Download all ${plugin.label} skills as a ZIP bundle`}
+                    className="inline-flex min-h-11 items-center gap-1.5 hover:text-brand-700 dark:hover:text-brand-200"
+                  >
+                    <DownloadIcon className="h-4 w-4" />
+                    <span>Bundle</span>
+                  </a>
+                ) : null}
               </div>
             </div>
           ),

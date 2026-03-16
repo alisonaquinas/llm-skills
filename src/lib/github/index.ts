@@ -16,6 +16,7 @@ export type {
 export { ghFetchJson, ghFetchText, decodeBase64Json } from "./client";
 export { getPluginMeta } from "./plugin-service";
 export {
+  buildPluginBundleUrl,
   buildSkillDownloadUrl,
   getAllSkills,
   getSkillDetail,

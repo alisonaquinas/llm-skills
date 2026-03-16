@@ -10,6 +10,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { PluginConfig } from "@/lib/catalog";
 import type { GitHubDirectoryItem, PluginMeta } from "@/lib/github";
 import {
+  buildPluginBundleUrl,
   buildSkillDownloadUrl,
   getSkillDetail,
   listSkills,
@@ -86,6 +87,24 @@ describe("buildSkillDownloadUrl", () => {
 
   it("returns null when the plugin version is unavailable", () => {
     expect(buildSkillDownloadUrl(sharedPlugin, null, "bash")).toBeNull();
+  });
+});
+
+describe("buildPluginBundleUrl", () => {
+  it("builds all-in-one plugin bundle URL using pluginName", () => {
+    expect(buildPluginBundleUrl(sharedPlugin, "1.6.3")).toBe(
+      "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v1.6.3/shared-skills-plugin.zip"
+    );
+  });
+
+  it("uses pluginName from doc-skills config", () => {
+    expect(buildPluginBundleUrl(docPlugin, "0.1.1")).toBe(
+      "https://github.com/alisonaquinas/llm-doc-skills/releases/download/v0.1.1/doc-skills-plugin.zip"
+    );
+  });
+
+  it("returns null when the plugin version is unavailable", () => {
+    expect(buildPluginBundleUrl(sharedPlugin, null)).toBeNull();
   });
 });
 

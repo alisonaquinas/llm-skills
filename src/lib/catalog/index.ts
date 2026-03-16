@@ -17,6 +17,7 @@ export {
   FEED_SOURCES,
   MARKETPLACE,
   PLUGINS,
+  buildAllPluginsBundleUrl,
   findPluginByRepo,
   getEnabledFeedSources,
   getPluginRepoUrl,
