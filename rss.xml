@@ -5,8 +5,17 @@
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shared Skills v1.6.6</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.6</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.6</guid>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.6.6 release notes.</p>
+<h3>Added</h3>
+<pre>- `skills/skill-development`: new meta-skill orchestrating the full 7-phase SDLC for authoring LLM agent skills — covers ideation, authoring via skill-creator, structural linting via skill-linting, qualitative validation via skill-validation, live scenario testing via skill-test-drive, iteration loops, and final commit and ship; includes five reference files and two rounds of live test-drive fixes</pre>]]></description>
+    </item>
     <item>
       <title>CI/CD Skills v1.1.3</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.3</link>
@@ -873,19 +882,6 @@
 - Escaped inline HTML in `skills/az/references/install-and-setup.md` (MD033)
 - Added `.markdownlint.json` for local linting (`MD013` disabled, `MD024` siblings-only, `MD060` disabled)
 - Updated `.markdownlint-cli2.jsonc` (CI): enabled previously-suppressed rules now clean, changed `no-duplicate-heading` from `false` to `{ siblings_only: true }`</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.5.1</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.4.4...v1.5.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.5.1</guid>
-      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.5.1 release notes.</p>
-<h3>Added</h3>
-<pre>- `skills/claude-docs`: documentation-lookup skill for Anthropic Claude API (platform.claude.com/docs) - covers models, prompt engineering, tool use, extended thinking, Agent SDK, and REST API reference
-- `skills/chatgpt-docs`: documentation-lookup skill for OpenAI platform API (platform.openai.com/docs) - covers models, API reference, function calling, Assistants, and guides
-- `skills/codex-docs`: documentation-lookup skill for OpenAI Codex agent (developers.openai.com/codex) - covers concepts, AGENTS.md, MCP, interfaces, and automation/SDK
-- `skills/claude-cli-docs`: documentation-lookup skill for Claude Code CLI (code.claude.com/docs) - covers installation, CLI reference, CLAUDE.md, MCP, hooks, skills, workflows, and integrations
-- `skills/codex-cli-docs`: documentation-lookup skill for OpenAI Codex CLI (developers.openai.com/codex/cli) - covers installation, features, CLI flags, and slash commands</pre>]]></description>
     </item>
   </channel>
 </rss>
