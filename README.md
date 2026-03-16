@@ -6,6 +6,7 @@ A static Next.js site and marketplace catalog for installable Claude Code plugin
 - [`ci-cd`](https://github.com/alisonaquinas/llm-ci-dev)
 - [`software-design`](https://github.com/alisonaquinas/llm-software-design)
 - [`doc-skills`](https://github.com/alisonaquinas/llm-doc-skills)
+- [`web-design-skills`](https://github.com/alisonaquinas/llm-web-design-skills)
 
 The website lets you browse the skills contained inside those plugins. The marketplace catalog at
 `.claude-plugin/marketplace.json` publishes the actual installable plugins.
@@ -34,6 +35,7 @@ Then install one of the published plugins:
 /plugin install shared-skills@llm-skills
 /plugin install ci-cd@llm-skills
 /plugin install software-design@llm-skills
+/plugin install web-design-skills@llm-skills
 ```
 
 The hosted marketplace JSON is also published at:
@@ -56,6 +58,7 @@ https://alisonaquinas.github.io/llm-skills/rss.xml
 | `ci-cd` | [llm-ci-dev](https://github.com/alisonaquinas/llm-ci-dev) | Claude Code skills for CI/CD pipelines, release flows, and delivery automation |
 | `software-design` | [llm-software-design](https://github.com/alisonaquinas/llm-software-design) | Claude Code skills for software design, OOP, architecture, and maintainability guidance |
 | `doc-skills` | [llm-doc-skills](https://github.com/alisonaquinas/llm-doc-skills) | Claude Code skills for document authoring, publishing formats, Markdown hosts, and diagram workflows |
+| `web-design-skills` | [llm-web-design-skills](https://github.com/alisonaquinas/llm-web-design-skills) | Claude Code skills for web design, UI/UX, CSS, HTML, and front-end development workflows |
 
 ## Development
 
