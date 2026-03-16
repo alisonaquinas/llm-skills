@@ -5,8 +5,110 @@
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CI/CD Skills v1.1.4</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.4</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.1.4 release notes.</p>
+<h3>Changed</h3>
+<pre>- documented trunk-based development workflow in `AGENTS.md`</pre>]]></description>
+    </item>
+    <item>
+      <title>Doc Skills v1.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.1.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `skills/raw-document`: added XML validation reference, helper script, and tests for inspecting and repairing documents at the raw byte or XML level</pre>
+<h3>Changed</h3>
+<pre>- moved all skill directories into a `skills/` subdirectory to align the repo layout with the rest of the skill workspace
+- updated all internal script paths, test imports, and README links to match the new `skills/` prefix</pre>
+<h3>Fixed</h3>
+<pre>- `tests/test_xlsx_recalc.py`: loader now catches `SystemExit` from `recalc.py` when openpyxl is not installed and converts it to `ImportError` so the test class is skipped cleanly instead of aborting discovery
+- `VALIDATION_REPORT.md`: removed double blank line that triggered MD012
+- README skill table and Quick Start command paths corrected to include `skills/` prefix</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.6.7</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.7</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.7</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.6.7 release notes.</p>
+<h3>Added</h3>
+<pre>- `skills/cat`: display and concatenate file contents; covers tac, heredoc alternatives, and &quot;useless use of cat&quot; guidance
+- `skills/cp`: copy files and directories with metadata/permission preservation, archive mode, and safe overwrite patterns
+- `skills/echo`: print strings to stdout with portability notes; defers to `$printf` for escape handling in scripts
+- `skills/grep`: search files and pipelines by pattern; prefers ag (The Silver Searcher) for recursive code search when installed; includes ag flags, when-to-use table, and PCRE notes
+- `skills/ln`: create hard and symbolic links; covers atomic symlink replacement, relative vs absolute targets, and cross-filesystem limits
+- `skills/ls`: list directory contents; covers GNU vs BSD flag differences, sorting options, colour output, and safe scripting alternatives
+- `skills/mv`: move and rename files and directories; covers atomic same-filesystem rename, cross-filesystem copy-then-delete, and overwrite protection
+- `skills/printf`: portable formatted output; covers format specifiers, field widths, ANSI colour, `printf -v`, null-delimited output, and the &quot;never pass variable as format string&quot; safety rule
+- `skills/ps`: inspect running processes; covers BSD/POSIX syntax differences, custom output columns, process trees, and top/htop alternatives
+- `skills/rsync`: sync files locally or over SSH; emphasises dry-run-first workflow, trailing-slash semantics, `--delete` warning, and bandwidth/checksum options</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.3.9</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.3.9</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.9</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.3.9 release notes.</p>
+<h3>Added</h3>
+<pre>- registered `llm-web-design-skills` as a new plugin in the marketplace catalog, regenerated `marketplace.json`, and updated the README plugin list</pre>
+<h3>Changed</h3>
+<pre>- documented trunk-based development workflow in `AGENTS.md`
+- updated `package-lock.json` to v1.3.8</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.2.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.2.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.2.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.2.0 release notes.</p>
+<h3>Added</h3>
+<pre>- added evidence-first tooling and references to `well-documented`, including documentation maturity levels, project-type README templates, truth-and-freshness audit guidance, and new unit tests for the helper scripts</pre>
+<h3>Changed</h3>
+<pre>- made `well-documented` adaptive instead of recursive-by-default: `audit-docs`, `init-docs`, and `normalize-docs` now support `minimal`, `standard`, and `full` maturity levels
+- upgraded `well-documented/scripts/audit-docs.sh` to check broken markdown links, unresolved local path references, missing local script or Make-target references, bootstrap-marker drift, and git freshness signals when available
+- upgraded `well-documented/scripts/init-docs.sh` and `normalize-docs.sh` to use project-type-aware root README templates and a lighter default baseline
+- upgraded `well-documented/scripts/add-file-headers.sh` so generated headers are explicitly marked as bootstrap text and shell shebangs are preserved cleanly
+- replaced placeholder-heavy `well-documented` templates with more actionable scaffolds and added root README variants for library, cli, service, web app, monorepo package, and data pipeline repositories
+- test-drove the full 114-skill catalog and added explicit verification or recovery guidance to every skill so common requests now end with a clearer follow-through path
+- rewrote `well-documented` for cleaner command selection, stronger safety notes, and a proper Quick Start flow
+- deepened 42 thinner `*-docstrings` skills with family-specific depth sections, anti-patterns, and reference starting points so they better match the richness of the strongest catalog anchors
+- added `docs/skill-test-drive-report.md`, `docs/docstrings-depth-test-drive.md`, `scripts/skill_affordance_report.py`, `tests/test_skill_affordances.py`, and `tests/test_docstring_reference_depth.py` to preserve the new usability baseline
+- updated `AGENTS.md` with `skill_affordance_report.py` usage guidance and a pointer to `docs/skill-test-drive-report.md`
+- updated `README.md` to link to the new test-drive report</pre>
+<h3>Fixed</h3>
+<pre>- `well-documented/scripts/audit-docs.sh` R06 abort: added `|| true` guard to
+  `fname=$(... | grep -oP ...)` command substitution so the script no longer
+  exits early under `set -euo pipefail` when a line in AGENTS.md contains no
+  backtick-quoted file reference — previously the audit silently stopped after
+  R05 on any repo that had an AGENTS.md
+- `well-documented/scripts/audit-docs.sh` M02 misleading output: tool crashes
+  (e.g. `SyntaxError` from Node.js &lt; 20) now surface as a WARN with an
+  actionable message rather than counting error stack lines as &quot;violations&quot;
+- `well-documented/SKILL.md`: document Node.js ≥ 20 requirement for
+  `markdownlint-cli2`; include `nvm` workaround note</pre>]]></description>
+    </item>
+    <item>
+      <title>Web Design Skills v1.0.0</title>
+      <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.0.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.0.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Web Design Skills v1.0.0 release notes.</p>
+<pre>- Initial release of `llm-web-design-skills`.
+- Added 16 cross-compatible web framework and web design skills:
+  - **Frontend frameworks**: `angular`, `nextjs`, `react`, `svelte`, `vue`
+  - **Styling and UI systems**: `material-design`, `scss`, `tailwind`
+  - **Build and tooling**: `vite`
+  - **Backend frameworks**: `django`, `nodejs`, `express-js`, `asp-net`, `spring-boot`, `laravel`
+  - **Static sites and content**: `hugo`
+- Each skill ships with Claude and OpenAI agent definitions, best-practices reference, and workflow guide.</pre>]]></description>
+    </item>
     <item>
       <title>Shared Skills v1.6.6</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.6</link>
@@ -612,276 +714,6 @@
 - Switched the marketplace UI to class-based theming so shared surfaces and skill detail pages respect the user&apos;s saved dark mode preference without a hydration flash.</pre>
 <h3>Fixed</h3>
 <pre>- Excluded the plain `MIT LICENSE.md` text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.0.5</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.5</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.0.5 release notes.</p>
-<h3>Fixed</h3>
-<pre>- Added an explicit `text` language tag to the release-dispatch example in `docs/release-workflow.md` so markdownlint no longer fails the documentation workflow on `MD040`.
-- Updated `catalog.json` marketplace version to `1.0.5` so the release tag, published metadata, and site chrome remain aligned.
-- Refreshed the front-page `README.md` release summary to describe the `v1.0.5` documentation fix.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.0.4</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.4</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.0.4 release notes.</p>
-<h3>Added</h3>
-<pre>- Added a shared site footer that shows the current marketplace version and credits Alison Aquinas with official website, GitHub, and LinkedIn profile links.</pre>
-<h3>Changed</h3>
-<pre>- Sourced the footer version display from `catalog.json` so the published UI always reflects the same release metadata used for tags and generated artifacts.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.0.3</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.3</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.0.3 release notes.</p>
-<h3>Fixed</h3>
-<pre>- Serialized GitHub Pages deploy runs with a workflow concurrency group so overlapping `main`, tag, and `repository_dispatch` publishes do not race when pushing the `gh-pages` branch.
-- Updated `catalog.json` marketplace version to `1.0.3` so release metadata remains aligned with the published git tag and GitHub Release workflow.
-- Refreshed the front-page `README.md` release summary to describe the `v1.0.3` deployment-stability fix.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.0.2</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.2</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.0.2 release notes.</p>
-<h3>Added</h3>
-<pre>- Module-local `README.md` and `AGENTS.md` files for `src/app`, `src/components`, `src/lib`, and `scripts`.
-- PlantUML module diagrams describing page composers, services, parsers, and tooling collaborators.
-- Vitest unit tests for marketplace aggregation, skill filtering, route parsing, marketplace document generation, and RSS generation helpers.
-- A dedicated top-level `tests/` tree that keeps unit tests separate from runtime modules while mirroring the source structure.
-- Static SEO artifacts for GitHub Pages export, including `robots.txt`, `sitemap.xml`, JSON-LD structured data, and a social preview image.
-- A tag-driven GitHub Release workflow that publishes release notes directly from `CHANGELOG.md`.</pre>
-<h3>Changed</h3>
-<pre>- GitHub Pages deploy workflow now regenerates `rss.xml` on `main`, release tags, and upstream `repository_dispatch` events.
-- Migrated first-party build and validation scripts from `.mjs` to TypeScript and run them via `tsx`.
-- Tightened `tsconfig.json` by disabling `allowJs` now that the repository tooling is TypeScript-based.
-- Refactored business logic into cohesive `src/lib` namespaces for catalog, commands, GitHub access, marketplace services, routes, and skills.
-- Thinned page and component files so they compose services instead of owning filtering, command building, and route parsing logic.
-- Added detailed file headers and API-level doc comments across source files, scripts, and tests, and documented that standard in the repo `AGENTS.md`.
-- Expanded route metadata with canonical URLs, Open Graph/Twitter cards, crawl directives, and shared SEO helpers backed by `catalog.json`.
-- Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
-- Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
-
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.6...HEAD
-[1.3.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.5...v1.3.6
-[1.3.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.4...v1.3.5
-[1.3.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.3...v1.3.4
-[1.3.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.2...v1.3.3
-[1.3.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...v1.3.2
-[1.3.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.0...v1.3.1
-[1.3.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.2.0...v1.3.0
-[1.2.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...v1.2.0
-[1.1.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.6...v1.1.0
-[1.0.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6
-[1.0.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.4...v1.0.5
-[1.0.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.3...v1.0.4
-[1.0.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.2...v1.0.3
-[1.0.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.0.1...v1.0.2</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v1.0.1</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.0.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.0.1</guid>
-      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v1.0.1 release notes.</p>
-<h3>Added</h3>
-<pre>- **AGENTS.md**: Release Process section documenting steps to sync `plugin.json` version with git tag and update `CHANGELOG.md` before every release</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v1.0.0</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.0.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.0.0</guid>
-      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v1.0.0 release notes.</p>
-<h3>Added</h3>
-<h4>Kubernetes Tooling Skills (7 new skills)</h4>
-<pre>- **kubectl** skill: Manage Kubernetes resources, contexts, and workloads with kubectl
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, resource-management.md, troubleshooting.md
-  - Content: install by platform (curl, Homebrew, apt/yum, asdf), kubeconfig and KUBECONFIG env var, multi-context management; get/describe/apply/delete/edit, logs with --previous/-f/--since, exec -it, port-forward, rollout status/history/undo, scale, patch, cp, top, --dry-run=client -o yaml, -o jsonpath, kubectl diff; declarative vs imperative, labels and selectors, namespaces, kubectl explain, resource types cheat-sheet, kustomize integration; CrashLoopBackOff/OOMKilled/ImagePullBackOff diagnosis, kubectl describe pod events, kubectl debug ephemeral containers, node pressure, events sorting, resource quota inspection, taints and tolerations
-
-- **helm** skill: Package and deploy Kubernetes applications with Helm charts and releases
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, chart-authoring.md, release-management.md
-  - Content: install by platform (binary, Homebrew, apt, asdf), HELM_DATA_HOME/CACHE_HOME/CONFIG_HOME, repo add/update/list/remove, OCI registry auth; helm install/upgrade --install, --dry-run --debug, list/status/uninstall/rollback/history, get values/manifest/notes, --set/-f, helm template, show values, search repo/hub, pull, OCI commands; Chart.yaml required fields, templates/ structure, values.yaml hierarchy, _helpers.tpl, built-in objects (.Release/.Values/.Chart/.Capabilities), NOTES.txt, helm create/lint/package; release lifecycle, --atomic, --wait, upgrade strategies, helm diff plugin, --namespace/--create-namespace, secrets plugin, multi-env values pattern
-
-- **kustomize** skill: Customize Kubernetes manifests with overlay and base patterns using Kustomize
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, kustomization-structure.md, overlays-and-bases.md
-  - Content: standalone binary install, kubectl built-in apply -k, version mismatch note, KUSTOMIZE_PLUGIN_HOME; kustomize build, pipe to kubectl apply, kubectl diff -k, kustomize edit set image/namespace/nameprefix; kustomization.yaml anatomy, resources/images/configMapGenerator/secretGenerator/namePrefix/patches/replacements; base/overlay layout, environment overlays, strategic merge patches, JSON patches, components:, multi-base overlays, GitOps integration
-
-- **skaffold** skill: Build, push, and deploy to Kubernetes iteratively with Skaffold
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, skaffold-yaml.md, profiles-and-ci.md
-  - Content: install by platform, SKAFFOLD_DEFAULT_REPO, ~/.skaffold/ config; skaffold dev/run/build/deploy/delete/debug/render, --profile, --tail, diagnose, init; skaffold.yaml top-level structure, build.artifacts[], Docker/Buildpacks/Jib/Kaniko builders, kubectl/helm/kustomize deployers, sync.infer; profiles for dev/staging/prod, activation methods, artifact caching, CI integration patterns, --status-check, multi-module repos
-
-- **tilt** skill: Develop Kubernetes services locally with Tilt and Tiltfiles
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, tiltfile-patterns.md, extensions-and-teams.md
-  - Content: install by platform, prerequisites (kind/k3d/minikube), TILT_HOST/TILT_PORT, tilt doctor; tilt up/down/ci/trigger/get/describe/logs, TUI keyboard shortcuts; Starlark Tiltfile, docker_build with live_update, k8s_yaml, k8s_resource, local_resource, helm_resource, include/load, allow_k8s_contexts; Tilt extensions, mono-repo patterns, tilt args, Tilt Cloud, CI mode patterns
-
-- **flux** skill: Manage GitOps Kubernetes deployments with FluxCD sources and Kustomizations
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, gitops-sources.md, kustomizations-and-helmreleases.md
-  - Content: install flux CLI, flux check --pre, bootstrap github/gitlab, GITHUB_TOKEN/GITLAB_TOKEN, flux check; flux get all/sources/kustomizations/helmreleases, reconcile source/kustomization/helmrelease, suspend/resume, diff, events, logs, create secret, export; GitRepository/HelmRepository/OCIRepository/Bucket CRDs, ImageRepository and ImagePolicy, ImageUpdateAutomation, secret types; Kustomization CRD fields (sourceRef/path/prune/interval/dependsOn/healthChecks/postBuild), HelmRelease CRD fields (chart spec/values/valuesFrom/remediation), dependsOn ordering, multi-tenancy
-
-- **argocd** skill: Deploy Kubernetes apps declaratively with Argo CD applications and projects
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, application-management.md, rbac-and-projects.md
-  - Content: install CLI, argocd login, ARGOCD_SERVER/ARGOCD_AUTH_TOKEN/ARGOCD_OPTS, initial admin secret, argocd context; argocd app list/get/create/sync/diff/history/rollback/delete/set, cluster/repo/proj/account commands; Application CRD (source/destination/project/syncPolicy), sync waves and hooks, health status states; AppProject CRD, multi-tenancy, RBAC policy syntax, built-in roles, SSO integration, repository credentials</pre>
-<h4>Container Runtime Skills (3 new skills)</h4>
-<pre>- **containerd** skill: Manage containers and images with containerd using ctr and nerdctl
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, containerd-config.md, kubernetes-integration.md
-  - Content: install containerd/nerdctl/CNI plugins/BuildKit, CONTAINERD_ADDRESS/CONTAINERD_NAMESPACE, rootless setup; nerdctl Docker-compatible commands, nerdctl compose, ctr images/containers/tasks/snapshots/content, namespace flag; /etc/containerd/config.toml, CRI plugin section, registry mirrors, snapshotters, SystemdCgroup, containerd config default; containerd as Kubernetes CRI, crictl for pod/container debugging, crictl config, ctr --namespace k8s.io, image GC settings, private registry pull
-
-- **podman** skill: Build and run containers with Podman without a daemon
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, rootless-and-pods.md, podman-compose-and-systemd.md
-  - Content: install by platform, podman machine init/start/stop/ssh, rootless requirements (subuid/subgid), containers.conf/storage.conf/registries.conf, CONTAINER_HOST; podman run/exec/build/push/pull/pod/network/volume commands, generate kube, play kube, machine commands, system prune; rootless architecture, user namespace mapping, slirp4netns/pasta networking, pod infra container, port publishing, podman-remote, SELinux/AppArmor labels; podman-compose, podman generate systemd, Quadlets (.container/.pod/.network/.volume units), podman auto-update
-
-- **cri-o** skill: Configure and debug CRI-O as a Kubernetes container runtime with crictl
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, crio-configuration.md, kubernetes-integration.md
-  - Content: install cri-o by platform (OBS apt, dnf/yum), crictl from cri-tools, /etc/crictl.yaml, CONTAINER_RUNTIME_ENDPOINT, crun/runc, CNI plugins, systemctl enable crio; crictl pods/ps/images/pull/exec/logs/inspect/inspecti/inspectp/runp/stopp/rmp/stats/info; /etc/crio/crio.conf and drop-ins, [crio.runtime]/[crio.image]/[crio.network] sections, OCI hooks, seccomp/AppArmor, crio config --default, systemctl reload crio; kubelet CRI socket config, cgroup-driver alignment, Kubernetes version compatibility, CNI plugin config, OCI runtime selection (runc/crun/kata-containers), image storage, GC tuning</pre>
-<h4>Secret Management Skills (4 new skills)</h4>
-<pre>- **vault** skill: Manage secrets, tokens, and policies with HashiCorp Vault
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, auth-methods.md, policies-and-leases.md
-  - Content: Homebrew/APT/binary install, dev server, VAULT_ADDR/VAULT_TOKEN/VAULT_NAMESPACE env vars, .vault-token file, HCL server config; vault login/kv get/put/list/delete/patch, vault read/write, token lookup/renew/revoke, auth list, secrets list, lease renew/revoke, -format=json; AppRole workflow (role_id/secret_id for CI), AWS IAM auth, Kubernetes auth, orphan tokens, env vs file token; HCL policy syntax (path/capabilities), vault policy write/read/list, lease TTL, dynamic secrets concept, KV v1 vs v2 differences, namespace isolation
-
-- **bitwarden-cli** skill: Access and manage Bitwarden vault items via the bw CLI
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, auth-and-session.md, item-operations-and-filtering.md
-  - Content: NPM/Homebrew/binary install, bw config server for self-hosted, BW_SESSION/BW_CLIENTID/BW_CLIENTSECRET env vars; bw login/logout/unlock/sync/get/list/create/edit/delete commands, --session flag; API key auth, session lifecycle, device trust, scripted CI/CD auth patterns, bw lock; item types (login/securenote/card/identity), bw list filters (folderid/organizationid/collectionid/search/url), JSON templates for create, bulk export, trash/restore, bw encode
-
-- **1password-cli** skill: Access 1Password secrets and run commands via op CLI
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, secret-references-and-op-run.md, service-accounts-and-connect.md
-  - Content: Homebrew/binary/winget install, op signin, OP_SERVICE_ACCOUNT_TOKEN/OP_CONNECT_HOST/OP_CONNECT_TOKEN env vars, ~/.config/op/config; op signin/item get/list/create/edit/delete/read/run/inject/document get, --format json, --fields flag; op:// secret reference syntax, op run with inline env vars and --env-file, op inject for file templating, GitHub Actions and GitLab CI integration; service account creation/scoping/rotation, 1Password Connect server setup, machine-to-machine auth patterns
-
-- **aws-secretsmanager** skill: Store, retrieve, and rotate secrets with AWS Secrets Manager
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, rotation-and-versions.md, access-control-and-iam.md
-  - Content: AWS CLI install reference (defer to aws skill), IAM permissions for Secrets Manager, KMS CMK setup, VPC endpoint overview, AWS_REGION/AWS_PROFILE env vars; create-secret/get-secret-value/put-secret-value/update-secret/describe-secret/list-secrets/delete-secret/rotate-secret/tag-resource, --query SecretString jq patterns, multi-region replication; automatic rotation with Lambda, rotation schedules, AWSCURRENT/AWSPENDING/AWSPREVIOUS staging labels, list-secret-version-ids, update-secret-version-stage, built-in rotation functions (RDS/Redshift/DocumentDB), custom Lambda structure, CloudTrail monitoring; least-privilege IAM templates (read-only/manage/rotation Lambda), resource-based policies for cross-account access, KMS key policies, tag-based access control, CloudTrail audit, VPC endpoint</pre>
-<h4>Package &amp; Build Manager Skills (10 new skills)</h4>
-<pre>##### Node.js
-
-- **npm** skill: Manage Node.js packages and run scripts with npm
-  - 4 reference docs: install-and-setup.md, package-json.md, command-cookbook.md, workspaces.md
-  - Content: nvm/fnm/corepack install, .npmrc config, package.json fields (dependencies/devDependencies/peerDependencies/exports/engines/scripts), init/install/ci/run/publish/update/outdated/audit/exec/link/pack commands, --dry-run for publish, workspaces field, --workspace flag, hoisting
-
-- **yarn** skill: Manage JavaScript packages with Yarn Berry (v3/v4) and Classic (v1)
-  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, workspaces.md
-  - Content: corepack enable, Classic vs Berry comparison, .yarnrc.yml (Berry) and .yarnrc (Classic), nodeLinker/PnP/node-modules, add/remove/install(--immutable)/run/dlx/up/audit/pack/publish/why/dedupe, workspaces foreach, workspace: protocol, constraints
-
-- **pnpm** skill: Manage Node.js packages efficiently with pnpm&apos;s content-addressable store
-  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, workspaces.md
-  - Content: corepack/standalone install, pnpm env for Node.js versions, .npmrc (shamefully-hoist/store-dir), pnpm-workspace.yaml, add/remove/install(--frozen-lockfile)/run/dlx/update/outdated/audit/publish/store prune, recursive (-r), --filter, workspace:/catalog: protocols
-
-##### Python
-
-- **pip** skill: Install and manage Python packages with pip inside virtual environments
-  - 4 reference docs: install-and-setup.md, requirements-and-indexes.md, command-cookbook.md, virtual-environments.md
-  - Content: ensurepip, pip upgrade, pip.conf/pip.ini, requirements.txt format, version specifiers, constraints files, --index-url/--extra-index-url, private PyPI, --require-hashes, install/download/uninstall/freeze/list/show/check/wheel/hash/cache purge, venv creation/activation (bash/fish/PowerShell), pipx for tools
-
-- **poetry** skill: Manage Python dependencies, virtual environments, and package builds with Poetry
-  - 4 reference docs: install-and-setup.md, pyproject-toml.md, command-cookbook.md, dependency-groups.md
-  - Content: pipx install, POETRY_HOME, [tool.poetry] metadata, version constraints (^/~/*/&gt;=), new/init/add/remove/install/update/show/build/publish/run/shell/env use/export/version commands, dependency groups (--with/--without/--only), group export to requirements.txt
-
-- **pipenv** skill: Manage Python virtual environments and dependencies with Pipenv and Pipfile
-  - 4 reference docs: install-and-setup.md, pipfile-and-lockfile.md, command-cookbook.md, environment-management.md
-  - Content: pip user/brew install, PIPENV_VENV_IN_PROJECT, Pipfile [[source]]/[packages]/[dev-packages]/[requires], Pipfile.lock, install/uninstall/sync/lock/run/shell/graph/check/clean/update commands, .env auto-loading, PIPENV_PYTHON
-
-##### Java/JVM
-
-- **maven** skill: Build and manage Java projects with Apache Maven lifecycle phases
-  - 4 reference docs: install-and-setup.md, pom-xml.md, command-cookbook.md, lifecycle-and-plugins.md
-  - Content: brew/apt/sdkman install, Maven wrapper (mvnw), JAVA_HOME, settings.xml, GAV coordinates, dependency scopes, dependencyManagement, profiles, validate/compile/test/package/verify/install/deploy/clean/site phases, dependency:tree, versions plugin, -DskipTests/-B/-T/-pl/-am flags, surefire/failsafe/shade/compiler/resources plugins
-
-- **gradle** skill: Build Java and Android projects with Gradle using the Gradle wrapper
-  - 4 reference docs: install-and-setup.md, build-scripts.md, command-cookbook.md, tasks-and-plugins.md
-  - Content: sdkman/brew install, Gradle wrapper (./gradlew), gradle init, Groovy vs Kotlin DSL, repositories/dependencies/configurations, settings.gradle, build/test/clean/assemble/check/run/dependencies/tasks commands, -m/--dry-run/--no-daemon/--parallel/--configuration-cache, java/application/spring-boot/maven-publish plugins
-
-##### C/C++
-
-- **make** skill: Automate builds and tasks with GNU Make and Makefiles
-  - 4 reference docs: install-and-setup.md, makefile-syntax.md, command-cookbook.md, patterns-and-functions.md
-  - Content: brew/apt/xcode-tools install, target/prerequisite/recipe structure (tab indentation), variable flavors (=/:=/?=/+=), automatic variables ($@/$&lt;/$^/$*), .PHONY/.DEFAULT_GOAL, make/-n/-j/-f/-C/-B/-k/V=1 flags, static pattern rules, wildcard/patsubst/shell/filter/foreach functions, ifeq/ifdef conditionals
-
-- **cmake** skill: Configure and build C/C++ projects with CMake using out-of-source builds
-  - 4 reference docs: install-and-setup.md, cmakelists.md, command-cookbook.md, build-types-and-generators.md
-  - Content: brew/apt/pip/winget install, cmake_minimum_required/project()/add_executable/add_library/target_link_libraries/find_package/install(), cmake -S . -B build/-DCMAKE_BUILD_TYPE/--build/--install/ctest/--preset/-G flags, Debug/Release/RelWithDebInfo/MinSizeRel build types, single-config vs multi-config generators, toolchain files, CMakePresets.json</pre>
-<h4>Version Manager Skills (6 new skills)</h4>
-<pre>- **nvm** skill: Manage multiple Node.js versions with nvm
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, nvmrc-and-defaults.md, shell-integration.md
-  - Content: curl/wget installer, shell profile integration, install/use/alias/ls/ls-remote/uninstall/exec commands, .nvmrc project file, default alias, auto-use on cd, lazy-loading pattern, fish shell, Windows alternatives (fnm, nvm-windows)
-
-- **rvm** skill: Manage Ruby versions and gemsets with rvm
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, gemsets.md, project-files.md
-  - Content: GPG key import, curl installer, rvm requirements, install/use/list/gemset/current/uninstall/remove commands, gemset create/use/delete/@global, .ruby-version, .ruby-gemset, .rvmrc (legacy), autoswitch on cd
-
-- **rbenv** skill: Manage Ruby versions with rbenv and ruby-build
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, ruby-build.md, project-files.md
-  - Content: Homebrew/rbenv-installer install, shell integration, install/global/local/shell/versions/rehash/uninstall commands, ruby-build plugin, RUBY_CONFIGURE_OPTS, MAKE_OPTS, .ruby-version, shell &gt; local &gt; global precedence, RBENV_VERSION
-
-- **pyenv** skill: Manage multiple Python versions with pyenv
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, virtualenvs.md, project-files.md
-  - Content: pyenv-installer/Homebrew install, OS build dependencies, install/global/local/shell/versions/which commands, pyenv-virtualenv plugin, virtualenv create/activate/auto-activate, .python-version, PYENV_VERSION, multi-version tox support
-
-- **asdf** skill: Manage multiple language runtime versions with asdf
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, plugins-and-tools.md, tool-versions.md
-  - Content: git clone/Homebrew install, shell integration for bash/zsh/fish, plugin add/update/remove, install/global/local/shell/current/list/reshim commands, popular plugins (nodejs/python/ruby/golang/java/terraform), .tool-versions format, CI usage (GitHub Actions, generic)
-
-- **direnv** skill: Manage per-directory environment variables with direnv
-  - 4 reference docs: install-and-setup.md, command-cookbook.md, envrc-patterns.md, integrations.md
-  - Content: apt/brew/nix/binary install, shell hook for bash/zsh/fish, .envrc security model, allow/deny/reload/edit/status/prune/exec commands, export/PATH_add/source_env/layout/use/dotenv patterns, pyenv/nvm/rbenv/asdf integrations, editor integration</pre>
-<h4>Infrastructure as Code Skills (4 new skills)</h4>
-<pre>- **terraform** skill: Plan and apply HashiCorp Terraform infrastructure
-  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, state-and-backends.md
-  - Content: macOS/Linux/Windows install, tfenv, provider blocks, variables, outputs, backends (S3/GCS/HCP), init/validate/fmt/plan/apply/destroy, state commands (list/show/mv/rm), import, workspaces, state locking, sensitive values
-
-- **open-tofu** skill: Plan and apply OpenTofu (open-source Terraform fork) infrastructure
-  - 4 reference docs: install-and-setup.md, configuration.md, command-cookbook.md, migrating-from-terraform.md
-  - Content: installer script/apt/rpm/brew/winget install, tofuenv, HCL configuration (identical to Terraform), state encryption (OpenTofu-specific), `tofu test` native testing, provider lock, migration guide from Terraform (state compatibility, license comparison, CI/CD updates, rollback)
-
-- **pulumi** skill: Deploy cloud infrastructure using TypeScript, Python, Go, C#, or YAML
-  - 4 reference docs: install-and-setup.md, language-and-project.md, stacks-and-config.md, command-cookbook.md
-  - Content: curl/brew/winget install, Pulumi Cloud and self-managed backends, language-specific code examples (TS/Python/Go/C#/YAML), Pulumi.yaml project file, stack operations, config/secrets management, cross-stack references, `pulumi new/preview/up/destroy/refresh/import/convert`
-
-- **ansible** skill: Automate configuration management with agentless SSH automation
-  - 4 reference docs: install-and-setup.md, inventory-and-variables.md, playbook-patterns.md, command-cookbook.md
-  - Content: pip/apt/dnf/brew install, SSH key setup, ansible.cfg, INI/YAML inventory, group_vars/host_vars, dynamic inventory (AWS EC2/GCP), variable precedence, play structure, common modules table, conditionals/loops/register/tags/roles, ad-hoc commands, `ansible-playbook --check --diff`, ansible-galaxy, ansible-vault, ansible-inventory</pre>
-<h4>Atlassian Documentation Lookup Skills (1 new skill)</h4>
-<pre>- **jsm-docs** skill: Navigate Jira Service Management Cloud documentation at support.atlassian.com/jira-service-management and REST API
-  - 4 reference docs: navigation.md, quick-reference.md, jsm-cloud-reference.md, api-reference.md
-  - Content: JSM Cloud product overview, doc site structure, queue/SLA/portal/request type configuration, ITSM processes (incident/change/problem management), Assets (IT asset management), Knowledge Base integration, JSM REST API endpoints, authentication, pagination, asset management operations</pre>
-<h3>Improved</h3>
-<h4>Skill Inline Examples (42 skills)</h4>
-<pre>- Added a second inline code block to every SKILL.md that previously had only 1 (or 0) code
-  examples, satisfying validation rubric criterion V05 (Example Quality)
-- Examples cover troubleshooting, error recovery, and secondary workflow scenarios for:
-  1password-cli, ansible, asdf, atlassian-cli-docs, aws, aws-secretsmanager, az,
-  bitwarden-cli, ci-architecture, cmake, direnv, flux, github-docs, gitlab-docs, glab,
-  gradle, helm, jenkins-agent, jenkins-docs, jira-docs, jsm-docs, kubectl, kustomize,
-  make, maven, npm, nvm, open-tofu, pip, pipenv, pnpm, poetry, pyenv, rbenv, rovo-docs,
-  rvm, skaffold, terraform, tilt, travis-ci-docs, vault, yaml-linting</pre>
-<h4>Validation System (merged from llm-shared-skills)</h4>
-<pre>- Replaced stub `validation/rubric.md` with full 8-criterion V01–V08 rubric including
-  detailed PASS/WARN/FAIL conditions, &quot;How to Fix&quot; examples, and a report template
-- Replaced stub `validation/public-references.md` with 8 prompt engineering standards
-  (Specificity, Diverse Examples, Numbered Workflows, Verification, Failure Modes,
-  Single Responsibility, Output Format, Context Efficiency) with academic references
-- Added `validation/validate-skill.sh` — automated pre-flight emitting structured metrics
-  (line count, section count, code block count, Intent Router detection, safety section)
-- Updated `AGENTS.md` with full V01–V08 rubric table, scoring thresholds, and V08 checklist
-- Fixed `## Reference Files` → `## Intent Router` heading in argocd, containerd, cri-o,
-  and podman SKILL.md files to satisfy V02 (Intent Router Completeness)
-- All 61 skills validated: 0 lint FAILs, 0 validate-skill.sh WARNs (IR/length)</pre>
-<h3>Fixed</h3>
-<h4>Markdown Lint (2,758 violations resolved)</h4>
-<pre>- Auto-fixed MD031/MD022/MD032/MD010/MD012/MD026/MD047 across all files (blanks around fences/headings/lists, hard tabs, multiple blanks, trailing punctuation, trailing newline)
-- Added language specifiers to 11 bare fenced code blocks in 9 files (`text`, `go`)
-- Fixed compact table separator rows (`|---|` → `| --- |`) in 11 files
-- Fixed `CLAUDE.md` missing top-level H1 heading (MD041)
-- Escaped inline HTML in `skills/az/references/install-and-setup.md` (MD033)
-- Added `.markdownlint.json` for local linting (`MD013` disabled, `MD024` siblings-only, `MD060` disabled)
-- Updated `.markdownlint-cli2.jsonc` (CI): enabled previously-suppressed rules now clean, changed `no-duplicate-heading` from `false` to `{ siblings_only: true }`</pre>]]></description>
     </item>
   </channel>
 </rss>
