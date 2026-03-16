@@ -7,6 +7,17 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.3.9] - 2026-03-16
+
+### Added
+
+- registered `llm-web-design-skills` as a new plugin in the marketplace catalog, regenerated `marketplace.json`, and updated the README plugin list
+
+### Changed
+
+- documented trunk-based development workflow in `AGENTS.md`
+- updated `package-lock.json` to v1.3.8
+
 ## [1.3.6] - 2026-03-14
 
 ### Fixed
