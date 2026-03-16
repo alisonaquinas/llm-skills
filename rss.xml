@@ -89,6 +89,15 @@
 - `skills/rsync`: sync files locally or over SSH; emphasises dry-run-first workflow, trailing-slash semantics, `--delete` warning, and bandwidth/checksum options</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.4.1</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.1</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- `release.yml`: `all-plugins.zip` now contains individual `*-skill.zip` files flat at the archive root rather than nesting the plugin bundle ZIPs inside it; each plugin bundle is downloaded then extracted, and the resulting skill ZIPs are collected with `zip -j` (junk paths) into a single flat archive</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.4.0</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.0</guid>
@@ -708,18 +717,6 @@
 - `CHANGELOG.md`: moved unreleased entries into the `1.5.3` release section and refreshed compare links for the new tag</pre>
 <h3>Fixed</h3>
 <pre>- Added an explicit `text` language tag to the release-workflow failure example so repository markdownlint checks pass cleanly.</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.5.2</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.1...v1.5.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.5.2</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.5.2 release notes.</p>
-<h3>Added</h3>
-<pre>- GitHub Actions release workflow that creates GitHub releases from changelog entries and triggers `alisonaquinas/llm-skills` to rebuild static marketplace artifacts, including the combined RSS feed</pre>
-<h3>Changed</h3>
-<pre>- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.5.2` so the release tag, plugin metadata, and GitHub release workflow stay in sync
-- `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
     </item>
   </channel>
 </rss>
