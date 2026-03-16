@@ -75,6 +75,7 @@ tests/                 # Unit tests organized separately from runtime modules
 - For responsive UI changes, include manual review at representative phone, tablet, and desktop widths before calling the work ready.
 - Use those probes to confirm the primary page responds successfully and that critical linked assets, especially branding files and generated artifacts, resolve from the correct base path.
 - Treat browser inspection as helpful but not sufficient on its own; pair visual review with command-line verification so stale caches, broken asset paths, and publish mismatches are caught early.
+
 ## Adding a new skill source repo
 
 Update `catalog.json`, not hard-coded arrays in application code.
@@ -148,6 +149,3 @@ This repo uses **trunk-based development**. The developer works alone.
 - Feed and marketplace source configuration belongs in `catalog.json`; avoid hard-coding repo lists.
 - The catch-all route `[...slug]` is used for skill detail pages so that `/` separators in owner/repo/name are real path segments.
 - Keep page files thin and prefer moving non-trivial logic into `src/lib` before adding more JSX complexity.
-
-
-
