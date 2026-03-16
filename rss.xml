@@ -33,6 +33,18 @@
 - README skill table and Quick Start command paths corrected to include `skills/` prefix</pre>]]></description>
     </item>
     <item>
+      <title>Shared Skills v1.7.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.7.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.7.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `shared-skills-plugin.zip` for one-click offline installation; `PLUGIN_NAME := shared-skills` variable drives the output filename</pre>
+<h3>Changed</h3>
+<pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
+- `.github/workflows/release.yml`: added &quot;Build plugin bundle ZIP&quot; step (`make bundle`) so `shared-skills-plugin.zip` is uploaded alongside the individual skill ZIPs on every tag release</pre>]]></description>
+    </item>
+    <item>
       <title>Shared Skills v1.6.7</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.7</link>
       <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.7</guid>
@@ -69,7 +81,8 @@
       <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Software Design Skills v1.2.0 release notes.</p>
 <h3>Added</h3>
-<pre>- added evidence-first tooling and references to `well-documented`, including documentation maturity levels, project-type README templates, truth-and-freshness audit guidance, and new unit tests for the helper scripts</pre>
+<pre>- added evidence-first tooling and references to `well-documented`, including documentation maturity levels, project-type README templates, truth-and-freshness audit guidance, and new unit tests for the helper scripts
+- added a second well-documented test-drive pass focused on bootstrap honesty, audit signal quality, and script reliability</pre>
 <h3>Changed</h3>
 <pre>- made `well-documented` adaptive instead of recursive-by-default: `audit-docs`, `init-docs`, and `normalize-docs` now support `minimal`, `standard`, and `full` maturity levels
 - upgraded `well-documented/scripts/audit-docs.sh` to check broken markdown links, unresolved local path references, missing local script or Make-target references, bootstrap-marker drift, and git freshness signals when available
@@ -83,7 +96,10 @@
 - updated `AGENTS.md` with `skill_affordance_report.py` usage guidance and a pointer to `docs/skill-test-drive-report.md`
 - updated `README.md` to link to the new test-drive report</pre>
 <h3>Fixed</h3>
-<pre>- `well-documented/scripts/audit-docs.sh` R06 abort: added `|| true` guard to
+<pre>- `well-documented/scripts/add-file-headers.sh` now preserves executable file modes when rewriting scripts with generated headers
+- `well-documented/scripts/audit-docs.sh` now keeps PASS and SKIP counters accurate in quiet mode so score summaries remain truthful
+- `well-documented/scripts/init-docs.sh` no longer bootstraps root README templates with broken license links that immediately fail the evidence audit
+- `well-documented/scripts/audit-docs.sh` R06 abort: added `|| true` guard to
   `fname=$(... | grep -oP ...)` command substitution so the script no longer
   exits early under `set -euo pipefail` when a line in AGENTS.md contains no
   backtick-quoted file reference — previously the audit silently stopped after
@@ -699,21 +715,6 @@
 - Corrected the branded bug image path to respect the `/llm-skills` base path in local previews and static export builds.
 - Recovered from stale Next.js dev-server state by documenting the expectation to republish previews from a clean build cache when runtime chunks become inconsistent.
 - Removed mobile-hostile truncation from install commands and kept code-heavy surfaces scrollable inside their own containers instead of forcing page-level overflow.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.0.6</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.0.5...v1.0.6</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.0.6</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.0.6 release notes.</p>
-<h3>Added</h3>
-<pre>- Added a persisted theme preference toggle with Light, Dark, and System modes in the site header.</pre>
-<h3>Changed</h3>
-<pre>- Added a repository-local `.markdownlint-cli2.jsonc` configuration so first-party docs can be linted consistently without including generated output or dependency markdown.
-- Autoformatted first-party markdown files to satisfy the repository markdownlint policy for spacing, list separation, and heading structure.
-- Switched the marketplace UI to class-based theming so shared surfaces and skill detail pages respect the user&apos;s saved dark mode preference without a hydration flash.</pre>
-<h3>Fixed</h3>
-<pre>- Excluded the plain `MIT LICENSE.md` text from markdownlint checks to avoid false-positive heading failures on the stock license preamble.</pre>]]></description>
     </item>
   </channel>
 </rss>
