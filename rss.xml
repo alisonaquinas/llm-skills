@@ -31,6 +31,18 @@
 <pre>- documented trunk-based development workflow in `AGENTS.md`</pre>]]></description>
     </item>
     <item>
+      <title>Doc Skills v1.2.0</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.2.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.2.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.2.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `doc-skills-plugin.zip` for one-click offline installation; `PLUGIN_NAME := doc-skills` variable drives the output filename</pre>
+<h3>Changed</h3>
+<pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
+- `.github/workflows/release.yml`: added &quot;Build plugin bundle ZIP&quot; step (`make bundle`) so `doc-skills-plugin.zip` is uploaded alongside the individual skill ZIPs on every tag release</pre>]]></description>
+    </item>
+    <item>
       <title>Doc Skills v1.1.0</title>
       <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.1.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.1.0</guid>
@@ -77,6 +89,28 @@
 - `skills/rsync`: sync files locally or over SSH; emphasises dry-run-first workflow, trailing-slash semantics, `--delete` warning, and bandwidth/checksum options</pre>]]></description>
     </item>
     <item>
+      <title>Marketplace v1.4.0</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `MarkdownRenderer` component (`src/components/MarkdownRenderer.tsx`): server component using `react-markdown` + `remark-gfm` with `@tailwindcss/typography` prose styling; replaces raw `&lt;pre&gt;` blocks on skill detail pages so all skill documentation is rendered as HTML
+- `buildPluginBundleUrl()` in `src/lib/github/skill-service.ts`: builds the `{pluginName}-plugin.zip` download URL from a plugin config and version
+- `buildAllPluginsBundleUrl()` in `src/lib/catalog/service.ts`: builds the `all-plugins.zip` download URL from `catalog.json` marketplace version and GitHub repo
+- `MarketplacePluginSummary.bundleUrl` field: per-plugin all-in-one bundle download URL, or `null` when the plugin version is unavailable
+- Landing page: per-plugin &quot;Bundle&quot; download link on each plugin card and a &quot;Download all plugins&quot; banner at the top of the marketplace that links to `all-plugins.zip`
+- `release.yml`: two new steps — &quot;Download plugin bundle ZIPs&quot; (fetches each `{pluginName}-plugin.zip` from the latest plugin release) and &quot;Build all-plugins bundle&quot; (assembles `all-plugins.zip` from the downloaded bundles); `all-plugins.zip` is uploaded as a GitHub Release asset
+- Unit tests for `buildPluginBundleUrl` and `bundleUrl` population in `buildMarketplacePluginSummaries`</pre>
+<h3>Changed</h3>
+<pre>- Skill detail page (`src/app/skill/[...slug]/page.tsx`): replaced `&lt;pre&gt;` raw markdown display with `&lt;MarkdownRenderer&gt;` for rendered HTML output
+- `src/lib/github/index.ts` and `src/lib/catalog/index.ts`: barrel exports updated for new URL builder functions
+- `package.json`: added `react-markdown`, `remark-gfm` as runtime dependencies; `@tailwindcss/typography` as dev dependency
+- `tailwind.config.ts`: registered `@tailwindcss/typography` plugin</pre>
+<h3>Fixed</h3>
+<pre>- `catalog.json` and `package.json` version corrected to `1.4.0`; the v1.3.9 tag was pushed without bumping these files, causing the release workflow to fail the version-gate check</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.3.9</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.3.9</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.9</guid>
@@ -87,6 +121,18 @@
 <h3>Changed</h3>
 <pre>- documented trunk-based development workflow in `AGENTS.md`
 - updated `package-lock.json` to v1.3.8</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.3.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.3.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.3.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.3.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `software-design-plugin.zip` for one-click offline installation; `PLUGIN_NAME := software-design` variable drives the output filename</pre>
+<h3>Changed</h3>
+<pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
+- `.github/workflows/release.yml`: added &quot;Build plugin bundle ZIP&quot; step (`make bundle`) so `software-design-plugin.zip` is uploaded alongside the individual skill ZIPs on every tag release; converted CRLF line endings to LF for yamllint compliance</pre>]]></description>
     </item>
     <item>
       <title>Software Design Skills v1.2.0</title>
@@ -123,6 +169,18 @@
   actionable message rather than counting error stack lines as &quot;violations&quot;
 - `well-documented/SKILL.md`: document Node.js ≥ 20 requirement for
   `markdownlint-cli2`; include `nvm` workaround note</pre>]]></description>
+    </item>
+    <item>
+      <title>Web Design Skills v1.1.0</title>
+      <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.1.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.0</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Web Design Skills v1.1.0 release notes.</p>
+<h3>Added</h3>
+<pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `web-design-skills-plugin.zip` for one-click offline installation; `PLUGIN_NAME := web-design-skills` variable drives the output filename</pre>
+<h3>Changed</h3>
+<pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
+- `.github/workflows/release.yml`: upgraded from minimal stub to full plugin release pipeline — adds version gate, changelog extraction, `softprops/action-gh-release` upload of `built/*.zip` (including `web-design-skills-plugin.zip`), and marketplace dispatch trigger; added &quot;Build plugin bundle ZIP&quot; step (`make bundle`)</pre>]]></description>
     </item>
     <item>
       <title>Web Design Skills v1.0.0</title>
@@ -662,51 +720,6 @@
 <h3>Changed</h3>
 <pre>- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.5.2` so the release tag, plugin metadata, and GitHub release workflow stay in sync
 - `CHANGELOG.md`: refreshed compare links so `Unreleased` and recent release entries point at the correct GitHub diffs</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.3.1</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.0...v1.3.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.1</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.3.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- RSS generation now skips feed sources whose upstream `CHANGELOG.md` cannot be fetched, logging a warning instead of failing the entire GitHub Pages deploy.
-- Updated `catalog.json` marketplace version to `1.3.1` so the release tag, published metadata, and site chrome remain aligned.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.3.0</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.2.0...v1.3.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.0</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.3.0 release notes.</p>
-<h3>Added</h3>
-<pre>- Added `llm-doc-skills` plugin to the marketplace: new 📄 Doc Skills card covering Word, PowerPoint, Excel, and PDF document workflows (`docx-custom`, `pptx-custom`, `xlsx-custom`, `pdf-custom`, `office-custom`).
-- Added `llm-doc-skills` feed source to `catalog.json` so its releases appear in the combined RSS feed.
-- Updated marketplace description to reference all four plugin families.
-- Updated `catalog.json` marketplace version to `1.3.0`.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.2.0</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.1.1...v1.2.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.2.0</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.2.0 release notes.</p>
-<h3>Added</h3>
-<pre>- Expanded skill icon map in `src/lib/skills/icons.ts` to cover all 127 skills across all three plugins — 123 keyword-to-emoji mappings organized by category (CI/CD platforms, cloud, secrets, shells, package managers, AI tools, source control, databases, XML, search, text processing, binary tools, network, and more).
-- Added optional `icon` field to the `PluginConfig` interface in `src/lib/catalog/types.ts` for per-plugin emoji display.
-- Added emoji icons to all three plugin cards in `catalog.json`: 🧰 shared-skills, 🚀 ci-cd, 🏛️ software-design.
-- Rendered plugin icons in the marketplace home page plugin card headers (`src/app/page.tsx`).
-- Updated `catalog.json` marketplace version to `1.2.0`.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.1.1</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.1.0...v1.1.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.1.1</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.1.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- Corrected the published marketplace name from `Alison&apos; LLM Plugins` to `Alison&apos;s LLM Plugins` across catalog metadata, README copy, preview artwork, and test fixtures.
-- Updated `catalog.json` marketplace version to `1.1.1` so the hotfix tag, release workflow, and published site chrome remain aligned.</pre>]]></description>
     </item>
   </channel>
 </rss>
