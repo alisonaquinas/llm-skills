@@ -5,8 +5,38 @@
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CI/CD Skills v1.2.1</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.2.1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.2.1 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent and command scaffolding for all skills, including per-skill `agents/` manifests and `commands/` entries, so skill invocations can be routed consistently by both Claude and Codex clients.
+- Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.7.2</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.7.1...v1.7.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.2</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.7.2 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Tightened packaging verification so built ZIPs are checked for required members under the repo-rooted path (`llm-shared-skills/skills/&lt;skill&gt;/...`) before release.
+- Added Windows-safe temporary directory handling and cleanup in the tooling package where needed to reduce test failures on Windows hosts.</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.7.1</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.7.0...v1.7.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.7.1 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent and command scaffolding for all skills, including per-skill `agents/` manifests and `commands/` entries, so skill invocations can be routed consistently by both Claude and Codex clients.
+- Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
+    </item>
     <item>
       <title>CI/CD Skills v1.2.0</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.0</link>
@@ -57,6 +87,18 @@
 <pre>- `tests/test_xlsx_recalc.py`: loader now catches `SystemExit` from `recalc.py` when openpyxl is not installed and converts it to `ImportError` so the test class is skipped cleanly instead of aborting discovery
 - `VALIDATION_REPORT.md`: removed double blank line that triggered MD012
 - README skill table and Quick Start command paths corrected to include `skills/` prefix</pre>]]></description>
+    </item>
+    <item>
+      <title>Shared Skills v1.7.3</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.7.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.3</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.7.3 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent manifest (agents/shared-skills-maintainer.md), command entries, and hooks/hooks.json for consistent skill routing across Claude and Codex clients.
+- Extended AGENTS.md with command + agent template section covering focused single-skill lint/validate loops and full skill-author workflow checklist.</pre>
+<h3>Changed</h3>
+<pre>- Hardened scripts/verify_built_zips.py with REQUIRED_FILES invariant checks ensuring each built ZIP contains SKILL.md, agents/claude.yaml, and agents/openai.yaml.</pre>]]></description>
     </item>
     <item>
       <title>Shared Skills v1.7.0</title>
@@ -643,80 +685,6 @@
 - `.github/workflows/ci.yml`: added `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true`
   to silence Node.js 20 deprecation warnings from third-party actions.
 - `.github/workflows/release.yml`: same Node.js 24 env var as ci.yml.</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.0.1</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.0.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.0.1</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.0.1 release notes.</p>
-<h3>Added</h3>
-<pre>- `office-custom`: shared OOXML utilities for unpacking, repacking, validating,
-  and converting `.docx`, `.pptx`, and `.xlsx` packages via `unpack.py`,
-  `pack.py`, `validate.py`, and `soffice.py`.
-- `docx-custom`: Word document creation, XML editing, tracked changes, tables,
-  and comments via python-docx and direct OOXML manipulation.
-- `pdf-custom`: PDF merge, split, extraction, OCR, AcroForm filling, and
-  generation via PyPDF, pypdfium2, and ReportLab; includes `FORMS.md` and
-  `REFERENCE.md` companion guides.
-- `pptx-custom`: Presentation generation and editing with visual QA; covers
-  both PptxGenJS (generated) and python-pptx (edited) workflows with
-  render-based thumbnail inspection via `thumbnail.py`.
-- `xlsx-custom`: Spreadsheet modeling, formula preservation, and formatted
-  output via openpyxl with mandatory post-edit recalculation via `recalc.py`.
-- `scripts/lint_skills.py`: L01–L11 structural linter for skill directories.
-- `scripts/validate_skills.py`: V01–V08 quality pre-flight validator.
-- `tests/test_packaging.py`: packaging invariants — required files, non-empty
-  manifests, and ZIP integrity checks.
-- `tests/test_ooxml_validate.py`: unit tests for `office-custom/scripts/validate.py`.
-- `Makefile`: `build`, `verify`, `lint`, `test`, `test-unit`, and `clean` targets.
-- `.claude-plugin/plugin.json`: plugin metadata for marketplace registration.
-- `.github/workflows/ci.yml`: CI gate running Markdown, YAML, Python linting,
-  unit tests, and skill validation on every push and pull request.
-- `.github/workflows/release.yml`: tag-driven release workflow that runs tests,
-  builds ZIP artifacts, creates a GitHub Release with artifacts attached, and
-  triggers the marketplace rebuild.</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.6.1</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.6.0...v1.6.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.1</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.6.1 release notes.</p>
-<h3>Changed</h3>
-<pre>- `skills/edit-files`: documented a concrete fallback workflow for repeated non-diagnostic `apply_patch` failures, including smaller-scope retries, repo-relative retry guidance, alternate local edit methods, and closeout reporting expectations</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.6.0</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.0</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.6.0 release notes.</p>
-<h3>Added</h3>
-<pre>- `skills/claude-cli`: new shared skill for installing, configuring, managing, and troubleshooting the Claude Code CLI binary — covers install, update, auth, CLAUDE.md, permissions, MCP servers, scripting, and troubleshooting; defers to `claude-cli-docs` for deep documentation lookups
-- `skills/codex-cli`: new shared skill for installing, configuring, managing, and troubleshooting the OpenAI Codex CLI binary — covers install, update, auth (browser and API key), AGENTS.md, approval modes, scripting, and troubleshooting; defers to `codex-cli-docs` for deep documentation lookups
-- `skills/xml2`: new shared skill covering `xml2` (XML→flat line format) and `2xml` (flat→XML) for Unix pipeline processing — includes cheatsheet with flat format anatomy and common pipeline patterns, and examples-and-recipes with 8 practical recipes
-- `skills/xq`: new shared skill for jq-syntax XML querying via the `xq` binary (from `pip install yq`) — includes cheatsheet with full flag table and XML-to-JSON mapping, and advanced-usage covering streaming large files, roundtrip XML, and format conversion</pre>
-<h3>Changed</h3>
-<pre>- `skills/xmllint`: major overhaul — rewrote SKILL.md with accurate description, table-format Intent Router, and inline Quick Reference covering `--noout`, `--format`, `--xpath`, `--schema`, `--valid`, and `--nonet`; added dedicated XXE security section; rewrote all four reference files with correct install package names (`libxml2-utils` / `libxml2`), full flag table with `XMLLINT_INDENT` env var, comprehensive XPath and schema validation examples, and full exit code table with common error explanations
-- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.6.0`</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.5.3</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.5.2...v1.5.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.5.3</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.5.3 release notes.</p>
-<h3>Added</h3>
-<pre>- `skills/curl`: new shared skill for safe curl-based HTTP requests, downloads, uploads, redirects, authentication, and API inspection workflows
-- `skills/wget`: new shared skill for wget-based file retrieval, resume, timestamping, recursive mirroring, and crawl-scope control workflows
-- `skills/edit-files`: new shared skill for disciplined, tool-agnostic file editing with planning, patch-first changes, structured-data editing guidance, and verification templates</pre>
-<h3>Changed</h3>
-<pre>- Replaced the placeholder `CLAUDE.md` content with a valid markdown stub that points contributors at `AGENTS.md`.
-- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.5.3` so the release tag and plugin metadata stay in sync
-- `CHANGELOG.md`: moved unreleased entries into the `1.5.3` release section and refreshed compare links for the new tag</pre>
-<h3>Fixed</h3>
-<pre>- Added an explicit `text` language tag to the release-workflow failure example so repository markdownlint checks pass cleanly.</pre>]]></description>
     </item>
   </channel>
 </rss>
