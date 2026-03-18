@@ -38,6 +38,26 @@
 - Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
     </item>
     <item>
+      <title>Software Design Skills v1.3.2</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.3.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.3.2</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.3.2 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Hardened `tests/test_well_documented_tools.py` with deterministic repo-local temporary directories, safe cleanup, and Bash path normalization for command invocation to prevent Windows tempfile and path handling regressions.
+- Upgraded packaging verification so built ZIPs are checked for required files under `llm-software-design/skills/&lt;skill&gt;/...`, making repo-rooted layout mismatches fail during validation.</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.3.1</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.3.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.3.1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.3.1 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent and command scaffolding for all skills, including per-skill `agents/` manifests and `commands/` entries, so skill invocations can be routed consistently by both Claude and Codex clients.
+- Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
+    </item>
+    <item>
       <title>CI/CD Skills v1.2.0</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.2.0</guid>
@@ -172,6 +192,18 @@
 <h3>Changed</h3>
 <pre>- documented trunk-based development workflow in `AGENTS.md`
 - updated `package-lock.json` to v1.3.8</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.3.3</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.3.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.3.3</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.3.3 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent manifest (agents/software-design-maintainer.md), command entries, and hooks/hooks.json for consistent skill routing across Claude and Codex clients.
+- Extended AGENTS.md with command + agent template section for focused skill loops.</pre>
+<h3>Changed</h3>
+<pre>- Hardened scripts/verify_built_zips.py with REQUIRED_FILES invariant checks.</pre>]]></description>
     </item>
     <item>
       <title>Software Design Skills v1.3.0</title>
@@ -654,37 +686,6 @@
       <description><![CDATA[<p>Doc Skills v0.0.5 release notes.</p>
 <h3>Fixed</h3>
 <pre>- `.markdownlint-cli2.jsonc`: disable MD024 for changelog-style repeated release headings so CHANGELOG.md passes the Markdown job.</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.0.4</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.0.4</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.0.4</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.0.4 release notes.</p>
-<h3>Fixed</h3>
-<pre>- `.github/workflows/release.yml`: move marketplace token handling into job env and gate the dispatch step on `env.MARKETPLACE_DISPATCH_TOKEN` so the workflow validates and skips cleanly when the secret is absent.</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.0.3</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.0.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.0.3</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.0.3 release notes.</p>
-<h3>Fixed</h3>
-<pre>- `.github/workflows/release.yml`: skip the marketplace dispatch when `MARKETPLACE_DISPATCH_TOKEN` is unset so a successful release is not marked failed by missing post-release credentials.</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.0.2</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.0.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.0.2</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.0.2 release notes.</p>
-<h3>Fixed</h3>
-<pre>- `office-custom/SKILL.md`: replaced bare space inside code span (MD038) with
-  `&amp;nbsp;` HTML entity to satisfy markdownlint `no-space-in-code` rule.
-- `.github/workflows/ci.yml`: added `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true`
-  to silence Node.js 20 deprecation warnings from third-party actions.
-- `.github/workflows/release.yml`: same Node.js 24 env var as ci.yml.</pre>]]></description>
     </item>
   </channel>
 </rss>
