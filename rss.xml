@@ -38,6 +38,37 @@
 - Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
     </item>
     <item>
+      <title>Shared Skills v1.7.4</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.7.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.4</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.7.4 release notes.</p>
+<h3>Added</h3>
+<pre>- Added 10-skill MCP server development SDLC suite: `mcp-planning`, `mcp-design`,
+  `mcp-creation`, `mcp-testing`, `mcp-verification`, `mcp-integration`,
+  `mcp-validation`, `mcp-test-drive`, `mcp-iterative-development`, and `mcp-sdlc`
+  (master orchestrator). The suite covers the full lifecycle from ideation to
+  shipping a production-quality MCP server, with quality rubric M01–M06, live
+  scenario test-drive, and re-entry loop management. Added 10 new rows to README.
+- Included MCP-specific reference content: TypeScript and Python scaffold templates,
+  FastMCP patterns, MCP Inspector commands, JSON-RPC message shapes, schema
+  validation recipes, PreToolCall hook patterns for debugging and safety gating,
+  client config for Claude Code / Claude Desktop / Cursor, and a path-traversal +
+  shell-injection prevention rubric.</pre>
+<h3>Fixed</h3>
+<pre>- Applied 7 test-drive friction fixes to the new MCP SDLC suite: added explicit
+  Gate sections to `mcp-design`, `mcp-creation`, `mcp-testing`, and
+  `mcp-integration` (previously lacked completion criteria); split
+  `mcp-verification` checklist into static and Inspector-required groups; corrected
+  `mcp-sdlc` Phase 1 gate to include all 4 planning outputs; defined the &quot;Required&quot;
+  column in the capability inventory table; added test dependency install commands
+  to `mcp-testing`; added FastMCP exception-wrapping note to the M03 quality rubric;
+  added multi-FAIL sequencing guidance to `mcp-iterative-development`.
+- Extended `skills/git/references/troubleshooting.md` with a dedicated **Git-for-Windows sh.exe Win32 Error 5 (Access Denied)** section covering symptoms, root causes (Windows Defender, Controlled Folder Access, integrity level mismatch, stale Git-for-Windows, LFS filter invocation), diagnosis steps, five ordered fixes, and a Git plumbing fallback (`update-index` → `write-tree` → `commit-tree` → `update-ref`) for when high-level commands are unreliable.
+- Added three new rows to the Common Error Messages quick-reference table for the `sh.exe` signal-pipe error, `CreateFileMapping` error, and the resulting `fatal: the remote end hung up unexpectedly`.
+- Updated the Intent Router in `skills/git/SKILL.md` to route Win32 error 5 / sh.exe fatal error queries to `references/troubleshooting.md`.</pre>]]></description>
+    </item>
+    <item>
       <title>Shared Skills v1.7.2</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.7.1...v1.7.2</link>
       <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.2</guid>
@@ -675,23 +706,6 @@
   `x-plus-plus-docstrings` → `xpp-docstrings`
 - updated `SKILL.md` name fields, agent YAML `default_prompt` references, and catalog
   docs (`docs/docstring-skills.md`, `docs/language-skill-matrix.md`) to reflect the new names</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.3.0</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.3.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.3.0</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.3.0 release notes.</p>
-<h3>Added</h3>
-<pre>- merged the language-specific `[language]-best-practice` and `[language]-docstrings` branches into one combined repository
-- added `docs/language-skill-matrix.md` to align each ranked language across the two generated skill families</pre>
-<h3>Changed</h3>
-<pre>- normalized the generated language skills to a common structure and higher-detail reference depth across best-practice and docstring families
-- expanded the five core design-review skills so they match the richer structure used by the generated language skills
-- updated `README.md`, `INSTALL.md`, and `AGENTS.md` to describe the combined 105-skill catalog and maintenance expectations
-- updated `.claude-plugin/plugin.json` for the merged catalog release</pre>
-<h3>Removed</h3>
-<pre>- removed cached and built artifacts from the tracked source tree so packaging starts from clean source content</pre>]]></description>
     </item>
   </channel>
 </rss>
