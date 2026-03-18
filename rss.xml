@@ -18,6 +18,26 @@
 - Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
     </item>
     <item>
+      <title>Doc Skills v1.2.2</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.2.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.2.2</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.2.2 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Fixed packaging invariants so each built skill ZIP is verified to include the required `SKILL.md`, `agents/claude.yaml`, and `agents/openai.yaml` members under the repo-rooted path (`llm-doc-skills/skills/&lt;skill&gt;/...`).
+- Hardened `tests/test_ooxml_validate.py` temp workflow by using deterministic repo-local work directories and explicit cleanup to avoid Windows tempfile lifecycle and path-fragility failures.</pre>]]></description>
+    </item>
+    <item>
+      <title>Doc Skills v1.2.1</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.2.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.2.1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.2.1 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent and command scaffolding for all skills, including per-skill `agents/` manifests and `commands/` entries, so skill invocations can be routed consistently by both Claude and Codex clients.
+- Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
+    </item>
+    <item>
       <title>Shared Skills v1.7.2</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.7.1...v1.7.2</link>
       <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.2</guid>
@@ -58,6 +78,25 @@
 - Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
     </item>
     <item>
+      <title>Web Design Skills v1.1.2</title>
+      <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.1.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.2</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Web Design Skills v1.1.2 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Enforced repository-rooted ZIP layout checks so built skill packages include required files under `llm-web-design-skills/skills/&lt;skill&gt;/...` and fail early when this contract is broken.</pre>]]></description>
+    </item>
+    <item>
+      <title>Web Design Skills v1.1.1</title>
+      <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.1.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.1</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Web Design Skills v1.1.1 release notes.</p>
+<h3>Added (release automation)</h3>
+<pre>- Added repository-wide skill agent and command scaffolding for all skills, including per-skill `agents/` manifests and `commands/` entries, so skill invocations can be routed consistently by both Claude and Codex clients.
+- Added `hooks/hooks.json` with preconfigured hooks for agent selection and command execution orchestration.</pre>]]></description>
+    </item>
+    <item>
       <title>CI/CD Skills v1.2.0</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.2.0</guid>
@@ -79,6 +118,19 @@
       <description><![CDATA[<p>CI/CD Skills v1.1.4 release notes.</p>
 <h3>Changed</h3>
 <pre>- documented trunk-based development workflow in `AGENTS.md`</pre>]]></description>
+    </item>
+    <item>
+      <title>Doc Skills v1.2.3</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.2.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.2.3</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.2.3 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent manifest (agents/doc-workflow-maintainer.md), command entries (commands/deck-quality.md, commands/quality-gate.md), and hooks/hooks.json for consistent skill routing across Claude and Codex clients.
+- Extended AGENTS.md with command + agent template section for focused doc-skill loops.</pre>
+<h3>Changed</h3>
+<pre>- Hardened scripts/verify_built_zips.py with REQUIRED_FILES invariant checks ensuring each built ZIP contains SKILL.md, agents/claude.yaml, and agents/openai.yaml.
+- Normalized line endings across repository files (CRLF → LF).</pre>]]></description>
     </item>
     <item>
       <title>Doc Skills v1.2.0</title>
@@ -149,6 +201,17 @@
 - `skills/printf`: portable formatted output; covers format specifiers, field widths, ANSI colour, `printf -v`, null-delimited output, and the &quot;never pass variable as format string&quot; safety rule
 - `skills/ps`: inspect running processes; covers BSD/POSIX syntax differences, custom output columns, process trees, and top/htop alternatives
 - `skills/rsync`: sync files locally or over SSH; emphasises dry-run-first workflow, trailing-slash semantics, `--delete` warning, and bandwidth/checksum options</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.4.2</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.2</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.2 release notes.</p>
+<h3>Changed</h3>
+<pre>- Landing page: moved plugin GitHub repository links from the crowded top-of-page link row into individual plugin cards (displayed beneath the install command banner), reducing header clutter and keeping repo context close to each plugin.
+- Landing page: removed horizontal scroll overflow from the install command text box on plugin cards so the command displays on a single fixed-width line.
+- Landing page: added a copy-to-clipboard button beside each plugin card install command, matching the copy-button pattern already used on Skill detail cards.</pre>]]></description>
     </item>
     <item>
       <title>Marketplace v1.4.1</title>
@@ -254,6 +317,18 @@
   `markdownlint-cli2`; include `nvm` workaround note</pre>]]></description>
     </item>
     <item>
+      <title>Web Design Skills v1.1.3</title>
+      <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.1.3</link>
+      <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.3</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Web Design Skills v1.1.3 release notes.</p>
+<h3>Added</h3>
+<pre>- Added repository-wide skill agent manifest (agents/web-maintainer.md), command entries, and hooks/hooks.json for consistent skill routing across Claude and Codex clients.
+- Extended AGENTS.md with command + agent template section for focused web-design skill loops.</pre>
+<h3>Changed</h3>
+<pre>- Hardened scripts/verify_built_zips.py with REQUIRED_FILES invariant checks.</pre>]]></description>
+    </item>
+    <item>
       <title>Web Design Skills v1.1.0</title>
       <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.1.0</link>
       <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.0</guid>
@@ -263,7 +338,7 @@
 <pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `web-design-skills-plugin.zip` for one-click offline installation; `PLUGIN_NAME := web-design-skills` variable drives the output filename</pre>
 <h3>Changed</h3>
 <pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
-- `.github/workflows/release.yml`: upgraded from minimal stub to full plugin release pipeline — adds version gate, changelog extraction, `softprops/action-gh-release` upload of `built/*.zip` (including `web-design-skills-plugin.zip`), and marketplace dispatch trigger; added &quot;Build plugin bundle ZIP&quot; step (`make bundle`)</pre>]]></description>
+- `.github/workflows/release.yml`: upgraded from minimal stub to full plugin release pipeline — adds version gate, changelog extraction, `softprops/action-gh-release` upload of `built/*.zip` (including `web-design-skills-plugin.zip`), `changelog` extraction, and marketplace dispatch trigger; added &quot;Build plugin bundle ZIP&quot; step (`make bundle`)</pre>]]></description>
     </item>
     <item>
       <title>Web Design Skills v1.0.0</title>
@@ -617,75 +692,6 @@
 - updated `.claude-plugin/plugin.json` for the merged catalog release</pre>
 <h3>Removed</h3>
 <pre>- removed cached and built artifacts from the tracked source tree so packaging starts from clean source content</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.2.0</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.2.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.2.0</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.2.0 release notes.</p>
-<h3>Added</h3>
-<pre>- added 50 language-specific `[language]-docstrings` skills covering the supplied top-50 programming-language list, with references to the dominant machine-readable source documentation convention for each language
-- added `docs/docstring-skills.md` as a catalog of the new language skills</pre>
-<h3>Changed</h3>
-<pre>- updated `README.md` to summarize the expanded catalog and point at the docstring-skill index
-- updated `INSTALL.md` to keep the installation steps aligned with the larger generated catalog</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.1.3</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.3</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.1.3 release notes.</p>
-<h3>Fixed</h3>
-<pre>- corrected the AGENTS release-note spacing, promoted the reference docs to top-level headings for markdownlint, and removed the unused import from `scripts/verify_built_zips.py` so the repo passes the new CI and release lint gates on GitHub</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.1.2</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.2</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.1.2 release notes.</p>
-<h3>Changed</h3>
-<pre>- standardized the repo on a Make-first build and validation workflow: `make lint`, `make test`, `make build`, `make verify`, and `make all`</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.1.1</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.1</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.1.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- aligned build artifacts with the repository root so packaged ZIPs preserve `llm-software-design/skills/&lt;skill&gt;/...`</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.1.0</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.1.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.1.0</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.1.0 release notes.</p>
-<h3>Added</h3>
-<pre>- initial cross-compatible software design skill repository with core design-review skills and packaging automation</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v1.1.0</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.0</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v1.1.0 release notes.</p>
-<h3>Fixed</h3>
-<pre>- `skills/1password-cli`: corrected the Windows winget package ID from `AgileBits.1PasswordCLI` to `AgileBits.1Password.CLI` in the install reference.
-- Added an explicit `text` language tag to the failure example in `docs/release-workflow.md` so repository markdownlint checks pass cleanly.
-- `.claude-plugin/plugin.json`: bumped the published plugin version to `1.1.0`</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.0.5</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.0.5</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.0.5</guid>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.0.5 release notes.</p>
-<h3>Fixed</h3>
-<pre>- `.markdownlint-cli2.jsonc`: disable MD024 for changelog-style repeated release headings so CHANGELOG.md passes the Markdown job.</pre>]]></description>
     </item>
   </channel>
 </rss>
