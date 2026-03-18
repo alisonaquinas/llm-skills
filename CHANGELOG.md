@@ -7,6 +7,14 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.4.2] - 2026-03-16
+
+### Changed
+
+- Landing page: moved plugin GitHub repository links from the crowded top-of-page link row into individual plugin cards (displayed beneath the install command banner), reducing header clutter and keeping repo context close to each plugin.
+- Landing page: removed horizontal scroll overflow from the install command text box on plugin cards so the command displays on a single fixed-width line.
+- Landing page: added a copy-to-clipboard button beside each plugin card install command, matching the copy-button pattern already used on Skill detail cards.
+
 ## [1.4.1] - 2026-03-16
 
 ### Fixed
