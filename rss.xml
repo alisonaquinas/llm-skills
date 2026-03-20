@@ -5,8 +5,34 @@
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shared Skills v1.7.5</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.7.4...v1.7.5</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.7.5</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.7.5 release notes.</p>
+<h3>Added</h3>
+<pre>- Added 30-skill Claude workflow development suite across three full SDLC families: `claude-command-*`, `claude-hook-*`, and `claude-agent-*`. Each family includes planning, design, creation, testing, verification, integration, validation, test-drive, iterative-development, and an SDLC orchestrator skill.
+- Added cross-compatible guidance for command workflows, hook automations, and delegated agent workflows that stays runnable from both Claude and Codex while documenting runtime-specific placement and portability constraints in references.</pre>
+<h3>Fixed</h3>
+<pre>- Improved Wave 1 runtime guidance across 20 blocked-scenario skills: `7z`, `ag`, `binwalk`, `exiftool`, `hexdump`, `less`, `markdownlint`, `mediainfo`, `powershell`, `sqlite`, `ssh-client`, `ssh-keygen`, `tree`, `xml2`, `xmllint`, `xq`, `xxd`, `yq`, `zoxide`, and `zsh`.
+- Added early prerequisite checks, clearer install and fallback paths, stronger Quick Start sections where needed, and extra inline runnable examples so common workflows fail fast and stay actionable when a required binary is missing.
+- Updated `skills/yq` metadata and routing text so the skill validates cleanly with the new runtime-gating guidance.</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.4.0</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.4.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.4.0</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.4.0 release notes.</p>
+<h3>Added</h3>
+<pre>- added `high-coherence`, a software design skill for preserving conceptual integrity, architectural conformance, and runtime alignment as systems evolve
+- added `low-coupling`, a software design skill for reducing structural, contract, temporal, and operational coupling with pragmatic, behavior-preserving refactors</pre>
+<h3>Changed</h3>
+<pre>- updated `README.md` to reflect the expanded 116-skill catalog and include the two new design and review skills</pre>]]></description>
+    </item>
     <item>
       <title>CI/CD Skills v1.2.1</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.1</link>
@@ -674,38 +700,6 @@
 <h3>Changed</h3>
 <pre>- updated `README.md` to list `semantic-versioning` and `well-documented` in the design and
   review skills table; updated total skill count from 105 to 107</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.4.0</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.4.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.4.0</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.4.0 release notes.</p>
-<h3>Added</h3>
-<pre>- added `semantic-versioning` skill with `set-version` and `bump-version` commands
-  that validate SemVer 2.0.0 strings, update all version files, promote the
-  CHANGELOG Unreleased block, commit, and create an annotated git tag
-- added `references/spec.md` with the complete SemVer 2.0.0 specification
-  (all 12 clauses, BNF grammar, precedence rules, and FAQ)
-- added `references/git-tagging.md` covering annotated vs lightweight tags,
-  push strategy, retag policy, release CI hooks, and a consistency checklist
-- added `references/version-files.md` with version file discovery and update
-  patterns for Node.js, Python, Rust, Java, .NET, Go, Ruby, PHP, and
-  plain-text VERSION files</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.3.1</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.3.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.3.1</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.3.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- renamed three docstring skill directories to match their best-practice counterparts:
-  `c-plus-plus-docstrings` → `cpp-docstrings`,
-  `pl-sql-docstrings` → `plsql-docstrings`,
-  `x-plus-plus-docstrings` → `xpp-docstrings`
-- updated `SKILL.md` name fields, agent YAML `default_prompt` references, and catalog
-  docs (`docs/docstring-skills.md`, `docs/language-skill-matrix.md`) to reflect the new names</pre>]]></description>
     </item>
   </channel>
 </rss>
