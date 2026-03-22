@@ -5,8 +5,17 @@
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CI/CD Skills v1.2.2</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.2.2</guid>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.2.2 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Removed broken `SessionStart` prompt hook from `hooks/hooks.json`. The `type: &quot;prompt&quot;` hook requires a `ToolUseContext` that does not exist at session start, causing &quot;ToolUseContext is required for prompt hooks&quot; errors on every startup.</pre>]]></description>
+    </item>
     <item>
       <title>Shared Skills v1.7.5</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/compare/v1.7.4...v1.7.5</link>
@@ -676,30 +685,6 @@
   (all Markdown must pass; project root must have a config), and Existing File Formatting
   Takes Precedence section (heading style, table style, list style, fence style)
 - updated `references/audit-checklist.md` with M-series markdownlint checklist (M01–M04)</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v0.5.0</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v0.5.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@0.5.0</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v0.5.0 release notes.</p>
-<h3>Added</h3>
-<pre>- added `well-documented` skill with six commands (`init-docs`, `audit-docs`, `normalize-docs`,
-  `add-file-headers`, `add-docstrings`, `check-concepts`) that audit, initialize, and normalize
-  repository documentation to a consistent standard
-- added `references/structure-standard.md` defining required files at every level (README.md,
-  AGENTS.md, CLAUDE.md, CONCEPTS.md, docs/), PlantUML as the preferred diagramming tool for
-  human-centered documents, and the full AGENTS.md and CONCEPTS.md structural standards
-- added `references/file-headers.md` with file-level header templates for 12 languages
-  (Python, TypeScript/JavaScript, Java, C/C++, C#, Go, Ruby, Rust, Kotlin, Swift, Bash, SQL)
-  and docstring depth guidance by symbol type
-- added `references/agents-md-guide.md` with authoring rules for AI-navigable AGENTS.md files
-  including required sections, anti-patterns, formatting rules, and sync obligations
-- added `references/audit-checklist.md` with a scored rubric (PASS/WARN/FAIL/SKIP) across
-  root-level, per-directory, code-file, and docs-folder criteria</pre>
-<h3>Changed</h3>
-<pre>- updated `README.md` to list `semantic-versioning` and `well-documented` in the design and
-  review skills table; updated total skill count from 105 to 107</pre>]]></description>
     </item>
   </channel>
 </rss>
