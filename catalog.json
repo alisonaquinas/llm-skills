@@ -94,7 +94,6 @@
       "pluginName": "doc-skills",
       "owner": "alisonaquinas",
       "repo": "llm-doc-skills",
-      "skillsRoot": ".",
       "label": "Doc Skills",
       "category": "doc-skills",
       "color": "bg-violet-100 text-violet-800",

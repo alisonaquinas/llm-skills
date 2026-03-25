@@ -43,7 +43,7 @@ const sharedPlugin: PluginConfig = {
   siteDescription: "Shared skills",
 };
 
-/** Plugin fixture for the root-level llm-doc-skills layout. */
+/** Plugin fixture demonstrating the root-layout feature (skillsRoot: "."). */
 const docPlugin: PluginConfig = {
   pluginName: "doc-skills",
   owner: "alisonaquinas",
