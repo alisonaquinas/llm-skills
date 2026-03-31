@@ -5,8 +5,25 @@
     <link>https://alisonaquinas.github.io/llm-skills</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software Design Skills v1.4.2</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.4.2</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.4.2</guid>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.4.2 release notes.</p>
+<h3>Added</h3>
+<pre>- added four Planguage requirement workflow skills: `planguage-author`, `planguage-reader`, `planguage-implementor`, and `planguage-tester`
+- added `agents/planguage-maintainer.md` plus command scaffolding in `commands/skill-development.md`, `commands/claude-command-sdlc.md`, `commands/claude-hook-sdlc.md`, and `commands/claude-agent-sdlc.md` to coordinate the new Planguage workflow</pre>
+<h3>Changed</h3>
+<pre>- strengthened `planguage-author` with an explicit low-evidence fallback path so the agent stops at a tagged requirement skeleton plus missing facts instead of inventing numeric targets
+- updated `hooks/hooks.json` to an explicit safe hook scaffold with empty `PreToolUse` and `PostToolUse` lists
+- updated `README.md` and `docs/skill-test-drive-report.md` to reflect the expanded 120-skill catalog</pre>
+<h3>Fixed</h3>
+<pre>- sorted imports in `tests/test_well_documented_tools.py` so the Python lint job passes consistently in CI
+- restored executable git mode bits on `skills/well-documented/scripts/*.sh` so Linux CI can run the helper scripts without `Permission denied`</pre>]]></description>
+    </item>
     <item>
       <title>CI/CD Skills v1.2.2</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.2</link>
@@ -609,19 +626,6 @@
       <description><![CDATA[<p>Marketplace v1.3.3 release notes.</p>
 <h3>Fixed</h3>
 <pre>- Expanded the marketplace skill icon matcher so doc-skills entries pick up the intended icons more reliably, including Markdown-related skills that previously fell through to a false match.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.3.2</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.1...v1.3.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.3.2</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.3.2 release notes.</p>
-<h3>Added</h3>
-<pre>- Added direct GitHub release asset download links for individual skill ZIP bundles on marketplace cards and skill detail pages.</pre>
-<h3>Changed</h3>
-<pre>- Extended marketplace skill discovery so plugins can publish skills from either `skills/` or the repository root, allowing `llm-doc-skills` to resolve cleanly alongside the other plugin repos.
-- Marketplace download links and plugin version badges now prefer the latest published GitHub release tag so direct asset links stay aligned with real release assets.
-- Marketplace skill cards now collapse duplicate skill names to one preferred entry, favoring more specific plugin repos over `shared-skills` when the same skill exists in multiple sources.</pre>]]></description>
     </item>
   </channel>
 </rss>
