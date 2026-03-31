@@ -36,6 +36,32 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Update catalog.json on plugin-updated dispatch
+        if: github.event_name == 'repository_dispatch' && github.event.action == 'plugin-updated'
+        run: |
+          REPO="${{ github.event.client_payload.repo }}"
+          VERSION="${{ github.event.client_payload.version }}"
+          PLUGIN_REPO="${REPO##*/}"
+          echo "Updating catalog for $PLUGIN_REPO to $VERSION"
+          node -e "
+            const fs = require('fs');
+            const catalog = JSON.parse(fs.readFileSync('catalog.json', 'utf8'));
+            const plugin = catalog.plugins.find(p => p.repo === '$PLUGIN_REPO');
+            if (plugin) {
+              plugin.ref = 'v$VERSION';
+              plugin.version = '$VERSION';
+              console.log('Updated', plugin.pluginName, 'to', '$VERSION');
+            } else {
+              console.log('No plugin found for repo $PLUGIN_REPO');
+            }
+            fs.writeFileSync('catalog.json', JSON.stringify(catalog, null, 2) + '\n');
+          "
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add catalog.json
+          git diff --staged --quiet || git commit -m "chore(catalog): pin $PLUGIN_REPO to v$VERSION"
+          git push
+
       - name: Build static export
         run: npm run build
         env:

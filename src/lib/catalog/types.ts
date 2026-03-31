@@ -55,6 +55,8 @@ export interface PluginConfig {
   icon?: string;
   /** Optional git ref to use when generating artifacts from source. */
   ref?: string;
+  /** Optional semver version string for the plugin, used in update detection. */
+  version?: string;
   /** Optional repository-relative root that contains published skill directories. */
   skillsRoot?: string;
   /** Marketplace-facing description used when richer metadata is unavailable. */

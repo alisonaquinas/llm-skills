@@ -7,6 +7,16 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.4.3] - 2026-03-31
+
+### Fixed
+
+- Fixed auto-update detection for all installed plugins. Plugin entries in `catalog.json` and the generated `marketplace.json` now include explicit `version` and pinned `ref` fields (e.g. `"ref": "v1.7.7"`, `"version": "1.7.7"`) instead of `"ref": "main"` with no version. Claude Code compares the installed version against the marketplace-listed version to detect updates; without a version field, no update was ever detected.
+- Added `version` field to `MarketplacePluginDocument` interface and `buildMarketplacePluginDocument` generation so the published `marketplace.json` carries per-plugin version metadata.
+- Added `version` field to the `PluginConfig` catalog type so version data flows cleanly from `catalog.json` through the generator into the published document.
+- Updated `deploy.yml` to automatically update `catalog.json` with the new version tag when triggered by a `plugin-updated` repository dispatch. Previously, dispatches from upstream repos only triggered a rebuild without updating the pinned ref or version, so the marketplace.json never reflected new releases.
+- Updated `settings.json` marketplace registration from `source: "git"` (URL) to `source: "github"` (repo) to match all other working marketplaces and enable GitHub API-based update checks.
+
 ## [1.4.2] - 2026-03-16
 
 ### Changed

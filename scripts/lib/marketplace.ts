@@ -31,6 +31,8 @@ export interface MarketplacePluginDocument {
   category: string;
   /** Hard-coded strict mode flag required by the published schema. */
   strict: true;
+  /** Semver version string for the plugin, used by clients for update detection. */
+  version?: string;
 }
 
 /** Published marketplace document emitted by the generation script. */
@@ -70,6 +72,7 @@ function buildMarketplacePluginDocument(plugin: PluginConfig): MarketplacePlugin
     repository: `https://github.com/${repoRef}`,
     category: plugin.category,
     strict: true,
+    ...(plugin.version ? { version: plugin.version } : {}),
   };
 }
 
