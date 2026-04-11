@@ -9,8 +9,8 @@
     },
     "githubRepo": "alisonaquinas/llm-skills",
     "githubUrl": "https://github.com/alisonaquinas/llm-skills",
-    "siteUrl": "https://alisonaquinas.github.io/llm-skills",
-    "marketplaceJsonUrl": "https://alisonaquinas.github.io/llm-skills/marketplace.json"
+    "siteUrl": "https://llm-skills.alisonaquinas.com",
+    "marketplaceJsonUrl": "https://llm-skills.alisonaquinas.com/marketplace.json"
   },
   "feedSources": [
     {
