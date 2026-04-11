@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Alison&apos;s LLM Plugins Releases</title>
-    <link>https://alisonaquinas.github.io/llm-skills</link>
+    <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Mar 2026 00:00:00 GMT</lastBuildDate>
-    <atom:link href="https://alisonaquinas.github.io/llm-skills/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CI/CD Skills v1.2.3</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.3</link>
@@ -15,6 +15,15 @@
       <description><![CDATA[<p>CI/CD Skills v1.2.3 release notes.</p>
 <h3>Fixed</h3>
 <pre>- Replaced broken `SessionStart` prompt hook in `hooks/hooks.json` with a working `command`-type hook that invokes the session-start script, eliminating &quot;ToolUseContext is required for prompt hooks&quot; startup errors.</pre>]]></description>
+    </item>
+    <item>
+      <title>Doc Skills v1.3.1</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.3.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.3.1</guid>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.3.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Normalized file permissions on `hooks/run-hook.cmd` and `hooks/session-start` from executable (100755) to standard (100644) to match the rest of the repository and avoid spurious modified-file noise after pulls.</pre>]]></description>
     </item>
     <item>
       <title>Doc Skills v1.3.0</title>
@@ -615,15 +624,6 @@
       <description><![CDATA[<p>Shared Skills v1.6.5 release notes.</p>
 <h3>Added</h3>
 <pre>- `skills/skill-test-drive`: new meta-skill for test-driving other skills by designing live scenarios, executing them with the target skill&apos;s guidance, and reporting usability gaps and missing examples before release</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.6.4</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.4</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.4</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.6.4 release notes.</p>
-<h3>Changed</h3>
-<pre>- removed the duplicated `aws`, `az`, `docker`, and `glab` skills so `llm-shared-skills` now defers to `llm-ci-dev` as the canonical home for those CI/CD-focused tools</pre>]]></description>
     </item>
   </channel>
 </rss>
