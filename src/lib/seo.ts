@@ -11,12 +11,16 @@ import type { SkillDetail, SkillEntry } from "@/lib/github";
 
 /** Keywords shared by the marketplace shell and public pages. */
 export const SEO_KEYWORDS = [
-  "Claude Code plugins",
-  "LLM skills marketplace",
-  "developer automation skills",
-  "CI/CD skills",
-  "shared developer skills",
   "Claude Code skills",
+  "LLM skills marketplace",
+  "Codex skills",
+  "agent skills",
+  "Anthropic skills",
+  "CI/CD skills",
+  "documentation skills",
+  "software design skills",
+  "developer automation skills",
+  "Claude Code plugins",
   "Codex-compatible skills",
 ];
 
@@ -130,7 +134,7 @@ export function buildSkillTitle(skillName: string): string {
  * @returns Deterministic route description.
  */
 export function buildSkillDescription(plugin: PluginConfig, skillName: string): string {
-  return `Browse install instructions, invocation syntax, and bundled files for the ${skillName} skill in the ${plugin.label} plugin on ${MARKETPLACE.title}.`;
+  return `Browse install instructions, invocation syntax, and bundled files for the ${skillName} skill in the ${plugin.label} skill bundle on ${MARKETPLACE.title}.`;
 }
 
 /**
@@ -229,6 +233,38 @@ export function buildPluginItemListStructuredData(
         },
       },
     })),
+  };
+}
+
+/**
+ * Builds Article JSON-LD for a long-form guide page.
+ *
+ * @param params Guide metadata used in the structured data payload.
+ * @returns Structured data describing the guide article.
+ */
+export function buildGuideArticleStructuredData(params: {
+  url: string;
+  title: string;
+  description: string;
+}): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${params.url}#article`,
+    url: params.url,
+    headline: params.title,
+    name: params.title,
+    description: params.description,
+    isPartOf: {
+      "@id": `${getHomeUrl()}#website`,
+    },
+    publisher: {
+      "@id": `${getHomeUrl()}#organization`,
+    },
+    author: {
+      "@type": "Organization",
+      name: MARKETPLACE.owner.name,
+    },
   };
 }
 

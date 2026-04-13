@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Alison's LLM Plugins</title>
-  <desc id="desc">Static marketplace for Alison Aquinas' shared-skills, ci-cd, and software-design Claude Code plugins.</desc>
+  <title id="title">Alison's LLM Skills Marketplace</title>
+  <desc id="desc">LLM skills marketplace for Claude Code and Codex — shared-skills, ci-cd, software-design, doc-skills, and web-design skill bundles.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#FFF8F4" />
@@ -16,8 +16,8 @@
     <rect width="88" height="88" rx="20" fill="url(#card)" />
     <circle cx="65" cy="22" r="9" fill="#F46043" />
     <path d="M20 63 38.5 19h8.1L66 63H54l-3.5-9.4H34.7L31.2 63H20Zm19.8-19.1h7L43.4 33l-3.6 10.9Z" fill="#FFF7F2" />
-    <text x="0" y="176" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700" fill="#1F2436">Alison's LLM Plugins</text>
-    <text x="0" y="236" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#4B5563">Browse shared-skills, ci-cd, and software-design plugins with published skills and releases.</text>
+    <text x="0" y="176" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700" fill="#1F2436">Alison's LLM Skills Marketplace</text>
+    <text x="0" y="236" font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#4B5563">Reusable Claude Code and Codex skills for coding, CI/CD, design, and docs.</text>
     <g transform="translate(0 320)">
       <rect width="270" height="138" rx="18" fill="#ffffff" stroke="#FFD2C2" stroke-width="2" />
       <text x="24" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#B73A27">shared-skills</text>

@@ -29,7 +29,7 @@ const source: FeedSourceConfig = {
 /** Marketplace metadata fixture used when rendering the RSS channel. */
 const market: MarketplaceConfig = {
   name: "llm-skills",
-  title: "Alison's LLM Plugins",
+  title: "Alison's LLM Skills Marketplace",
   description: "Browse",
   version: "1.0.0",
   owner: { name: "Alison Aquinas" },

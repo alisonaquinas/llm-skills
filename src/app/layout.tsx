@@ -121,7 +121,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
 
             <div className="ml-auto flex shrink-0 items-center gap-2">
-              <nav className="hidden items-center justify-end gap-2 text-sm text-gray-500 dark:text-gray-400 md:flex">
+              <nav className="hidden items-center justify-end gap-1 text-sm text-gray-500 dark:text-gray-400 md:flex">
+                <Link
+                  href="/skills"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-gray-600 transition hover:bg-brand-50 hover:text-brand-800 dark:text-gray-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                >
+                  Skills
+                </Link>
+                <Link
+                  href="/guides"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-gray-600 transition hover:bg-brand-50 hover:text-brand-800 dark:text-gray-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                >
+                  Learn
+                </Link>
                 <a
                   href={getRssUrl()}
                   className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-brand-700 transition hover:bg-brand-50 hover:text-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
