@@ -68,7 +68,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
             </div>
           </div>
           <p className="mt-1 break-all text-xs text-gray-400 dark:text-gray-500">
-            Plugin repo: {skill.repo.owner}/{skill.repo.repo}
+            Bundle repo: {skill.repo.owner}/{skill.repo.repo}
           </p>
         </div>
         <div className="relative z-10 mt-1 flex shrink-0 items-center gap-2">

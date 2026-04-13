@@ -59,7 +59,7 @@ export default function SkillGrid({ skills, repos }: Props) {
           </svg>
           <input
             type="text"
-            placeholder="Search included skills or plugins..."
+            placeholder="Search skills or skill bundles..."
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             className="min-h-11 w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-9 pr-4 text-sm text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500"
@@ -107,7 +107,7 @@ export default function SkillGrid({ skills, repos }: Props) {
         <div className="py-16 text-center text-gray-400 dark:text-gray-500 sm:py-20">
           <p className="mb-4 text-5xl">🔍</p>
           <p className="font-medium text-gray-700 dark:text-gray-200">No skills found</p>
-          <p className="mt-1 text-sm">Try a different search term or plugin filter.</p>
+          <p className="mt-1 text-sm">Try a different search term or skill bundle filter.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

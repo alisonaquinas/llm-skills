@@ -6,8 +6,9 @@
  * - keep sitemap URLs aligned with the GitHub Pages base path and siteUrl
  */
 import type { MetadataRoute } from "next";
+import { PLUGINS } from "@/lib/catalog";
 import { getAllSkills } from "@/lib/github";
-import { buildSkillUrl, getHomeUrl, getRssUrl } from "@/lib/seo";
+import { buildSiteUrl, buildSkillUrl, getHomeUrl, getRssUrl } from "@/lib/seo";
 
 /** Forces static evaluation for GitHub Pages export. */
 export const dynamic = "force-static";
@@ -28,6 +29,60 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 1,
     },
+    {
+      url: buildSiteUrl("skills/"),
+      lastModified: generatedAt,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: buildSiteUrl("what-are-skills/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: buildSiteUrl("claude-vs-codex/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: buildSiteUrl("guides/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: buildSiteUrl("guides/install-skills-from-github/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: buildSiteUrl("guides/best-ci-cd-skills-for-claude-code/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: buildSiteUrl("guides/why-use-a-skills-marketplace/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: buildSiteUrl("guides/well-documented-case-study/"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    ...PLUGINS.map((plugin) => ({
+      url: buildSiteUrl(`bundles/${plugin.pluginName}/`),
+      lastModified: generatedAt,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })),
     {
       url: getRssUrl(),
       lastModified: generatedAt,

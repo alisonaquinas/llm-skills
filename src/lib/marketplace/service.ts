@@ -94,7 +94,20 @@ export function buildMarketplacePluginSummaries(
   const skillCounts = countSkillsByPlugin(skills);
 
   return PLUGINS.map((plugin, index) => {
-    const meta = metas[index] ?? null;
+    const upstreamMeta = metas[index] ?? null;
+    // Prefer the version pinned in catalog.json so the homepage, marketplace.json,
+    // and per-plugin bundle URLs share a single source of truth and cannot drift
+    // even if the upstream GitHub release tag or plugin.json lags behind.
+    const resolvedVersion = plugin.version ?? upstreamMeta?.version;
+    const meta: PluginMeta | null = upstreamMeta
+      ? { ...upstreamMeta, version: resolvedVersion ?? upstreamMeta.version }
+      : resolvedVersion
+        ? {
+            name: plugin.pluginName,
+            version: resolvedVersion,
+            description: plugin.siteDescription,
+          }
+        : null;
 
     return {
       plugin,
@@ -102,7 +115,7 @@ export function buildMarketplacePluginSummaries(
       repoUrl: getPluginRepoUrl(plugin),
       meta,
       skillCount: skillCounts.get(plugin.repo) ?? 0,
-      bundleUrl: buildPluginBundleUrl(plugin, meta?.version),
+      bundleUrl: buildPluginBundleUrl(plugin, resolvedVersion),
     };
   });
 }

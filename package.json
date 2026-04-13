@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "npm run rss:generate -- out/rss.xml",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",

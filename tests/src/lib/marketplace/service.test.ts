@@ -6,6 +6,7 @@
  * - verify plugin summary models combine metadata and install commands correctly
  */
 import { describe, expect, it } from "vitest";
+import { PLUGINS } from "@/lib/catalog";
 import type { PluginMeta, SkillEntry } from "@/lib/github";
 import {
   buildMarketplacePluginSummaries,
@@ -54,25 +55,64 @@ describe("countSkillsByPlugin", () => {
 
 describe("buildMarketplacePluginSummaries", () => {
   /** Ensures summary creation merges skill counts, metadata, and install commands. */
-  it("maps skills and plugin metadata into summaries", () => {
+  it("maps skills and plugin metadata into summaries and prefers catalog.json version", () => {
     const metas: Array<PluginMeta | null> = [{
       name: "shared-skills",
       version: "1.0.0",
       description: "Shared skills",
     }, null];
 
+    // The first plugin in catalog.json is shared-skills, which pins its own
+    // version. The summary builder must surface the catalog version so the
+    // homepage, marketplace.json, and bundle download URLs stay in lockstep
+    // even if the upstream GitHub release tag or plugin.json lags behind.
+    const sharedSkillsCatalogVersion = PLUGINS[0]!.version!;
+
     const summaries = buildMarketplacePluginSummaries(skills, metas);
     expect(summaries[0]?.skillCount).toBe(2);
-    expect(summaries[0]?.meta?.version).toBe("1.0.0");
+    expect(summaries[0]?.meta?.version).toBe(sharedSkillsCatalogVersion);
     expect(summaries[0]?.installCommand).toContain("/plugin install");
     expect(summaries[0]?.bundleUrl).toBe(
-      "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v1.0.0/shared-skills-plugin.zip"
+      `https://github.com/alisonaquinas/llm-shared-skills/releases/download/v${sharedSkillsCatalogVersion}/shared-skills-plugin.zip`
     );
   });
 
-  it("sets bundleUrl to null when plugin metadata is unavailable", () => {
-    const summaries = buildMarketplacePluginSummaries(skills, [null, null]);
-    expect(summaries[0]?.bundleUrl).toBeNull();
+  it("falls back to upstream metadata version when catalog.json does not pin one", () => {
+    const metas: Array<PluginMeta | null> = [{
+      name: "shared-skills",
+      version: "9.9.9",
+      description: "Shared skills",
+    }, null];
+
+    // Simulate a catalog entry that has no version pin by clearing it for the
+    // duration of the assertion. This keeps the assertion behaviour local and
+    // avoids leaking into the other test cases.
+    const originalVersion = PLUGINS[0]!.version;
+    PLUGINS[0]!.version = undefined;
+    try {
+      const summaries = buildMarketplacePluginSummaries(skills, metas);
+      expect(summaries[0]?.meta?.version).toBe("9.9.9");
+      expect(summaries[0]?.bundleUrl).toBe(
+        "https://github.com/alisonaquinas/llm-shared-skills/releases/download/v9.9.9/shared-skills-plugin.zip"
+      );
+    } finally {
+      PLUGINS[0]!.version = originalVersion;
+    }
+  });
+
+  it("sets bundleUrl to null when plugin metadata and catalog version are unavailable", () => {
+    const originalVersions = PLUGINS.map((plugin) => plugin.version);
+    PLUGINS.forEach((plugin) => {
+      plugin.version = undefined;
+    });
+    try {
+      const summaries = buildMarketplacePluginSummaries(skills, [null, null]);
+      expect(summaries[0]?.bundleUrl).toBeNull();
+    } finally {
+      PLUGINS.forEach((plugin, index) => {
+        plugin.version = originalVersions[index];
+      });
+    }
   });
 });
 

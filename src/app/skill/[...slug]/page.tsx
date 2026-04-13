@@ -107,7 +107,7 @@ export default async function SkillPage({ params }: PageProps) {
           {route.skillName}
         </h1>
         <div className="flex flex-col gap-2 text-sm text-gray-500 dark:text-gray-400 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-          <span>Included in plugin</span>
+          <span>Included in skill bundle</span>
           <code className="w-fit rounded bg-gray-100 px-2 py-0.5 text-gray-700 dark:bg-gray-800 dark:text-gray-200">
             {plugin.pluginName}
           </code>
@@ -148,7 +148,7 @@ export default async function SkillPage({ params }: PageProps) {
 
         <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
           <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <span className="font-mono text-xs text-gray-400">Install the containing plugin</span>
+            <span className="font-mono text-xs text-gray-400">Install the containing skill bundle</span>
             <CopyButton text={installCommand} />
           </div>
           <div className="overflow-x-auto">
@@ -178,8 +178,8 @@ export default async function SkillPage({ params }: PageProps) {
 
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm leading-6 text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
           This skill is bundled inside <strong className="text-gray-800 dark:text-white">{plugin.pluginName}</strong>.
-          Install the plugin once, then Claude Code can use any of its included skills. Browse the
-          full plugin repository at{" "}
+          Install the bundle once, then Claude Code can use any of its included skills. Browse the
+          full skill bundle repository at{" "}
           <a
             href={pluginRepoUrl}
             target="_blank"

@@ -26,8 +26,8 @@ export default function InstallBanner() {
       <h2 className="mb-1 text-lg font-semibold text-brand-900 dark:text-brand-100">Add this marketplace to Claude Code</h2>
       <p className="mb-4 max-w-3xl text-sm leading-6 text-brand-800 dark:text-brand-200">
         Use the GitHub repository as the primary marketplace source, then install one of the
-        published plugins. Individual skills are included within those plugins; they are not listed
-        as standalone plugins.
+        published skill bundles. Each bundle packages many individual skills and is installed as a
+        single Claude Code plugin — you do not install skills one at a time.
       </p>
 
       <div className="space-y-3">
@@ -49,7 +49,7 @@ export default function InstallBanner() {
         </div>
 
         <div className="rounded-xl border border-stone-200 bg-white px-4 py-3 dark:border-stone-800 dark:bg-stone-950">
-          <span className="mb-3 block text-xs font-medium text-gray-500 dark:text-gray-400">2. Install a plugin</span>
+          <span className="mb-3 block text-xs font-medium text-gray-500 dark:text-gray-400">2. Install a skill bundle</span>
           <div className="space-y-3">
             {PLUGINS.map((plugin) => {
               const installCommand = `/plugin install ${getPluginInstallRef(plugin)}`;

@@ -12,7 +12,7 @@ import { buildMarketplaceDocument } from "../../../scripts/lib/marketplace";
 const catalog: CatalogFile = {
   marketplace: {
     name: "llm-skills",
-    title: "Alison's LLM Plugins",
+    title: "Alison's LLM Skills Marketplace",
     description: "Browse plugins",
     version: "1.0.0",
     owner: { name: "Alison Aquinas" },
