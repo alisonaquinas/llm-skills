@@ -152,6 +152,38 @@ export function CopyIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 /**
+ * Presents a 3x3 grid glyph for skill-catalog navigation affordances.
+ *
+ * @param props Shared SVG presentation properties.
+ * @returns Grid icon sized by the caller.
+ */
+export function GridIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <rect x="3" y="3" width="7" height="7" rx="1" />
+      <rect x="14" y="3" width="7" height="7" rx="1" />
+      <rect x="3" y="14" width="7" height="7" rx="1" />
+      <rect x="14" y="14" width="7" height="7" rx="1" />
+    </svg>
+  );
+}
+
+/**
+ * Presents an open-book glyph for guides and learning affordances.
+ *
+ * @param props Shared SVG presentation properties.
+ * @returns Book-open icon sized by the caller.
+ */
+export function BookOpenIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <path d="M2 6c0 0 4-1 10-1s10 1 10 1v14c0 0-4-1-10-1S2 20 2 20V6Z" />
+      <path d="M12 5v14" />
+    </svg>
+  );
+}
+
+/**
  * Presents a hamburger menu icon for compact navigation affordances.
  *
  * @param props Shared SVG presentation properties.

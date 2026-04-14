@@ -13,7 +13,8 @@
  * - consumes only presentational icon helpers and stable catalog-derived props from callers
  */
 import { useEffect, useId, useRef, useState } from "react";
-import { CloseIcon, GitHubIcon, MenuIcon, RssIcon } from "@/components/SiteIcons";
+import Link from "next/link";
+import { BookOpenIcon, CloseIcon, GitHubIcon, GridIcon, MenuIcon, RssIcon } from "@/components/SiteIcons";
 
 /**
  * Individual link metadata rendered inside the mobile header menu.
@@ -27,6 +28,8 @@ export interface MobileHeaderMenuItem {
   label: string;
   /** Icon component paired with the menu entry. */
   Icon: (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
+  /** When true, opens in a new tab with rel="noopener noreferrer". Defaults to false. */
+  isExternal?: boolean;
 }
 
 /**
@@ -89,7 +92,7 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
         aria-controls={`${buttonId}-menu`}
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         onClick={() => setIsOpen((value) => !value)}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition hover:border-gray-400 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white"
       >
         <TriggerIcon className="h-5 w-5" />
       </button>
@@ -101,20 +104,34 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
           aria-labelledby={buttonId}
           className="absolute right-0 top-12 z-20 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-900"
         >
-          {items.map(({ key, href, label, Icon }) => (
-            <a
-              key={key}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              role="menuitem"
-              onClick={() => setIsOpen(false)}
-              className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-gray-700 transition hover:bg-brand-50 hover:text-brand-700 dark:text-gray-200 dark:hover:bg-brand-950/40 dark:hover:text-brand-100"
-            >
-              <Icon className="h-4 w-4 shrink-0" />
-              <span className="min-w-0 flex-1 break-words">{label}</span>
-            </a>
-          ))}
+          {items.map(({ key, href, label, Icon, isExternal }) => {
+            const itemClass = "flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-brand-50 hover:text-brand-700 dark:text-gray-200 dark:hover:bg-brand-950/40 dark:hover:text-brand-100";
+            return isExternal ? (
+              <a
+                key={key}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+                onClick={() => setIsOpen(false)}
+                className={itemClass}
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="min-w-0 flex-1 break-words">{label}</span>
+              </a>
+            ) : (
+              <Link
+                key={key}
+                href={href}
+                role="menuitem"
+                onClick={() => setIsOpen(false)}
+                className={itemClass}
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="min-w-0 flex-1 break-words">{label}</span>
+              </Link>
+            );
+          })}
         </div>
       ) : null}
     </div>
@@ -127,5 +144,7 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
 export const MOBILE_HEADER_MENU_ICONS = {
   github: GitHubIcon,
   rss: RssIcon,
+  skills: GridIcon,
+  guides: BookOpenIcon,
 } as const;
 

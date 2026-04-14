@@ -67,34 +67,38 @@ export default function SkillGrid({ skills, repos }: Props) {
           />
         </div>
 
-        <div className="-mx-1 overflow-x-auto pb-1">
-          <div className="flex min-w-max items-center gap-2 px-1">
-            <button
-              type="button"
-              onClick={() => setRepoFilter("all")}
-              className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                repoFilter === "all"
-                  ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
-                  : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
-              }`}
-            >
-              All ({skills.length})
-            </button>
-            {repos.map((repo) => (
+        <div className="relative -mx-1">
+          <div className="overflow-x-auto pb-1">
+            <div className="flex min-w-max items-center gap-2 px-1">
               <button
-                key={repo.repo}
                 type="button"
-                onClick={() => setRepoFilter(repo.repo)}
+                onClick={() => setRepoFilter("all")}
                 className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  repoFilter === repo.repo
+                  repoFilter === "all"
                     ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
                     : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
                 }`}
               >
-                {repo.label}
+                All ({skills.length})
               </button>
-            ))}
+              {repos.map((repo) => (
+                <button
+                  key={repo.repo}
+                  type="button"
+                  onClick={() => setRepoFilter(repo.repo)}
+                  className={`min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    repoFilter === repo.repo
+                      ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                      : "border border-gray-300 bg-white text-gray-600 hover:border-gray-400 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600"
+                  }`}
+                >
+                  {repo.label}
+                </button>
+              ))}
+            </div>
           </div>
+          {/* Fade on right edge hints that chips are horizontally scrollable on mobile */}
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-[var(--background)] to-transparent sm:hidden" />
         </div>
       </div>
 

@@ -97,10 +97,25 @@ export const metadata: Metadata = {
  */
 const MOBILE_MENU_ITEMS: MobileHeaderMenuItem[] = [
   {
+    key: "skills",
+    href: "/skills",
+    label: "Browse skills",
+    Icon: MOBILE_HEADER_MENU_ICONS.skills,
+    isExternal: false,
+  },
+  {
+    key: "guides",
+    href: "/guides",
+    label: "Learn",
+    Icon: MOBILE_HEADER_MENU_ICONS.guides,
+    isExternal: false,
+  },
+  {
     key: "rss",
     href: getRssUrl(),
-    label: "RSS",
+    label: "RSS feed",
     Icon: MOBILE_HEADER_MENU_ICONS.rss,
+    isExternal: true,
   },
 ] as const;
 

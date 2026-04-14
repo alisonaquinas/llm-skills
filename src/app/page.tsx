@@ -79,7 +79,7 @@ export default async function MarketplacePage() {
           LLM Skills Marketplace for Claude Code and Codex
         </h1>
         <div className="mb-6 text-base leading-7 text-gray-600 dark:text-gray-300 sm:text-lg">
-          <div className="mb-4 w-full overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:float-right sm:mb-2 sm:ml-6 sm:w-[calc(33.333%-0.5rem)]">
+          <div className="hidden overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:float-right sm:mb-2 sm:ml-6 sm:block sm:w-[calc(33.333%-0.5rem)]">
             <img
               src="/skills-demo.svg"
               alt="Terminal showing agent skill commands /tdd, /docker, and /commit being loaded with confirmation messages"
