@@ -115,7 +115,7 @@ export default function GuidesIndexPage() {
         })}
       />
 
-      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-400 dark:text-gray-500">
+      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/" className="hover:text-gray-700 dark:hover:text-gray-200">
           Marketplace
         </Link>

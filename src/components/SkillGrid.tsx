@@ -59,6 +59,7 @@ export default function SkillGrid({ skills, repos }: Props) {
           </svg>
           <input
             type="text"
+            aria-label="Search skills"
             placeholder="Search skills or skill bundles..."
             value={query}
             onChange={(event) => setQuery(event.target.value)}

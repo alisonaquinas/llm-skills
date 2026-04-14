@@ -85,6 +85,8 @@ export default async function MarketplacePage() {
               alt="Terminal showing agent skill commands /tdd, /docker, and /commit being loaded with confirmation messages"
               width={360}
               height={280}
+              loading="eager"
+              fetchPriority="high"
               className="block w-full"
             />
           </div>
@@ -130,23 +132,17 @@ export default async function MarketplacePage() {
           <div className="clear-both"/>
         </div>
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <li className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-gray-700 shadow-sm dark:border-stone-800 dark:bg-stone-950 dark:text-gray-300">
-            <span className="mb-1 block text-lg" aria-hidden="true">🚀</span>
+          <li className="border-l-2 border-brand-300 pl-4 text-sm leading-6 text-gray-700 dark:border-brand-700 dark:text-gray-300">
             <span className="font-medium text-gray-900 dark:text-white">Ship a Kubernetes-ready CI/CD playbook</span>
-{" "}Helm, kubectl, Terraform, GitHub Actions, and more, wired
-            together so your agent can draft and troubleshoot real pipelines.
+            {" "}Helm, kubectl, Terraform, GitHub Actions, and more, wired together so your agent can draft and troubleshoot real pipelines.
           </li>
-          <li className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-gray-700 shadow-sm dark:border-stone-800 dark:bg-stone-950 dark:text-gray-300">
-            <span className="mb-1 block text-lg" aria-hidden="true">🏛️</span>
+          <li className="border-l-2 border-brand-300 pl-4 text-sm leading-6 text-gray-700 dark:border-brand-700 dark:text-gray-300">
             <span className="font-medium text-gray-900 dark:text-white">Enforce SOLID, DDD, and language best practices</span>
-{" "}Design-pattern and per-language guidance that keeps code
-            reviewable instead of clever.
+            {" "}Design-pattern and per-language guidance that keeps code reviewable instead of clever.
           </li>
-          <li className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-gray-700 shadow-sm dark:border-stone-800 dark:bg-stone-950 dark:text-gray-300">
-            <span className="mb-1 block text-lg" aria-hidden="true">📄</span>
+          <li className="border-l-2 border-brand-300 pl-4 text-sm leading-6 text-gray-700 dark:border-brand-700 dark:text-gray-300">
             <span className="font-medium text-gray-900 dark:text-white">Generate diagrams and docs that actually render</span>
-{" "}PlantUML, Mermaid, Pandoc, LaTeX, Markdown, and Office
-            skills for design docs, runbooks, and deliverables.
+            {" "}PlantUML, Mermaid, Pandoc, LaTeX, Markdown, and Office skills for design docs, runbooks, and deliverables.
           </li>
         </ul>
       </section>
@@ -154,13 +150,13 @@ export default async function MarketplacePage() {
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <a
           href={buildAllPluginsBundleUrl()}
-          className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-medium text-brand-700 transition hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70"
+          className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-medium text-brand-700 transition-colors hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70"
           aria-label="Download every skill bundle as a single ZIP"
         >
           <DownloadIcon className="h-4 w-4 shrink-0" />
           <span>Download all skill bundles</span>
         </a>
-        <span className="text-xs text-gray-400 dark:text-gray-500">
+        <span className="text-xs text-gray-600 dark:text-gray-400">
           One ZIP containing every skill bundle. Install offline at any time
         </span>
       </div>
@@ -186,7 +182,7 @@ export default async function MarketplacePage() {
                   {plugin.label}
                 </span>
                 {meta?.version ? (
-                  <span className="text-xs text-gray-400 dark:text-gray-500">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
                     v{meta.version}
                   </span>
                 ) : null}
@@ -316,7 +312,7 @@ export default async function MarketplacePage() {
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href="/skills"
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-medium text-brand-700 transition hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-medium text-brand-700 transition-colors hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70"
           >
             View all {totalSkills} skills →
           </Link>

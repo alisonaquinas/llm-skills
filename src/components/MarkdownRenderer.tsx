@@ -54,7 +54,17 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         "dark:prose-td:border-gray-700",
       ].join(" ")}
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          h1: ({ children, ...props }) => <h3 {...props}>{children}</h3>,
+          h2: ({ children, ...props }) => <h3 {...props}>{children}</h3>,
+          h3: ({ children, ...props }) => <h4 {...props}>{children}</h4>,
+          h4: ({ children, ...props }) => <h5 {...props}>{children}</h5>,
+        }}
+      >
+        {content}
+      </ReactMarkdown>
     </div>
   );
 }

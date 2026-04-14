@@ -12,6 +12,7 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import MobileHeaderMenu, { MOBILE_HEADER_MENU_ICONS, type MobileHeaderMenuItem } from "@/components/MobileHeaderMenu";
 import { BrandBug, RssIcon } from "@/components/SiteIcons";
@@ -28,6 +29,12 @@ import {
   getSocialPreviewImageUrl,
 } from "@/lib/seo";
 import { getThemeBootstrapScript } from "@/lib/theme";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 /**
  * Static metadata used by Next.js during build and export.
@@ -105,8 +112,14 @@ const MOBILE_MENU_ITEMS: MobileHeaderMenuItem[] = [
  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className="min-h-screen overflow-x-hidden bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-100">
+    <html lang="en" suppressHydrationWarning className={plusJakartaSans.variable}>
+      <body suppressHydrationWarning className="min-h-screen overflow-x-hidden text-gray-950 dark:text-gray-100">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-gray-900 focus:shadow-lg dark:focus:bg-stone-950 dark:focus:text-white"
+        >
+          Skip to main content
+        </a>
         <script dangerouslySetInnerHTML={{ __html: getThemeBootstrapScript() }} />
         <StructuredData data={[buildOrganizationStructuredData(), buildWebsiteStructuredData()]} />
         <header className="sticky top-0 z-10 border-b border-stone-200 bg-white/95 backdrop-blur dark:border-stone-800 dark:bg-stone-950/95">
@@ -124,19 +137,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <nav className="hidden items-center justify-end gap-1 text-sm text-gray-500 dark:text-gray-400 md:flex">
                 <Link
                   href="/skills"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-gray-600 transition hover:bg-brand-50 hover:text-brand-800 dark:text-gray-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-gray-600 transition-colors hover:bg-brand-50 hover:text-brand-800 dark:text-gray-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
                 >
                   Skills
                 </Link>
                 <Link
                   href="/guides"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-gray-600 transition hover:bg-brand-50 hover:text-brand-800 dark:text-gray-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-gray-600 transition-colors hover:bg-brand-50 hover:text-brand-800 dark:text-gray-300 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
                 >
                   Learn
                 </Link>
                 <a
                   href={getRssUrl()}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-brand-700 transition hover:bg-brand-50 hover:text-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-brand-700 transition-colors hover:bg-brand-50 hover:text-brand-800 dark:text-brand-200 dark:hover:bg-brand-950/50 dark:hover:text-brand-100"
                   aria-label="Open the combined RSS feed"
                 >
                   <RssIcon className="h-4 w-4" />
@@ -148,7 +161,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </header>
-        <main className="mx-auto max-w-6xl px-4 py-6 sm:px-5 sm:py-8 md:px-6">{children}</main>
+        <main id="main-content" className="mx-auto max-w-6xl px-4 py-6 sm:px-5 sm:py-8 md:px-6">{children}</main>
         <Footer />
       </body>
     </html>

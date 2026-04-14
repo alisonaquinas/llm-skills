@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 export default function WhatAreSkillsPage() {
   return (
     <article className="prose-like max-w-3xl text-base leading-7 text-gray-700 dark:text-gray-300">
-      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-400 dark:text-gray-500">
+      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/" className="hover:text-gray-700 dark:hover:text-gray-200">
           Marketplace
         </Link>

@@ -47,6 +47,8 @@ export default function ThemeToggle() {
   const [isOpen, setIsOpen] = useState(false);
   /** Root element used for outside-click detection. */
   const containerRef = useRef<HTMLDivElement | null>(null);
+  /** Refs to each menu item button for programmatic focus management. */
+  const menuItemRefs = useRef<Array<HTMLButtonElement | null>>([]);
   /** Stable id used to bind the button and menu. */
   const buttonId = useId();
 
@@ -116,6 +118,52 @@ export default function ThemeToggle() {
     };
   }, [isOpen]);
 
+  /** When the menu opens, focus the currently-active option. */
+  useEffect(() => {
+    if (!isOpen) return;
+    const activeIndex = THEME_OPTIONS.findIndex((o) => o.value === preference);
+    menuItemRefs.current[activeIndex]?.focus();
+  }, [isOpen, preference]);
+
+  /**
+   * Handles arrow-key, Home/End, Enter, Space, and Tab navigation inside the menu.
+   *
+   * @param event Keyboard event from a menu item.
+   * @param index Index of the focused menu item.
+   */
+  function handleMenuKeyDown(event: React.KeyboardEvent, index: number) {
+    const count = THEME_OPTIONS.length;
+    let nextIndex: number | null = null;
+
+    switch (event.key) {
+      case "ArrowDown":
+        event.preventDefault();
+        nextIndex = (index + 1) % count;
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        nextIndex = (index - 1 + count) % count;
+        break;
+      case "Home":
+        event.preventDefault();
+        nextIndex = 0;
+        break;
+      case "End":
+        event.preventDefault();
+        nextIndex = count - 1;
+        break;
+      case "Tab":
+        setIsOpen(false);
+        return;
+      default:
+        return;
+    }
+
+    if (nextIndex !== null) {
+      menuItemRefs.current[nextIndex]?.focus();
+    }
+  }
+
   /**
    * Persists a newly selected theme preference and closes the menu.
    *
@@ -142,7 +190,7 @@ export default function ThemeToggle() {
         aria-controls={`${buttonId}-menu`}
         aria-label={`Theme preference: ${activeOption.label}`}
         onClick={() => setIsOpen((value) => !value)}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition hover:border-gray-400 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white"
       >
         <activeOption.Icon className="h-5 w-5" />
       </button>
@@ -154,17 +202,19 @@ export default function ThemeToggle() {
           aria-labelledby={buttonId}
           className="absolute right-0 top-12 z-20 min-w-44 max-w-[calc(100vw-2rem)] rounded-xl border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-900"
         >
-          {THEME_OPTIONS.map(({ value, label, Icon }) => {
+          {THEME_OPTIONS.map(({ value, label, Icon }, index) => {
             const isActive = value === preference;
 
             return (
               <button
                 key={value}
+                ref={(el) => { menuItemRefs.current[index] = el; }}
                 type="button"
                 role="menuitemradio"
                 aria-checked={isActive}
                 onClick={() => selectPreference(value)}
-                className={`flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition ${
+                onKeyDown={(event) => handleMenuKeyDown(event, index)}
+                className={`flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                   isActive
                     ? "bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-100"
                     : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"

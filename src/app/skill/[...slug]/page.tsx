@@ -90,7 +90,7 @@ export default async function SkillPage({ params }: PageProps) {
   return (
     <div className="max-w-3xl">
       <StructuredData data={buildSkillStructuredData(skill)} />
-      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-400 dark:text-gray-500">
+      <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/" className="hover:text-gray-700 dark:hover:text-gray-200">
           Marketplace
         </Link>
@@ -152,7 +152,7 @@ export default async function SkillPage({ params }: PageProps) {
             <CopyButton text={installCommand} />
           </div>
           <div className="overflow-x-auto">
-            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-green-400">{installCommand}</pre>
+            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-gray-100">{installCommand}</pre>
           </div>
         </div>
 
@@ -162,14 +162,14 @@ export default async function SkillPage({ params }: PageProps) {
             <CopyButton text={invokeCommand} label="Copy" />
           </div>
           <div className="overflow-x-auto">
-            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-green-400">{invokeCommand}</pre>
+            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-gray-100">{invokeCommand}</pre>
           </div>
         </div>
 
         {skill.downloadUrl ? (
           <a
             href={skill.downloadUrl}
-            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700 transition hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70 sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700 transition-colors hover:border-brand-400 hover:bg-brand-100 dark:border-brand-900/70 dark:bg-brand-950/40 dark:text-brand-200 dark:hover:border-brand-700 dark:hover:bg-brand-950/70 sm:w-auto"
           >
             <DownloadIcon className="h-4 w-4" />
             <span>Download {route.skillName}-skill.zip</span>
