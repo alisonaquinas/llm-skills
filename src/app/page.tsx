@@ -78,29 +78,74 @@ export default async function MarketplacePage() {
         <h1 className="mb-3 max-w-4xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
           LLM Skills Marketplace for Claude Code and Codex
         </h1>
-        <p className="mb-6 text-base leading-7 text-gray-600 dark:text-gray-300 sm:text-lg">
-          Reusable agent skills for coding, CI/CD, documentation, software
-          design, and web development — installable in Claude Code and portable
-          to Codex. Teach your agent real engineering practices instead of
-          reinventing them every session.
-        </p>
+        <div className="mb-6 text-base leading-7 text-gray-600 dark:text-gray-300 sm:text-lg">
+          <div className="mb-4 w-full overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:float-right sm:mb-2 sm:ml-6 sm:w-[calc(33.333%-0.5rem)]">
+            <img
+              src="/skills-demo.svg"
+              alt="Terminal showing agent skill commands /tdd, /docker, and /commit being loaded with confirmation messages"
+              width={360}
+              height={280}
+              className="block w-full"
+            />
+          </div>
+          <p className="mb-4">
+            Reusable agent skills for coding, CI/CD, documentation, software
+            design, and web development, installable in Claude Code and portable
+            to Codex. Teach your agent real engineering practices instead of
+            reinventing them every session.
+          </p>
+          <p className="mb-4">
+            Every time you start a new conversation, your AI coding agent begins
+            with no memory of the decisions you made last time. You explain your
+            stack, remind it how you want commits structured, walk it through
+            your deployment pipeline, over and over. Skills solve this. A skill is a
+            markdown file that loads into your agent at the start of a
+            conversation and gives it precise, opinionated guidance for a
+            specific domain. Install once, benefit every session.
+          </p>
+          <p className="mb-4">
+            The skills in this marketplace are production-grade and battle-tested
+            across real engineering workflows. They cover the breadth of a modern
+            software development lifecycle: writing clean, idiomatic code in
+            dozens of languages; designing systems with SOLID principles and
+            domain-driven patterns; building and debugging CI/CD pipelines on
+            GitHub Actions, GitLab CI, Jenkins, and ArgoCD; working with
+            Kubernetes, Helm, Terraform, and cloud CLIs; generating diagrams and
+            technical documents in PlantUML, Mermaid, LaTeX, and Office formats.
+            Each skill is self-contained, composable, and designed to drop into
+            your existing workflow without restructuring how you work.
+          </p>
+          <p>
+            Skills are grouped into focused bundles:{" "}
+            <Link href="/bundles/ci-cd" className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-300 dark:hover:text-brand-200">llm-ci-dev</Link>
+            {" "}for infrastructure and pipelines,{" "}
+            <Link href="/bundles/software-design" className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-300 dark:hover:text-brand-200">llm-software-design</Link>
+            {" "}for architecture and language best practices,{" "}
+            <Link href="/bundles/shared-skills" className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-300 dark:hover:text-brand-200">llm-shared-skills</Link>
+            {" "}for general-purpose tooling, and{" "}
+            <Link href="/bundles/doc-skills" className="font-medium text-brand-700 hover:text-brand-800 dark:text-brand-300 dark:hover:text-brand-200">llm-doc-skills</Link>
+            {" "}for documentation and publishing workflows. Install the bundles that match your stack,
+            or download everything at once and let your agent discover what it needs.
+          </p>
+          <div className="clear-both"/>
+        </div>
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <li className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-gray-700 shadow-sm dark:border-stone-800 dark:bg-stone-950 dark:text-gray-300">
             <span className="mb-1 block text-lg" aria-hidden="true">🚀</span>
             <span className="font-medium text-gray-900 dark:text-white">Ship a Kubernetes-ready CI/CD playbook</span>
-            {" "}— Helm, kubectl, Terraform, GitHub Actions, and more, wired
+{" "}Helm, kubectl, Terraform, GitHub Actions, and more, wired
             together so your agent can draft and troubleshoot real pipelines.
           </li>
           <li className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-gray-700 shadow-sm dark:border-stone-800 dark:bg-stone-950 dark:text-gray-300">
             <span className="mb-1 block text-lg" aria-hidden="true">🏛️</span>
             <span className="font-medium text-gray-900 dark:text-white">Enforce SOLID, DDD, and language best practices</span>
-            {" "}— design-pattern and per-language guidance that keeps code
+{" "}Design-pattern and per-language guidance that keeps code
             reviewable instead of clever.
           </li>
           <li className="rounded-xl border border-stone-200 bg-white p-4 text-sm leading-6 text-gray-700 shadow-sm dark:border-stone-800 dark:bg-stone-950 dark:text-gray-300">
             <span className="mb-1 block text-lg" aria-hidden="true">📄</span>
             <span className="font-medium text-gray-900 dark:text-white">Generate diagrams and docs that actually render</span>
-            {" "}— PlantUML, Mermaid, Pandoc, LaTeX, Markdown, and Office
+{" "}PlantUML, Mermaid, Pandoc, LaTeX, Markdown, and Office
             skills for design docs, runbooks, and deliverables.
           </li>
         </ul>
@@ -116,7 +161,7 @@ export default async function MarketplacePage() {
           <span>Download all skill bundles</span>
         </a>
         <span className="text-xs text-gray-400 dark:text-gray-500">
-          One ZIP containing every skill bundle — install offline at any time
+          One ZIP containing every skill bundle. Install offline at any time
         </span>
       </div>
 
@@ -211,6 +256,53 @@ export default async function MarketplacePage() {
             </div>
           ),
         )}
+      </section>
+
+      <section className="mb-10 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-6">
+        <h2 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+          How agent skills work
+        </h2>
+        <div className="space-y-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
+          <p>
+            In Claude Code, a skill is a{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              SKILL.md
+            </code>{" "}
+            file stored in your{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              ~/.claude/skills/
+            </code>{" "}
+            directory. When you type a slash command like{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              /tdd
+            </code>{" "}
+            or{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              /commit
+            </code>
+            , Claude loads the matching skill file and follows its instructions
+            for that task. Skills are plain text: readable, editable, and
+            version-controlled like any other file in your project.
+          </p>
+          <p>
+            Installing a skill bundle from this marketplace takes one command.
+            Run the install command shown on any bundle card and the skills drop
+            into place. From that point, every Claude Code session on your
+            machine has access to those skills. You can also check them into your
+            project repository so the whole team shares the same agent behavior,
+            or download a ZIP bundle for air-gapped environments.
+          </p>
+          <p>
+            Skills work across platforms. The same skill file that drives Claude
+            Code can be adapted for OpenAI Codex CLI via the{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              agents/openai.yaml
+            </code>{" "}
+            metadata each skill ships with. Lock in your team&apos;s engineering
+            practices once, and carry them forward as the tooling landscape
+            evolves.
+          </p>
+        </div>
       </section>
 
       <section className="mb-10 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-6">
