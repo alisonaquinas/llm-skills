@@ -4,7 +4,7 @@
     "name": "Alison Aquinas"
   },
   "metadata": {
-    "description": "LLM skills marketplace for Claude Code and Codex. Browse reusable Claude Code skills for coding, CI/CD, software design, docs, and web design, packaged as installable skill bundles.",
+    "description": "LLM skills marketplace for Claude Code and Codex. Reusable skill bundles for CI/CD, software design, docs, and web development. Install from GitHub in one command.",
     "version": "1.4.3"
   },
   "plugins": [
