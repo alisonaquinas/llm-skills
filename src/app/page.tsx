@@ -233,10 +233,11 @@ export default async function MarketplacePage() {
                   href={repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`View ${plugin.label} on GitHub`}
                   className="inline-flex min-h-11 items-center gap-1.5 hover:text-brand-700 dark:hover:text-brand-200"
                 >
                   <GitHubIcon className="h-4 w-4" />
-                  <span>GitHub</span>
+                  <span aria-hidden="true">GitHub</span>
                 </a>
                 {bundleUrl ? (
                   <a
@@ -245,7 +246,7 @@ export default async function MarketplacePage() {
                     className="inline-flex min-h-11 items-center gap-1.5 hover:text-brand-700 dark:hover:text-brand-200"
                   >
                     <DownloadIcon className="h-4 w-4" />
-                    <span>Bundle</span>
+                    <span aria-hidden="true">Bundle</span>
                   </a>
                 ) : null}
               </div>
