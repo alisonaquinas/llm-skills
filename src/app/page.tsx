@@ -82,7 +82,7 @@ export default async function MarketplacePage() {
           <div className="hidden overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:float-right sm:mb-2 sm:ml-6 sm:block sm:w-[calc(33.333%-0.5rem)]">
             <img
               src="/skills-demo.svg"
-              alt="Terminal showing agent skill commands /tdd, /docker, and /commit being loaded with confirmation messages"
+              alt="Terminal window showing three Claude Code skill commands: /tdd loads the test-driven-development skill, /docker loads the CI/CD Docker skill, and /commit loads the shared-skills commit helper — each with a confirmation checkmark and a one-line description."
               width={360}
               height={280}
               loading="eager"
