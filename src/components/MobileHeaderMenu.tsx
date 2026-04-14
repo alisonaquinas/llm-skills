@@ -13,7 +13,6 @@
  * - consumes only presentational icon helpers and stable catalog-derived props from callers
  */
 import { useEffect, useId, useRef, useState } from "react";
-import Link from "next/link";
 import { BookOpenIcon, CloseIcon, GitHubIcon, GridIcon, MenuIcon, RssIcon } from "@/components/SiteIcons";
 
 /**
@@ -106,12 +105,11 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
         >
           {items.map(({ key, href, label, Icon, isExternal }) => {
             const itemClass = "flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-brand-50 hover:text-brand-700 dark:text-gray-200 dark:hover:bg-brand-950/40 dark:hover:text-brand-100";
-            return isExternal ? (
+            return (
               <a
                 key={key}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 role="menuitem"
                 onClick={() => setIsOpen(false)}
                 className={itemClass}
@@ -119,17 +117,6 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
                 <Icon className="h-4 w-4 shrink-0" />
                 <span className="min-w-0 flex-1 break-words">{label}</span>
               </a>
-            ) : (
-              <Link
-                key={key}
-                href={href}
-                role="menuitem"
-                onClick={() => setIsOpen(false)}
-                className={itemClass}
-              >
-                <Icon className="h-4 w-4 shrink-0" />
-                <span className="min-w-0 flex-1 break-words">{label}</span>
-              </Link>
             );
           })}
         </div>
