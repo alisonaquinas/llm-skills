@@ -10,10 +10,24 @@
  *
  * Dependency rules:
  * - stays client-only because it manages browser events and transient menu state
- * - consumes only presentational icon helpers and stable catalog-derived props from callers
+ * - resolves icons internally via a string key — callers do not pass component references
  */
 import { useEffect, useId, useRef, useState } from "react";
 import { BookOpenIcon, CloseIcon, GitHubIcon, GridIcon, MenuIcon, RssIcon } from "@/components/SiteIcons";
+
+/**
+ * Icon registry keyed by stable string tokens.
+ * Resolved inside the component so no React component reference crosses the props boundary.
+ */
+const ITEM_ICONS = {
+  skills: GridIcon,
+  guides: BookOpenIcon,
+  rss: RssIcon,
+  github: GitHubIcon,
+} as const;
+
+/** Valid icon key values for menu items. */
+export type MobileMenuIconKey = keyof typeof ITEM_ICONS;
 
 /**
  * Individual link metadata rendered inside the mobile header menu.
@@ -25,8 +39,8 @@ export interface MobileHeaderMenuItem {
   href: string;
   /** Human-readable label rendered in the menu. */
   label: string;
-  /** Icon component paired with the menu entry. */
-  Icon: (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
+  /** Icon identifier resolved against the internal icon registry. */
+  iconKey: MobileMenuIconKey;
   /** When true, opens in a new tab with rel="noopener noreferrer". Defaults to false. */
   isExternal?: boolean;
 }
@@ -103,7 +117,8 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
           aria-labelledby={buttonId}
           className="absolute right-0 top-12 z-20 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-900"
         >
-          {items.map(({ key, href, label, Icon, isExternal }) => {
+          {items.map(({ key, href, label, iconKey, isExternal }) => {
+            const ItemIcon = ITEM_ICONS[iconKey];
             const itemClass = "flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-brand-50 hover:text-brand-700 dark:text-gray-200 dark:hover:bg-brand-950/40 dark:hover:text-brand-100";
             return (
               <a
@@ -114,7 +129,7 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
                 onClick={() => setIsOpen(false)}
                 className={itemClass}
               >
-                <Icon className="h-4 w-4 shrink-0" />
+                <ItemIcon className="h-4 w-4 shrink-0" />
                 <span className="min-w-0 flex-1 break-words">{label}</span>
               </a>
             );
@@ -124,14 +139,3 @@ export default function MobileHeaderMenu({ items }: MobileHeaderMenuProps) {
     </div>
   );
 }
-
-/**
- * Exported icon map used by callers that build menu entries in a typed way.
- */
-export const MOBILE_HEADER_MENU_ICONS = {
-  github: GitHubIcon,
-  rss: RssIcon,
-  skills: GridIcon,
-  guides: BookOpenIcon,
-} as const;
-

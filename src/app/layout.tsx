@@ -14,7 +14,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
-import MobileHeaderMenu, { MOBILE_HEADER_MENU_ICONS, type MobileHeaderMenuItem } from "@/components/MobileHeaderMenu";
+import MobileHeaderMenu, { type MobileHeaderMenuItem } from "@/components/MobileHeaderMenu";
 import { BrandBug, RssIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -96,28 +96,10 @@ export const metadata: Metadata = {
  * Precomputed mobile-only navigation entries that move out of the header row on phones.
  */
 const MOBILE_MENU_ITEMS: MobileHeaderMenuItem[] = [
-  {
-    key: "skills",
-    href: "/skills",
-    label: "Browse skills",
-    Icon: MOBILE_HEADER_MENU_ICONS.skills,
-    isExternal: false,
-  },
-  {
-    key: "guides",
-    href: "/guides",
-    label: "Learn",
-    Icon: MOBILE_HEADER_MENU_ICONS.guides,
-    isExternal: false,
-  },
-  {
-    key: "rss",
-    href: getRssUrl(),
-    label: "RSS feed",
-    Icon: MOBILE_HEADER_MENU_ICONS.rss,
-    isExternal: true,
-  },
-] as const;
+  { key: "skills", href: "/skills", label: "Browse skills", iconKey: "skills", isExternal: false },
+  { key: "guides", href: "/guides", label: "Learn", iconKey: "guides", isExternal: false },
+  { key: "rss", href: getRssUrl(), label: "RSS feed", iconKey: "rss", isExternal: true },
+];
 
 /**
  * Wraps all routed pages in the shared marketplace chrome.
