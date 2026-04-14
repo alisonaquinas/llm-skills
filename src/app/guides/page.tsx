@@ -97,6 +97,12 @@ const GUIDES: GuideEntry[] = [
     teaser:
       "Side-by-side comparison of how the two platforms install, trigger, and extend skills.",
   },
+  {
+    href: "/guides/build-your-own-skills-hooks-agents-commands",
+    title: "Build your own skills, hooks, agents, and commands",
+    teaser:
+      "Use the SDLC authoring tools in the shared-skills bundle to create, lint, validate, and ship your own Claude Code artifacts.",
+  },
 ];
 
 /**
