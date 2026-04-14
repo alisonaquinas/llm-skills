@@ -73,7 +73,7 @@ export default function CopyButton({
         onClick={copy}
         aria-label={currentAriaLabel}
         title={status === "copied" ? "Copied!" : status === "failed" ? "Couldn't copy" : label}
-        className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 transition-colors hover:border-brand-500 hover:text-brand-600 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-300 dark:hover:border-brand-400 dark:hover:text-brand-300"
+        className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-gray-200 bg-white text-gray-500 transition-colors hover:border-brand-500 hover:text-brand-600 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-300 dark:hover:border-brand-400 dark:hover:text-brand-300"
       >
         {status === "copied" ? (
           <svg className={`h-4 w-4 ${iconClassName}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

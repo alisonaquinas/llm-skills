@@ -2,7 +2,7 @@
   "marketplace": {
     "name": "llm-skills",
     "title": "Alison's LLM Skills Marketplace",
-    "description": "LLM skills marketplace for Claude Code and Codex. Reusable skill bundles for CI/CD, software design, docs, and web development. Install from GitHub in one command.",
+    "description": "Browse Claude Code and Codex skill bundles for CI/CD, software design, docs, and web dev. Install from GitHub in one command.",
     "version": "1.4.3",
     "owner": {
       "name": "Alison Aquinas"

@@ -8,7 +8,7 @@
  * - delegate filtering rules to src/lib/skills helpers
  * - render either the filtered skill list or an empty-state message
  */
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import type { PluginConfig } from "@/lib/catalog";
 import type { SkillEntry } from "@/lib/github";
 import { filterSkills, getRepoFilterLabel } from "@/lib/skills";
@@ -36,6 +36,8 @@ export default function SkillGrid({ skills, repos }: Props) {
   const [query, setQuery] = useState("");
   /** Active repository filter value, or "all" for no restriction. */
   const [repoFilter, setRepoFilter] = useState("all");
+  /** Marks search/filter state updates as non-urgent to keep input responsive. */
+  const [, startTransition] = useTransition();
 
   const filtered = filterSkills(skills, { query, repoFilter });
   const repoLabel = getRepoFilterLabel(repos, repoFilter);
@@ -62,7 +64,7 @@ export default function SkillGrid({ skills, repos }: Props) {
             aria-label="Search skills"
             placeholder="Search skills or skill bundles..."
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => { const v = event.target.value; startTransition(() => setQuery(v)); }}
             className="min-h-11 w-full rounded-lg border border-gray-300 bg-white py-2.5 pl-9 pr-4 text-sm text-gray-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500"
           />
         </div>

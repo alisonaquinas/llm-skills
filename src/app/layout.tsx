@@ -41,7 +41,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
  */
 export const metadata: Metadata = {
   metadataBase: new URL(MARKETPLACE.siteUrl),
-  title: MARKETPLACE.title,
+  title: {
+    template: `%s | ${MARKETPLACE.title}`,
+    default: `${MARKETPLACE.title} for Claude Code and Codex`,
+  },
   description: MARKETPLACE.description,
   applicationName: MARKETPLACE.title,
   creator: MARKETPLACE.owner.name,
@@ -54,6 +57,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: getHomeUrl(),
+    languages: {
+      en: getHomeUrl(),
+      "x-default": getHomeUrl(),
+    },
     types: {
       "application/rss+xml": getRssUrl(),
     },

@@ -73,7 +73,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
             <a
               href={skill.downloadUrl}
               aria-label={`Download ${skill.name}-skill.zip`}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-brand-500 hover:text-brand-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-brand-400 dark:hover:text-brand-300"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-brand-500 hover:text-brand-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-brand-400 dark:hover:text-brand-300"
             >
               <DownloadIcon className="h-4 w-4" />
             </a>
