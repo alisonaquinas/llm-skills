@@ -7,6 +7,13 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.4.5] - 2026-04-16
+
+### Fixed
+
+- Added "Team install / Claude Code on the Web" section to `README.md` documenting the project-scoped `extraKnownMarketplaces` + `enabledPlugins` configuration required for cloud sessions and co-work compatibility. The previous install instructions only covered the personal `~/.claude/settings.json` path, which is not available in Claude Code on the Web cloud VMs; plugins must be declared in the repo's `.claude/settings.json` to survive cloud session startup.
+- Corrected two remaining stale `https://alisonaquinas.github.io/llm-skills/` URLs (marketplace.json and rss.xml) to the canonical custom-domain `https://llm-skills.alisonaquinas.com/` equivalents.
+
 ## [1.4.4] - 2026-04-16
 
 ### Fixed

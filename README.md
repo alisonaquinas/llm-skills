@@ -13,41 +13,73 @@ The website lets you browse the skills contained inside those plugins. The marke
 
 **Live site:** <https://llm-skills.alisonaquinas.com/>
 
-## Latest release: v1.4.4
+## Latest release: v1.4.5
 
-Fixes stale marketplace registration that caused Claude Code instances to install plugins from `main` instead of the declared pinned versions.
+Adds team and cloud-session install documentation so plugins work with Claude Code on the Web (co-work sessions).
 
-- `.claude-plugin/marketplace.json` regenerated from `catalog.json`; was frozen at v1.4.2 with all plugin refs pointing to `main`.
-- `postbuild` now generates `out/marketplace.json` automatically alongside the RSS feed so local builds stay complete.
-- Corrected live-site and dev-server URLs in `README.md` and `AGENTS.md` to reflect the custom-domain migration.
+- Added "Team install / Claude Code on the Web" section to README with the `extraKnownMarketplaces` + `enabledPlugins` project-settings format required for cloud sessions.
+- Corrected two remaining GitHub Pages URLs (marketplace.json and rss.xml) to the custom domain.
 
 ## Install in Claude Code
 
-Recommended marketplace source:
+### Personal install (local terminal)
+
+Register the marketplace and install whichever plugins you want:
 
 ```text
 /plugin marketplace add alisonaquinas/llm-skills
 ```
 
-Then install one of the published plugins:
-
 ```text
 /plugin install shared-skills@llm-skills
 /plugin install ci-cd@llm-skills
 /plugin install software-design@llm-skills
+/plugin install doc-skills@llm-skills
 /plugin install web-design-skills@llm-skills
 ```
 
-The hosted marketplace JSON is also published at:
+This writes to your personal `~/.claude/settings.json` and is only active on your local machine.
+
+### Team install / Claude Code on the Web (co-work sessions)
+
+Personal settings are not available in cloud sessions or shared with teammates. To make
+plugins available in Claude Code on the Web and for everyone who clones your repository,
+commit the marketplace registration and plugin selection to your project's
+`.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "llm-skills": {
+      "source": {
+        "source": "github",
+        "repo": "alisonaquinas/llm-skills"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "shared-skills@llm-skills": true,
+    "ci-cd@llm-skills": true,
+    "software-design@llm-skills": true,
+    "doc-skills@llm-skills": true,
+    "web-design-skills@llm-skills": true
+  }
+}
+```
+
+Include only the plugins your project needs. Claude Code installs them automatically
+at the start of each cloud session and prompts local teammates to install on first use.
+
+The hosted marketplace JSON is published at:
 
 ```text
-https://alisonaquinas.github.io/llm-skills/marketplace.json
+https://llm-skills.alisonaquinas.com/marketplace.json
 ```
 
 The combined release feed is published at:
 
 ```text
-https://alisonaquinas.github.io/llm-skills/rss.xml
+https://llm-skills.alisonaquinas.com/rss.xml
 ```
 
 ## What this repository publishes

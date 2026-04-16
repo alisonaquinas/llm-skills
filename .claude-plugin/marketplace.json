@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Browse Claude Code and Codex skill bundles for CI/CD, software design, docs, and web dev. Install from GitHub in one command.",
-    "version": "1.4.4"
+    "version": "1.4.5"
   },
   "plugins": [
     {
