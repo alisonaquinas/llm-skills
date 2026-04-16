@@ -8,6 +8,16 @@
     <lastBuildDate>Thu, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Marketplace v1.4.5</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.5</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.5</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.5 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Added &quot;Team install / Claude Code on the Web&quot; section to `README.md` documenting the project-scoped `extraKnownMarketplaces` + `enabledPlugins` configuration required for cloud sessions and co-work compatibility. The previous install instructions only covered the personal `~/.claude/settings.json` path, which is not available in Claude Code on the Web cloud VMs; plugins must be declared in the repo&apos;s `.claude/settings.json` to survive cloud session startup.
+- Corrected two remaining stale `https://alisonaquinas.github.io/llm-skills/` URLs (marketplace.json and rss.xml) to the canonical custom-domain `https://llm-skills.alisonaquinas.com/` equivalents.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.4.4</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.4</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.4</guid>
@@ -607,26 +617,6 @@
 <h3>Fixed</h3>
 <pre>- added release-time Node and lint/tool provisioning to `.github/workflows/release.yml` so tag releases run the same `make test` gate successfully on GitHub-hosted runners
 - restored trailing newlines in the newly added skill agent manifests and wrapper scripts, and removed the unused import from `scripts/verify_built_zips.py`, so the CI YAML and Python lint jobs pass for the text-first publishing and diagram skills</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.1.0</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.1.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.1.0</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.1.0 release notes.</p>
-<h3>Changed</h3>
-<pre>- generalized the repo-owned skill lint and validation helpers so they can share the same baseline logic as the other plugin repos while still supporting `llm-doc-skills` top-level skill layout</pre>
-<h3>Added</h3>
-<pre>- New packaged text-first publishing skills: `pandoc`, `latex`, `typst`, `markdown`, and `asciidoc`.
-- New packaged platform-and-diagram skills: `github-flavored-markdown`, `gitlab-flavored-markdown`, `mermaid`, `plantuml`, and `graphviz`.
-- Repo-owned wrapper CLIs for common conversion, build, render, and export flows under the text-first and diagram skill `scripts/` directories.
-- Companion `references/` docs for the new skills so authoritative guidance stays deep without pushing `SKILL.md` over repo lint thresholds.
-- Packaging and wrapper tests covering the new skills and their command-builder surfaces.
-- `scripts/verify_built_zips.py` and `scripts/check_node_version.py` to make repo verification and lint prerequisites more explicit across environments.</pre>
-<h3>Fixed</h3>
-<pre>- `Makefile`: route ZIP verification through a Python helper so `make verify` checks all built archives consistently on Windows-backed WSL paths.
-- `Makefile`: fail early with a clear message when the active Node.js runtime is older than the version required by `markdownlint-cli2`.
-- `.gitignore`: ignore repo-local scratch directories and transient `tmp*/` artifacts so failed local temp cleanup does not pollute git status.</pre>]]></description>
     </item>
   </channel>
 </rss>
