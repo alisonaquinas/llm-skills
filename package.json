@@ -1,11 +1,11 @@
 {
   "name": "claude-plugin-marketplace",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "npm run rss:generate -- out/rss.xml",
+    "postbuild": "npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json && npm run rss:generate -- out/rss.xml",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",

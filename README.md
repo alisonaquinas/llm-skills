@@ -11,15 +11,15 @@ A static Next.js site and marketplace catalog for installable Claude Code plugin
 The website lets you browse the skills contained inside those plugins. The marketplace catalog at
 `.claude-plugin/marketplace.json` publishes the actual installable plugins.
 
-**Live site:** <https://alisonaquinas.github.io/llm-skills/>
+**Live site:** <https://llm-skills.alisonaquinas.com/>
 
-## Latest release: v1.1.1
+## Latest release: v1.4.4
 
-The current marketplace release corrects the published marketplace name to `Alison's LLM Plugins` and keeps the recent branding and responsive UI work aligned with the public release metadata.
+Fixes stale marketplace registration that caused Claude Code instances to install plugins from `main` instead of the declared pinned versions.
 
-- The shared header now uses the Alison Aquinas brand bug, keeps theme controls visible, and moves repo and RSS links into a compact mobile overflow menu on smaller screens.
-- Install commands, filter controls, plugin cards, and skill detail pages now adapt cleanly to narrow widths without truncating important command text.
-- Preview and agent guidance now explicitly require fresh local previews plus `curl` and `wget --spider` checks before presenting UI changes.
+- `.claude-plugin/marketplace.json` regenerated from `catalog.json`; was frozen at v1.4.2 with all plugin refs pointing to `main`.
+- `postbuild` now generates `out/marketplace.json` automatically alongside the RSS feed so local builds stay complete.
+- Corrected live-site and dev-server URLs in `README.md` and `AGENTS.md` to reflect the custom-domain migration.
 
 ## Install in Claude Code
 
@@ -99,8 +99,8 @@ When UI work is being reviewed locally, prefer a fresh preview over a long-runni
 Validate the published preview URL and key assets before handing it off:
 
 ```bash
-curl --head --fail --location http://localhost:3000/llm-skills/
-wget --spider http://localhost:3000/llm-skills/alison-bug.svg
+curl --head --fail --location http://localhost:3000/
+wget --spider http://localhost:3000/alison-bug.svg
 ```
 
 ## Marketplace source of truth

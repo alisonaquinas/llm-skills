@@ -118,7 +118,7 @@ download links resolve correctly. Release workflows should still dispatch `plugi
 
 ```bash
 npm install
-npm run dev          # http://localhost:3000/llm-skills
+npm run dev          # http://localhost:3000/
 npm run test         # Vitest business-logic tests
 ```
 

@@ -7,6 +7,15 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.4.4] - 2026-04-16
+
+### Fixed
+
+- Regenerated `.claude-plugin/marketplace.json` from `catalog.json`; the committed file was stale at v1.4.2 with all plugin `ref` fields pointing to `main`, losing the version-pinned refs (`v1.7.7`, `v1.2.3`, etc.) added in v1.4.3. Claude Code instances were picking up unpinned installs instead of the declared tested versions.
+- Added `marketplace:generate` to the `postbuild` script so local `npm run build` now produces both `out/marketplace.json` and `out/rss.xml` without a separate manual step.
+- Corrected live-site URL in `README.md` from the legacy `https://alisonaquinas.github.io/llm-skills/` to `https://llm-skills.alisonaquinas.com/` and updated preview `curl`/`wget` probe commands to match.
+- Corrected dev-server URL in `AGENTS.md` from `http://localhost:3000/llm-skills` to `http://localhost:3000/` to match the empty `basePath` in `next.config.ts`.
+
 ## [1.4.3] - 2026-03-31
 
 ### Fixed
