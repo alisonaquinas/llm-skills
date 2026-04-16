@@ -5,8 +5,20 @@
     <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Marketplace v1.4.4</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.4</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.4 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Regenerated `.claude-plugin/marketplace.json` from `catalog.json`; the committed file was stale at v1.4.2 with all plugin `ref` fields pointing to `main`, losing the version-pinned refs (`v1.7.7`, `v1.2.3`, etc.) added in v1.4.3. Claude Code instances were picking up unpinned installs instead of the declared tested versions.
+- Added `marketplace:generate` to the `postbuild` script so local `npm run build` now produces both `out/marketplace.json` and `out/rss.xml` without a separate manual step.
+- Corrected live-site URL in `README.md` from the legacy `https://alisonaquinas.github.io/llm-skills/` to `https://llm-skills.alisonaquinas.com/` and updated preview `curl`/`wget` probe commands to match.
+- Corrected dev-server URL in `AGENTS.md` from `http://localhost:3000/llm-skills` to `http://localhost:3000/` to match the empty `basePath` in `next.config.ts`.</pre>]]></description>
+    </item>
     <item>
       <title>CI/CD Skills v1.2.3</title>
       <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.3</link>
@@ -615,15 +627,6 @@
 <pre>- `Makefile`: route ZIP verification through a Python helper so `make verify` checks all built archives consistently on Windows-backed WSL paths.
 - `Makefile`: fail early with a clear message when the active Node.js runtime is older than the version required by `markdownlint-cli2`.
 - `.gitignore`: ignore repo-local scratch directories and transient `tmp*/` artifacts so failed local temp cleanup does not pollute git status.</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.6.5</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.5</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.5</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.6.5 release notes.</p>
-<h3>Added</h3>
-<pre>- `skills/skill-test-drive`: new meta-skill for test-driving other skills by designing live scenarios, executing them with the target skill&apos;s guidance, and reporting usability gaps and missing examples before release</pre>]]></description>
     </item>
   </channel>
 </rss>
