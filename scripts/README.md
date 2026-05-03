@@ -8,10 +8,14 @@ Contains build and validation tooling plus their reusable helper modules.
 
 - `generate-marketplace-json.ts`
 - `validate-marketplace-json.ts`
+- `generate-codex-marketplace-json.ts`
+- `validate-codex-marketplace-json.ts`
 - `generate-rss-feed.ts`
 - `lib/catalog.ts`
 - `lib/marketplace.ts`
 - `lib/marketplace-validation.ts`
+- `lib/codex-marketplace.ts`
+- `lib/codex-marketplace-validation.ts`
 - `lib/rss.ts`
 
 ## Dependency rules

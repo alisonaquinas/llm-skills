@@ -1,6 +1,6 @@
 # Alison's LLM Plugins
 
-A static Next.js site and marketplace catalog for installable Claude Code plugins:
+A static Next.js site and marketplace catalog for installable Claude Code and Codex plugins:
 
 - [`shared-skills`](https://github.com/alisonaquinas/llm-shared-skills)
 - [`ci-cd`](https://github.com/alisonaquinas/llm-ci-dev)
@@ -8,8 +8,9 @@ A static Next.js site and marketplace catalog for installable Claude Code plugin
 - [`doc-skills`](https://github.com/alisonaquinas/llm-doc-skills)
 - [`web-design-skills`](https://github.com/alisonaquinas/llm-web-design-skills)
 
-The website lets you browse the skills contained inside those plugins. The marketplace catalog at
-`.claude-plugin/marketplace.json` publishes the actual installable plugins.
+The website lets you browse the skills contained inside those plugins. The Claude Code
+marketplace catalog is published at `.claude-plugin/marketplace.json`; the Codex
+marketplace catalog is published at `.agents/plugins/marketplace.json`.
 
 **Live site:** <https://llm-skills.alisonaquinas.com/>
 
@@ -76,6 +77,21 @@ The hosted marketplace JSON is published at:
 https://llm-skills.alisonaquinas.com/marketplace.json
 ```
 
+## Install in Codex
+
+Register the Codex marketplace with the Codex CLI:
+
+```text
+codex plugin marketplace add alisonaquinas/llm-skills
+```
+
+Restart Codex, open the plugin directory, choose Alison's LLM Skills Marketplace,
+and install the bundles your project needs. The published Codex marketplace JSON is:
+
+```text
+https://llm-skills.alisonaquinas.com/codex-marketplace.json
+```
+
 The combined release feed is published at:
 
 ```text
@@ -86,11 +102,11 @@ https://llm-skills.alisonaquinas.com/rss.xml
 
 | Plugin | Source repository | Purpose |
 |--------|-------------------|---------|
-| `shared-skills` | [llm-shared-skills](https://github.com/alisonaquinas/llm-shared-skills) | Reusable Claude Code skills for common developer workflows and shared utilities |
-| `ci-cd` | [llm-ci-dev](https://github.com/alisonaquinas/llm-ci-dev) | Claude Code skills for CI/CD pipelines, release flows, and delivery automation |
-| `software-design` | [llm-software-design](https://github.com/alisonaquinas/llm-software-design) | Claude Code skills for software design, OOP, architecture, and maintainability guidance |
-| `doc-skills` | [llm-doc-skills](https://github.com/alisonaquinas/llm-doc-skills) | Claude Code skills for document authoring, publishing formats, Markdown hosts, and diagram workflows |
-| `web-design-skills` | [llm-web-design-skills](https://github.com/alisonaquinas/llm-web-design-skills) | Claude Code skills for web design, UI/UX, CSS, HTML, and front-end development workflows |
+| `shared-skills` | [llm-shared-skills](https://github.com/alisonaquinas/llm-shared-skills) | Reusable Claude Code and Codex skills for common developer workflows and shared utilities |
+| `ci-cd` | [llm-ci-dev](https://github.com/alisonaquinas/llm-ci-dev) | Claude Code and Codex skills for CI/CD pipelines, release flows, and delivery automation |
+| `software-design` | [llm-software-design](https://github.com/alisonaquinas/llm-software-design) | Claude Code and Codex skills for software design, OOP, architecture, and maintainability guidance |
+| `doc-skills` | [llm-doc-skills](https://github.com/alisonaquinas/llm-doc-skills) | Claude Code and Codex skills for document authoring, publishing formats, Markdown hosts, and diagram workflows |
+| `web-design-skills` | [llm-web-design-skills](https://github.com/alisonaquinas/llm-web-design-skills) | Claude Code and Codex skills for web design, UI/UX, CSS, HTML, and front-end development workflows |
 
 ## Development
 
@@ -103,12 +119,14 @@ npm run dev
 
 ```bash
 npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json
+npm run codex-marketplace:generate -- .agents/plugins/marketplace.json out/codex-marketplace.json
 ```
 
 ## Validate Marketplace JSON
 
 ```bash
 npm run marketplace:validate
+npm run codex-marketplace:validate
 ```
 
 ## Generate Combined RSS Feed
@@ -140,7 +158,7 @@ wget --spider http://localhost:3000/alison-bug.svg
 Marketplace, plugin, RSS feed, and branding configuration is centralized in `catalog.json`.
 
 - The website reads the marketplace title, description, version, and owner information from `catalog.json`.
-- Marketplace JSON generation uses `catalog.json` plus upstream plugin metadata.
+- Claude Code and Codex marketplace JSON generation use `catalog.json` plus upstream plugin metadata.
 - Feed content is sourced from the repositories listed in `catalog.json`.
 - UI branding should keep the site title aligned with `catalog.json` and local vendored assets in `public/`.
 

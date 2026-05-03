@@ -15,7 +15,7 @@
         "repo": "alisonaquinas/llm-shared-skills",
         "ref": "v1.7.7"
       },
-      "description": "Reusable Claude Code skills for common developer workflows and shared utilities.",
+      "description": "Reusable Claude Code and Codex skills for common developer workflows and shared utilities.",
       "repository": "https://github.com/alisonaquinas/llm-shared-skills",
       "category": "shared-skills",
       "strict": true,
@@ -28,7 +28,7 @@
         "repo": "alisonaquinas/llm-ci-dev",
         "ref": "v1.2.3"
       },
-      "description": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation.",
+      "description": "Claude Code and Codex skills focused on CI/CD pipelines, release flows, and delivery automation.",
       "repository": "https://github.com/alisonaquinas/llm-ci-dev",
       "category": "ci-cd",
       "strict": true,
@@ -41,7 +41,7 @@
         "repo": "alisonaquinas/llm-software-design",
         "ref": "v1.4.3"
       },
-      "description": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance.",
+      "description": "Claude Code and Codex skills focused on software design, OOP, architecture, and maintainability guidance.",
       "repository": "https://github.com/alisonaquinas/llm-software-design",
       "category": "software-design",
       "strict": true,
@@ -54,7 +54,7 @@
         "repo": "alisonaquinas/llm-doc-skills",
         "ref": "v1.3.0"
       },
-      "description": "Claude Code skills for creating and editing Word, PowerPoint, Excel, and PDF documents.",
+      "description": "Claude Code and Codex skills for creating and editing Word, PowerPoint, Excel, and PDF documents.",
       "repository": "https://github.com/alisonaquinas/llm-doc-skills",
       "category": "doc-skills",
       "strict": true,
@@ -67,7 +67,7 @@
         "repo": "alisonaquinas/llm-web-design-skills",
         "ref": "v1.1.5"
       },
-      "description": "Claude Code skills for web design, UI/UX, CSS, HTML, and front-end development workflows.",
+      "description": "Claude Code and Codex skills for web design, UI/UX, CSS, HTML, and front-end development workflows.",
       "repository": "https://github.com/alisonaquinas/llm-web-design-skills",
       "category": "web-design-skills",
       "strict": true,

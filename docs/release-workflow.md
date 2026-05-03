@@ -76,7 +76,7 @@ Add a `plugins` entry if it should be installable from the marketplace and add a
   "category": "software-design",
   "color": "bg-amber-100 text-amber-800",
   "ref": "main",
-  "siteDescription": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance."
+  "siteDescription": "Claude Code and Codex skills focused on software design, OOP, architecture, and maintainability guidance."
 }
 ```
 

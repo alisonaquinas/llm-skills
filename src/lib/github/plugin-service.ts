@@ -2,7 +2,7 @@
  * Plugin metadata service for upstream plugin repositories.
  *
  * Responsibilities:
- * - locate each plugin's declared metadata file in GitHub
+ * - locate each plugin's declared Codex or Claude metadata file in GitHub
  * - decode the upstream plugin.json payload into typed metadata
  * - align published versions with the latest GitHub release tag when available
  * - gracefully fall back to null when metadata is absent or unreadable
@@ -40,6 +40,25 @@ async function getLatestReleaseVersion(plugin: PluginConfig): Promise<string | n
 }
 
 /**
+ * Reads the preferred upstream plugin manifest, using the Codex manifest first
+ * and the Claude manifest as a rollout fallback.
+ *
+ * @param plugin Plugin repository configuration.
+ * @returns GitHub contents payload for the first available plugin manifest.
+ */
+async function getPluginManifestFile(plugin: PluginConfig): Promise<GitHubContentFile> {
+  try {
+    return await ghFetchJson<GitHubContentFile>(
+      `/repos/${plugin.owner}/${plugin.repo}/contents/.codex-plugin/plugin.json`
+    );
+  } catch {
+    return ghFetchJson<GitHubContentFile>(
+      `/repos/${plugin.owner}/${plugin.repo}/contents/.claude-plugin/plugin.json`
+    );
+  }
+}
+
+/**
  * Reads plugin metadata from an upstream repository.
  *
  * @param plugin Plugin repository configuration.
@@ -47,12 +66,8 @@ async function getLatestReleaseVersion(plugin: PluginConfig): Promise<string | n
  */
 export async function getPluginMeta(plugin: PluginConfig): Promise<PluginMeta | null> {
   try {
-    const [file, latestReleaseVersion] = await Promise.all([
-      ghFetchJson<GitHubContentFile>(
-        `/repos/${plugin.owner}/${plugin.repo}/contents/.claude-plugin/plugin.json`
-      ),
-      getLatestReleaseVersion(plugin),
-    ]);
+    const file = await getPluginManifestFile(plugin);
+    const latestReleaseVersion = await getLatestReleaseVersion(plugin);
     const meta = decodeBase64Json<PluginMeta>(file.content);
 
     return {

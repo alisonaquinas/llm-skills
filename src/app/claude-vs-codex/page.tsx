@@ -117,8 +117,9 @@ export default function ClaudeVsCodexPage() {
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-1">
         <li>
-          Consumed by OpenAI Codex agents (CLI and IDE surfaces). Users load skill
-          bundles into the Codex workspace and the agent picks them up on trigger.
+          Installed through the Codex plugin marketplace. Users add the marketplace
+          with <code className="font-mono text-sm">codex plugin marketplace add</code>,
+          then choose bundles from the Codex plugin directory.
         </li>
         <li>
           Skill metadata targeted to Codex lives in
@@ -127,13 +128,14 @@ export default function ClaudeVsCodexPage() {
           side.
         </li>
         <li>
-          Codex leans on OpenAI&apos;s function-calling and tool-use primitives under
-          the hood, so scripts inside a skill are executed through those mechanisms
-          rather than through Claude Code&apos;s plugin host.
+          Bundle metadata targeted to Codex lives in
+          <code className="mx-1 font-mono text-sm">.codex-plugin/plugin.json</code>,
+          while Claude Code bundle metadata remains in
+          <code className="mx-1 font-mono text-sm">.claude-plugin/plugin.json</code>.
         </li>
         <li>
-          Bundles install the same way in practice — one unit of distribution — but
-          without the Claude-specific plugin subcommands.
+          Codex reads Git-backed marketplace entries and loads plugin sources from
+          the configured repository refs.
         </li>
       </ul>
 
@@ -144,7 +146,9 @@ export default function ClaudeVsCodexPage() {
         <li>
           <strong>Install surface.</strong> Claude Code has a native marketplace and
           <code className="mx-1 font-mono text-sm">/plugin install</code> flow;
-          Codex integrates skills through its own agent configuration.
+          Codex has its own plugin marketplace flow through the
+          <code className="mx-1 font-mono text-sm">codex plugin marketplace</code>
+          command family.
         </li>
         <li>
           <strong>Metadata file.</strong>{" "}
@@ -153,8 +157,11 @@ export default function ClaudeVsCodexPage() {
           <code className="font-mono text-sm">agents/openai.yaml</code> for Codex.
         </li>
         <li>
-          <strong>Extra primitives.</strong> Claude Code bundles also ship hooks and
-          slash commands; Codex bundles focus on skills plus scripts.
+          <strong>Bundle manifest.</strong>{" "}
+          <code className="font-mono text-sm">.claude-plugin/plugin.json</code> for
+          Claude Code,{" "}
+          <code className="font-mono text-sm">.codex-plugin/plugin.json</code> for
+          Codex.
         </li>
         <li>
           <strong>Platform model.</strong> Claude Code is a full desktop CLI with
@@ -171,8 +178,9 @@ export default function ClaudeVsCodexPage() {
         <code className="mx-1 font-mono text-sm">agents/claude.yaml</code> and
         <code className="mx-1 font-mono text-sm">agents/openai.yaml</code>, plus a
         shared <code className="font-mono text-sm">SKILL.md</code>, references, and
-        scripts. That means one install works for Claude Code, and the same content
-        drops into a Codex workspace without rewriting. Browse the{" "}
+        scripts. Each plugin repository also publishes both Claude and Codex bundle
+        manifests, so the same source content can be installed from either marketplace
+        without rewriting. Browse the{" "}
         <Link
           href="/skills"
           className="text-brand-600 hover:underline dark:text-brand-300"

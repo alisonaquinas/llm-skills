@@ -21,6 +21,7 @@ export const SEO_KEYWORDS = [
   "software design skills",
   "developer automation skills",
   "Claude Code plugins",
+  "Codex plugins",
   "Codex-compatible skills",
 ];
 

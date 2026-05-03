@@ -7,6 +7,14 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Added Codex marketplace generation at `.agents/plugins/marketplace.json` and `out/codex-marketplace.json`, with validation and tests for Git-backed Codex plugin entries.
+- Updated marketplace metadata loading to prefer upstream `.codex-plugin/plugin.json` while falling back to `.claude-plugin/plugin.json` during rollout.
+- Updated install documentation and the landing-page install banner with `codex plugin marketplace add alisonaquinas/llm-skills`.
+
 ## [1.4.5] - 2026-04-16
 
 ### Fixed

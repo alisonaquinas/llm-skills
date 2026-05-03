@@ -7,7 +7,7 @@
  * - keep downstream modules typed without coupling them to raw JSON internals
  */
 
-/** Metadata read from an upstream plugin's .claude-plugin/plugin.json file. */
+/** Metadata read from an upstream plugin's Codex or Claude plugin manifest. */
 export interface PluginMeta {
   /** Plugin display name declared by the upstream plugin. */
   name: string;

@@ -43,8 +43,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Codex marketplace.json files
+        run: npm run codex-marketplace:generate -- .agents/plugins/marketplace.json out/codex-marketplace.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Validate marketplace.json schema
         run: npm run marketplace:validate
+
+      - name: Validate Codex marketplace.json schema
+        run: npm run codex-marketplace:validate
 
       - name: Upload marketplace.json artifacts
         uses: actions/upload-artifact@v4
@@ -52,4 +60,6 @@ jobs:
           name: marketplace-json
           path: |
             .claude-plugin/marketplace.json
+            .agents/plugins/marketplace.json
             out/marketplace.json
+            out/codex-marketplace.json
