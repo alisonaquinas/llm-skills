@@ -20,7 +20,7 @@ const PAGE_URL = buildSiteUrl("claude-vs-codex/");
 
 /** Shared description used across metadata fields. */
 const PAGE_DESCRIPTION =
-  "How Claude Code skills compare to OpenAI Codex skills: shared concepts, platform differences, and how a single skill bundle can serve both agents.";
+  "How Claude Code skills compare to OpenAI Codex skills: shared SKILL.md concepts, plugin manifests, marketplace install flows, and this marketplace's dual-platform packaging.";
 
 /**
  * Route metadata for the comparison page.
@@ -66,76 +66,87 @@ export default function ClaudeVsCodexPage() {
         Claude Code skills vs Codex skills
       </h1>
       <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
-        Both Claude Code and OpenAI Codex are skill-based agent-augmentation systems.
-        They share a lot of concepts, and a well-authored skill can serve both. Here
-        is how they line up.
+        Claude Code and OpenAI Codex now both support agent skills and plugin
+        marketplaces, but the install surfaces and bundle manifests are different.
+        The useful comparison starts with the shared core: a skill is still a
+        focused <code className="font-mono text-sm">SKILL.md</code> package.
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
         The shared concept
       </h2>
       <p className="mb-4">
-        A skill is a packaged instruction set with a trigger description, primary
-        guidance (usually a <code className="font-mono">SKILL.md</code>), optional
-        references, and optional scripts. When a user&apos;s request matches the
-        trigger, the agent pulls the skill into context and follows it. This pattern
-        works the same on both platforms: the agent does not memorize every task; it
-        loads the right skill when it needs one.
+        On both platforms, a skill is a directory with a required{" "}
+        <code className="font-mono text-sm">SKILL.md</code> file, frontmatter such as
+        <code className="mx-1 font-mono text-sm">name</code> and
+        <code className="mx-1 font-mono text-sm">description</code>, and optional
+        supporting files such as references, scripts, templates, and assets. The
+        description tells the agent when the skill is relevant. The full instructions
+        are loaded only when needed, which keeps context smaller.
       </p>
       <p className="mb-4">
-        Skills also travel in <strong>bundles</strong>: a collection of related
-        skills installed as a single plugin. Bundling keeps distribution simple and
-        makes it easier to version related skills together.
+        Skills can also travel in <strong>plugins</strong>. A plugin is the
+        installable bundle: it can package many skills, plus other platform-specific
+        capabilities such as commands, hooks, agents, MCP server configuration, app
+        integration metadata, or visual assets depending on the target platform.
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Claude Code skills
+        Claude Code today
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-1">
         <li>
-          Installed via the Claude Code plugin system. Users add a marketplace, then
-          run{" "}
-          <code className="font-mono text-sm">/plugin install &lt;bundle&gt;</code>.
+          Claude Code discovers personal skills from{" "}
+          <code className="font-mono text-sm">~/.claude/skills/</code>, project
+          skills from <code className="font-mono text-sm">.claude/skills/</code>,
+          and plugin skills bundled under a plugin&apos;s{" "}
+          <code className="font-mono text-sm">skills/</code> directory.
         </li>
         <li>
-          Skill metadata targeted to Claude lives in
-          <code className="mx-1 font-mono text-sm">agents/claude.yaml</code> inside
-          each skill directory.
+          Claude Code plugins use{" "}
+          <code className="font-mono text-sm">.claude-plugin/plugin.json</code> for
+          plugin metadata. Claude marketplaces use{" "}
+          <code className="font-mono text-sm">.claude-plugin/marketplace.json</code>.
         </li>
         <li>
-          The Claude Code CLI handles trigger matching, reference loading, and
-          invocation automatically. Users rarely need to call a skill by name.
+          Users add marketplaces and install plugins inside Claude Code with commands
+          such as <code className="font-mono text-sm">/plugin marketplace add</code>{" "}
+          and <code className="font-mono text-sm">/plugin install</code>. Claude
+          Code can also install configured team plugins from project settings.
         </li>
         <li>
-          Bundles can include hooks and slash commands alongside skills, which lets a
-          bundle extend Claude Code behavior beyond per-request skill use.
+          Claude Code skills are model-invoked. Slash commands are separate,
+          user-invoked plugin components, even when a plugin ships both.
         </li>
       </ul>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Codex skills
+        Codex today
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-1">
         <li>
-          Installed through the Codex plugin marketplace. Users add the marketplace
-          with <code className="font-mono text-sm">codex plugin marketplace add</code>,
-          then choose bundles from the Codex plugin directory.
+          Codex skills also use{" "}
+          <code className="font-mono text-sm">SKILL.md</code> with frontmatter and
+          progressive disclosure. Codex initially sees the skill name, description,
+          and file path, then loads the full instructions when the skill is needed.
         </li>
         <li>
-          Skill metadata targeted to Codex lives in
-          <code className="mx-1 font-mono text-sm">agents/openai.yaml</code>, letting
-          a single skill directory publish both Claude and Codex frontmatter side by
-          side.
+          Codex supports optional per-skill metadata in{" "}
+          <code className="font-mono text-sm">agents/openai.yaml</code>, including
+          interface metadata, invocation policy, and tool dependency declarations.
         </li>
         <li>
-          Bundle metadata targeted to Codex lives in
-          <code className="mx-1 font-mono text-sm">.codex-plugin/plugin.json</code>,
-          while Claude Code bundle metadata remains in
-          <code className="mx-1 font-mono text-sm">.claude-plugin/plugin.json</code>.
+          Codex plugins use{" "}
+          <code className="font-mono text-sm">.codex-plugin/plugin.json</code> and
+          can point at bundled skills with{" "}
+          <code className="font-mono text-sm">&quot;skills&quot;: &quot;./skills/&quot;</code>. Plugins
+          can also include MCP server configuration and app or connector metadata.
         </li>
         <li>
-          Codex reads Git-backed marketplace entries and loads plugin sources from
-          the configured repository refs.
+          Codex marketplaces can be added with{" "}
+          <code className="font-mono text-sm">codex plugin marketplace add</code>{" "}
+          from GitHub shorthand, Git URLs, or local directories. Users browse and
+          manage plugins with <code className="font-mono text-sm">/plugins</code>.
         </li>
       </ul>
 
@@ -144,28 +155,32 @@ export default function ClaudeVsCodexPage() {
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-1">
         <li>
-          <strong>Install surface.</strong> Claude Code has a native marketplace and
-          <code className="mx-1 font-mono text-sm">/plugin install</code> flow;
-          Codex has its own plugin marketplace flow through the
-          <code className="mx-1 font-mono text-sm">codex plugin marketplace</code>
-          command family.
+          <strong>Install surface.</strong> Claude Code installs named plugins with{" "}
+          <code className="font-mono text-sm">/plugin install</code>. Codex adds a
+          marketplace source with{" "}
+          <code className="font-mono text-sm">codex plugin marketplace add</code>,
+          then installs from the <code className="font-mono text-sm">/plugins</code>{" "}
+          browser.
         </li>
         <li>
-          <strong>Metadata file.</strong>{" "}
-          <code className="font-mono text-sm">agents/claude.yaml</code> for Claude
-          Code,{" "}
-          <code className="font-mono text-sm">agents/openai.yaml</code> for Codex.
-        </li>
-        <li>
-          <strong>Bundle manifest.</strong>{" "}
+          <strong>Plugin manifest.</strong>{" "}
           <code className="font-mono text-sm">.claude-plugin/plugin.json</code> for
           Claude Code,{" "}
           <code className="font-mono text-sm">.codex-plugin/plugin.json</code> for
           Codex.
         </li>
         <li>
-          <strong>Platform model.</strong> Claude Code is a full desktop CLI with
-          long-lived context; Codex runs inside the broader OpenAI agent stack.
+          <strong>Marketplace file.</strong>{" "}
+          <code className="font-mono text-sm">.claude-plugin/marketplace.json</code>{" "}
+          for Claude Code,{" "}
+          <code className="font-mono text-sm">.agents/plugins/marketplace.json</code>{" "}
+          for Codex.
+        </li>
+        <li>
+          <strong>Shared skill core.</strong> Both platforms use{" "}
+          <code className="font-mono text-sm">SKILL.md</code> and model-invoked
+          activation. Platform-specific files refine how the same content is
+          presented, installed, and governed.
         </li>
       </ul>
 
@@ -173,14 +188,19 @@ export default function ClaudeVsCodexPage() {
         How this marketplace serves both
       </h2>
       <p className="mb-4">
-        Every skill in {MARKETPLACE.title} is authored to target both platforms. Each
-        skill directory contains its own
-        <code className="mx-1 font-mono text-sm">agents/claude.yaml</code> and
-        <code className="mx-1 font-mono text-sm">agents/openai.yaml</code>, plus a
-        shared <code className="font-mono text-sm">SKILL.md</code>, references, and
-        scripts. Each plugin repository also publishes both Claude and Codex bundle
-        manifests, so the same source content can be installed from either marketplace
-        without rewriting. Browse the{" "}
+        Every skill in {MARKETPLACE.title} keeps the cross-platform core in
+        <code className="mx-1 font-mono text-sm">SKILL.md</code>, references, scripts,
+        and assets. The plugin repositories also publish both
+        <code className="mx-1 font-mono text-sm">.claude-plugin/plugin.json</code> and
+        <code className="mx-1 font-mono text-sm">.codex-plugin/plugin.json</code>, so
+        the same skills can be distributed through both marketplace systems.
+      </p>
+      <p className="mb-4">
+        This marketplace also keeps compatibility metadata such as{" "}
+        <code className="font-mono text-sm">agents/openai.yaml</code> for Codex and
+        existing agent metadata used by the Claude-oriented bundles. Treat those as
+        packaging helpers around the shared skill instructions, not as replacements
+        for <code className="font-mono text-sm">SKILL.md</code>. Browse the{" "}
         <Link
           href="/skills"
           className="text-brand-600 hover:underline dark:text-brand-300"
@@ -219,25 +239,47 @@ export default function ClaudeVsCodexPage() {
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-1">
         <li>
-          Anthropic Claude Code docs:{" "}
+          Claude Code plugins docs:{" "}
           <a
-            href="https://docs.claude.com"
+            href="https://docs.claude.com/en/docs/claude-code/plugins"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand-600 hover:underline dark:text-brand-300"
           >
-            docs.claude.com
+            docs.claude.com/en/docs/claude-code/plugins
+          </a>
+        </li>
+        <li>
+          Claude Code skills docs:{" "}
+          <a
+            href="https://docs.claude.com/en/docs/claude-code/skills"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-600 hover:underline dark:text-brand-300"
+          >
+            docs.claude.com/en/docs/claude-code/skills
           </a>
         </li>
         <li>
           OpenAI Codex docs:{" "}
           <a
-            href="https://platform.openai.com/docs"
+            href="https://developers.openai.com/codex/plugins"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand-600 hover:underline dark:text-brand-300"
           >
-            platform.openai.com/docs
+            developers.openai.com/codex/plugins
+          </a>
+        </li>
+        <li>
+          OpenAI Codex skills docs:{" "}
+          <a
+            href="https://developers.openai.com/codex/skills"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-600 hover:underline dark:text-brand-300"
+          >
+            developers.openai.com/codex/skills
           </a>
         </li>
       </ul>

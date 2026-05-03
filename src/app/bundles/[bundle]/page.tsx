@@ -23,6 +23,7 @@ import {
   getPluginRepoUrl,
   type PluginConfig,
 } from "@/lib/catalog";
+import { getCodexMarketplaceAddCommand } from "@/lib/commands";
 import { getMarketplacePageData } from "@/lib/marketplace";
 import {
   buildCollectionPageStructuredData,
@@ -129,6 +130,7 @@ export default async function BundlePage({ params }: BundlePageProps) {
   }
 
   const { plugin, installCommand, repoUrl, meta, bundleUrl } = summary;
+  const codexMarketplaceAddCommand = getCodexMarketplaceAddCommand();
   const bundleSkills = summaryData.allSkills
     .filter((skill) => skill.repo.repo === plugin.repo)
     .sort((left, right) => left.name.localeCompare(right.name));
@@ -183,29 +185,56 @@ export default async function BundlePage({ params }: BundlePageProps) {
           Install the {plugin.label} bundle
         </h2>
         <p className="mb-4 max-w-3xl text-sm leading-6 text-brand-800 dark:text-brand-200">
-          Add the marketplace once, then install just this bundle. A bundle is a single
-          Claude Code plugin that ships all {bundleSkills.length} skills listed below.
+          Add the marketplace once, then install just this bundle. A bundle ships all{" "}
+          {bundleSkills.length} skills listed below.
         </p>
 
-        <div className="rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
-          <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
-            Install command
-          </div>
-          <div className="flex items-center gap-2">
-            <code
-              className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
-              title={installCommand}
-            >
-              {installCommand}
-            </code>
-            <div className="shrink-0">
-              <CopyButton
-                text={installCommand}
-                label="Copy install command"
-                ariaLabel={`Copy install command for ${plugin.label}`}
-                variant="icon"
-              />
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
+            <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+              Claude Code
             </div>
+            <div className="flex items-center gap-2">
+              <code
+                className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                title={installCommand}
+              >
+                {installCommand}
+              </code>
+              <div className="shrink-0">
+                <CopyButton
+                  text={installCommand}
+                  label="Copy Claude Code install command"
+                  ariaLabel={`Copy Claude Code install command for ${plugin.label}`}
+                  variant="icon"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
+            <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+              Codex
+            </div>
+            <div className="flex items-center gap-2">
+              <code
+                className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                title={codexMarketplaceAddCommand}
+              >
+                {codexMarketplaceAddCommand}
+              </code>
+              <div className="shrink-0">
+                <CopyButton
+                  text={codexMarketplaceAddCommand}
+                  label="Copy Codex marketplace command"
+                  ariaLabel={`Copy Codex marketplace command for ${plugin.label}`}
+                  variant="icon"
+                />
+              </div>
+            </div>
+            <p className="mt-2 text-xs leading-5 text-gray-500 dark:text-gray-400">
+              Then open <code>/plugins</code> and install <code>{plugin.pluginName}</code>.
+            </p>
           </div>
         </div>
 

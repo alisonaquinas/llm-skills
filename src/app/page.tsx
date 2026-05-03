@@ -17,6 +17,7 @@ import InstallBanner from "@/components/InstallBanner";
 import { DownloadIcon, GitHubIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import { MARKETPLACE, buildAllPluginsBundleUrl } from "@/lib/catalog";
+import { getCodexMarketplaceAddCommand } from "@/lib/commands";
 import { getMarketplacePageData } from "@/lib/marketplace";
 import {
   buildCollectionPageStructuredData,
@@ -58,6 +59,7 @@ export const metadata: Metadata = {
 export default async function MarketplacePage() {
   const { allSkills, pluginSummaries } = await getMarketplacePageData();
   const totalSkills = allSkills.length;
+  const codexMarketplaceAddCommand = getCodexMarketplaceAddCommand();
 
   return (
     <div>
@@ -200,25 +202,52 @@ export default async function MarketplacePage() {
                 {meta?.description ?? plugin.siteDescription}
               </p>
 
-              <div className="mb-3 rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
-                <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
-                  Install
-                </div>
-                <div className="flex items-center gap-2">
-                  <code
-                    className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
-                    title={installCommand}
-                  >
-                    {installCommand}
-                  </code>
-                  <div className="shrink-0">
-                    <CopyButton
-                      text={installCommand}
-                      label="Copy install command"
-                      ariaLabel={`Copy install command for ${plugin.label}`}
-                      variant="icon"
-                    />
+              <div className="mb-3 space-y-3 rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
+                <div>
+                  <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+                    Claude Code
                   </div>
+                  <div className="flex items-center gap-2">
+                    <code
+                      className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                      title={installCommand}
+                    >
+                      {installCommand}
+                    </code>
+                    <div className="shrink-0">
+                      <CopyButton
+                        text={installCommand}
+                        label="Copy Claude Code install command"
+                        ariaLabel={`Copy Claude Code install command for ${plugin.label}`}
+                        variant="icon"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+                    Codex
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <code
+                      className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                      title={codexMarketplaceAddCommand}
+                    >
+                      {codexMarketplaceAddCommand}
+                    </code>
+                    <div className="shrink-0">
+                      <CopyButton
+                        text={codexMarketplaceAddCommand}
+                        label="Copy Codex marketplace command"
+                        ariaLabel={`Copy Codex marketplace command for ${plugin.label}`}
+                        variant="icon"
+                      />
+                    </div>
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-gray-500 dark:text-gray-400">
+                    Then open <code>/plugins</code> and install{" "}
+                    <code>{plugin.pluginName}</code>.
+                  </p>
                 </div>
               </div>
 
@@ -261,43 +290,48 @@ export default async function MarketplacePage() {
         </h2>
         <div className="space-y-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
           <p>
-            In Claude Code, a skill is a{" "}
+            A skill is a{" "}
             <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
               SKILL.md
             </code>{" "}
-            file stored in your{" "}
+            file plus optional references and scripts that teaches Claude Code or
+            Codex how to handle a focused task. Claude Code installs skills under
             <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
               ~/.claude/skills/
             </code>{" "}
-            directory. When you type a slash command like{" "}
+            ; Codex loads the same skill content through a plugin bundle with{" "}
             <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
-              /tdd
-            </code>{" "}
-            or{" "}
-            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
-              /commit
+              .codex-plugin/plugin.json
             </code>
-            , Claude loads the matching skill file and follows its instructions
-            for that task. Skills are plain text: readable, editable, and
-            version-controlled like any other file in your project.
+            . When a request matches, the agent loads the relevant skill and follows
+            its instructions for that task.
           </p>
           <p>
-            Installing a skill bundle from this marketplace takes one command.
-            Run the install command shown on any bundle card and the skills drop
-            into place. From that point, every Claude Code session on your
-            machine has access to those skills. You can also check them into your
-            project repository so the whole team shares the same agent behavior,
-            or download a ZIP bundle for air-gapped environments.
+            Installing a skill bundle from this marketplace is a two-step flow on
+            both platforms: add the marketplace, then install the bundle you need.
+            Claude Code uses{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              /plugin install
+            </code>{" "}
+            commands; Codex uses{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              codex plugin marketplace add
+            </code>
+            , then the plugin directory. From that point, sessions can use the
+            skills automatically when the trigger description fits your request.
           </p>
           <p>
-            Skills work across platforms. The same skill file that drives Claude
-            Code can be adapted for OpenAI Codex CLI via the{" "}
+            The bundles stay portable because each skill carries metadata for both
+            agents:{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              agents/claude.yaml
+            </code>{" "}
+            for Claude Code and{" "}
             <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
               agents/openai.yaml
             </code>{" "}
-            metadata each skill ships with. Lock in your team&apos;s engineering
-            practices once, and carry them forward as the tooling landscape
-            evolves.
+            for Codex. The instructions remain plain text, readable, editable, and
+            version-controlled like any other project file.
           </p>
         </div>
       </section>

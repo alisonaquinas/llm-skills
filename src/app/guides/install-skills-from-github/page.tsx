@@ -15,6 +15,7 @@ import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
 import { MARKETPLACE, PLUGINS } from "@/lib/catalog";
 import {
+  getCodexMarketplaceAddCommand,
   getMarketplaceAddCommand,
   getMarketplaceUrlAddCommand,
   getPluginInstallCommand,
@@ -30,7 +31,7 @@ const PAGE_URL = buildSiteUrl("guides/install-skills-from-github/");
 
 /** Shared description used across metadata fields. */
 const PAGE_DESCRIPTION =
-  "Step-by-step walkthrough of installing Claude Code skills from a GitHub marketplace: /plugin marketplace add, /plugin install, updating, uninstalling, and common errors.";
+  "Step-by-step walkthrough of installing skill bundles from GitHub in Claude Code and Codex.";
 
 /** Page title used in the browser tab and structured data. */
 const PAGE_TITLE = `How to install skills from GitHub | ${MARKETPLACE.title}`;
@@ -65,6 +66,7 @@ export const metadata: Metadata = {
 export default function InstallSkillsFromGithubPage() {
   const addCommand = getMarketplaceAddCommand();
   const addUrlCommand = getMarketplaceUrlAddCommand();
+  const codexAddCommand = getCodexMarketplaceAddCommand();
   const sharedInstall = getPluginInstallCommand(
     PLUGINS.find((plugin) => plugin.pluginName === "shared-skills") ?? PLUGINS[0],
   );
@@ -100,9 +102,9 @@ export default function InstallSkillsFromGithubPage() {
         How to install skills from GitHub
       </h1>
       <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
-        Claude Code can install skill bundles straight from a GitHub repository. This
-        guide walks through the full flow end-to-end using the real bundles published
-        in this marketplace.
+        Claude Code and Codex can install skill bundles from GitHub-backed
+        marketplaces. This guide walks through both install flows using the real
+        bundles published in this marketplace.
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
@@ -139,7 +141,7 @@ export default function InstallSkillsFromGithubPage() {
       </ul>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Step 1. Register the marketplace
+        Claude Code step 1. Register the marketplace
       </h2>
       <p className="mb-4">
         Tell Claude Code where to find skill bundles. Either command below works — the
@@ -158,7 +160,7 @@ export default function InstallSkillsFromGithubPage() {
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Step 2. Install a bundle
+        Claude Code step 2. Install a bundle
       </h2>
       <p className="mb-4">
         Once the marketplace is registered, install any bundle by name. For example,
@@ -185,7 +187,7 @@ export default function InstallSkillsFromGithubPage() {
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Step 3. What happens after install
+        Claude Code step 3. What happens after install
       </h2>
       <p className="mb-4">
         Claude Code downloads the bundle at the version pinned in the marketplace
@@ -199,7 +201,30 @@ export default function InstallSkillsFromGithubPage() {
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Updating an installed bundle
+        Install in Codex
+      </h2>
+      <p className="mb-4">
+        Codex uses its own plugin marketplace command. Add this GitHub repository as
+        a marketplace source:
+      </p>
+      <pre className="mb-4 overflow-x-auto rounded-lg bg-stone-900 p-3 font-mono text-sm text-green-300">
+        <code>{codexAddCommand}</code>
+      </pre>
+      <p className="mb-4">
+        Restart Codex, open the plugin directory, and choose {MARKETPLACE.title}:
+      </p>
+      <pre className="mb-4 overflow-x-auto rounded-lg bg-stone-900 p-3 font-mono text-sm text-green-300">
+        <code>{"codex\n/plugins"}</code>
+      </pre>
+      <p className="mb-4">
+        Install the bundles your project needs from the directory. The generated
+        Codex marketplace JSON is published at{" "}
+        <code className="font-mono text-sm">{MARKETPLACE.siteUrl}/codex-marketplace.json</code>
+        , but the supported install command is the GitHub repository command above.
+      </p>
+
+      <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
+        Updating an installed Claude Code bundle
       </h2>
       <p className="mb-4">
         Bundles are versioned. When a new release is published, re-run{" "}
@@ -238,8 +263,8 @@ export default function InstallSkillsFromGithubPage() {
         <li>
           <strong>Private repositories.</strong> If you are installing from a private
           fork of this marketplace, make sure your GitHub token has{" "}
-          <code className="font-mono text-sm">repo</code> scope and that Claude Code
-          is configured to use it. Public installs do not need auth at all.
+          <code className="font-mono text-sm">repo</code> scope and that your agent
+          client is configured to use it. Public installs do not need auth at all.
         </li>
         <li>
           <strong>Unknown plugin name.</strong> The pluginName must match exactly.
@@ -252,7 +277,9 @@ export default function InstallSkillsFromGithubPage() {
           <strong>Version mismatch.</strong> If a release tag referenced in the
           catalog has been deleted, the install will 404. Run{" "}
           <code className="font-mono text-sm">/plugin marketplace update</code> to
-          pull the latest catalog and try again.
+          pull the latest Claude Code catalog, or{" "}
+          <code className="font-mono text-sm">codex plugin marketplace upgrade llm-skills</code>
+          to refresh the Codex marketplace, then try again.
         </li>
         <li>
           <strong>Skills not triggering.</strong> After install, start a fresh

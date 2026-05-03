@@ -11,7 +11,6 @@ import CopyButton from "./CopyButton";
 import { MARKETPLACE, PLUGINS } from "@/lib/catalog";
 import {
   getCodexMarketplaceAddCommand,
-  getCodexMarketplaceUrlAddCommand,
   getMarketplaceAddCommand,
   getMarketplaceUrlAddCommand,
   getPluginInstallRef,
@@ -23,8 +22,6 @@ const marketplaceAddCommand = getMarketplaceAddCommand();
 const marketplaceUrlAddCommand = getMarketplaceUrlAddCommand();
 /** Recommended Codex CLI command for registering the marketplace repository. */
 const codexMarketplaceAddCommand = getCodexMarketplaceAddCommand();
-/** Secondary Codex CLI command for registering the published Codex marketplace JSON URL. */
-const codexMarketplaceUrlAddCommand = getCodexMarketplaceUrlAddCommand();
 
 /** Shared chevron SVG used in both collapsible summary rows. */
 function ChevronIcon() {
@@ -163,7 +160,7 @@ export default function InstallBanner() {
               <CopyButton text={codexMarketplaceAddCommand} label="Copy Codex marketplace command" variant="icon" />
             </div>
             <p className="mt-2 break-all text-xs text-gray-500 dark:text-gray-400">
-              Codex marketplace file: <code>{MARKETPLACE.siteUrl}/codex-marketplace.json</code>
+              Marketplace repo: <code>{MARKETPLACE.githubRepo}</code>
             </p>
           </div>
 
@@ -173,8 +170,9 @@ export default function InstallBanner() {
               2. Install skill bundles in Codex
             </p>
             <p className="text-xs leading-5 text-gray-500 dark:text-gray-400">
-              Restart Codex, open the plugin directory, choose {MARKETPLACE.title}, and install the
-              bundles your project needs:
+              Restart Codex, run{" "}
+              <code className="rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">/plugins</code>
+              , choose {MARKETPLACE.title}, and install the bundles your project needs:
               <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">
                 shared-skills
               </code>
@@ -194,17 +192,16 @@ export default function InstallBanner() {
             </p>
           </div>
 
-          {/* Step 3 */}
+          {/* Published artifact */}
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              Marketplace URL (secondary option)
+              Published marketplace artifact
             </p>
-            <div className="flex items-center gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
-              <code className="min-w-0 flex-1 truncate text-sm text-gray-600 dark:text-gray-300" title={codexMarketplaceUrlAddCommand}>
-                {codexMarketplaceUrlAddCommand}
-              </code>
-              <CopyButton text={codexMarketplaceUrlAddCommand} label="Copy Codex marketplace URL command" variant="icon" />
-            </div>
+            <p className="break-all text-xs leading-5 text-gray-500 dark:text-gray-400">
+              The generated Codex marketplace JSON is published at{" "}
+              <code>{MARKETPLACE.siteUrl}/codex-marketplace.json</code> for inspection and
+              deployment. Use the GitHub repository command above for installation.
+            </p>
           </div>
         </div>
       </details>
