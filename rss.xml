@@ -97,7 +97,7 @@
       <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.5</guid>
       <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Web Design Skills v1.1.5 release notes.</p>
-<h3>Fixed</h3>
+<h3>Fixed (1.1.5)</h3>
 <pre>- Replaced broken `SessionStart` prompt hook in `hooks/hooks.json` with a working `command`-type hook that invokes the session-start script, eliminating &quot;ToolUseContext is required for prompt hooks&quot; startup errors.</pre>]]></description>
     </item>
     <item>
@@ -159,7 +159,7 @@
       <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.4</guid>
       <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Web Design Skills v1.1.4 release notes.</p>
-<h3>Fixed</h3>
+<h3>Fixed (1.1.4)</h3>
 <pre>- Removed broken `SessionStart` prompt hook from `hooks/hooks.json`. The `type: &quot;prompt&quot;` hook requires a `ToolUseContext` that does not exist at session start, causing &quot;ToolUseContext is required for prompt hooks&quot; errors on every startup.</pre>]]></description>
     </item>
     <item>
@@ -534,10 +534,10 @@
       <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.3</guid>
       <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Web Design Skills v1.1.3 release notes.</p>
-<h3>Added</h3>
+<h3>Added (1.1.3)</h3>
 <pre>- Added repository-wide skill agent manifest (agents/web-maintainer.md), command entries, and hooks/hooks.json for consistent skill routing across Claude and Codex clients.
 - Extended AGENTS.md with command + agent template section for focused web-design skill loops.</pre>
-<h3>Changed</h3>
+<h3>Changed (1.1.3)</h3>
 <pre>- Hardened scripts/verify_built_zips.py with REQUIRED_FILES invariant checks.</pre>]]></description>
     </item>
     <item>
@@ -546,9 +546,9 @@
       <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.1.0</guid>
       <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[<p>Web Design Skills v1.1.0 release notes.</p>
-<h3>Added</h3>
+<h3>Added (1.1.0)</h3>
 <pre>- `Makefile`: added `bundle` target that packages all built `*-skill.zip` files into a single `web-design-skills-plugin.zip` for one-click offline installation; `PLUGIN_NAME := web-design-skills` variable drives the output filename</pre>
-<h3>Changed</h3>
+<h3>Changed (1.1.0)</h3>
 <pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
 - `.github/workflows/release.yml`: upgraded from minimal stub to full plugin release pipeline — adds version gate, changelog extraction, `softprops/action-gh-release` upload of `built/*.zip` (including `web-design-skills-plugin.zip`), `changelog` extraction, and marketplace dispatch trigger; added &quot;Build plugin bundle ZIP&quot; step (`make bundle`)</pre>]]></description>
     </item>
