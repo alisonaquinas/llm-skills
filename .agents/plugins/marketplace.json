@@ -1,0 +1,73 @@
+{
+  "name": "llm-skills",
+  "interface": {
+    "displayName": "Alison's LLM Skills Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "shared-skills",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
+        "ref": "v1.7.7"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "shared-skills"
+    },
+    {
+      "name": "ci-cd",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
+        "ref": "v1.2.3"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "ci-cd"
+    },
+    {
+      "name": "software-design",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/alisonaquinas/llm-software-design.git",
+        "ref": "v1.4.3"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "software-design"
+    },
+    {
+      "name": "doc-skills",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/alisonaquinas/llm-doc-skills.git",
+        "ref": "v1.3.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "doc-skills"
+    },
+    {
+      "name": "web-design-skills",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/alisonaquinas/llm-web-design-skills.git",
+        "ref": "v1.1.5"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "web-design-skills"
+    }
+  ]
+}

@@ -3,20 +3,28 @@
  *
  * Responsibilities:
  * - explain the recommended marketplace installation flow for Claude Code
- * - explain how to add skills to Codex via ZIP bundle download
+ * - explain the recommended marketplace installation flow for Codex
  * - provide copyable commands for marketplace and plugin installation
  * - keep install command formatting centralized in the command helpers
  */
 import CopyButton from "./CopyButton";
-import { DownloadIcon } from "./SiteIcons";
 import { MARKETPLACE, PLUGINS } from "@/lib/catalog";
-import { buildAllPluginsBundleUrl } from "@/lib/catalog";
-import { getMarketplaceAddCommand, getMarketplaceUrlAddCommand, getPluginInstallRef } from "@/lib/commands";
+import {
+  getCodexMarketplaceAddCommand,
+  getCodexMarketplaceUrlAddCommand,
+  getMarketplaceAddCommand,
+  getMarketplaceUrlAddCommand,
+  getPluginInstallRef,
+} from "@/lib/commands";
 
 /** Recommended command for registering the marketplace repository. */
 const marketplaceAddCommand = getMarketplaceAddCommand();
 /** Secondary command for registering the published marketplace JSON URL. */
 const marketplaceUrlAddCommand = getMarketplaceUrlAddCommand();
+/** Recommended Codex CLI command for registering the marketplace repository. */
+const codexMarketplaceAddCommand = getCodexMarketplaceAddCommand();
+/** Secondary Codex CLI command for registering the published Codex marketplace JSON URL. */
+const codexMarketplaceUrlAddCommand = getCodexMarketplaceUrlAddCommand();
 
 /** Shared chevron SVG used in both collapsible summary rows. */
 function ChevronIcon() {
@@ -136,61 +144,67 @@ export default function InstallBanner() {
 
         <div className="space-y-4 px-4 pb-4 sm:px-5">
           <p className="max-w-3xl text-sm leading-6 text-gray-600 dark:text-gray-300">
-            Codex does not use the Claude Code plugin system. Instead, download the skill bundle ZIP,
-            extract it to your project or workspace, and reference the skills via the
-            <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">agents/openai.yaml</code>
-            metadata each skill ships with. Each bundle is a flat collection of skill directories
-            ready to drop into a Codex-compatible workspace.
+            Codex can read this repository as a plugin marketplace. Add the marketplace once, then
+            choose the skill bundles you want from the Codex plugin directory. Each bundle ships a
+            <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">.codex-plugin/plugin.json</code>
+            manifest plus Codex metadata in
+            <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">agents/openai.yaml</code>.
           </p>
 
           {/* Step 1 */}
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              1. Download a bundle ZIP
+              1. Add marketplace (recommended)
             </p>
-            <p className="mb-3 text-xs leading-5 text-gray-500 dark:text-gray-400">
-              Each bundle page has a download link, or grab all bundles in one archive:
+            <div className="flex items-center gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
+              <code className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100" title={codexMarketplaceAddCommand}>
+                {codexMarketplaceAddCommand}
+              </code>
+              <CopyButton text={codexMarketplaceAddCommand} label="Copy Codex marketplace command" variant="icon" />
+            </div>
+            <p className="mt-2 break-all text-xs text-gray-500 dark:text-gray-400">
+              Codex marketplace file: <code>{MARKETPLACE.siteUrl}/codex-marketplace.json</code>
             </p>
-            <a
-              href={buildAllPluginsBundleUrl()}
-              className="inline-flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:border-stone-300 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-950 dark:text-gray-200 dark:hover:border-stone-600"
-              aria-label="Download all skill bundles as a single ZIP"
-            >
-              <DownloadIcon className="h-4 w-4 shrink-0" />
-              <span>Download all-plugins.zip</span>
-            </a>
           </div>
 
           {/* Step 2 */}
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              2. Extract to your workspace
+              2. Install skill bundles in Codex
             </p>
             <p className="text-xs leading-5 text-gray-500 dark:text-gray-400">
-              Unzip the bundle into your project root or a dedicated skills directory.
-              Each skill folder contains a
-              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">SKILL.md</code>
-              plus an
-              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">agents/openai.yaml</code>
-              file with the trigger name, description, and metadata Codex reads on activation.
+              Restart Codex, open the plugin directory, choose {MARKETPLACE.title}, and install the
+              bundles your project needs:
+              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">
+                shared-skills
+              </code>
+              ,
+              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">ci-cd</code>
+              ,
+              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">
+                software-design
+              </code>
+              ,
+              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">doc-skills</code>
+              , or
+              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">
+                web-design-skills
+              </code>
+              .
             </p>
           </div>
 
           {/* Step 3 */}
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              3. Invoke a skill in your agent session
+              Marketplace URL (secondary option)
             </p>
-            <p className="text-xs leading-5 text-gray-500 dark:text-gray-400">
-              Once the skill files are in your workspace, Codex picks them up on trigger.
-              Skill names and trigger phrases are defined in each skill&apos;s
-              <code className="mx-1 rounded bg-stone-100 px-1 py-0.5 dark:bg-stone-800">agents/openai.yaml</code>.
-              See the{" "}
-              <a href="/claude-vs-codex" className="text-brand-700 underline hover:text-brand-800 dark:text-brand-300 dark:hover:text-brand-200">
-                Claude Code vs Codex
-              </a>{" "}
-              page for a side-by-side comparison of how the two platforms handle skills.
-            </p>
+            <div className="flex items-center gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-900/80">
+              <code className="min-w-0 flex-1 truncate text-sm text-gray-600 dark:text-gray-300" title={codexMarketplaceUrlAddCommand}>
+                {codexMarketplaceUrlAddCommand}
+              </code>
+              <CopyButton text={codexMarketplaceUrlAddCommand} label="Copy Codex marketplace URL command" variant="icon" />
+            </div>
           </div>
         </div>
       </details>

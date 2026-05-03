@@ -67,7 +67,7 @@
       "icon": "🧰",
       "ref": "v1.7.7",
       "version": "1.7.7",
-      "siteDescription": "Reusable Claude Code skills for common developer workflows and shared utilities."
+      "siteDescription": "Reusable Claude Code and Codex skills for common developer workflows and shared utilities."
     },
     {
       "pluginName": "ci-cd",
@@ -79,7 +79,7 @@
       "icon": "🚀",
       "ref": "v1.2.3",
       "version": "1.2.3",
-      "siteDescription": "Claude Code skills focused on CI/CD pipelines, release flows, and delivery automation."
+      "siteDescription": "Claude Code and Codex skills focused on CI/CD pipelines, release flows, and delivery automation."
     },
     {
       "pluginName": "software-design",
@@ -91,7 +91,7 @@
       "icon": "🏛️",
       "ref": "v1.4.3",
       "version": "1.4.3",
-      "siteDescription": "Claude Code skills focused on software design, OOP, architecture, and maintainability guidance."
+      "siteDescription": "Claude Code and Codex skills focused on software design, OOP, architecture, and maintainability guidance."
     },
     {
       "pluginName": "doc-skills",
@@ -103,7 +103,7 @@
       "icon": "📄",
       "ref": "v1.3.0",
       "version": "1.3.0",
-      "siteDescription": "Claude Code skills for creating and editing Word, PowerPoint, Excel, and PDF documents."
+      "siteDescription": "Claude Code and Codex skills for creating and editing Word, PowerPoint, Excel, and PDF documents."
     },
     {
       "pluginName": "web-design-skills",
@@ -115,7 +115,7 @@
       "icon": "🌐",
       "ref": "v1.1.5",
       "version": "1.1.5",
-      "siteDescription": "Claude Code skills for web design, UI/UX, CSS, HTML, and front-end development workflows."
+      "siteDescription": "Claude Code and Codex skills for web design, UI/UX, CSS, HTML, and front-end development workflows."
     }
   ]
 }

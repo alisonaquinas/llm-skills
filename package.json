@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json && npm run rss:generate -- out/rss.xml",
+    "postbuild": "npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.json && npm run codex-marketplace:generate -- .agents/plugins/marketplace.json out/codex-marketplace.json && npm run rss:generate -- out/rss.xml",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
     "rss:generate": "tsx scripts/generate-rss-feed.ts",
     "marketplace:generate": "tsx scripts/generate-marketplace-json.ts",
-    "marketplace:validate": "tsx scripts/validate-marketplace-json.ts"
+    "marketplace:validate": "tsx scripts/validate-marketplace-json.ts",
+    "codex-marketplace:generate": "tsx scripts/generate-codex-marketplace-json.ts",
+    "codex-marketplace:validate": "tsx scripts/validate-codex-marketplace-json.ts"
   },
   "dependencies": {
     "autoprefixer": "^10.4.27",

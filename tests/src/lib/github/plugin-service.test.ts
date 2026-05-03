@@ -3,6 +3,7 @@
  *
  * Responsibilities:
  * - verify plugin metadata keeps descriptive fields from plugin.json
+ * - verify Codex manifests are preferred over Claude manifests
  * - verify the displayed version prefers the latest GitHub release tag
  * - verify plugin.json versions remain the fallback when release lookup fails
  */
@@ -42,7 +43,7 @@ describe("getPluginMeta", () => {
       .mockResolvedValueOnce({ content: "encoded" })
       .mockResolvedValueOnce({ tag_name: "v1.1.2" });
     decodeBase64JsonMock.mockReturnValue({
-      name: "llm-ci-dev",
+      name: "ci-cd",
       version: "1.0.1",
       description: "CI/CD skills",
     });
@@ -50,7 +51,7 @@ describe("getPluginMeta", () => {
     const meta = await getPluginMeta(plugin);
 
     expect(meta).toEqual({
-      name: "llm-ci-dev",
+      name: "ci-cd",
       version: "1.1.2",
       description: "CI/CD skills",
     });
@@ -61,7 +62,7 @@ describe("getPluginMeta", () => {
       .mockResolvedValueOnce({ content: "encoded" })
       .mockRejectedValueOnce(new Error("release lookup failed"));
     decodeBase64JsonMock.mockReturnValue({
-      name: "llm-ci-dev",
+      name: "ci-cd",
       version: "1.0.1",
       description: "CI/CD skills",
     });
@@ -69,5 +70,30 @@ describe("getPluginMeta", () => {
     const meta = await getPluginMeta(plugin);
 
     expect(meta?.version).toBe("1.0.1");
+  });
+
+  it("falls back to the Claude plugin manifest when the Codex manifest is absent", async () => {
+    ghFetchJsonMock
+      .mockRejectedValueOnce(new Error("codex manifest not found"))
+      .mockResolvedValueOnce({ content: "encoded" })
+      .mockResolvedValueOnce({ tag_name: "v1.1.2" });
+    decodeBase64JsonMock.mockReturnValue({
+      name: "llm-ci-dev",
+      version: "1.0.1",
+      description: "CI/CD skills",
+    });
+
+    const meta = await getPluginMeta(plugin);
+
+    expect(meta?.name).toBe("llm-ci-dev");
+    expect(meta?.version).toBe("1.1.2");
+    expect(ghFetchJsonMock).toHaveBeenNthCalledWith(
+      1,
+      "/repos/alisonaquinas/llm-ci-dev/contents/.codex-plugin/plugin.json"
+    );
+    expect(ghFetchJsonMock).toHaveBeenNthCalledWith(
+      2,
+      "/repos/alisonaquinas/llm-ci-dev/contents/.claude-plugin/plugin.json"
+    );
   });
 });

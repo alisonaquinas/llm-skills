@@ -72,6 +72,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Codex marketplace.json files
+        run: npm run codex-marketplace:generate -- .agents/plugins/marketplace.json out/codex-marketplace.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generate RSS feed
         run: npm run rss:generate -- out/rss.xml
         env:
@@ -79,6 +84,9 @@ jobs:
 
       - name: Validate marketplace.json
         run: npm run marketplace:validate
+
+      - name: Validate Codex marketplace.json
+        run: npm run codex-marketplace:validate
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
