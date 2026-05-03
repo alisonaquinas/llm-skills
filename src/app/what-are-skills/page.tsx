@@ -147,9 +147,12 @@ export default function WhatAreSkillsPage() {
           /plugin install
         </code>
         . The bundle unpacks into your Claude Code configuration and its skills
-        become available immediately. Codex agents can use the same skill content by
-        loading the bundled <code className="font-mono">agents/openai.yaml</code>{" "}
-        metadata — the marketplace authors skills so they target both platforms.
+        become available immediately. In Codex you add the same GitHub repository as
+        a plugin marketplace with
+        <code className="mx-1 rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-100">
+          codex plugin marketplace add
+        </code>
+        , then install bundles from the Codex plugin directory.
       </p>
       <p className="mb-4">
         Visit the{" "}

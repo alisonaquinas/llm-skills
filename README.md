@@ -79,18 +79,31 @@ https://llm-skills.alisonaquinas.com/marketplace.json
 
 ## Install in Codex
 
-Register the Codex marketplace with the Codex CLI:
+Register this repository as a Codex plugin marketplace:
 
 ```text
 codex plugin marketplace add alisonaquinas/llm-skills
 ```
 
-Restart Codex, open the plugin directory, choose Alison's LLM Skills Marketplace,
-and install the bundles your project needs. The published Codex marketplace JSON is:
+Then restart Codex and open the plugin directory:
+
+```text
+codex
+/plugins
+```
+
+Choose Alison's LLM Skills Marketplace and install the bundles your project needs:
+`shared-skills`, `ci-cd`, `software-design`, `doc-skills`, or
+`web-design-skills`.
+
+The published Codex marketplace artifact is generated at:
 
 ```text
 https://llm-skills.alisonaquinas.com/codex-marketplace.json
 ```
+
+That hosted JSON is for inspection and deployment output. Use the GitHub repository
+command above for Codex installation.
 
 The combined release feed is published at:
 

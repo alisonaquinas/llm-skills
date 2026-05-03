@@ -48,15 +48,6 @@ export function getCodexMarketplaceAddCommand(): string {
 }
 
 /**
- * Builds the secondary Codex CLI command for adding the marketplace by published JSON URL.
- *
- * @returns The Codex CLI command for marketplace registration by URL.
- */
-export function getCodexMarketplaceUrlAddCommand(): string {
-  return `codex plugin marketplace add ${MARKETPLACE.siteUrl}/codex-marketplace.json`;
-}
-
-/**
  * Builds the secondary command for adding the marketplace by published JSON URL.
  *
  * @returns The CLI command for marketplace registration by URL.
