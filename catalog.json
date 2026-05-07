@@ -65,8 +65,8 @@
       "category": "shared-skills",
       "color": "bg-blue-100 text-blue-800",
       "icon": "🧰",
-      "ref": "v1.7.7",
-      "version": "1.7.7",
+      "ref": "v1.8.0",
+      "version": "1.8.0",
       "siteDescription": "Reusable Claude Code and Codex skills for common developer workflows and shared utilities."
     },
     {
