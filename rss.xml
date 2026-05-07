@@ -5,8 +5,21 @@
     <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shared Skills v1.8.0</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.8.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.8.0</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.8.0 release notes.</p>
+<h3>Added</h3>
+<pre>- Added `.codex-plugin/plugin.json` so the shared skills bundle can be published through a Codex plugin marketplace.
+- Added `scripts/validate_plugin_manifests.py` and `make codex-bundle` to validate Codex/Claude manifest alignment and build `shared-skills-codex-plugin.zip`.
+- Added `madr-adr` for generating, authoring, reviewing, and linting MADR-style Markdown Architectural Decision Records, including draft templates, local helper scripts, an ADR workflow command, a reviewer agent, and a best-effort ADR lint hook.</pre>
+<h3>Changed</h3>
+<pre>- Refreshed Claude and Codex documentation skills against current official docs: updated Codex CLI install/auth/config guidance for `codex login`, `codex exec`, `~/.codex/config.toml`, MCP management, slash commands, sandbox/approval flags, and native Windows support; updated Claude Code CLI guidance for native Windows/CMD install, `claude update`, `claude doctor`, auth variants, setup tokens, `--bare`, newer permission modes, hooks stdin JSON, subagent placement, and workflow discovery paths.</pre>]]></description>
+    </item>
     <item>
       <title>Marketplace v1.4.5</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.5</link>
@@ -607,16 +620,6 @@
 - kept `linting/` and `validation/` shell entrypoints as compatibility wrappers around the new Python baseline for one release cycle
 - aligned the public repo and plugin identity on `llm-ci-dev` so plugin metadata, install examples, and human-facing docs now match the actual repo name and ZIP archive root
 - fully self-contained the release workflow by provisioning `jq` explicitly and updated the release guide to match the automated `make test` + `make all` release path and optional marketplace dispatch behavior</pre>]]></description>
-    </item>
-    <item>
-      <title>Doc Skills v0.1.1</title>
-      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v0.1.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@0.1.1</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Doc Skills v0.1.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- added release-time Node and lint/tool provisioning to `.github/workflows/release.yml` so tag releases run the same `make test` gate successfully on GitHub-hosted runners
-- restored trailing newlines in the newly added skill agent manifests and wrapper scripts, and removed the unused import from `scripts/verify_built_zips.py`, so the CI YAML and Python lint jobs pass for the text-first publishing and diagram skills</pre>]]></description>
     </item>
   </channel>
 </rss>
