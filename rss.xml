@@ -5,8 +5,21 @@
     <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Marketplace v1.4.6</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.6</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.6</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.6 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Regenerated Claude and Codex marketplace manifests so `shared-skills` installs point at `alisonaquinas/llm-shared-skills` tag `v1.8.0` instead of stale `v1.7.7` metadata.</pre>
+<h3>Added</h3>
+<pre>- Added Codex marketplace generation at `.agents/plugins/marketplace.json` and `out/codex-marketplace.json`, with validation and tests for Git-backed Codex plugin entries.
+- Updated marketplace metadata loading to prefer upstream `.codex-plugin/plugin.json` while falling back to `.claude-plugin/plugin.json` during rollout.
+- Updated install documentation and the landing-page install banner with `codex plugin marketplace add alisonaquinas/llm-skills`.</pre>]]></description>
+    </item>
     <item>
       <title>Shared Skills v1.8.0</title>
       <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.8.0</link>
@@ -606,20 +619,6 @@
       <description><![CDATA[<p>CI/CD Skills v1.1.2 release notes.</p>
 <h3>Fixed</h3>
 <pre>- inserted the required blank line in `AGENTS.md` and removed the unused import from `scripts/verify_built_zips.py` so the normalized CI and release gates pass their markdown and Python lint steps on GitHub</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v1.1.1</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.1</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v1.1.1 release notes.</p>
-<h3>Changed</h3>
-<pre>- standardized the repo on a Make-first build and validation workflow: `make lint`, `make test`, `make build`, `make verify`, and `make all`
-- added repo-owned Python packaging helpers and stdlib-only tests so ZIP verification and skill checks behave consistently across Windows-backed WSL and GitHub Actions
-- renamed the primary GitHub Actions quality workflow to `CI` in `.github/workflows/ci.yml` and aligned release automation to run `make test`, build `built/*.zip`, attach artifacts, and skip marketplace dispatch cleanly when the token is missing
-- kept `linting/` and `validation/` shell entrypoints as compatibility wrappers around the new Python baseline for one release cycle
-- aligned the public repo and plugin identity on `llm-ci-dev` so plugin metadata, install examples, and human-facing docs now match the actual repo name and ZIP archive root
-- fully self-contained the release workflow by provisioning `jq` explicitly and updated the release guide to match the automated `make test` + `make all` release path and optional marketplace dispatch behavior</pre>]]></description>
     </item>
   </channel>
 </rss>
