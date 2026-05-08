@@ -9,6 +9,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.6] - 2026-05-08
+
+### Fixed
+
+- Regenerated Claude and Codex marketplace manifests so `shared-skills` installs point at `alisonaquinas/llm-shared-skills` tag `v1.8.0` instead of stale `v1.7.7` metadata.
+
 ### Added
 
 - Added Codex marketplace generation at `.agents/plugins/marketplace.json` and `out/codex-marketplace.json`, with validation and tests for Git-backed Codex plugin entries.
