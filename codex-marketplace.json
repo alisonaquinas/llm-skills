@@ -35,7 +35,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-software-design.git",
-        "ref": "v1.4.3"
+        "ref": "v1.4.4"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -48,7 +48,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-doc-skills.git",
-        "ref": "v1.3.1"
+        "ref": "v1.3.2"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -61,7 +61,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-web-design-skills.git",
-        "ref": "v1.1.5"
+        "ref": "v1.1.6"
       },
       "policy": {
         "installation": "AVAILABLE",
