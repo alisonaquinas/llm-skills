@@ -8,7 +8,10 @@
 import { describe, expect, it } from "vitest";
 import type { CatalogFile } from "@/lib/catalog";
 import { buildCodexMarketplaceDocument } from "../../../scripts/lib/codex-marketplace";
-import { validateCodexMarketplaceDocument } from "../../../scripts/lib/codex-marketplace-validation";
+import {
+  validateCodexMarketplaceDocument,
+  validateCodexMarketplaceMatchesCatalog,
+} from "../../../scripts/lib/codex-marketplace-validation";
 
 /** Stable catalog fixture used for Codex marketplace document tests. */
 const catalog: CatalogFile = {
@@ -63,5 +66,17 @@ describe("buildCodexMarketplaceDocument", () => {
     const document = buildCodexMarketplaceDocument(catalog);
 
     expect(() => validateCodexMarketplaceDocument(document, "marketplace.json")).not.toThrow();
+  });
+
+  it("fails validation when committed plugin names drift from generated catalog names", () => {
+    const document = buildCodexMarketplaceDocument(catalog);
+    document.plugins[0] = {
+      ...document.plugins[0]!,
+      name: "llm-shared-skills",
+    };
+
+    expect(() => validateCodexMarketplaceMatchesCatalog(document, catalog, "marketplace.json")).toThrow(
+      "does not match generated catalog name 'shared-skills'"
+    );
   });
 });

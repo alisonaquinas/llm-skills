@@ -3,10 +3,13 @@
  *
  * Responsibilities:
  * - validate generated Codex marketplace documents against Codex schema rules
+ * - detect committed marketplace files that have drifted from catalog generation
  * - keep CLI validation logic separate from generation code
  * - produce focused file-scoped diagnostics
  */
+import type { CatalogFile } from "@/lib/catalog";
 import type { CodexMarketplaceDocument } from "./codex-marketplace";
+import { buildCodexMarketplaceDocument } from "./codex-marketplace";
 
 /**
  * Throws a file-scoped validation error when a condition is not met.
@@ -81,5 +84,59 @@ export function validateCodexMarketplaceDocument(
     assert(plugin.policy.installation === "AVAILABLE", `${ctx}: policy.installation must be 'AVAILABLE'`, filePath);
     assert(plugin.policy.authentication === "ON_INSTALL", `${ctx}: policy.authentication must be 'ON_INSTALL'`, filePath);
     assert(typeof plugin.category === "string" && plugin.category.length > 0, `${ctx}: missing 'category'`, filePath);
+  });
+}
+
+/**
+ * Validates that a Codex marketplace document exactly matches the configured catalog.
+ *
+ * @param doc Codex marketplace document to validate.
+ * @param catalog Parsed repository catalog used as generation source.
+ * @param filePath File path used for diagnostic output.
+ */
+export function validateCodexMarketplaceMatchesCatalog(
+  doc: CodexMarketplaceDocument,
+  catalog: CatalogFile,
+  filePath: string
+): void {
+  const expected = buildCodexMarketplaceDocument(catalog);
+
+  assert(doc.name === expected.name, "marketplace 'name' does not match catalog", filePath);
+  assert(
+    doc.interface.displayName === expected.interface.displayName,
+    "marketplace 'interface.displayName' does not match catalog",
+    filePath
+  );
+  assert(
+    doc.plugins.length === expected.plugins.length,
+    `expected ${expected.plugins.length} plugins from catalog, found ${doc.plugins.length}`,
+    filePath
+  );
+
+  expected.plugins.forEach((expectedPlugin, index) => {
+    const actualPlugin = doc.plugins[index];
+    const ctx = `plugins[${index}] (${actualPlugin?.name ?? "missing"})`;
+
+    assert(actualPlugin, `${ctx}: missing generated catalog plugin`, filePath);
+    assert(
+      actualPlugin.name === expectedPlugin.name,
+      `${ctx}: name '${actualPlugin.name}' does not match generated catalog name '${expectedPlugin.name}'`,
+      filePath
+    );
+    assert(
+      JSON.stringify(actualPlugin.source) === JSON.stringify(expectedPlugin.source),
+      `${ctx}: source does not match generated catalog source`,
+      filePath
+    );
+    assert(
+      JSON.stringify(actualPlugin.policy) === JSON.stringify(expectedPlugin.policy),
+      `${ctx}: policy does not match generated catalog policy`,
+      filePath
+    );
+    assert(
+      actualPlugin.category === expectedPlugin.category,
+      `${ctx}: category '${actualPlugin.category}' does not match generated catalog category '${expectedPlugin.category}'`,
+      filePath
+    );
   });
 }

@@ -3,7 +3,7 @@
     "name": "llm-skills",
     "title": "Alison's LLM Skills Marketplace",
     "description": "Browse Claude Code and Codex skill bundles for CI/CD, software design, docs, and web dev. Install from GitHub in one command.",
-    "version": "1.4.6",
+    "version": "1.4.8",
     "owner": {
       "name": "Alison Aquinas"
     },
@@ -101,8 +101,8 @@
       "category": "doc-skills",
       "color": "bg-violet-100 text-violet-800",
       "icon": "📄",
-      "ref": "v1.3.0",
-      "version": "1.3.0",
+      "ref": "v1.3.1",
+      "version": "1.3.1",
       "siteDescription": "Claude Code and Codex skills for creating and editing Word, PowerPoint, Excel, and PDF documents."
     },
     {

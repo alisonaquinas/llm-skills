@@ -9,6 +9,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- Restored Codex marketplace plugin names in `.agents/plugins/marketplace.json` to the names declared by each bundle's Codex plugin manifest (`shared-skills`, `ci-cd`, `software-design`, `doc-skills`, `web-design-skills`) so repo-backed Codex marketplace installs do not look up Claude-only plugin names.
+- Added Codex marketplace validation that fails when the committed `.agents/plugins/marketplace.json` drifts from `catalog.json` generation.
+- Moved the `llm-doc-skills` `v1.3.1` pin and marketplace `1.4.8` version into `catalog.json` so future generated artifacts keep the released metadata.
+
 ## [1.4.8] - 2026-05-15
 
 ### Changed

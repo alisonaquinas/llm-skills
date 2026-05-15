@@ -6,11 +6,16 @@
  * Responsibilities:
  * - read a generated Codex marketplace document from disk
  * - invoke shared Codex validation rules
+ * - confirm the document still matches catalog-driven generation
  * - return a non-zero exit code when the document is invalid
  */
 import { readFile } from "node:fs/promises";
 import type { CodexMarketplaceDocument } from "./lib/codex-marketplace";
-import { validateCodexMarketplaceDocument } from "./lib/codex-marketplace-validation";
+import { loadCatalog } from "./lib/catalog";
+import {
+  validateCodexMarketplaceDocument,
+  validateCodexMarketplaceMatchesCatalog,
+} from "./lib/codex-marketplace-validation";
 
 /** Default Codex marketplace document path used when no CLI argument is supplied. */
 const filePath = process.argv[2] ?? ".agents/plugins/marketplace.json";
@@ -21,7 +26,9 @@ const filePath = process.argv[2] ?? ".agents/plugins/marketplace.json";
 async function main(): Promise<void> {
   const raw = await readFile(filePath, "utf-8");
   const doc = JSON.parse(raw) as CodexMarketplaceDocument;
+  const catalog = await loadCatalog();
   validateCodexMarketplaceDocument(doc, filePath);
+  validateCodexMarketplaceMatchesCatalog(doc, catalog, filePath);
   console.log(`OK ${filePath}: ${doc.plugins.length} Codex plugins, all valid`);
 }
 
