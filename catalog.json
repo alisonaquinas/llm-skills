@@ -77,8 +77,8 @@
       "category": "ci-cd",
       "color": "bg-emerald-100 text-emerald-800",
       "icon": "🚀",
-      "ref": "v1.2.3",
-      "version": "1.2.3",
+      "ref": "v1.2.4",
+      "version": "1.2.4",
       "siteDescription": "Claude Code and Codex skills focused on CI/CD pipelines, release flows, and delivery automation."
     },
     {
