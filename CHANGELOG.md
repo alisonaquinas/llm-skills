@@ -9,6 +9,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.7] - 2026-05-15
+
+### Fixed
+
+- Aligned all five catalog plugin names in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` with the `name` field declared in each plugin's `plugin.json` (`shared-skills` → `llm-shared-skills`, `ci-cd` → `llm-ci-dev`, `software-design` → `llm-software-design`, `doc-skills` → `llm-doc-skills`, `web-design-skills` → `llm-web-design-skills`). The plugin manager resolves updates by looking up the installed plugin's `plugin.json` name in the catalog; the mismatch caused "Plugin not found" errors on every update attempt for all five plugins.
+
 ## [1.4.6] - 2026-05-08
 
 ### Fixed

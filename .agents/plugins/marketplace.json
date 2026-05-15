@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "shared-skills",
+      "name": "llm-shared-skills",
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-shared-skills.git",
@@ -18,7 +18,7 @@
       "category": "shared-skills"
     },
     {
-      "name": "ci-cd",
+      "name": "llm-ci-dev",
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-ci-dev.git",
@@ -31,7 +31,7 @@
       "category": "ci-cd"
     },
     {
-      "name": "software-design",
+      "name": "llm-software-design",
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-software-design.git",
@@ -44,7 +44,7 @@
       "category": "software-design"
     },
     {
-      "name": "doc-skills",
+      "name": "llm-doc-skills",
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-doc-skills.git",
@@ -57,7 +57,7 @@
       "category": "doc-skills"
     },
     {
-      "name": "web-design-skills",
+      "name": "llm-web-design-skills",
       "source": {
         "source": "url",
         "url": "https://github.com/alisonaquinas/llm-web-design-skills.git",
