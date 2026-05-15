@@ -9,6 +9,12 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.8] - 2026-05-15
+
+### Changed
+
+- Promoted `llm-doc-skills` catalog pin from `v1.3.0` to `v1.3.1` in both `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
+
 ## [1.4.7] - 2026-05-15
 
 ### Fixed
