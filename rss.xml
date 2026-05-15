@@ -8,6 +8,23 @@
     <lastBuildDate>Fri, 15 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CI/CD Skills v1.2.4</title>
+      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.2.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.2.4</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>CI/CD Skills v1.2.4 release notes.</p>
+<h3>Added</h3>
+<pre>- Added `.codex-plugin/plugin.json` so the CI/CD skills bundle can be published through a Codex plugin marketplace.
+- Added `scripts/validate_plugin_manifests.py` and `make codex-bundle` to validate Codex/Claude manifest alignment and build `ci-cd-codex-plugin.zip`.
+- Added back-link to the LLM Skills Marketplace from `README.md`.
+- Added `skills/github-docs/references/advanced-examples.md` indexing matrix strategies, reusable workflows, environments and deployment gates, OIDC with AWS / Azure / GCP / HashiCorp Vault, composite actions, and self-hosted runner autoscaling.
+- Added `skills/gitlab-docs/references/duo-and-ai.md` indexing GitLab Duo, Duo Agent Platform (Planner / Security Analyst / Data Analyst), Duo Chat, Duo Code Review, AI Impact analytics, and self-hosted Duo model routing.</pre>
+<h3>Changed</h3>
+<pre>- Refreshed `skills/github-docs` for 2025-2026 platform state: dropped the pinned GHES 3.7–3.10 version list in favor of a self-updating `enterprise-server@&lt;version&gt;` placeholder pattern plus a pointer to the canonical supported-release list; added entries for the `case()` expression function, IANA timezone field in `on.schedule.cron`, scoped secrets, OIDC custom property claims, the parallel-steps preview, artifact attestations, and immutable actions.
+- Refreshed `skills/gitlab-docs` for 2025-2026 platform state: replaced hardcoded `/17.x/` version segments with a self-updating `/&lt;version&gt;/` placeholder pattern plus a pointer to the GitLab maintenance policy; added entries for the Duo Agent Platform, fine-grained CI job-token permissions, the CI/CD components catalog with `spec:inputs:`, immutable container tags, protected container repositories, SLSA artifact attestation, and the migration from deprecated `only`/`except` to `rules:`.
+- Rewrote `github-docs` and `gitlab-docs` `SKILL.md` descriptions with explicit `Use this skill … Trigger when the user asks about …` framing so both skills score PASS [APPROVE] on the 8-criterion validation rubric.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.4.8</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.8</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.8</guid>
@@ -24,6 +41,17 @@
       <description><![CDATA[<p>Marketplace v1.4.7 release notes.</p>
 <h3>Fixed</h3>
 <pre>- Aligned all five catalog plugin names in `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json` with the `name` field declared in each plugin&apos;s `plugin.json` (`shared-skills` → `llm-shared-skills`, `ci-cd` → `llm-ci-dev`, `software-design` → `llm-software-design`, `doc-skills` → `llm-doc-skills`, `web-design-skills` → `llm-web-design-skills`). The plugin manager resolves updates by looking up the installed plugin&apos;s `plugin.json` name in the catalog; the mismatch caused &quot;Plugin not found&quot; errors on every update attempt for all five plugins.</pre>]]></description>
+    </item>
+    <item>
+      <title>Software Design Skills v1.4.4</title>
+      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.4.4</link>
+      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.4.4</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Software Design Skills v1.4.4 release notes.</p>
+<h3>Added</h3>
+<pre>- Added `.codex-plugin/plugin.json` so the software design skills bundle can be published through a Codex plugin marketplace.
+- Added `scripts/validate_plugin_manifests.py` and `make codex-bundle` to validate Codex/Claude manifest alignment and build `software-design-codex-plugin.zip`.
+- Added back-link to the LLM Skills Marketplace from `README.md`.</pre>]]></description>
     </item>
     <item>
       <title>Marketplace v1.4.6</title>
@@ -595,30 +623,6 @@
 <h3>Changed (1.1.0)</h3>
 <pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
 - `.github/workflows/release.yml`: upgraded from minimal stub to full plugin release pipeline — adds version gate, changelog extraction, `softprops/action-gh-release` upload of `built/*.zip` (including `web-design-skills-plugin.zip`), `changelog` extraction, and marketplace dispatch trigger; added &quot;Build plugin bundle ZIP&quot; step (`make bundle`)</pre>]]></description>
-    </item>
-    <item>
-      <title>Web Design Skills v1.0.0</title>
-      <link>https://github.com/alisonaquinas/llm-web-design-skills/releases/tag/v1.0.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-web-design-skills@1.0.0</guid>
-      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Web Design Skills v1.0.0 release notes.</p>
-<pre>- Initial release of `llm-web-design-skills`.
-- Added 16 cross-compatible web framework and web design skills:
-  - **Frontend frameworks**: `angular`, `nextjs`, `react`, `svelte`, `vue`
-  - **Styling and UI systems**: `material-design`, `scss`, `tailwind`
-  - **Build and tooling**: `vite`
-  - **Backend frameworks**: `django`, `nodejs`, `express-js`, `asp-net`, `spring-boot`, `laravel`
-  - **Static sites and content**: `hugo`
-- Each skill ships with Claude and OpenAI agent definitions, best-practices reference, and workflow guide.</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.6.6</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.6</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.6</guid>
-      <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.6.6 release notes.</p>
-<h3>Added</h3>
-<pre>- `skills/skill-development`: new meta-skill orchestrating the full 7-phase SDLC for authoring LLM agent skills — covers ideation, authoring via skill-creator, structural linting via skill-linting, qualitative validation via skill-validation, live scenario testing via skill-test-drive, iteration loops, and final commit and ship; includes five reference files and two rounds of live test-drive fixes</pre>]]></description>
     </item>
   </channel>
 </rss>

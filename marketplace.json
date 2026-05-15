@@ -26,13 +26,13 @@
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-ci-dev",
-        "ref": "v1.2.3"
+        "ref": "v1.2.4"
       },
       "description": "Claude Code and Codex skills focused on CI/CD pipelines, release flows, and delivery automation.",
       "repository": "https://github.com/alisonaquinas/llm-ci-dev",
       "category": "ci-cd",
       "strict": true,
-      "version": "1.2.3"
+      "version": "1.2.4"
     },
     {
       "name": "software-design",
