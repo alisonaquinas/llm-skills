@@ -9,11 +9,18 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.9] - 2026-05-15
+
 ### Fixed
 
+- Bumped `ci-cd`, `software-design`, `doc-skills`, and `web-design-skills` catalog pins to `v1.2.4`, `v1.4.4`, `v1.3.2`, and `v1.1.6` respectively. The prior tags (`v1.2.3`, `v1.4.3`, `v1.3.1`, `v1.1.5`) were cut **before** the `.codex-plugin/plugin.json` manifest landed on each bundle's `main`, so Codex marketplace installs failed for all four — the Codex CLI / app cloned the tagged commit, found no plugin manifest, and aborted the install. Only `shared-skills` worked because its v1.8.0 tag was cut after that manifest was added. Each plugin has been re-released as a patch (`vX.Y.Z+1`) including `.codex-plugin/plugin.json`, and the marketplace catalog now points at those tags.
 - Restored Codex marketplace plugin names in `.agents/plugins/marketplace.json` to the names declared by each bundle's Codex plugin manifest (`shared-skills`, `ci-cd`, `software-design`, `doc-skills`, `web-design-skills`) so repo-backed Codex marketplace installs do not look up Claude-only plugin names.
 - Added Codex marketplace validation that fails when the committed `.agents/plugins/marketplace.json` drifts from `catalog.json` generation.
 - Moved the `llm-doc-skills` `v1.3.1` pin and marketplace `1.4.8` version into `catalog.json` so future generated artifacts keep the released metadata.
+
+### Changed
+
+- Regenerated `.claude-plugin/marketplace.json` from `catalog.json` so the committed file matches the deployed marketplace (the deployed `marketplace.json` already serves the short names; the committed copy had drifted).
 
 ## [1.4.8] - 2026-05-15
 
