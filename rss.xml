@@ -8,6 +8,15 @@
     <lastBuildDate>Fri, 15 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Marketplace v1.4.8</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.8</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.8</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.8 release notes.</p>
+<h3>Changed</h3>
+<pre>- Promoted `llm-doc-skills` catalog pin from `v1.3.0` to `v1.3.1` in both `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.</pre>]]></description>
+    </item>
+    <item>
       <title>Marketplace v1.4.7</title>
       <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.7</link>
       <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.7</guid>
@@ -610,15 +619,6 @@
       <description><![CDATA[<p>Shared Skills v1.6.6 release notes.</p>
 <h3>Added</h3>
 <pre>- `skills/skill-development`: new meta-skill orchestrating the full 7-phase SDLC for authoring LLM agent skills — covers ideation, authoring via skill-creator, structural linting via skill-linting, qualitative validation via skill-validation, live scenario testing via skill-test-drive, iteration loops, and final commit and ship; includes five reference files and two rounds of live test-drive fixes</pre>]]></description>
-    </item>
-    <item>
-      <title>CI/CD Skills v1.1.3</title>
-      <link>https://github.com/alisonaquinas/llm-ci-dev/releases/tag/v1.1.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-ci-dev@1.1.3</guid>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>CI/CD Skills v1.1.3 release notes.</p>
-<h3>Changed</h3>
-<pre>- confirmed `llm-ci-dev` as the canonical home for `aws`, `az`, `docker`, and `glab`, preserving the most recent examples and wording improvements while shared duplicates were removed from `llm-shared-skills`</pre>]]></description>
     </item>
   </channel>
 </rss>
