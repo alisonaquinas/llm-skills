@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "shared-skills",
+      "name": "llm-shared-skills",
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-shared-skills",
@@ -22,7 +22,7 @@
       "version": "1.8.0"
     },
     {
-      "name": "ci-cd",
+      "name": "llm-ci-dev",
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-ci-dev",
@@ -35,7 +35,7 @@
       "version": "1.2.3"
     },
     {
-      "name": "software-design",
+      "name": "llm-software-design",
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-software-design",
@@ -48,7 +48,7 @@
       "version": "1.4.3"
     },
     {
-      "name": "doc-skills",
+      "name": "llm-doc-skills",
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-doc-skills",
@@ -61,7 +61,7 @@
       "version": "1.3.0"
     },
     {
-      "name": "web-design-skills",
+      "name": "llm-web-design-skills",
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-web-design-skills",
