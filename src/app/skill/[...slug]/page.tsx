@@ -171,16 +171,6 @@ export default async function SkillPage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
-          <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <span className="font-mono text-xs text-gray-400">Invoke this skill after installation</span>
-            <CopyButton text={invokeCommand} label="Copy" />
-          </div>
-          <div className="overflow-x-auto">
-            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-gray-100">{invokeCommand}</pre>
-          </div>
-        </div>
-
         {skill.downloadUrl ? (
           <a
             href={skill.downloadUrl}
@@ -205,6 +195,20 @@ export default async function SkillPage({ params }: PageProps) {
             github.com/{plugin.owner}/{plugin.repo}
           </a>
           .
+        </div>
+      </section>
+
+      <section className="mb-8 space-y-3">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Invoke</h2>
+
+        <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
+          <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="font-mono text-xs text-gray-400">Invoke this skill after installation</span>
+            <CopyButton text={invokeCommand} label="Copy" />
+          </div>
+          <div className="overflow-x-auto">
+            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-gray-100">{invokeCommand}</pre>
+          </div>
         </div>
       </section>
 

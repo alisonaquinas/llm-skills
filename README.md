@@ -40,12 +40,13 @@ Install one skill:
 npx skills add alisonaquinas/llm-ci-dev --skill 'github-ci' -g -y
 ```
 
-## Latest release: v1.4.5
+## Latest release: v1.4.10
 
-Adds team and cloud-session install documentation so plugins work with Claude Code on the Web (co-work sessions).
+Adds direct `npx skills` distribution paths and simplifies the marketplace install UI.
 
-- Added "Team install / Claude Code on the Web" section to README with the `extraKnownMarketplaces` + `enabledPlugins` project-settings format required for cloud sessions.
-- Corrected two remaining GitHub Pages URLs (marketplace.json and rss.xml) to the custom domain.
+- Added copyable `npx skills` commands across the home page, bundle pages, skill pages, install guide, and README.
+- Moved invocation commands out of skill cards and into a dedicated `Invoke` section on each skill detail page.
+- Changed per-bundle main-page guidance to use `--list` as the safer inspection-first command.
 
 ## Install in Claude Code
 

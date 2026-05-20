@@ -15,7 +15,6 @@ import {
   getMarketplaceAddCommand,
   getMarketplaceUrlAddCommand,
   getNpxSkillsAllBundlesInstallCommands,
-  getNpxSkillsBundleInstallCommand,
   getNpxSkillsBundleListCommand,
   getPluginInstallRef,
 } from "@/lib/commands";
@@ -99,23 +98,16 @@ export default function InstallBanner() {
 
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-              Install or inspect one bundle
+              Inspect one bundle before installing
             </p>
             <div className="space-y-2">
               {PLUGINS.map((plugin) => {
-                const installCommand = getNpxSkillsBundleInstallCommand(plugin);
                 const listCommand = getNpxSkillsBundleListCommand(plugin);
                 return (
                   <div key={plugin.pluginName} className="rounded-lg bg-stone-50 px-3 py-2.5 dark:bg-stone-900/80">
                     <div className="mb-1.5 text-xs font-medium text-gray-500 dark:text-gray-400">{plugin.label}</div>
                     <div className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 dark:bg-stone-950">
-                      <code className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100" title={installCommand}>
-                        {installCommand}
-                      </code>
-                      <CopyButton text={installCommand} label={`Copy ${plugin.label} npx install command`} variant="icon" />
-                    </div>
-                    <div className="mt-2 flex items-center gap-2 rounded-lg bg-white px-3 py-2 dark:bg-stone-950">
-                      <code className="min-w-0 flex-1 truncate text-xs text-gray-600 dark:text-gray-300" title={listCommand}>
+                      <code className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100" title={listCommand}>
                         {listCommand}
                       </code>
                       <CopyButton text={listCommand} label={`Copy ${plugin.label} list command`} variant="icon" />

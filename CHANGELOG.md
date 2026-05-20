@@ -9,9 +9,16 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.10] - 2026-05-20
+
 ### Added
 
 - Added `npx skills` as the direct install path across the marketplace home page, bundle pages, individual skill pages, install guide, and README.
+
+### Changed
+
+- Simplified skill cards so they show the direct install command only, with invoke commands moved to a dedicated `Invoke` section on each skill detail page.
+- Changed the main-page per-bundle `npx skills` banner to show the safer `--list` inspection command instead of pairing it with non-interactive global install commands.
 
 ## [1.4.9] - 2026-05-15
 
@@ -289,7 +296,18 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.6...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.10...HEAD
+[1.4.10]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.9...v1.4.10
+[1.4.9]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.8...v1.4.9
+[1.4.8]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.7...v1.4.8
+[1.4.7]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.6...v1.4.7
+[1.4.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.5...v1.4.6
+[1.4.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.4...v1.4.5
+[1.4.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.3...v1.4.4
+[1.4.3]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.2...v1.4.3
+[1.4.2]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.1...v1.4.2
+[1.4.1]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.6...v1.4.0
 [1.3.6]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.5...v1.3.6
 [1.3.5]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/alisonaquinas/llm-skills/compare/v1.3.3...v1.3.4
