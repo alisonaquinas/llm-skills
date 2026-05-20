@@ -72,6 +72,12 @@ describe("buildMarketplacePluginSummaries", () => {
     expect(summaries[0]?.skillCount).toBe(2);
     expect(summaries[0]?.meta?.version).toBe(sharedSkillsCatalogVersion);
     expect(summaries[0]?.installCommand).toContain("/plugin install");
+    expect(summaries[0]?.npxSkillsInstallCommand).toBe(
+      "npx skills add alisonaquinas/llm-shared-skills --skill '*' -g -y"
+    );
+    expect(summaries[0]?.npxSkillsListCommand).toBe(
+      "npx skills add alisonaquinas/llm-shared-skills --list"
+    );
     expect(summaries[0]?.bundleUrl).toBe(
       `https://github.com/alisonaquinas/llm-shared-skills/releases/download/v${sharedSkillsCatalogVersion}/shared-skills-plugin.zip`
     );

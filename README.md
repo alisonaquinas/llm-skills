@@ -1,6 +1,7 @@
 # Alison's LLM Plugins
 
-A static Next.js site and marketplace catalog for installable Claude Code and Codex plugins:
+A static Next.js site and marketplace catalog for installable `npx skills`,
+Claude Code, and Codex plugins:
 
 - [`shared-skills`](https://github.com/alisonaquinas/llm-shared-skills)
 - [`ci-cd`](https://github.com/alisonaquinas/llm-ci-dev)
@@ -13,6 +14,31 @@ marketplace catalog is published at `.claude-plugin/marketplace.json`; the Codex
 marketplace catalog is published at `.agents/plugins/marketplace.json`.
 
 **Live site:** <https://llm-skills.alisonaquinas.com/>
+
+## Install with npx skills
+
+Install raw skills directly from the source repositories without registering the
+marketplace:
+
+```text
+npx skills add alisonaquinas/llm-shared-skills --skill '*' -g -y
+npx skills add alisonaquinas/llm-ci-dev --skill '*' -g -y
+npx skills add alisonaquinas/llm-software-design --skill '*' -g -y
+npx skills add alisonaquinas/llm-doc-skills --skill '*' -g -y
+npx skills add alisonaquinas/llm-web-design-skills --skill '*' -g -y
+```
+
+Inspect a repository before installing:
+
+```text
+npx skills add alisonaquinas/llm-ci-dev --list
+```
+
+Install one skill:
+
+```text
+npx skills add alisonaquinas/llm-ci-dev --skill 'github-ci' -g -y
+```
 
 ## Latest release: v1.4.5
 

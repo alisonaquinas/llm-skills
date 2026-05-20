@@ -9,6 +9,10 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added `npx skills` as the direct install path across the marketplace home page, bundle pages, individual skill pages, install guide, and README.
+
 ## [1.4.9] - 2026-05-15
 
 ### Fixed

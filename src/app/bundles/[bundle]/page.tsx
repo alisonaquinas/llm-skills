@@ -57,7 +57,7 @@ function buildBundleUrl(pluginName: string): string {
  * @returns Bundle-specific description used in metadata and JSON-LD.
  */
 function buildBundleDescription(plugin: PluginConfig, skillCount: number): string {
-  return `${plugin.label}: ${skillCount} skills for Claude Code and Codex. ${plugin.siteDescription}`;
+  return `${plugin.label}: ${skillCount} skills for npx skills, Claude Code, and Codex. ${plugin.siteDescription}`;
 }
 
 /**
@@ -129,7 +129,7 @@ export default async function BundlePage({ params }: BundlePageProps) {
     notFound();
   }
 
-  const { plugin, installCommand, repoUrl, meta, bundleUrl } = summary;
+  const { plugin, installCommand, npxSkillsInstallCommand, repoUrl, meta, bundleUrl } = summary;
   const codexMarketplaceAddCommand = getCodexMarketplaceAddCommand();
   const bundleSkills = summaryData.allSkills
     .filter((skill) => skill.repo.repo === plugin.repo)
@@ -173,7 +173,7 @@ export default async function BundlePage({ params }: BundlePageProps) {
           </span>
         </div>
         <h1 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
-          {plugin.label} for Claude Code and Codex
+          {plugin.label} for npx skills, Claude Code, and Codex
         </h1>
         <p className="text-base leading-7 text-gray-600 dark:text-gray-300 sm:text-lg">
           {meta?.description ?? plugin.siteDescription}
@@ -185,11 +185,34 @@ export default async function BundlePage({ params }: BundlePageProps) {
           Install the {plugin.label} bundle
         </h2>
         <p className="mb-4 max-w-3xl text-sm leading-6 text-brand-800 dark:text-brand-200">
-          Add the marketplace once, then install just this bundle. A bundle ships all{" "}
-          {bundleSkills.length} skills listed below.
+          Install directly with npx skills, or add the marketplace once and install just
+          this bundle through Claude Code or Codex. A bundle ships all {bundleSkills.length}{" "}
+          skills listed below.
         </p>
 
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-3 lg:grid-cols-3">
+          <div className="rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
+            <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+              npx skills
+            </div>
+            <div className="flex items-center gap-2">
+              <code
+                className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                title={npxSkillsInstallCommand}
+              >
+                {npxSkillsInstallCommand}
+              </code>
+              <div className="shrink-0">
+                <CopyButton
+                  text={npxSkillsInstallCommand}
+                  label="Copy npx skills install command"
+                  ariaLabel={`Copy npx skills install command for ${plugin.label}`}
+                  variant="icon"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
             <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
               Claude Code

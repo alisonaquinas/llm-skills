@@ -4,12 +4,13 @@
  * Responsibilities:
  * - render skill metadata with consistent visual affordances
  * - construct the skill detail route link
+ * - surface the direct npx skills install command for the selected skill
  * - surface the canonical invocation command for the selected skill
  * - expose a direct release-asset download action without nesting anchors
  */
 import Link from "next/link";
 import type { SkillEntry } from "@/lib/github";
-import { getSkillInvocation } from "@/lib/commands";
+import { getNpxSkillsSkillInstallCommand, getSkillInvocation } from "@/lib/commands";
 import { getSkillIcon } from "@/lib/skills";
 import CopyButton from "./CopyButton";
 import { DownloadIcon } from "./SiteIcons";
@@ -29,6 +30,7 @@ interface SkillCardProps {
  * @returns A card with separate detail-navigation and download actions.
  */
 export default function SkillCard({ skill }: SkillCardProps) {
+  const directInstall = getNpxSkillsSkillInstallCommand(skill.repo, skill.name);
   const invocation = getSkillInvocation(skill.repo, skill.name);
 
   return (
@@ -49,22 +51,42 @@ export default function SkillCard({ skill }: SkillCardProps) {
               {skill.repo.label}
             </span>
           </div>
-          <div className="mt-2 flex items-center gap-2">
-            <div className="min-w-0 flex-1 rounded-lg bg-gray-50 px-2.5 py-2 dark:bg-gray-800/80">
-              <p
-                className="truncate font-mono text-sm text-gray-500 dark:text-gray-300"
-                title={invocation}
-              >
-                {invocation}
-              </p>
+          <div className="mt-2 space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="min-w-0 flex-1 rounded-lg bg-gray-50 px-2.5 py-2 dark:bg-gray-800/80">
+                <p
+                  className="truncate font-mono text-xs text-gray-600 dark:text-gray-300"
+                  title={directInstall}
+                >
+                  {directInstall}
+                </p>
+              </div>
+              <div className="shrink-0">
+                <CopyButton
+                  text={directInstall}
+                  label="Copy install"
+                  ariaLabel={`Copy npx skills install command for ${skill.name}`}
+                  variant="icon"
+                />
+              </div>
             </div>
-            <div className="shrink-0">
-              <CopyButton
-                text={invocation}
-                label="Copy command"
-                ariaLabel={`Copy install command for ${skill.name}`}
-                variant="icon"
-              />
+            <div className="flex items-center gap-2">
+              <div className="min-w-0 flex-1 rounded-lg bg-gray-50 px-2.5 py-2 dark:bg-gray-800/80">
+                <p
+                  className="truncate font-mono text-xs text-gray-500 dark:text-gray-400"
+                  title={invocation}
+                >
+                  {invocation}
+                </p>
+              </div>
+              <div className="shrink-0">
+                <CopyButton
+                  text={invocation}
+                  label="Copy invoke"
+                  ariaLabel={`Copy invocation command for ${skill.name}`}
+                  variant="icon"
+                />
+              </div>
             </div>
           </div>
         </div>

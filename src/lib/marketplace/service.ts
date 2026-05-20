@@ -9,7 +9,11 @@
 import type { PluginConfig } from "@/lib/catalog";
 import type { PluginMeta, SkillEntry } from "@/lib/github";
 import { PLUGINS, getPluginRepoUrl } from "@/lib/catalog";
-import { getPluginInstallCommand } from "@/lib/commands";
+import {
+  getNpxSkillsBundleInstallCommand,
+  getNpxSkillsBundleListCommand,
+  getPluginInstallCommand,
+} from "@/lib/commands";
 import { buildPluginBundleUrl, getAllSkills, getPluginMeta } from "@/lib/github";
 
 /** Combined view model for a plugin card on the marketplace landing page. */
@@ -18,6 +22,10 @@ export interface MarketplacePluginSummary {
   plugin: PluginConfig;
   /** Precomputed install command for the plugin. */
   installCommand: string;
+  /** Direct npx skills command for installing every skill from the plugin repository. */
+  npxSkillsInstallCommand: string;
+  /** Direct npx skills command for listing installable skills in the plugin repository. */
+  npxSkillsListCommand: string;
   /** Canonical GitHub repository URL for the plugin. */
   repoUrl: string;
   /** Optional upstream plugin metadata when available. */
@@ -112,6 +120,8 @@ export function buildMarketplacePluginSummaries(
     return {
       plugin,
       installCommand: getPluginInstallCommand(plugin),
+      npxSkillsInstallCommand: getNpxSkillsBundleInstallCommand(plugin),
+      npxSkillsListCommand: getNpxSkillsBundleListCommand(plugin),
       repoUrl: getPluginRepoUrl(plugin),
       meta,
       skillCount: skillCounts.get(plugin.repo) ?? 0,

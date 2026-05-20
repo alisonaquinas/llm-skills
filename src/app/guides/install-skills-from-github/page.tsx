@@ -1,9 +1,9 @@
 /**
- * Installation walkthrough for adding Claude Code skills from a GitHub-backed marketplace.
+ * Installation walkthrough for adding skills from GitHub-backed source repositories.
  *
  * Responsibilities:
- * - capture search traffic for "install Claude Code skills" and "plugin marketplace add"
- * - show a concrete step-by-step install flow using this marketplace's real bundles
+ * - capture search traffic for "install skills from GitHub" and "npx skills"
+ * - show concrete npx skills, Claude Code, and Codex install flows
  * - cover update, uninstall, and common failure modes without invented details
  *
  * Dependency rules:
@@ -18,6 +18,9 @@ import {
   getCodexMarketplaceAddCommand,
   getMarketplaceAddCommand,
   getMarketplaceUrlAddCommand,
+  getNpxSkillsAllBundlesInstallCommands,
+  getNpxSkillsBundleInstallCommand,
+  getNpxSkillsSkillInstallCommand,
   getPluginInstallCommand,
 } from "@/lib/commands";
 import {
@@ -31,7 +34,7 @@ const PAGE_URL = buildSiteUrl("guides/install-skills-from-github/");
 
 /** Shared description used across metadata fields. */
 const PAGE_DESCRIPTION =
-  "Step-by-step walkthrough of installing skill bundles from GitHub in Claude Code and Codex.";
+  "Step-by-step walkthrough of installing skill bundles from GitHub with npx skills, Claude Code, and Codex.";
 
 /** Page title used in the browser tab and structured data. */
 const PAGE_TITLE = `How to install skills from GitHub | ${MARKETPLACE.title}`;
@@ -67,11 +70,16 @@ export default function InstallSkillsFromGithubPage() {
   const addCommand = getMarketplaceAddCommand();
   const addUrlCommand = getMarketplaceUrlAddCommand();
   const codexAddCommand = getCodexMarketplaceAddCommand();
+  const sharedSkillsPlugin = PLUGINS.find((plugin) => plugin.pluginName === "shared-skills") ?? PLUGINS[0]!;
+  const ciCdPlugin = PLUGINS.find((plugin) => plugin.pluginName === "ci-cd") ?? PLUGINS[0]!;
+  const npxAllBundlesInstall = getNpxSkillsAllBundlesInstallCommands(PLUGINS);
+  const npxSharedInstall = getNpxSkillsBundleInstallCommand(sharedSkillsPlugin);
+  const npxGithubCiInstall = getNpxSkillsSkillInstallCommand(ciCdPlugin, "github-ci");
   const sharedInstall = getPluginInstallCommand(
-    PLUGINS.find((plugin) => plugin.pluginName === "shared-skills") ?? PLUGINS[0],
+    sharedSkillsPlugin,
   );
   const ciCdInstall = getPluginInstallCommand(
-    PLUGINS.find((plugin) => plugin.pluginName === "ci-cd") ?? PLUGINS[0],
+    ciCdPlugin,
   );
 
   return (
@@ -102,15 +110,20 @@ export default function InstallSkillsFromGithubPage() {
         How to install skills from GitHub
       </h1>
       <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
-        Claude Code and Codex can install skill bundles from GitHub-backed
-        marketplaces. This guide walks through both install flows using the real
-        bundles published in this marketplace.
+        Use <code className="font-mono text-sm">npx skills</code> for the direct
+        install path, or use the Claude Code and Codex marketplace flows when you
+        want plugin-managed bundles. The commands below use the real bundles
+        published in this marketplace.
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
         Prerequisites
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-1">
+        <li>
+          Node.js and npm if you are using the direct{" "}
+          <code className="font-mono text-sm">npx skills</code> install path.
+        </li>
         <li>
           A working Claude Code installation. If you have not set it up, see the{" "}
           <a
@@ -141,7 +154,37 @@ export default function InstallSkillsFromGithubPage() {
       </ul>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Claude Code step 1. Register the marketplace
+        Option 1. Install directly with npx skills
+      </h2>
+      <p className="mb-4">
+        The direct path uses the npm package named{" "}
+        <code className="font-mono text-sm">skills</code>. It reads a GitHub repository,
+        selects skill directories, and installs them without first registering this
+        marketplace.
+      </p>
+      <p className="mb-4">Install every bundle published here:</p>
+      <pre className="mb-4 overflow-x-auto rounded-lg bg-stone-900 p-3 font-mono text-sm text-green-300">
+        <code>{npxAllBundlesInstall}</code>
+      </pre>
+      <p className="mb-4">Install only the Shared Skills bundle:</p>
+      <pre className="mb-4 overflow-x-auto rounded-lg bg-stone-900 p-3 font-mono text-sm text-green-300">
+        <code>{npxSharedInstall}</code>
+      </pre>
+      <p className="mb-4">Install one skill from a bundle repository:</p>
+      <pre className="mb-4 overflow-x-auto rounded-lg bg-stone-900 p-3 font-mono text-sm text-green-300">
+        <code>{npxGithubCiInstall}</code>
+      </pre>
+      <p className="mb-4">
+        To inspect a repository before installing, run{" "}
+        <code className="font-mono text-sm">
+          npx skills add alisonaquinas/llm-ci-dev --list
+        </code>
+        . Each bundle and skill page on this site includes its exact copyable
+        <code className="mx-1 font-mono text-sm">npx skills</code> command.
+      </p>
+
+      <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
+        Option 2. Claude Code step 1. Register the marketplace
       </h2>
       <p className="mb-4">
         Tell Claude Code where to find skill bundles. Either command below works — the
@@ -201,7 +244,7 @@ export default function InstallSkillsFromGithubPage() {
       </p>
 
       <h2 className="mb-3 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Install in Codex
+        Option 3. Install in Codex
       </h2>
       <p className="mb-4">
         Codex uses its own plugin marketplace command. Add this GitHub repository as
@@ -252,6 +295,11 @@ export default function InstallSkillsFromGithubPage() {
         Troubleshooting
       </h2>
       <ul className="mb-4 ml-6 list-disc space-y-2">
+        <li>
+          <strong>npx command not found.</strong> Install Node.js and npm, then retry.
+          You can also run <code className="font-mono text-sm">npm exec -- skills</code>{" "}
+          if your shell resolves <code className="font-mono text-sm">npx</code> differently.
+        </li>
         <li>
           <strong>GitHub rate limits.</strong> Unauthenticated GitHub API calls cap
           out at 60 requests per hour. If install fails with a rate-limit error,

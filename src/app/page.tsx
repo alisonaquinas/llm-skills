@@ -94,9 +94,12 @@ export default async function MarketplacePage() {
           </div>
           <p className="mb-4">
             Reusable agent skills for coding, CI/CD, documentation, software
-            design, and web development, installable in Claude Code and portable
-            to Codex. Teach your agent real engineering practices instead of
-            reinventing them every session.
+            design, and web development, installable directly with{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              npx skills
+            </code>
+            , in Claude Code, and in Codex. Teach your agent real engineering
+            practices instead of reinventing them every session.
           </p>
           <p className="mb-4">
             Every time you start a new conversation, your AI coding agent begins
@@ -167,7 +170,15 @@ export default async function MarketplacePage() {
 
       <section className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {pluginSummaries.map(
-          ({ plugin, installCommand, meta, repoUrl, skillCount, bundleUrl }) => (
+          ({
+            plugin,
+            installCommand,
+            npxSkillsInstallCommand,
+            meta,
+            repoUrl,
+            skillCount,
+            bundleUrl,
+          }) => (
             <div
               key={plugin.repo}
               className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-950 sm:p-5"
@@ -203,6 +214,27 @@ export default async function MarketplacePage() {
               </p>
 
               <div className="mb-3 space-y-3 rounded-xl bg-stone-50 px-3 py-3 dark:bg-stone-900/80">
+                <div>
+                  <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+                    npx skills
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <code
+                      className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100"
+                      title={npxSkillsInstallCommand}
+                    >
+                      {npxSkillsInstallCommand}
+                    </code>
+                    <div className="shrink-0">
+                      <CopyButton
+                        text={npxSkillsInstallCommand}
+                        label="Copy npx skills install command"
+                        ariaLabel={`Copy npx skills install command for ${plugin.label}`}
+                        variant="icon"
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div>
                   <div className="mb-2 text-xs font-medium text-gray-500 dark:text-gray-400">
                     Claude Code
@@ -295,7 +327,11 @@ export default async function MarketplacePage() {
               SKILL.md
             </code>{" "}
             file plus optional references and scripts that teaches Claude Code or
-            Codex how to handle a focused task. Claude Code installs skills under
+            Codex how to handle a focused task. Direct installs use{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              npx skills
+            </code>{" "}
+            to copy selected skill directories from GitHub. Claude Code installs skills under
             <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
               ~/.claude/skills/
             </code>{" "}
@@ -307,9 +343,13 @@ export default async function MarketplacePage() {
             its instructions for that task.
           </p>
           <p>
-            Installing a skill bundle from this marketplace is a two-step flow on
-            both platforms: add the marketplace, then install the bundle you need.
-            Claude Code uses{" "}
+            Installing directly with{" "}
+            <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
+              npx skills
+            </code>{" "}
+            is the shortest path for raw skills. Marketplace-backed installs remain
+            available on both platforms: add the marketplace, then install the bundle
+            you need. Claude Code uses{" "}
             <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">
               /plugin install
             </code>{" "}

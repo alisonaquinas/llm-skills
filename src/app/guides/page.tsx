@@ -25,7 +25,7 @@ const PAGE_URL = buildSiteUrl("guides/");
 
 /** Shared description used across metadata fields. */
 const PAGE_DESCRIPTION =
-  "Long-form guides and explainers for Claude Code and Codex skills: installing from GitHub, picking CI/CD skills, and deciding whether a skills marketplace is right for your team.";
+  "Long-form guides and explainers for npx skills, Claude Code, and Codex skills: installing from GitHub, picking CI/CD skills, and deciding whether a skills marketplace is right for your team.";
 
 /**
  * Route metadata for the guides hub.
@@ -71,7 +71,7 @@ const GUIDES: GuideEntry[] = [
     href: "/guides/install-skills-from-github",
     title: "How to install skills from GitHub",
     teaser:
-      "Step-by-step walkthrough of /plugin marketplace add and /plugin install, plus update, uninstall, and troubleshooting.",
+      "Step-by-step walkthrough of npx skills, /plugin marketplace add, /plugin install, Codex marketplace installs, updates, and troubleshooting.",
   },
   {
     href: "/guides/best-ci-cd-skills-for-claude-code",

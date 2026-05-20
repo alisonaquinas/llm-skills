@@ -18,7 +18,11 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { DownloadIcon } from "@/components/SiteIcons";
 import StructuredData from "@/components/StructuredData";
 import { findPluginByRepo, getPluginRepoUrl, type PluginConfig } from "@/lib/catalog";
-import { getPluginInstallCommand, getSkillInvocation } from "@/lib/commands";
+import {
+  getNpxSkillsSkillInstallCommand,
+  getPluginInstallCommand,
+  getSkillInvocation,
+} from "@/lib/commands";
 import { getAllSkills, getSkillDetail } from "@/lib/github";
 import { createSkillRouteParams, parseSkillRoute } from "@/lib/routes";
 import {
@@ -82,6 +86,7 @@ export default async function SkillPage({ params }: PageProps) {
     notFound();
   }
 
+  const directInstallCommand = getNpxSkillsSkillInstallCommand(plugin, route.skillName);
   const installCommand = getPluginInstallCommand(plugin);
   const invokeCommand = getSkillInvocation(plugin, route.skillName);
   const pluginRepoUrl = getPluginRepoUrl(plugin);
@@ -148,6 +153,16 @@ export default async function SkillPage({ params }: PageProps) {
 
         <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
           <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="font-mono text-xs text-gray-400">Install only this skill with npx skills</span>
+            <CopyButton text={directInstallCommand} />
+          </div>
+          <div className="overflow-x-auto">
+            <pre className="min-w-max whitespace-nowrap font-mono text-sm text-gray-100">{directInstallCommand}</pre>
+          </div>
+        </div>
+
+        <div className="rounded-xl bg-gray-900 p-4 dark:bg-black">
+          <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <span className="font-mono text-xs text-gray-400">Install the containing skill bundle</span>
             <CopyButton text={installCommand} />
           </div>
@@ -178,8 +193,9 @@ export default async function SkillPage({ params }: PageProps) {
 
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm leading-6 text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
           This skill is bundled inside <strong className="text-gray-800 dark:text-white">{plugin.pluginName}</strong>.
-          Install the bundle once, then Claude Code can use any of its included skills. Browse the
-          full skill bundle repository at{" "}
+          Use <code className="rounded bg-gray-100 px-1 py-0.5 text-xs dark:bg-gray-800">npx skills</code>{" "}
+          when you only want this skill, or install the bundle once to make every included skill
+          available through the plugin marketplace flow. Browse the full skill bundle repository at{" "}
           <a
             href={pluginRepoUrl}
             target="_blank"

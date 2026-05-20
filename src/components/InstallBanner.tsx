@@ -2,6 +2,7 @@
  * Installation banner shown near the top of the marketplace landing page.
  *
  * Responsibilities:
+ * - explain the recommended direct npx skills installation flow
  * - explain the recommended marketplace installation flow for Claude Code
  * - explain the recommended marketplace installation flow for Codex
  * - provide copyable commands for marketplace and plugin installation
@@ -13,9 +14,14 @@ import {
   getCodexMarketplaceAddCommand,
   getMarketplaceAddCommand,
   getMarketplaceUrlAddCommand,
+  getNpxSkillsAllBundlesInstallCommands,
+  getNpxSkillsBundleInstallCommand,
+  getNpxSkillsBundleListCommand,
   getPluginInstallRef,
 } from "@/lib/commands";
 
+/** Direct command block for installing every skill bundle through npx skills. */
+const npxAllBundlesInstallCommand = getNpxSkillsAllBundlesInstallCommands(PLUGINS);
 /** Recommended command for registering the marketplace repository. */
 const marketplaceAddCommand = getMarketplaceAddCommand();
 /** Secondary command for registering the published marketplace JSON URL. */
@@ -45,15 +51,85 @@ function ChevronIcon() {
 /**
  * Renders the marketplace installation guidance banner.
  *
- * @returns A documentation-oriented installation panel with collapsible Claude Code
- *          instructions and a Codex download card.
+ * @returns A documentation-oriented installation panel with direct npx skills,
+ *          Claude Code marketplace, and Codex marketplace instructions.
  */
 export default function InstallBanner() {
   return (
     <div className="mb-8 space-y-3">
 
-      {/* Claude Code card — collapsible, open by default (primary CTA) */}
+      {/* npx skills card - open by default as the shortest direct install path. */}
       <details open className="group rounded-2xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-950">
+        <summary
+          role="heading"
+          aria-level={2}
+          className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4 sm:px-5"
+        >
+          <span className="text-lg font-semibold text-gray-900 dark:text-white">
+            Install directly with npx skills
+          </span>
+          <ChevronIcon />
+        </summary>
+
+        <div className="space-y-4 px-4 pb-4 sm:px-5">
+          <p className="max-w-3xl text-sm leading-6 text-gray-600 dark:text-gray-300">
+            Use the published <code className="rounded bg-stone-100 px-1 py-0.5 text-xs dark:bg-stone-800">skills</code>{" "}
+            npm package to install raw skill directories from the GitHub source repositories.
+            This path works for both Claude-compatible and Codex-compatible skills without first
+            registering the marketplace.
+          </p>
+
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              Install every bundle
+            </p>
+            <div className="relative rounded-lg bg-stone-950 p-3 text-gray-100">
+              <div className="absolute right-2 top-2">
+                <CopyButton
+                  text={npxAllBundlesInstallCommand}
+                  label="Copy all npx skills install commands"
+                  variant="icon"
+                />
+              </div>
+              <pre className="overflow-x-auto pr-12 font-mono text-xs leading-5">
+                {npxAllBundlesInstallCommand}
+              </pre>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              Install or inspect one bundle
+            </p>
+            <div className="space-y-2">
+              {PLUGINS.map((plugin) => {
+                const installCommand = getNpxSkillsBundleInstallCommand(plugin);
+                const listCommand = getNpxSkillsBundleListCommand(plugin);
+                return (
+                  <div key={plugin.pluginName} className="rounded-lg bg-stone-50 px-3 py-2.5 dark:bg-stone-900/80">
+                    <div className="mb-1.5 text-xs font-medium text-gray-500 dark:text-gray-400">{plugin.label}</div>
+                    <div className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 dark:bg-stone-950">
+                      <code className="min-w-0 flex-1 truncate text-sm text-gray-800 dark:text-gray-100" title={installCommand}>
+                        {installCommand}
+                      </code>
+                      <CopyButton text={installCommand} label={`Copy ${plugin.label} npx install command`} variant="icon" />
+                    </div>
+                    <div className="mt-2 flex items-center gap-2 rounded-lg bg-white px-3 py-2 dark:bg-stone-950">
+                      <code className="min-w-0 flex-1 truncate text-xs text-gray-600 dark:text-gray-300" title={listCommand}>
+                        {listCommand}
+                      </code>
+                      <CopyButton text={listCommand} label={`Copy ${plugin.label} list command`} variant="icon" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </details>
+
+      {/* Claude Code card - marketplace-backed plugin install path. */}
+      <details className="group rounded-2xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-950">
         <summary
           role="heading"
           aria-level={2}
