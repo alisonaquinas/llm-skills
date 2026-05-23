@@ -5,8 +5,19 @@
     <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shared Skills v1.8.1</title>
+      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.8.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.8.1</guid>
+      <pubDate>Sat, 23 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Shared Skills v1.8.1 release notes.</p>
+<h3>Fixed</h3>
+<pre>- Made the `adr-lint` `PostToolUse` hook advisory so incomplete or fixture ADR
+  drafts can report lint findings without surfacing as hook failures during
+  normal file edits.</pre>]]></description>
+    </item>
     <item>
       <title>Marketplace v1.4.10</title>
       <link>https://github.com/alisonaquinas/llm-skills/compare/v1.4.9...v1.4.10</link>
@@ -587,18 +598,6 @@
 <h3>Changed</h3>
 <pre>- documented trunk-based development workflow in `AGENTS.md`
 - updated `package-lock.json` to v1.3.8</pre>]]></description>
-    </item>
-    <item>
-      <title>Software Design Skills v1.3.3</title>
-      <link>https://github.com/alisonaquinas/llm-software-design/releases/tag/v1.3.3</link>
-      <guid isPermaLink="false">alisonaquinas/llm-software-design@1.3.3</guid>
-      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Software Design Skills v1.3.3 release notes.</p>
-<h3>Added</h3>
-<pre>- Added repository-wide skill agent manifest (agents/software-design-maintainer.md), command entries, and hooks/hooks.json for consistent skill routing across Claude and Codex clients.
-- Extended AGENTS.md with command + agent template section for focused skill loops.</pre>
-<h3>Changed</h3>
-<pre>- Hardened scripts/verify_built_zips.py with REQUIRED_FILES invariant checks.</pre>]]></description>
     </item>
   </channel>
 </rss>

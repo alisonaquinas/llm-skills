@@ -13,13 +13,13 @@
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-shared-skills",
-        "ref": "v1.8.0"
+        "ref": "v1.8.1"
       },
       "description": "Reusable Claude Code and Codex skills for common developer workflows and shared utilities.",
       "repository": "https://github.com/alisonaquinas/llm-shared-skills",
       "category": "shared-skills",
       "strict": true,
-      "version": "1.8.0"
+      "version": "1.8.1"
     },
     {
       "name": "ci-cd",
