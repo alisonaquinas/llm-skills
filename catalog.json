@@ -101,8 +101,8 @@
       "category": "doc-skills",
       "color": "bg-violet-100 text-violet-800",
       "icon": "📄",
-      "ref": "v1.3.2",
-      "version": "1.3.2",
+      "ref": "v1.4.0",
+      "version": "1.4.0",
       "siteDescription": "Claude Code and Codex skills for creating and editing Word, PowerPoint, Excel, and PDF documents."
     },
     {

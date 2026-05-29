@@ -52,13 +52,13 @@
       "source": {
         "source": "github",
         "repo": "alisonaquinas/llm-doc-skills",
-        "ref": "v1.3.2"
+        "ref": "v1.4.0"
       },
       "description": "Claude Code and Codex skills for creating and editing Word, PowerPoint, Excel, and PDF documents.",
       "repository": "https://github.com/alisonaquinas/llm-doc-skills",
       "category": "doc-skills",
       "strict": true,
-      "version": "1.3.2"
+      "version": "1.4.0"
     },
     {
       "name": "web-design-skills",
