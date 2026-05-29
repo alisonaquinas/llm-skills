@@ -162,6 +162,19 @@ npm run marketplace:generate -- .claude-plugin/marketplace.json out/marketplace.
 npm run codex-marketplace:generate -- .agents/plugins/marketplace.json out/codex-marketplace.json
 ```
 
+## Update Plugin Version Pins
+
+Use the updater instead of hand-editing version fields:
+
+```bash
+npm run marketplace:update-versions -- --set shared-skills=1.8.1
+npm run marketplace:update-versions -- --latest
+```
+
+The updater verifies GitHub release tags, plugin manifests, release ZIP assets,
+updates `catalog.json`, and regenerates the committed Claude and Codex
+marketplace files.
+
 ## Validate Marketplace JSON
 
 ```bash

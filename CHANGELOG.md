@@ -9,6 +9,19 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added a marketplace version updater for reliably changing plugin release pins,
+  verifying GitHub release manifests and assets, and regenerating committed
+  Claude and Codex marketplace files from `catalog.json`.
+
+### Fixed
+
+- Added Claude marketplace catalog-drift validation and regenerated committed
+  marketplace artifacts so GitHub-backed Claude cowork sessions see the same
+  latest release pins as the hosted marketplace, including `shared-skills`
+  `v1.8.1`.
+
 ## [1.4.10] - 2026-05-20
 
 ### Added

@@ -3,10 +3,13 @@
  *
  * Responsibilities:
  * - validate the generated marketplace document against repo expectations
+ * - detect committed marketplace files that have drifted from catalog generation
  * - provide focused assertion helpers with file-aware error messages
  * - keep CLI validation logic separate from rule definitions
  */
+import type { CatalogFile } from "@/lib/catalog";
 import type { MarketplaceDocument } from "./marketplace";
+import { buildMarketplaceDocument } from "./marketplace";
 
 /**
  * Throws a file-scoped validation error when a condition is not met.
@@ -93,5 +96,79 @@ export function validateMarketplaceDocument(doc: MarketplaceDocument, filePath: 
         filePath
       );
     }
+  });
+}
+
+/**
+ * Validates that a Claude marketplace document exactly matches the configured catalog.
+ *
+ * @param doc Marketplace document to validate.
+ * @param catalog Parsed repository catalog used as generation source.
+ * @param filePath File path used for diagnostic output.
+ */
+export function validateMarketplaceMatchesCatalog(
+  doc: MarketplaceDocument,
+  catalog: CatalogFile,
+  filePath: string
+): void {
+  const expected = buildMarketplaceDocument(catalog);
+
+  assert(doc.name === expected.name, "marketplace 'name' does not match catalog", filePath);
+  assert(
+    JSON.stringify(doc.owner) === JSON.stringify(expected.owner),
+    "marketplace 'owner' does not match catalog",
+    filePath
+  );
+  assert(
+    JSON.stringify(doc.metadata) === JSON.stringify(expected.metadata),
+    "marketplace 'metadata' does not match catalog",
+    filePath
+  );
+  assert(
+    doc.plugins.length === expected.plugins.length,
+    `expected ${expected.plugins.length} plugins from catalog, found ${doc.plugins.length}`,
+    filePath
+  );
+
+  expected.plugins.forEach((expectedPlugin, index) => {
+    const actualPlugin = doc.plugins[index];
+    const ctx = `plugins[${index}] (${actualPlugin?.name ?? "missing"})`;
+
+    assert(actualPlugin, `${ctx}: missing generated catalog plugin`, filePath);
+    assert(
+      actualPlugin.name === expectedPlugin.name,
+      `${ctx}: name '${actualPlugin.name}' does not match generated catalog name '${expectedPlugin.name}'`,
+      filePath
+    );
+    assert(
+      JSON.stringify(actualPlugin.source) === JSON.stringify(expectedPlugin.source),
+      `${ctx}: source does not match generated catalog source`,
+      filePath
+    );
+    assert(
+      actualPlugin.description === expectedPlugin.description,
+      `${ctx}: description does not match generated catalog description`,
+      filePath
+    );
+    assert(
+      actualPlugin.repository === expectedPlugin.repository,
+      `${ctx}: repository does not match generated catalog repository`,
+      filePath
+    );
+    assert(
+      actualPlugin.category === expectedPlugin.category,
+      `${ctx}: category '${actualPlugin.category}' does not match generated catalog category '${expectedPlugin.category}'`,
+      filePath
+    );
+    assert(
+      actualPlugin.strict === expectedPlugin.strict,
+      `${ctx}: strict flag does not match generated catalog strict flag`,
+      filePath
+    );
+    assert(
+      actualPlugin.version === expectedPlugin.version,
+      `${ctx}: version '${actualPlugin.version ?? "missing"}' does not match generated catalog version '${expectedPlugin.version ?? "missing"}'`,
+      filePath
+    );
   });
 }

@@ -10,6 +10,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "rss:generate": "tsx scripts/generate-rss-feed.ts",
+    "marketplace:update-versions": "tsx scripts/update-catalog-versions.ts",
     "marketplace:generate": "tsx scripts/generate-marketplace-json.ts",
     "marketplace:validate": "tsx scripts/validate-marketplace-json.ts",
     "codex-marketplace:generate": "tsx scripts/generate-codex-marketplace-json.ts",

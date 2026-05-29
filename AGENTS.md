@@ -114,6 +114,27 @@ in RSS, and publish per-skill ZIP assets named `{skillName}-skill.zip` from rele
 download links resolve correctly. Release workflows should still dispatch `plugin-updated` to
 `alisonaquinas/llm-skills`.
 
+## Updating plugin version pins
+
+Do not hand-edit plugin `ref` or `version` fields in `catalog.json`, and do not
+hand-edit `.claude-plugin/marketplace.json` or `.agents/plugins/marketplace.json`
+for version updates.
+
+Use the version updater:
+
+```bash
+npm run marketplace:update-versions -- --set shared-skills=1.8.1
+npm run marketplace:update-versions -- --latest
+npm run marketplace:update-versions -- --marketplace-version 1.4.11
+```
+
+The updater verifies GitHub release tags, `.claude-plugin/plugin.json` and
+`.codex-plugin/plugin.json` manifest versions, expected release ZIP assets,
+then writes `catalog.json` and regenerates the committed Claude and Codex
+marketplace files. Claude cowork sessions can read the GitHub-backed
+`.claude-plugin/marketplace.json`, so committed marketplace files must stay in
+sync with the hosted generated artifacts.
+
 ## Development
 
 ```bash

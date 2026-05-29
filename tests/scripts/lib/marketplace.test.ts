@@ -3,10 +3,15 @@
  *
  * Responsibilities:
  * - verify catalog configuration is transformed into the published marketplace schema
+ * - verify generated marketplace documents satisfy repository validation rules
  */
 import { describe, expect, it } from "vitest";
 import type { CatalogFile } from "@/lib/catalog";
 import { buildMarketplaceDocument } from "../../../scripts/lib/marketplace";
+import {
+  validateMarketplaceDocument,
+  validateMarketplaceMatchesCatalog,
+} from "../../../scripts/lib/marketplace-validation";
 
 /** Stable catalog fixture used for marketplace document tests. */
 const catalog: CatalogFile = {
@@ -54,5 +59,31 @@ describe("buildMarketplaceDocument", () => {
     expect(document.plugins[1]?.source.repo).toBe("alisonaquinas/llm-software-design");
     expect(document.plugins[0]?.strict).toBe(true);
     expect(document.plugins[1]?.strict).toBe(true);
+  });
+
+  it("passes Claude marketplace validation", () => {
+    const document = buildMarketplaceDocument(catalog);
+
+    expect(() => validateMarketplaceDocument(document, "marketplace.json")).not.toThrow();
+    expect(() => validateMarketplaceMatchesCatalog(document, catalog, "marketplace.json")).not.toThrow();
+  });
+
+  it("fails validation when committed plugin versions drift from generated catalog versions", () => {
+    const catalogWithVersion: CatalogFile = {
+      ...catalog,
+      plugins: catalog.plugins.map((plugin) => ({
+        ...plugin,
+        version: plugin.pluginName === "shared-skills" ? "1.8.1" : plugin.version,
+      })),
+    };
+    const document = buildMarketplaceDocument(catalogWithVersion);
+    document.plugins[0] = {
+      ...document.plugins[0]!,
+      version: "1.8.0",
+    };
+
+    expect(() =>
+      validateMarketplaceMatchesCatalog(document, catalogWithVersion, "marketplace.json")
+    ).toThrow("does not match generated catalog version '1.8.1'");
   });
 });

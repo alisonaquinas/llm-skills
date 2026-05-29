@@ -6,11 +6,16 @@
  * Responsibilities:
  * - read a generated marketplace document from disk
  * - invoke shared validation rules
+ * - confirm the document still matches catalog-driven generation
  * - return a non-zero exit code when the document is invalid
  */
 import { readFile } from "node:fs/promises";
 import type { MarketplaceDocument } from "./lib/marketplace";
-import { validateMarketplaceDocument } from "./lib/marketplace-validation";
+import { loadCatalog } from "./lib/catalog";
+import {
+  validateMarketplaceDocument,
+  validateMarketplaceMatchesCatalog,
+} from "./lib/marketplace-validation";
 
 /** Default marketplace document path used when no CLI argument is supplied. */
 const filePath = process.argv[2] ?? ".claude-plugin/marketplace.json";
@@ -21,7 +26,9 @@ const filePath = process.argv[2] ?? ".claude-plugin/marketplace.json";
 async function main(): Promise<void> {
   const raw = await readFile(filePath, "utf-8");
   const doc = JSON.parse(raw) as MarketplaceDocument;
+  const catalog = await loadCatalog();
   validateMarketplaceDocument(doc, filePath);
+  validateMarketplaceMatchesCatalog(doc, catalog, filePath);
   console.log(`OK ${filePath}: ${doc.plugins.length} plugins, all valid`);
 }
 
