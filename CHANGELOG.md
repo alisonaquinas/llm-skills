@@ -9,6 +9,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.11] - 2026-06-02
+
 ### Added
 
 - Added a marketplace version updater for reliably changing plugin release pins,
@@ -21,6 +23,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   marketplace artifacts so GitHub-backed Claude cowork sessions see the same
   latest release pins as the hosted marketplace, including `shared-skills`
   `v1.8.1`.
+- Bumped `doc-skills` marketplace pins to `v1.5.0` in `catalog.json`,
+  `.claude-plugin/marketplace.json`, and `.agents/plugins/marketplace.json`.
 
 ## [1.4.10] - 2026-05-20
 
@@ -309,7 +313,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Updated `catalog.json` marketplace version to `1.0.2` so the published metadata and git tag are aligned.
 - Updated the front-page `README.md` to summarize the `1.0.2` release and point readers to the latest marketplace capabilities.
 
-[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.10...HEAD
+[Unreleased]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.11...HEAD
+[1.4.11]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.10...v1.4.11
 [1.4.10]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.9...v1.4.10
 [1.4.9]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.8...v1.4.9
 [1.4.8]: https://github.com/alisonaquinas/llm-skills/compare/v1.4.7...v1.4.8
