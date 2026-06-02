@@ -5,8 +5,38 @@
     <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Doc Skills v1.5.0</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.5.0</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.5.0</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.5.0 release notes.</p>
+<h3>Added</h3>
+<pre>- Added `office-custom/scripts/lint_docx.py`, a pre-delivery linter that flags the two most common silent .docx corruptions: package parts (`.rels`/`[Content_Types].xml`) serialized with a namespace prefix, and numbering definitions missing `w16cid:durableId` / `w15:restartNumberingAfterBreak` relative to their siblings. Also checks content-type completeness.
+- Expanded `docx-custom/SKILL.md` with a &quot;Numbering and Lists (XML editing)&quot; subsection (reuse existing `numId`; Word-faithful `durableId`/`restartNumberingAfterBreak`), an &quot;Editing package parts&quot; serialization rule, and a &quot;Verifying Output&quot; note that well-formedness and a LibreOffice render do not guarantee Word opens a file without recovery.</pre>
+<h3>Fixed</h3>
+<pre>- Fixed `office-custom/scripts/pack.py` re-serializing `.rels` and `[Content_Types].xml` with `ns0:` namespace prefixes (`&lt;ns0:Relationships&gt;` / `&lt;ns0:Types&gt;`). The package parts now keep their default prefix-less namespace, preventing Word from flagging repacked documents for recovery.</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.4.11</title>
+      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.4.10...v1.4.11</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.11</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.11 release notes.</p>
+<h3>Added</h3>
+<pre>- Added a marketplace version updater for reliably changing plugin release pins,
+  verifying GitHub release manifests and assets, and regenerating committed
+  Claude and Codex marketplace files from `catalog.json`.</pre>
+<h3>Fixed</h3>
+<pre>- Added Claude marketplace catalog-drift validation and regenerated committed
+  marketplace artifacts so GitHub-backed Claude cowork sessions see the same
+  latest release pins as the hosted marketplace, including `shared-skills`
+  `v1.8.1`.
+- Bumped `doc-skills` marketplace pins to `v1.5.0` in `catalog.json`,
+  `.claude-plugin/marketplace.json`, and `.agents/plugins/marketplace.json`.</pre>]]></description>
+    </item>
     <item>
       <title>Doc Skills v1.4.0</title>
       <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.4.0</link>
@@ -574,37 +604,6 @@
 <pre>- Landing page: moved plugin GitHub repository links from the crowded top-of-page link row into individual plugin cards (displayed beneath the install command banner), reducing header clutter and keeping repo context close to each plugin.
 - Landing page: removed horizontal scroll overflow from the install command text box on plugin cards so the command displays on a single fixed-width line.
 - Landing page: added a copy-to-clipboard button beside each plugin card install command, matching the copy-button pattern already used on Skill detail cards.</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.4.1</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.4.0...v1.4.1</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.1</guid>
-      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.4.1 release notes.</p>
-<h3>Fixed</h3>
-<pre>- `release.yml`: `all-plugins.zip` now contains individual `*-skill.zip` files flat at the archive root rather than nesting the plugin bundle ZIPs inside it; each plugin bundle is downloaded then extracted, and the resulting skill ZIPs are collected with `zip -j` (junk paths) into a single flat archive</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.4.0</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.3.6...v1.4.0</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.0</guid>
-      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.4.0 release notes.</p>
-<h3>Added</h3>
-<pre>- `MarkdownRenderer` component (`src/components/MarkdownRenderer.tsx`): server component using `react-markdown` + `remark-gfm` with `@tailwindcss/typography` prose styling; replaces raw `&lt;pre&gt;` blocks on skill detail pages so all skill documentation is rendered as HTML
-- `buildPluginBundleUrl()` in `src/lib/github/skill-service.ts`: builds the `{pluginName}-plugin.zip` download URL from a plugin config and version
-- `buildAllPluginsBundleUrl()` in `src/lib/catalog/service.ts`: builds the `all-plugins.zip` download URL from `catalog.json` marketplace version and GitHub repo
-- `MarketplacePluginSummary.bundleUrl` field: per-plugin all-in-one bundle download URL, or `null` when the plugin version is unavailable
-- Landing page: per-plugin &quot;Bundle&quot; download link on each plugin card and a &quot;Download all plugins&quot; banner at the top of the marketplace that links to `all-plugins.zip`
-- `release.yml`: two new steps — &quot;Download plugin bundle ZIPs&quot; (fetches each `{pluginName}-plugin.zip` from the latest plugin release) and &quot;Build all-plugins bundle&quot; (assembles `all-plugins.zip` from the downloaded bundles); `all-plugins.zip` is uploaded as a GitHub Release asset
-- Unit tests for `buildPluginBundleUrl` and `bundleUrl` population in `buildMarketplacePluginSummaries`</pre>
-<h3>Changed</h3>
-<pre>- Skill detail page (`src/app/skill/[...slug]/page.tsx`): replaced `&lt;pre&gt;` raw markdown display with `&lt;MarkdownRenderer&gt;` for rendered HTML output
-- `src/lib/github/index.ts` and `src/lib/catalog/index.ts`: barrel exports updated for new URL builder functions
-- `package.json`: added `react-markdown`, `remark-gfm` as runtime dependencies; `@tailwindcss/typography` as dev dependency
-- `tailwind.config.ts`: registered `@tailwindcss/typography` plugin</pre>
-<h3>Fixed</h3>
-<pre>- `catalog.json` and `package.json` version corrected to `1.4.0`; the v1.3.9 tag was pushed without bumping these files, causing the release workflow to fail the version-gate check</pre>]]></description>
     </item>
   </channel>
 </rss>
