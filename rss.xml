@@ -5,8 +5,39 @@
     <link>https://llm-skills.alisonaquinas.com</link>
     <description>Combined release notes feed for the llm-skills marketplace ecosystem.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://llm-skills.alisonaquinas.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Doc Skills v1.5.1</title>
+      <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.5.1</link>
+      <guid isPermaLink="false">alisonaquinas/llm-doc-skills@1.5.1</guid>
+      <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Doc Skills v1.5.1 release notes.</p>
+<h3>Added</h3>
+<pre>- Added `lint_docx.py` checks for undeclared `mc:Ignorable` prefixes, invalid `w:tblPr` child ordering, and trailing or adjacent body tables that can make Word repair otherwise well-formed `.docx` files.
+- Expanded `docx-custom` guidance for `python-docx` list styles, table mutation pitfalls, `tblPr` ordering, table placement, and `mc:Ignorable` namespace preservation.</pre>
+<h3>Changed</h3>
+<pre>- Updated `docx-custom` setup and validation instructions to use local `docx` package installs, import the required docx-js numbering symbols, and run `lint_docx.py` after creation as well as after OOXML edits.</pre>
+<h3>Fixed</h3>
+<pre>- Fixed `office-custom/scripts/pack.py` so unpack/edit/pack round trips restore known namespace declarations referenced by `mc:Ignorable`, including self-closing XML roots, preventing invalid OOXML that triggers Word recovery.</pre>]]></description>
+    </item>
+    <item>
+      <title>Marketplace v1.4.12</title>
+      <link>https://github.com/alisonaquinas/llm-skills/releases/tag/v1.4.12</link>
+      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.12</guid>
+      <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[<p>Marketplace v1.4.12 release notes.</p>
+<h3>Changed</h3>
+<pre>- Bumped `doc-skills` marketplace pins to `v1.5.1` in `catalog.json`,
+  `.claude-plugin/marketplace.json`, and `.agents/plugins/marketplace.json`
+  after validating the GitHub release, Claude manifest, Codex manifest, and
+  plugin ZIP assets.
+- Bumped marketplace package and catalog metadata to `1.4.12` in
+  `package.json`, `package-lock.json`, and `catalog.json`.</pre>
+<h3>Verified</h3>
+<pre>- Revalidated the generated Claude marketplace listing, Codex marketplace
+  listing, and `npx skills` command helpers against the updated catalog.</pre>]]></description>
+    </item>
     <item>
       <title>Doc Skills v1.5.0</title>
       <link>https://github.com/alisonaquinas/llm-doc-skills/releases/tag/v1.5.0</link>
@@ -575,35 +606,6 @@
 <h3>Changed</h3>
 <pre>- `Makefile`: extended `.PHONY` to include `bundle`; updated `help` text to document the new target
 - `.github/workflows/release.yml`: added &quot;Build plugin bundle ZIP&quot; step (`make bundle`) so `shared-skills-plugin.zip` is uploaded alongside the individual skill ZIPs on every tag release</pre>]]></description>
-    </item>
-    <item>
-      <title>Shared Skills v1.6.7</title>
-      <link>https://github.com/alisonaquinas/llm-shared-skills/releases/tag/v1.6.7</link>
-      <guid isPermaLink="false">alisonaquinas/llm-shared-skills@1.6.7</guid>
-      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Shared Skills v1.6.7 release notes.</p>
-<h3>Added</h3>
-<pre>- `skills/cat`: display and concatenate file contents; covers tac, heredoc alternatives, and &quot;useless use of cat&quot; guidance
-- `skills/cp`: copy files and directories with metadata/permission preservation, archive mode, and safe overwrite patterns
-- `skills/echo`: print strings to stdout with portability notes; defers to `$printf` for escape handling in scripts
-- `skills/grep`: search files and pipelines by pattern; prefers ag (The Silver Searcher) for recursive code search when installed; includes ag flags, when-to-use table, and PCRE notes
-- `skills/ln`: create hard and symbolic links; covers atomic symlink replacement, relative vs absolute targets, and cross-filesystem limits
-- `skills/ls`: list directory contents; covers GNU vs BSD flag differences, sorting options, colour output, and safe scripting alternatives
-- `skills/mv`: move and rename files and directories; covers atomic same-filesystem rename, cross-filesystem copy-then-delete, and overwrite protection
-- `skills/printf`: portable formatted output; covers format specifiers, field widths, ANSI colour, `printf -v`, null-delimited output, and the &quot;never pass variable as format string&quot; safety rule
-- `skills/ps`: inspect running processes; covers BSD/POSIX syntax differences, custom output columns, process trees, and top/htop alternatives
-- `skills/rsync`: sync files locally or over SSH; emphasises dry-run-first workflow, trailing-slash semantics, `--delete` warning, and bandwidth/checksum options</pre>]]></description>
-    </item>
-    <item>
-      <title>Marketplace v1.4.2</title>
-      <link>https://github.com/alisonaquinas/llm-skills/compare/v1.4.1...v1.4.2</link>
-      <guid isPermaLink="false">alisonaquinas/llm-skills@1.4.2</guid>
-      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[<p>Marketplace v1.4.2 release notes.</p>
-<h3>Changed</h3>
-<pre>- Landing page: moved plugin GitHub repository links from the crowded top-of-page link row into individual plugin cards (displayed beneath the install command banner), reducing header clutter and keeping repo context close to each plugin.
-- Landing page: removed horizontal scroll overflow from the install command text box on plugin cards so the command displays on a single fixed-width line.
-- Landing page: added a copy-to-clipboard button beside each plugin card install command, matching the copy-button pattern already used on Skill detail cards.</pre>]]></description>
     </item>
   </channel>
 </rss>
