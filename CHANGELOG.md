@@ -9,6 +9,22 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.12] - 2026-06-04
+
+### Changed
+
+- Bumped `doc-skills` marketplace pins to `v1.5.1` in `catalog.json`,
+  `.claude-plugin/marketplace.json`, and `.agents/plugins/marketplace.json`
+  after validating the GitHub release, Claude manifest, Codex manifest, and
+  plugin ZIP assets.
+- Bumped marketplace package and catalog metadata to `1.4.12` in
+  `package.json`, `package-lock.json`, and `catalog.json`.
+
+### Verified
+
+- Revalidated the generated Claude marketplace listing, Codex marketplace
+  listing, and `npx skills` command helpers against the updated catalog.
+
 ## [1.4.11] - 2026-06-02
 
 ### Added
